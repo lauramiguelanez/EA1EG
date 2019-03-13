@@ -9,6 +9,7 @@ import Aries from './components/pages/Aries';
 import URE from './components/pages/URE';
 import Mapa from './components/pages/Mapa';
 import Alfredo from './components/pages/Alfredo';
+import Dates from './components/pages/Dates';
 import './css/pages.scss';
 
 class App extends Component {
@@ -20,10 +21,11 @@ class App extends Component {
   }
 
   render() {
+    const { page } = this.state;
     return (
       <div>
         <header className="header">
-          <Navbar />
+          <Navbar currentPage={page} />
         </header>
         <main>
           <Switch>
@@ -51,22 +53,22 @@ class App extends Component {
               )}
             />
             <Route
-              path="/postcard/:id"
+              path="/postal/:id"
               render={() => (
                 <PostcardDetail
                   newPage={() => {
-                    this.setState({ page: 'PostcardDetail' });
+                    this.setState({ page: 'PostalDetalle' });
                   }}
                 />
               )}
             />
             <Route
               exact
-              path="/postcard"
+              path="/postales"
               render={() => (
                 <AllPostcards
                   newPage={() => {
-                    this.setState({ page: 'AllPostcards' });
+                    this.setState({ page: 'Postales' });
                   }}
                 />
               )}
@@ -106,11 +108,22 @@ class App extends Component {
             />
             <Route
               exact
-              path="/Alfredo"
+              path="/alfredo"
               render={() => (
                 <Alfredo
                   newPage={() => {
                     this.setState({ page: 'Alfredo' });
+                  }}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/fecha"
+              render={() => (
+                <Dates
+                  newPage={() => {
+                    this.setState({ page: 'Fechas' });
                   }}
                 />
               )}

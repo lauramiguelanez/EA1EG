@@ -10,34 +10,40 @@ export default class Navbar extends Component {
   }
 
   render() {
+    const { currentPage } = this.props;
+
     return (
       <nav className="nav-style" role="navigation">
         <div className="nav-row-wrapper" id="top-nav">
           <div className="nav-row">
             <div className="nav-group logo">Logo</div>
-            <div className="nav-group site-title">Atlas Visual Alfredo Abella</div>
+            <div className="nav-group site-title">
+              <NavLink className="nav-link" to="/alfredo">
+                Atlas Visual Alfredo Abella
+              </NavLink>
+            </div>
             <div className="nav-group nav-group-main">
-              <NavLink className="nav-link" to="/about">
+              <NavLink className="nav-link" to="/postales">
                 Archivo
               </NavLink>
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link" to="/mapa">
                 Lugar
               </NavLink>
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link" to="/fecha">
                 Año
               </NavLink>
             </div>
             <div className="nav-group nav-group-secondary">
-              <NavLink className="nav-link" to="/about">
+              <NavLink className="nav-link" to="/buscar">
                 Buscar
               </NavLink>
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link" to="/proyecto">
                 Proyecto
               </NavLink>
             </div>
           </div>
         </div>
-        <ContextualBar />
+        <ContextualBar page={currentPage} />
       </nav>
     );
   }

@@ -15,7 +15,7 @@ class Proyecto extends Component {
   render() {
     return (
       <section className='page page-proyecto'>
-        <div>Proyecto page</div>
+        <div className='page-title'>Proyecto page</div>
         <div className='text-body'>
           <p>El archivo base del proyecto se compone de una extensa colección de postales QSL producida a lo largo de la trayectoria  como radioaficionado de Alfredo Abella Martín.</p>
           <p>Las tarjetas QSL son postales que las emisoras (tanto de aficionados, como de radiodifusión y otros servicios) envían a vuelta de correo, como respuesta a los informes de recepción (o QSL propias) confirmando una escucha o comunicado bilateral. Además de documentar la escucha con los datos esenciales, las QSL contienen imágenes turísticas, logos, una foto del operador, sus equipos, motivos conmemorativos, paisajes naturales, etc.</p>

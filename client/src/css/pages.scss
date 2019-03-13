@@ -3,6 +3,8 @@
 
 .page {
   min-height: $page-heigth;
+  display: flex;
+  flex-direction: column;
 
   .text-body {
     max-width: 70vw;
@@ -10,8 +12,10 @@
   }
   .page-title {
     max-width: 80vw;
+    display: inline-block;
     margin: 0 auto;
     font-size: $title-font-size;
+    text-transform: uppercase;
   }
 }
 
