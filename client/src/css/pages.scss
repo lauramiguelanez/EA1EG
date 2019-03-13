@@ -1,0 +1,46 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.page {
+  min-height: $page-heigth;
+
+  .text-body {
+    max-width: 70vw;
+    margin: 0 auto;
+  }
+  .page-title {
+    max-width: 80vw;
+    margin: 0 auto;
+    font-size: $title-font-size;
+  }
+}
+
+.page-ure {
+  background-color: $pink-archive;
+  color: $yellow-alt;
+}
+
+.page-alfredo {
+  background-color: $yellow-alt;
+  color: $blue-alt;
+}
+
+.page-proyecto {
+  background-color: $pink-alt;
+  color: $pink-archive;
+}
+
+.page-aries {
+  background-color: $blue-alt;
+  color: $yellow-alt;
+}
+
+.page-creditos {
+  background-color: $grey-alt;
+  color: $grey-menu;
+}
+
+.page-mapa {
+  background-color: $blue-search;
+  color: $blue-alt;
+}

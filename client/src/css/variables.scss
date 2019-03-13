@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Favorit_Medium';
+  src: url('/fonts/Favorit_Medium.ttf')  format('truetype');
+  src: url('/fonts/Favorit_Medium.woff')  format('woff');
+}
+@font-face {
+  font-family: 'Favorit';
+  src: url('/fonts/Favorit_Regular.woff.ttf')  format('truetype');
+  src: url('/fonts/Favorit_Regular.woff.ttf')  format('woff');
+}
+@font-face {
+  font-family: 'Favorit_Bold';
+  src: url('/fonts/Favorit_Bold.ttf')  format('truetype');
+  src: url('/fonts/Favorit_Bold.woff')  format('woff');
+}
+
+$primary-color: black;
+$secondary-color: white;
+$accent-color: pink;
+$background-color: white;
+
+$header-heigth: 10vh;
+$page-heigth: 90vh;
+
+$nav-height: 80px;
+$contextual-height: 80px;
+
+$nav-font-size:25px;
+$title-font-size:35px;
+
+$main-font: 'Karla', sans-serif;
+$accent-font: 'Favorit', sans-serif;
+
+$white: white;
+$black: black;
+$pink-archive: #ff3e8d;
+$red-intro: #ea0032;
+$yellow-year: #fcee21;
+$grey-menu: #333333;
+$brown-place: #c7b299;
+$blue-search: #d4ebff;
+$green-project: #71e2a7;
+$blue-alt: #2e3192;
+$yellow-alt: #fff3b6;
+$pink-alt: #ffebf3;
+$grey-alt: #cccccc;
+

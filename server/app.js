@@ -1,21 +1,21 @@
 require('dotenv').config();
 
-const bodyParser   = require('body-parser');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const express      = require('express');
-const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
-const mongoose     = require('mongoose');
-const logger       = require('morgan');
-const path         = require('path');
-
-const session    = require("express-session");
+const express = require('express');
+const favicon = require('serve-favicon');
+const hbs = require('hbs');
+const mongoose = require('mongoose');
+const logger  = require('morgan');
+const path = require('path');
+const session = require("express-session");
 const MongoStore = require('connect-mongo')(session);
-const flash      = require("connect-flash");
+const flash = require("connect-flash");
+const cors = require("cors");
     
 
 mongoose
-  .connect('mongodb://localhost/server', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -80,6 +80,8 @@ app.use('/', index);
 
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
+const postcardCRUD = require('./routes/postcardCRUD');
+app.use('/api/postcard', postcardCRUD(require('./models/Postcard')));
       
 
 module.exports = app;

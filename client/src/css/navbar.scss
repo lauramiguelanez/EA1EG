@@ -1,0 +1,88 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.nav-style {
+  display: block;
+  min-height: $header-heigth;
+  width: 100vw;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: $nav-font-size;
+  & a {
+    color: $white;
+    text-decoration: none;
+    font-size: $nav-font-size;
+    // align-self: center;
+    // justify-self: center;
+
+    & :hover {
+      color: $accent-color;
+      text-decoration: none;
+    }
+    & :visited {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+
+.nav-row-wrapper {
+  width: 100vw;
+  display: flex;
+}
+.nav-row {
+  display: flex;
+  // height: 120px;
+  margin: 0 auto;
+  padding: 0;
+  align-items: flex-end;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  // justify-content: space-between;
+}
+
+.nav-group {
+  width: 120px;
+  display:block;
+  padding: 7px;
+}
+
+.nav-group-main {
+  //
+}
+
+.nav-group-secondary {
+  //
+}
+
+.nav-link {
+  font-family: $main-font;
+  font-size: 1rem;
+  display: inline-block;
+  // align-self: flex-end;
+  /* align-self: center;
+  justify-self: center;
+  //text-align: center;
+  font-weight: 400;
+  padding: 0 10px; */
+}
+.logo {
+  align-self: center;
+}
+
+#top-nav {
+  background-color: $grey-menu;
+  color: $white;
+  width: 100vw;
+}
+
+#contextual-nav {
+  background-color: $green-project;
+  color: $black;
+  width: 100vw;
+}
+
+

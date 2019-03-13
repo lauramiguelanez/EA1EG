@@ -1,3 +1,7 @@
+const Postcard = require ("../models/Postcard");
+const express = require('express');
+const router  = express.Router();
+const uploadCloud = require("../config/cloudinary.js");
 
 const Papa = require('papaparse');
 const CSV = require('./EA1EGdata');
@@ -46,3 +50,8 @@ let dataObj = data.map((e)=>{
 })
 console.log(data[5]);
 console.log(dataObj[5]);
+
+
+router.post("/api/postcard", uploadCloud.single("tag-photo"), (req, res, next) => {
+	
+})

@@ -11,6 +11,7 @@ const postcardSchema = new Schema({
   imageFront: String,
   imageBack: String,
   notes: String,
+  info: String,
 }, {
   timestamps: {
     createdAt: 'created_at',
