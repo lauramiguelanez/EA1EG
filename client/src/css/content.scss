@@ -15,11 +15,30 @@
   margin: 18px;
 }
 
-.two-columns-wrapper{
+.two-columns-wrapper {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  max-width: 70vw;
+  margin: 0 auto;
 }
-.column{
+
+.column {
   width: 50%;
+}
+
+.figure {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.figure-creditos {
+  background-color: grey;
+  width: 300px;
+  height: 300px;
+}
+
+.figure-contacto {
+  background-color: grey;
+  width: 300px;
+  height: 300px;
 }

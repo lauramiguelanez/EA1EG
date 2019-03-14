@@ -38,6 +38,34 @@ export default class ContextualBar extends Component {
       </div>
     );
 
+    const mapaMenu = (
+      <div className="contextual-wrapper-h bar-mapa">
+        <div className="nav-group">
+          <NavLink className="nav-link" to="/mapa">
+            Lugar
+          </NavLink>
+          <NavLink className="nav-link" to="/lista">
+            Lista
+          </NavLink>
+        </div>
+      </div>
+    );
+
+    const filtersMenu = (
+      <div className="contextual-wrapper-h bar-filters">
+        <div className="nav-group">
+          <a className="nav-link">Tamaño</a>
+          <a className="nav-link">Orden</a>
+        </div>
+        <div className="nav-group">
+          <a className="nav-link">Reducir Ampliar</a>
+          <a className="nav-link">Cronológico</a>
+          <a className="nav-link">Geográfico</a>
+          <a className="nav-link">Visitado</a>
+        </div>
+      </div>
+    );
+
     switch (page) {
       case 'Fechas':
         contextualMenu = (
@@ -56,7 +84,10 @@ export default class ContextualBar extends Component {
         contextualMenu = projectMenu;
         break;
       case 'Mapa':
-        console.log('page', page);
+        contextualMenu = mapaMenu;
+        break;
+      case 'Lista':
+        contextualMenu = mapaMenu;
         break;
       case 'Alfredo':
         console.log('page', page);
@@ -70,11 +101,14 @@ export default class ContextualBar extends Component {
       case 'Creditos':
         contextualMenu = projectMenu;
         break;
+      case 'Contacto':
+        contextualMenu = projectMenu;
+        break;
       case 'Postales':
-        console.log('page', page);
+        contextualMenu = filtersMenu;
         break;
       case 'PostalDetalle':
-        console.log('page', page);
+        contextualMenu = filtersMenu;
         break;
       default:
         contextualMenu = <div />;
@@ -82,9 +116,7 @@ export default class ContextualBar extends Component {
 
     return (
       <div className="nav-row-wrapper" id="contextual-nav">
-        <div className="nav-row">
-          {contextualMenu}
-        </div>
+        <div className="nav-row">{contextualMenu}</div>
       </div>
     );
   }

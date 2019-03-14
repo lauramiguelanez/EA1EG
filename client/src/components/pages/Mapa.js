@@ -15,7 +15,7 @@ class Mapa extends Component {
   render() {
     return (
       <section className='page page-mapa'>
-        <div>Mapa page</div>
+        <div className="page-title">Mapa page</div>
       </section>
     );
   }

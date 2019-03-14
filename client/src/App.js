@@ -13,6 +13,8 @@ import Creditos from './components/pages/Creditos';
 // import Dates from './components/pages/Dates';
 import './css/pages.scss';
 import './css/content.scss';
+import Contacto from './components/pages/Contacto';
+import Lista from './components/pages/Lista';
 
 class App extends Component {
   constructor() {
@@ -87,6 +89,11 @@ class App extends Component {
             />
             <Route
               exact
+              path="/lista"
+              render={() => <Lista newPage={() => this.setPage('Lista')} page="Lista" />}
+            />
+            <Route
+              exact
               path="/alfredo"
               render={() => <Alfredo newPage={() => this.setPage('Alfredo')} page="Alfredo" />}
             />
@@ -99,6 +106,11 @@ class App extends Component {
               exact
               path="/creditos"
               render={() => <Creditos newPage={() => this.setPage('Creditos')} page="Creditos" />}
+            />
+            <Route
+              exact
+              path="/contacto"
+              render={() => <Contacto newPage={() => this.setPage('Contacto')} page="Contacto" />}
             />
           </Switch>
         </main>

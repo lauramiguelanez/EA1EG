@@ -35,6 +35,9 @@ class Creditos extends Component {
             <p>A.R.I.E.S.</p>
           </div>
         </div>
+        <div className="figure figure-creditos">
+        IMAGEN
+        </div>
       </section>
     );
   }

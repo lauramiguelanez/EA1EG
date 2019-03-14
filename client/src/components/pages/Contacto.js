@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Aries extends Component {
+class Contacto extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,11 +14,14 @@ class Aries extends Component {
 
   render() {
     return (
-      <section className='page page-aries'>
-        <div className='page-title'>Aries page</div>
+      <section className="page page-contacto">
+        <div className="page-title">Contact page</div>
+        <div className="figure figure-contacto">
+        IMAGEN
+        </div>
       </section>
     );
   }
 }
 
-export default Aries;
+export default Contacto;
