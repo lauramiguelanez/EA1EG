@@ -10,6 +10,7 @@
     max-width: 70vw;
     margin: 0 auto;
   }
+
   .page-title {
     max-width: 80vw;
     display: inline-block;
@@ -46,5 +47,10 @@
 
 .page-mapa {
   background-color: $blue-search;
+  color: $blue-alt;
+}
+
+.page-years {
+  background-color: $green-project;
   color: $blue-alt;
 }

@@ -1,0 +1,25 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.all-postcards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.postcard-thumbnail {
+  background-color: grey;
+  width: 250px;
+  height: 170px;
+  margin: 18px;
+}
+
+.two-columns-wrapper{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.column{
+  width: 50%;
+}

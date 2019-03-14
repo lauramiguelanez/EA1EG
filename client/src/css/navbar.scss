@@ -46,7 +46,7 @@
 
 .nav-group {
   width: 120px;
-  display:block;
+  display: block;
   padding: 7px;
 }
 
@@ -62,13 +62,14 @@
   font-family: $main-font;
   font-size: 1rem;
   display: inline-block;
+
   // align-self: flex-end;
-  /* align-self: center;
-  justify-self: center;
-  //text-align: center;
-  font-weight: 400;
-  padding: 0 10px; */
+  // justify-self: center;
+  // text-align: center;
+  // font-weight: 400;
+  // padding: 0 10px;
 }
+
 .logo {
   align-self: center;
 }
@@ -85,17 +86,40 @@
   width: 100vw;
 }
 
-.contextual-wrapper{
+.contextual-wrapper-v {
+  width: 100vw;
   display: flex;
   flex-direction: row;
   min-height: 80px;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+}
+.contextual-wrapper-h{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  //min-height: 80px;
+  // align-items: flex-start;
+  justify-content: center;
 }
 
-.menu-years{
+.menu-years {
   display: inline-block;
   transform: rotate(90deg);
+  padding: 0 0 0 15px;
   margin: 0;
-  padding: 0;
-  width: 25px;
+  width: 17px;
+}
+
+.bar-years {
+  background-color: $yellow-year;
+  & a {
+    color: $black;
+  }
+}
+.bar-proyecto {
+  background-color: $green-project;
+  & a {
+    color: $black;
+  }
 }

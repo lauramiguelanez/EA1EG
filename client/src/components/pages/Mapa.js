@@ -9,7 +9,7 @@ class Mapa extends Component {
   }
 
   componentDidMount = () => {
-    //this.props.newPage();
+    this.props.newPage();
   };
 
   render() {

@@ -9,7 +9,7 @@ class Aries extends Component {
   }
 
   componentDidMount = () => {
-    //this.props.newPage();
+    this.props.newPage();
   };
 
   render() {

@@ -9,23 +9,32 @@ import Aries from './components/pages/Aries';
 import URE from './components/pages/URE';
 import Mapa from './components/pages/Mapa';
 import Alfredo from './components/pages/Alfredo';
-import Dates from './components/pages/Dates';
+import Creditos from './components/pages/Creditos';
+// import Dates from './components/pages/Dates';
 import './css/pages.scss';
+import './css/content.scss';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      page: 'Home'
+      page: 'Home',
+      year: '1960',
+      size: 'larger',
+      order: 'cronological'
     };
   }
 
+  setPage(page) {
+    this.setState({ page });
+  }
+
   render() {
-    const { page } = this.state;
+    const { page, year, size, order } = this.state;
     return (
       <div>
         <header className="header">
-          <Navbar currentPage={page} />
+          <Navbar page={page} />
         </header>
         <main>
           <Switch>
@@ -33,32 +42,18 @@ class App extends Component {
               key="home"
               exact
               path="/"
-              render={() => (
-                <Proyecto
-                  newPage={() => {
-                    this.setState({ page: 'Proyecto' });
-                  }}
-                />
-              )}
+              render={() => <Proyecto newPage={() => this.setPage('Proyecto')} page="Proyecto" />}
             />
             <Route
               exact
               path="/proyecto"
-              render={() => (
-                <Proyecto
-                  newPage={() => {
-                    this.setState({ page: 'Proyecto' });
-                  }}
-                />
-              )}
+              render={() => <Proyecto newPage={() => this.setPage('Proyecto')} page="Proyecto" />}
             />
             <Route
               path="/postal/:id"
               render={() => (
                 <PostcardDetail
-                  newPage={() => {
-                    this.setState({ page: 'PostalDetalle' });
-                  }}
+                  newPage={() => this.setPage('PostalDetalle')} page="PostalDetalle"
                 />
               )}
             />
@@ -67,66 +62,43 @@ class App extends Component {
               path="/postales"
               render={() => (
                 <AllPostcards
-                  newPage={() => {
-                    this.setState({ page: 'Postales' });
-                  }}
+                  filterYear={year}
+                  size={size}
+                  order={order}
+                  newPage={() => this.setPage('Postales')}
+                  page="Postales"
                 />
               )}
             />
             <Route
               exact
               path="/aries"
-              render={() => (
-                <Aries
-                  newPage={() => {
-                    this.setState({ page: 'Aries' });
-                  }}
-                />
-              )}
+              render={() => <Aries newPage={() => this.setPage('Aries')} page="Aries" />}
             />
             <Route
               exact
               path="/ure"
-              render={() => (
-                <URE
-                  newPage={() => {
-                    this.setState({ page: 'URE' });
-                  }}
-                />
-              )}
+              render={() => <URE newPage={() => this.setPage('URE')} page="URE" />}
             />
             <Route
               exact
               path="/mapa"
-              render={() => (
-                <Mapa
-                  newPage={() => {
-                    this.setState({ page: 'Mapa' });
-                  }}
-                />
-              )}
+              render={() => <Mapa newPage={() => this.setPage('Mapa')} page="Mapa" />}
             />
             <Route
               exact
               path="/alfredo"
-              render={() => (
-                <Alfredo
-                  newPage={() => {
-                    this.setState({ page: 'Alfredo' });
-                  }}
-                />
-              )}
+              render={() => <Alfredo newPage={() => this.setPage('Alfredo')} page="Alfredo" />}
             />
             <Route
               exact
               path="/fecha"
-              render={() => (
-                <Dates
-                  newPage={() => {
-                    this.setState({ page: 'Fechas' });
-                  }}
-                />
-              )}
+              render={() => <AllPostcards newPage={() => this.setPage('Fechas')} page="Fechas" />}
+            />
+            <Route
+              exact
+              path="/creditos"
+              render={() => <Creditos newPage={() => this.setPage('Creditos')} page="Creditos" />}
             />
           </Switch>
         </main>

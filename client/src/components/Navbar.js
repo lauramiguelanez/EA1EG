@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, BrowserRouter, NavLink } from 'react-router-dom';
 import '../css/navbar.scss';
 import ContextualBar from './ContextualBar';
-
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -10,13 +9,16 @@ export default class Navbar extends Component {
   }
 
   render() {
-    const { currentPage } = this.props;
-
+    const { page } = this.props;
     return (
       <nav className="nav-style" role="navigation">
         <div className="nav-row-wrapper" id="top-nav">
           <div className="nav-row">
-            <div className="nav-group logo">Logo</div>
+            <div className="nav-group logo">
+              <NavLink className="nav-link" to="/">
+                Logo
+              </NavLink>
+            </div>
             <div className="nav-group site-title">
               <NavLink className="nav-link" to="/alfredo">
                 Atlas Visual Alfredo Abella
@@ -43,7 +45,7 @@ export default class Navbar extends Component {
             </div>
           </div>
         </div>
-        <ContextualBar page={currentPage} />
+        <ContextualBar page={page} />
       </nav>
     );
   }
