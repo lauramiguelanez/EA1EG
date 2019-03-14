@@ -13,6 +13,8 @@ export default class ContextualBar extends Component {
 
     const projectMenu = (
       <div className="contextual-wrapper-h bar-proyecto">
+        <div className="nav-group" />
+        <div className="nav-group" />
         <div className="nav-group">
           <NavLink className="nav-link" to="/">
             EA1EG
@@ -40,6 +42,8 @@ export default class ContextualBar extends Component {
 
     const mapaMenu = (
       <div className="contextual-wrapper-h bar-mapa">
+        <div className="nav-group" />
+        <div className="nav-group" />
         <div className="nav-group">
           <NavLink className="nav-link" to="/mapa">
             Lugar
@@ -53,6 +57,8 @@ export default class ContextualBar extends Component {
 
     const filtersMenu = (
       <div className="contextual-wrapper-h bar-filters">
+        <div className="nav-group" />
+        <div className="nav-group" />
         <div className="nav-group">
           <a className="nav-link">Tamaño</a>
           <a className="nav-link">Orden</a>

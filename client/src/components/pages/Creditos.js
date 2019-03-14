@@ -16,7 +16,7 @@ class Creditos extends Component {
     return (
       <section className="page page-creditos">
         <div className="page-title">Creditos page</div>
-        <div className="two-columns-wrapper">
+        <div className="columns-wrapper">
           <div className="column">
             <p>
               El archivo base del proyecto se compone de una extensa coleecion de postales QSL

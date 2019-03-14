@@ -9,6 +9,7 @@
   .text-body {
     max-width: 70vw;
     margin: 0 auto;
+    font-size: $body-font-size;
   }
 
   .page-title {
@@ -16,7 +17,9 @@
     display: inline-block;
     margin: 0 auto;
     font-size: $title-font-size;
+    // font-weight: 700;
     text-transform: uppercase;
+    padding-top: 15px;
   }
 }
 

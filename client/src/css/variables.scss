@@ -1,17 +1,17 @@
 @font-face {
   font-family: 'Favorit_Medium';
-  src: url('/fonts/Favorit_Medium.ttf')  format('truetype');
-  src: url('/fonts/Favorit_Medium.woff')  format('woff');
+  src: url('/fonts/Favorit_Medium.ttf') format('truetype');
+  src: url('/fonts/Favorit_Medium.woff') format('woff');
 }
 @font-face {
   font-family: 'Favorit';
-  src: url('/fonts/Favorit_Regular.woff.ttf')  format('truetype');
-  src: url('/fonts/Favorit_Regular.woff.ttf')  format('woff');
+  src: url('/fonts/Favorit_Regular.woff.ttf') format('truetype');
+  src: url('/fonts/Favorit_Regular.woff.ttf') format('woff');
 }
 @font-face {
   font-family: 'Favorit_Bold';
-  src: url('/fonts/Favorit_Bold.ttf')  format('truetype');
-  src: url('/fonts/Favorit_Bold.woff')  format('woff');
+  src: url('/fonts/Favorit_Bold.ttf') format('truetype');
+  src: url('/fonts/Favorit_Bold.woff') format('woff');
 }
 
 $primary-color: black;
@@ -25,8 +25,9 @@ $page-heigth: 90vh;
 $nav-height: 80px;
 $contextual-height: 80px;
 
-$nav-font-size:25px;
-$title-font-size:35px;
+$nav-font-size: 25px;
+$title-font-size: 36px;
+$body-font-size: 18px;
 
 $main-font: 'Karla', sans-serif;
 $accent-font: 'Favorit', sans-serif;
@@ -44,4 +45,3 @@ $blue-alt: #2e3192;
 $yellow-alt: #fff3b6;
 $pink-alt: #ffebf3;
 $grey-alt: #cccccc;
-
