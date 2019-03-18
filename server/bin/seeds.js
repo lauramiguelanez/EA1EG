@@ -3,33 +3,38 @@
 // To execute this seed, run from the root of the project
 // $ node bin/seeds.js
 
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const User = require('../models/User');
+// const Postcard = require("../models/Postcard");
+// import dataObj from './data_load/EA1EG-CSVtoJSON';
 
 const bcryptSalt = 10;
 
+console.log('SEEDS!!!');
+// console.log('dataObj', dataObj);
+
 mongoose
-  .connect('mongodb://localhost/server', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
   .catch(err => {
-    console.error('Error connecting to mongo', err)
+    console.error('Error connecting to mongo', err);
   });
 
 let users = [
   {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    username: 'alice',
+    password: bcrypt.hashSync('alice', bcrypt.genSaltSync(bcryptSalt))
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    username: 'bob',
+    password: bcrypt.hashSync('bob', bcrypt.genSaltSync(bcryptSalt))
   }
-]
+];
 
-User.deleteMany()
+/* User.deleteMany()
 .then(() => {
   return User.create(users)
 })
@@ -44,4 +49,4 @@ User.deleteMany()
 .catch(err => {
   mongoose.disconnect()
   throw err
-})
+}) */

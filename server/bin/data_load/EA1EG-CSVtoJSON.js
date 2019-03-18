@@ -1,10 +1,10 @@
-const Postcard = require ("../models/Postcard");
-const express = require('express');
-const router  = express.Router();
-const uploadCloud = require("../config/cloudinary.js");
+import Postcard from "../models/Postcard";
+import { Router } from 'express';
+const router  = Router();
+import { single } from "../config/cloudinary.js";
 
-const Papa = require('papaparse');
-const CSV = require('./EA1EGdata');
+import { parse } from 'papaparse';
+import CSV from './EA1EGdata';
 let config = {
 	delimiter: "",	// auto-detect
 	newline: "",	// auto-detect
@@ -29,7 +29,7 @@ let config = {
 	transform: undefined
 };
 
-let result = Papa.parse(CSV, config);
+let result = parse(CSV, config);
 let data = result.data;
 data.forEach (e=>{
     e.splice(9, 5);
@@ -51,7 +51,8 @@ let dataObj = data.map((e)=>{
 console.log(data[5]);
 console.log(dataObj[5]);
 
+export default dataObj;
 
-router.post("/api/postcard", uploadCloud.single("tag-photo"), (req, res, next) => {
+router.post("/api/postcard", single("tag-photo"), (req, res, next) => {
 	
 })
