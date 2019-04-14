@@ -8,11 +8,13 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 // const Postcard = require("../models/Postcard");
 // import dataObj from './data_load/EA1EG-CSVtoJSON';
+const dataObj = require('./data_load/EA1EG-CSVtoJSON.js');
+// module.exports = require('./your_server_file.js')
 
 const bcryptSalt = 10;
 
 console.log('SEEDS!!!');
-// console.log('dataObj', dataObj);
+console.log('dataObj', dataObj);
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
