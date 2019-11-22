@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import geolocalize from "./maps/geolocalize";
-import Map from "./maps/Map";
+import LocationMap from "./maps/LocationMap";
 
 export class ExploreMap extends Component {
   constructor(props) {
@@ -52,7 +52,7 @@ export class ExploreMap extends Component {
       return (
         <div>
           {this.renderRedirect()}
-          <Map
+          <LocationMap
             id="myMap"
             options={{ center: this.state.location, zoom: 12 }}
             onMapLoad={map => {

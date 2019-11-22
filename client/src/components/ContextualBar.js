@@ -41,11 +41,11 @@ export default class ContextualBar extends Component {
     );
 
     const mapaMenu = (
-      <div className="contextual-wrapper-h bar-mapa">
+      <div className="contextual-wrapper-h bar-location">
         <div className="nav-group" />
         <div className="nav-group" />
         <div className="nav-group">
-          <NavLink className="nav-link" to="/mapa">
+          <NavLink className="nav-link" to="/location">
             Lugar
           </NavLink>
           <NavLink className="nav-link" to="/lista">
@@ -73,7 +73,7 @@ export default class ContextualBar extends Component {
     );
 
     switch (page) {
-      case 'Fechas':
+      case 'Years':
         contextualMenu = (
           <div className="contextual-wrapper-v bar-years">
             {new Array(43).fill(0).map((e, i) => {
@@ -89,7 +89,7 @@ export default class ContextualBar extends Component {
       case 'URE':
         contextualMenu = projectMenu;
         break;
-      case 'Mapa':
+      case 'LocationMap':
         contextualMenu = mapaMenu;
         break;
       case 'Lista':

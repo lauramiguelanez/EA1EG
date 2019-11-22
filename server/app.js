@@ -29,6 +29,18 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 const app = express();
 
 // Middleware Setup
+var whitelist = [
+  'http://localhost:3000', 'http://localhost:3010', 'http://localhost:3001',
+];
+var corsOptions = {
+  origin: function(origin, callback){
+      var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+      callback(null, originIsWhitelisted);
+  },
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -82,6 +94,8 @@ const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 const postcardCRUD = require('./routes/postcardCRUD');
 app.use('/api/postcard', postcardCRUD(require('./models/Postcard')));
+const yearGet = require('./routes/yearGet');
+app.use('/api/year', yearGet(require('./models/Postcard')));
       
 
 module.exports = app;

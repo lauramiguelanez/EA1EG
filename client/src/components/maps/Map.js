@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import * as mapConstants from './constants';
 
-export default class Map extends Component {
+export default class LocationMap extends Component {
   constructor(props) {
     super(props);
     this.onScriptLoad = this.onScriptLoad.bind(this)
   }
 
   onScriptLoad() {
-    const map = new window.google.maps.Map(
+    const map = new window.google.maps.LocationMap(
       document.getElementById(this.props.id),
       this.props.options);
 

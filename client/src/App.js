@@ -3,14 +3,14 @@ import { Switch, Route, BrowserRouter, Router } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import AllPostcards from './components/AllPostcards';
+import Landing from './components/Landing';
 import PostcardDetail from './components/PostcardDetail';
 import Proyecto from './components/pages/Proyecto';
 import Aries from './components/pages/Aries';
 import URE from './components/pages/URE';
-import Mapa from './components/pages/Mapa';
+import LocationMap from './components/pages/LocationMap';
 import Alfredo from './components/pages/Alfredo';
 import Creditos from './components/pages/Creditos';
-// import Dates from './components/pages/Dates';
 import './css/pages.scss';
 import './css/content.scss';
 import Contacto from './components/pages/Contacto';
@@ -44,7 +44,7 @@ class App extends Component {
               key="home"
               exact
               path="/"
-              render={() => <Proyecto newPage={() => this.setPage('Proyecto')} page="Proyecto" />}
+              render={() => <Landing newPage={() => this.setPage('Home')} page="Home" />}
             />
             <Route
               exact
@@ -84,10 +84,10 @@ class App extends Component {
             />
             <Route
               exact
-              path="/mapa"
-              render={() => <Mapa newPage={() => this.setPage('Mapa')} page="Mapa" />}
+              path="/location"
+              render={() => <LocationMap newPage={() => this.setPage('LocationMap')} page="LocationMap" />}
             />
-            <Route
+            {/* <Route
               exact
               path="/lista"
               render={() => <Lista newPage={() => this.setPage('Lista')} page="Lista" />}
@@ -96,11 +96,16 @@ class App extends Component {
               exact
               path="/alfredo"
               render={() => <Alfredo newPage={() => this.setPage('Alfredo')} page="Alfredo" />}
+            /> */}
+            <Route
+              exact
+              path="/year/:year"
+              render={() => <AllPostcards newPage={() => this.setPage('Years')} page='Years' />}
             />
             <Route
               exact
-              path="/fecha"
-              render={() => <AllPostcards newPage={() => this.setPage('Fechas')} page="Fechas" />}
+              path="/year"
+              render={() => <AllPostcards newPage={() => this.setPage('Years')} page='Years' />}
             />
             <Route
               exact

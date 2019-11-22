@@ -16,35 +16,33 @@ export default class Navbar extends Component {
           <div className="nav-row">
             <div className="nav-group logo">
               <NavLink className="nav-link" to="/">
-                <img src="/img/logo.png" alt="EA1EG" class="logoSvg"></img>
+                Logo
               </NavLink>
             </div>
-
             <div className="nav-group site-title">
-              <NavLink className="nav-link" to="/location">
-                Location
-              </NavLink>
-              <NavLink className="nav-link" to="/year">
-                Year
+              <NavLink className="nav-link" to="/alfredo">
+                Atlas Visual Alfredo Abella
               </NavLink>
             </div>
-
             <div className="nav-group nav-group-main">
-              <NavLink className="nav-link" to="/proyecto">
-                Project
+              <NavLink className="nav-link" to="/postales">
+                Archivo
               </NavLink>
-              <NavLink className="nav-link" to="/ure">
-                URE
+              <NavLink className="nav-link" to="/location">
+                Lugar
+              </NavLink>
+              <NavLink className="nav-link" to="/fecha">
+                Año
               </NavLink>
             </div>
-
             <div className="nav-group nav-group-secondary">
               <NavLink className="nav-link" to="/buscar">
-                Search
+                Buscar
+              </NavLink>
+              <NavLink className="nav-link" to="/proyecto">
+                Proyecto
               </NavLink>
             </div>
-
-            <div className="nav-group"></div>
           </div>
         </div>
         <ContextualBar page={page} />

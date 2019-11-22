@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class LocationMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +13,12 @@ class Home extends Component {
   };
 
   render() {
-    return <section />;
+    return (
+      <section className='page page-location'>
+        <div className="page-title">LocationMap page</div>
+      </section>
+    );
   }
 }
 
-export default Home;
-
-
+export default LocationMap;

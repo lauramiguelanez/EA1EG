@@ -5,14 +5,14 @@
   display: block;
   min-height: $header-heigth;
   width: 100vw;
-  z-index: 3;
+  z-index: 40;
   margin: 0;
   padding: 0;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-size: $nav-font-size;
   line-height: $nav-font-size;
   & a {
-    color: $white;
+    color: $black;
     text-decoration: none;
     font-size: $nav-font-size;
     // align-self: center;
@@ -23,7 +23,7 @@
       text-decoration: none;
     }
     & :visited {
-      color: $white;
+      color: $black;
       text-decoration: none;
     }
   }
@@ -38,7 +38,7 @@
   // height: 120px;
   margin: 0 auto;
   padding: 0;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-direction: row;
   align-content: center;
   justify-content: center;
@@ -46,9 +46,10 @@
 }
 
 .nav-group {
-  width: 120px;
+  width: 20vw; // 120px;
   display: block;
   padding: 7px;
+  border-color:black;
 }
 
 .nav-group-main {
@@ -60,8 +61,10 @@
 }
 
 .nav-link {
+  
   font-family: $main-font;
   font-size: 1rem;
+  width:100%;
   display: inline-block;
 
   // align-self: flex-end;
@@ -71,13 +74,20 @@
   // padding: 0 10px;
 }
 
+.logoSvg {
+  top:0;
+  width: 50%;
+  height: 50%;
+  padding: 5px;
+}
+
 .logo {
   align-self: center;
 }
 
 #top-nav {
-  background-color: $grey-menu;
-  color: $white;
+  // background-color: $white; // $grey-menu;
+  color: $black;
   width: 100vw;
 }
 
@@ -113,7 +123,7 @@
 }
 
 .bar-years {
-  background-color: $yellow-year;
+  background-color: $white; // $yellow-year;
   & a {
     color: $black;
   }
@@ -132,7 +142,7 @@
   }
 }
 
-.bar-mapa {
+.bar-location {
   background-color: $brown-place;
   & a {
     color: $black;
