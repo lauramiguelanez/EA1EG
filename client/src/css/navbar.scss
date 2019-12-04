@@ -148,3 +148,17 @@
     color: $black;
   }
 }
+
+.bar-Project {
+  background-color: $blue-search;
+  & a {
+    color: $black;
+  }
+}
+
+.bar-URE {
+  background-color: $brown-place;
+  & a {
+    color: $black;
+  }
+}

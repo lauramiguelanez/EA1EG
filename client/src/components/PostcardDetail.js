@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, BrowserRouter, NavLink } from 'react-router-dom';
+import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
 class PostcardDetail extends Component {
   constructor(props) {
     super(props);

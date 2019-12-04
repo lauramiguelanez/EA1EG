@@ -63,6 +63,7 @@ let dataObj = data.map(e => {
     QTH: e[5],
     year: '19' + e[6],
     coordinates: [e[7], e[8]],
+    location:{lat: e[7], lng:e[8]},
     imageFront: e[9],
     imageBack: e[10],
     urlFront: `https://res.cloudinary.com/dmtbzrye8/image/upload/v1556733401/EA1EG/${e[4]}-${e[6]}-${1}.jpg`,

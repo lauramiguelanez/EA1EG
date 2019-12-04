@@ -92,10 +92,15 @@ app.use('/', index);
 
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
+
 const postcardCRUD = require('./routes/postcardCRUD');
 app.use('/api/postcard', postcardCRUD(require('./models/Postcard')));
+
 const yearGet = require('./routes/yearGet');
 app.use('/api/year', yearGet(require('./models/Postcard')));
-      
+
+const regionGet = require('./routes/yearGet');
+app.use('/api/region', regionGet(require('./models/Postcard')));
+
 
 module.exports = app;

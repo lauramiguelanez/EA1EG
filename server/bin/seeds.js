@@ -52,8 +52,9 @@ User.deleteMany()
 })  */
 
 const postcards = dataObj;
+console.log('SEEDS', postcards);
 
-/* Postcard.deleteMany()
+Postcard.deleteMany()
 .then(() => {
   return Postcard.create(postcards)
 })
@@ -68,4 +69,4 @@ const postcards = dataObj;
 .catch(err => {
   mongoose.disconnect()
   throw err
-}) */
+})

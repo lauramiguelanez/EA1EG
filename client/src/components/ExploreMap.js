@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import axios from "axios";
-import geolocalize from "./maps/geolocalize";
-import LocationMap from "./maps/LocationMap";
-
-export class ExploreMap extends Component {
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+// import geolocalize from './maps/geolocalize';
+import LocationMap from './maps/Map';
+class ExploreMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +12,10 @@ export class ExploreMap extends Component {
     this.service = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/api`
     });
-    geolocalize().then(center => {
+    /* geolocalize().then(center => {
       console.log(center);
       this.setState({ location: center });
-    });
+    }); */
   }
 
   setRedirect = marker => {
@@ -27,15 +26,15 @@ export class ExploreMap extends Component {
   };
 
   getMarkers = () => {
-    this.service.get("/spaces").then(spaces => {
-      this.setState({ spaces: spaces.data });
+    this.service.get('/postcard').then(cards => {
+      this.setState({ cards: cards.data });
     });
   };
 
   renderRedirect = () => {
     if (this.state.redirect) {
       console.log(this.state.url);
-      let url = `/scope/${this.state.url}`;
+      let url = `/card/${this.state.url}`;
       return <Redirect to={url} />;
     }
   };
@@ -46,41 +45,39 @@ export class ExploreMap extends Component {
   }
 
   render() {
-    let spaces = this.state.spaces;
+    let cards = this.state.cards;
 
-    //if (spaces) {
-      return (
-        <div>
-          {this.renderRedirect()}
-          <LocationMap
-            id="myMap"
-            options={{ center: this.state.location, zoom: 12 }}
-            onMapLoad={map => {
-              let markers = [];
-              if (spaces) {
-                spaces.forEach(space => {
-                  let marker = new window.google.maps.Marker({
-                    position: space.location,
-                    map: map,
-                    icon: "./marker.png",
-                    url: space._id,
-                    title: "Scope near you!"
-                  });
-                  markers.push(marker);
+    return (
+      <div>
+        {this.renderRedirect()}
+        <LocationMap
+          id="myMap"
+          options={{ /* center: this.state.location, */ zoom: 12 }}
+          onMapLoad={map => {
+            let markers = [];
+            if (cards) {
+              cards.forEach(card => {
+                let marker = new window.google.maps.Marker({
+                  position: card.location,
+                  map: map,
+                  // icon: "./marker.png",
+                  url: card._id,
+                  title: card.indicator
                 });
-              }
-              markers.forEach(marker => {
-                marker.addListener("click", e => {
-                  this.setRedirect(marker.url);
-                  console.log(marker.url);
-                });
+                markers.push(marker);
               });
-            }}
-          />
-        </div>
-      );
-    } /* else {
-      return <div/>
-    } */
+            }
+            markers.forEach(marker => {
+              marker.addEventListener('click', e => {
+                this.setRedirect(marker.url);
+                console.log(marker.url);
+              });
+            });
+          }}
+        />
+      </div>
+    );
   }
 }
+
+export default ExploreMap;

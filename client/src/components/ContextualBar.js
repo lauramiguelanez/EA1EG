@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, BrowserRouter, NavLink } from 'react-router-dom';
+import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
 
 export default class ContextualBar extends Component {
   constructor(props) {
@@ -16,24 +16,24 @@ export default class ContextualBar extends Component {
         <div className="nav-group" />
         <div className="nav-group" />
         <div className="nav-group">
-          <NavLink className="nav-link" to="/">
+          <NavLink className="nav-link" href="/" to="/">
             EA1EG
           </NavLink>
-          <NavLink className="nav-link" to="/aries">
+          <NavLink className="nav-link" href="/aries" to="/aries">
             ARIES
           </NavLink>
-          <NavLink className="nav-link" to="/ure">
+          <NavLink className="nav-link" href="/ure" to="/ure">
             URE
           </NavLink>
         </div>
         <div className="nav-group">
-          <NavLink className="nav-link" to="/proyecto">
+          <NavLink className="nav-link" href="/proyecto" to="/proyecto">
             Proyecto
           </NavLink>
-          <NavLink className="nav-link" to="/contacto">
+          <NavLink className="nav-link" href="/contacto" to="/contacto">
             Contacto
           </NavLink>
-          <NavLink className="nav-link" to="/creditos">
+          <NavLink className="nav-link" href="/creditos" to="/creditos">
             Créditos
           </NavLink>
         </div>
@@ -60,7 +60,7 @@ export default class ContextualBar extends Component {
         <div className="nav-group" />
         <div className="nav-group" />
         <div className="nav-group">
-          <a className="nav-link">Tamaño</a>
+          <a className="nav-link">Tamaño</a> {/* button on click */}
           <a className="nav-link">Orden</a>
         </div>
         <div className="nav-group">

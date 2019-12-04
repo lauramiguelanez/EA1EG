@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../config';
 // import mapConstants from '../maps/mapConstants';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import GMap from '../maps/GMap';
 
 class LocationMap extends Component {
   constructor(props) {
@@ -43,33 +43,23 @@ class LocationMap extends Component {
     }
   };
 
-  onMarkerClick(id) {
-    console.log('You clicked me!');
-  }
-
   displayMarkers = () => {
     const { cards } = this.state;
     if (cards) {
       return cards.map((card, index) => {
-        const { location, indicator } = card;
+        const { location } = card;
         if (location) {
           const { lat, lng } = location;
-          return (
-            <Marker
+          return (null
+            /* <Marker
               key={index}
               id={index}
-              name={indicator}
               position={{
                 lat,
                 lng
               }}
-              onClick={id => this.onMarkerClick(id)}
-              /* icon={{
-                url: "/img/mao/mapIcon.svg",
-                anchor: new window.google.maps.Point(32,32),
-                scaledSize: new window.google.maps.Size(64,64)
-              }}  */
-            />
+              onClick={() => console.log('You clicked me!')}
+            /> */
           );
         }
       });
@@ -85,21 +75,21 @@ class LocationMap extends Component {
     return (
       <section className="page page-location">
         {/* <div className="page-title">LocationMap page</div> */}
-        <Map
+        <GMap
           google={this.props.google}
           zoom={8}
           style={mapStyles}
           initialCenter={{ lat: 40.65724, lng: -4.69951 }} // Ávila
         >
-          {this.displayMarkers()}
-        </Map>
+          {/* this.displayMarkers() */}
+        </GMap>
       </section>
     );
   }
 }
 
-// export default LocationMap;
+export default LocationMap;
 
-export default GoogleApiWrapper({
+/* export default GoogleApiWrapper({
   apiKey: config.gMapsKey
-})(LocationMap);
+})(LocationMap); */

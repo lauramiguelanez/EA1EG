@@ -1,39 +1,45 @@
 import React, { Component } from 'react';
-import * as mapConstants from './constants';
+import mapConstants from './mapConstants';
+import config from '../../config'
 
 export default class LocationMap extends Component {
   constructor(props) {
     super(props);
-    this.onScriptLoad = this.onScriptLoad.bind(this)
+    this.onScriptLoad = this.onScriptLoad.bind(this);
   }
 
   onScriptLoad() {
-    const map = new window.google.maps.LocationMap(
+    const map = new window.google.maps.Map(
       document.getElementById(this.props.id),
-      this.props.options);
+      this.props.options
+    );
 
-      const newStyleMap = new window.google.maps.StyledMapType( mapConstants.STYLES, {name: 'MapStyled'});
+    const newStyleMap = new window.google.maps.StyledMapType(mapConstants.STYLES, {
+      name: 'MapStyled'
+    });
 
-      map.mapTypes.set( 'MapStyled', newStyleMap );
-      map.setMapTypeId( 'MapStyled' );
+    map.mapTypes.set('MapStyled', newStyleMap);
+    map.setMapTypeId('MapStyled');
 
-    this.props.onMapLoad(map)
+    this.props.onMapLoad(map);
   }
 
+  
+
   componentDidMount() {
+    const apiKey = config.gMapsKey;
+
     if (!window.google) {
       var s = document.createElement('script');
       s.type = 'text/javascript';
-      s.src = `https://maps.google.com/maps/api/js?key=AIzaSyA2VCIDASPyZRdr58uKR5ucueARsagOD6s`;
+      s.src = `https://maps.google.com/maps/api/js?key=${apiKey}`;
       var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
-      // Below is important. 
-      //We cannot access google.maps until it's finished loading
       s.addEventListener('load', e => {
-        this.onScriptLoad()
-      })
+        this.onScriptLoad();
+      });
     } else {
-      this.onScriptLoad()
+      this.onScriptLoad();
     }
   }
 

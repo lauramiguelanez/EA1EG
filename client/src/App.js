@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Switch, Route, BrowserRouter, Router } from 'react-router-dom';
+import { Switch, Route/* , BrowserRouter, Router */ } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import AllPostcards from './components/AllPostcards';
 import Landing from './components/Landing';
 import PostcardDetail from './components/PostcardDetail';
-import Proyecto from './components/pages/Proyecto';
+import Project from './components/pages/Project';
 import Aries from './components/pages/Aries';
-import URE from './components/pages/URE';
+import ProjectURE from './components/pages/ProjectURE';
 import LocationMap from './components/pages/LocationMap';
-import Alfredo from './components/pages/Alfredo';
+// import Alfredo from './components/pages/Alfredo';
 import Creditos from './components/pages/Creditos';
 import './css/pages.scss';
 import './css/content.scss';
 import Contacto from './components/pages/Contacto';
-import Lista from './components/pages/Lista';
+// import Lista from './components/pages/Lista';
 
 class App extends Component {
   constructor() {
@@ -48,8 +48,8 @@ class App extends Component {
             />
             <Route
               exact
-              path="/proyecto"
-              render={() => <Proyecto newPage={() => this.setPage('Proyecto')} page="Proyecto" />}
+              path="/project"
+              render={() => <Project newPage={() => this.setPage('Project')} page="Project" />}
             />
             <Route
               path="/postal/:id"
@@ -80,7 +80,7 @@ class App extends Component {
             <Route
               exact
               path="/ure"
-              render={() => <URE newPage={() => this.setPage('URE')} page="URE" />}
+              render={() => <ProjectURE newPage={() => this.setPage('URE')} page="URE" />}
             />
             <Route
               exact

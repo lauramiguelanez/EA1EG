@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, BrowserRouter, NavLink } from 'react-router-dom';
+import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
 import axios from 'axios';
 require('dotenv').config();
 class AllPostcards extends Component {

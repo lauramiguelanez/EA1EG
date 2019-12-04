@@ -58,12 +58,34 @@
   color: $blue-alt;
 }
 
-.page-contacto{
+.page-contacto {
   background-color: $grey-menu;
   color: $grey-alt;
 }
 
-.page-lista{
+.page-lista {
   background-color: $blue-alt;
   color: $blue-search;
+}
+
+.page-project {
+  background-color: $blue-search;
+  color: $black;
+}
+
+.page-URE {
+  background-color: $brown-place;
+  color: $black;
+}
+
+
+
+.wrapper-text-column{
+  display: flex;
+  margin-right: 60px;
+}
+.text-body-column{
+  font-size: $column-font-size;
+  width: 35%;
+  padding: 50px;
 }

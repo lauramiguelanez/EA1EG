@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, BrowserRouter, NavLink } from 'react-router-dom';
+import { /* Link, BrowserRouter,  */NavLink } from 'react-router-dom';
 import '../css/navbar.scss';
 import ContextualBar from './ContextualBar';
 export default class Navbar extends Component {
@@ -11,12 +11,12 @@ export default class Navbar extends Component {
   render() {
     const { page } = this.props;
     return (
-      <nav className="nav-style" role="navigation">
+      <nav className={`nav-style bar-${page}`} role="navigation">
         <div className="nav-row-wrapper" id="top-nav">
           <div className="nav-row">
             <div className="nav-group logo">
               <NavLink className="nav-link" to="/">
-                <img src="/img/logo.png" alt="EA1EG" class="logoSvg"></img>
+                <img src="/img/logo.png" alt="EA1EG" className="logoSvg"></img>
               </NavLink>
             </div>
 
@@ -30,7 +30,7 @@ export default class Navbar extends Component {
             </div>
 
             <div className="nav-group nav-group-main">
-              <NavLink className="nav-link" to="/proyecto">
+              <NavLink className="nav-link" to="/project">
                 Project
               </NavLink>
               <NavLink className="nav-link" to="/ure">
@@ -47,7 +47,6 @@ export default class Navbar extends Component {
             <div className="nav-group"></div>
           </div>
         </div>
-        <ContextualBar page={page} />
       </nav>
     );
   }
