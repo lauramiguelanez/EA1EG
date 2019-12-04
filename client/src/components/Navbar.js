@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
-import { /* Link, BrowserRouter,  */NavLink } from 'react-router-dom';
+import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
 import '../css/navbar.scss';
 import ContextualBar from './ContextualBar';
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedInUser: null };
+    this.state = { loggedInUser: null, hover: false };
+
+    this.toggleHover = this.toggleHover.bind(this);
+  }
+
+  toggleHover() {
+    //onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}
+    this.setState({ hover: !this.state.hover });
   }
 
   render() {
     const { page } = this.props;
+    const { hover } = this.state;
+    if (hover) {
+      console.log('hover');
+    } else {
+      console.log('no hover');
+    }
     return (
       <nav className={`nav-style bar-${page}`} role="navigation">
         <div className="nav-row-wrapper" id="top-nav">
@@ -21,9 +34,25 @@ export default class Navbar extends Component {
             </div>
 
             <div className="nav-group site-title">
-              <NavLink className="nav-link" to="/location">
-                Location
-              </NavLink>
+              <div
+                className="nav-link"
+                onMouseEnter={this.toggleHover}
+                onMouseLeave={this.toggleHover}
+              >
+                <NavLink className="link-line" to="/location">
+                  Location
+                </NavLink>
+                {hover ? (
+                  <React.Fragment>
+                  <NavLink className="link-line" to="/location">
+                      Map
+                    </NavLink>
+                    <NavLink className="link-line" to="/list">
+                      List
+                    </NavLink>
+                  </React.Fragment>
+                ) : null}
+              </div>
               <NavLink className="nav-link" to="/year">
                 Year
               </NavLink>

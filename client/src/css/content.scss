@@ -43,13 +43,15 @@
 .columns-wrapper {
   display: flex;
   flex-direction: row;
-  max-width: 70vw;
+  //max-width: 70vw;
+  width:100%;
   margin: 0 auto;
 }
 
 .column {
-  max-width: 50%;
-  min-width: 25%;
+  // max-width: 50%;
+  // min-width: 25%;
+  width: 20%;
 }
 
 .figure {
@@ -70,6 +72,15 @@
 }
 
 .lista {
+  width: 20vh;
+  & li {
+    text-decoration: none;
+    list-style-type: none;
+    font-size: $nav-font-size;
+  }
+}
+
+.list {
   width: 20vh;
   & li {
     text-decoration: none;

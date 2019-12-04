@@ -14,7 +14,7 @@ import Creditos from './components/pages/Creditos';
 import './css/pages.scss';
 import './css/content.scss';
 import Contacto from './components/pages/Contacto';
-// import Lista from './components/pages/Lista';
+import List from './components/pages/List';
 
 class App extends Component {
   constructor() {
@@ -87,12 +87,12 @@ class App extends Component {
               path="/location"
               render={() => <LocationMap newPage={() => this.setPage('LocationMap')} page="LocationMap" />}
             />
-            {/* <Route
-              exact
-              path="/lista"
-              render={() => <Lista newPage={() => this.setPage('Lista')} page="Lista" />}
-            />
             <Route
+              exact
+              path="/list"
+              render={() => <List newPage={() => this.setPage('List')} page="Lista" />}
+            />
+           {/*} <Route
               exact
               path="/alfredo"
               render={() => <Alfredo newPage={() => this.setPage('Alfredo')} page="Alfredo" />}

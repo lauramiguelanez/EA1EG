@@ -61,17 +61,28 @@
 }
 
 .nav-link {
-  
   font-family: $main-font;
   font-size: 1rem;
   width:100%;
   display: inline-block;
+  & :hover {
+    text-decoration: underline;
+  }
 
   // align-self: flex-end;
   // justify-self: center;
   // text-align: center;
   // font-weight: 400;
   // padding: 0 10px;
+}
+
+
+.link-line{
+  display: inline;
+  & :hover {
+    text-decoration: underline;
+  }
+  margin-right: 10px;
 }
 
 .logoSvg {
