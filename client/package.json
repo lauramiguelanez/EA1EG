@@ -7,6 +7,7 @@
     "dotenv": "^6.1.0",
     "google-map-react": "^1.1.5",
     "google-maps-react": "^2.0.2",
+    "immutable": "^4.0.0-rc.12",
     "node-sass": "^4.13.0",
     "parcel": "^1.10.2",
     "points-cluster": "^0.1.4",
@@ -18,7 +19,8 @@
     "react-transition-group": "^2.5.0",
     "recompose": "^0.30.0",
     "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0"
+    "style-loader": "^1.0.0",
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

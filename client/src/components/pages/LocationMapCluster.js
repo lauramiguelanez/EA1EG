@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../config';
 // import mapConstants from '../maps/mapConstants';
-import GMap from '../maps/GMap';
+import GoogleMap from '../maps/GoogleMap/index.js';
 
 class LocationMap extends Component {
   constructor(props) {
@@ -43,46 +43,10 @@ class LocationMap extends Component {
     }
   };
 
-  displayMarkers = () => {
-    const { cards } = this.state;
-    if (cards) {
-      return cards.map((card, index) => {
-        const { location } = card;
-        if (location) {
-          const { lat, lng } = location;
-          return (null
-            /* <Marker
-              key={index}
-              id={index}
-              position={{
-                lat,
-                lng
-              }}
-              onClick={() => console.log('You clicked me!')}
-            /> */
-          );
-        }
-      });
-    }
-  };
-
   render() {
-    const mapStyles = /* mapConstants.STYLES/* */ {
-      width: '100%',
-      height: '100%'
-    };
-
     return (
-      <section className="page page-location">
-        {/* <div className="page-title">LocationMap page</div> */}
-        <GMap
-          google={this.props.google}
-          zoom={8}
-          style={mapStyles}
-          initialCenter={{ lat: 40.65724, lng: -4.69951 }} // Ávila
-        >
-          {/* this.displayMarkers() */}
-        </GMap>
+      <section /* className="page page-location" */>
+        <GoogleMap></GoogleMap>
       </section>
     );
   }

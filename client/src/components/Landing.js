@@ -11,6 +11,8 @@ class Home extends Component {
     this.state = {
       loggedInUser: null
     };
+
+    // TODO: meter on window resize
   }
 
   componentDidMount = () => {

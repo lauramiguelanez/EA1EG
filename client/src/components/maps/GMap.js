@@ -69,10 +69,11 @@ export const gMapHOC = compose(
     'mapProps',
     'setMapProps',
     {
-      center: {lat: 40.65724, lng: -4.69951}, // susolvkaCoords,
+      center: {lat: 40.65724, lng: -4.69951}, // Ávila
       zoom: 10,
     }
   ),
+  
   // describe events
   withHandlers({
     onChange: ({ setMapProps }) => ({ center, zoom, bounds }) => {

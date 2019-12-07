@@ -1,0 +1,253 @@
+[
+  {
+    "name": "Europa",
+    "children": [
+      {
+        "name": "Alemania",
+        "children": []
+      },
+      {
+        "name": "Austria",
+        "children": []
+      },
+      {
+        "name": "Belgica",
+        "children": []
+      },
+      {
+        "name": "Bulgaria",
+        "children": []
+      },
+      {
+        "name": "Checoslovaquia",
+        "children": []
+      },
+      {
+        "name": "Chipre",
+        "children": []
+      },
+      {
+        "name": "Dinamarca",
+        "children": []
+      },
+      {
+        "name": "Eslovenia",
+        "children": []
+      },
+      {
+        "name": "España",
+        "children": [
+          {
+            "name": "Andalucía",
+            "children": []
+          },
+          {
+            "name": "Aragon",
+            "children": []
+          },
+          {
+            "name": "Asturias",
+            "children": []
+          },
+          {
+            "name": "Baleares",
+            "children": []
+          },
+          {
+            "name": "Canarias",
+            "children": []
+          },
+          {
+            "name": "Cataluña",
+            "children": []
+          },
+          {
+            "name": "Cantabria",
+            "children": []
+          },
+          {
+            "name": "Castilla Leon",
+            "children": []
+          },
+          {
+            "name": "Castilla La Mancha",
+            "children": []
+          },
+          {
+            "name": "Extremadura",
+            "children": []
+          },
+          {
+            "name": "Euskadi",
+            "children": []
+          },
+          {
+            "name": "Galicia",
+            "children": []
+          },
+          {
+            "name": "La Rioja",
+            "children": []
+          },
+          {
+            "name": "Madrid",
+            "children": []
+          },
+          {
+            "name": "Plazas Africanas",
+            "children": []
+          },
+          {
+            "name": "Murcia",
+            "children": []
+          },
+          {
+            "name": "Navarra",
+            "children": []
+          },
+          {
+            "name": "Valencia",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Finlandia",
+        "children": []
+      },
+      {
+        "name": "Francia",
+        "children": []
+      },
+      {
+        "name": "Gran Bretaña",
+        "children": []
+      },
+      {
+        "name": "Grecia",
+        "children": []
+      },
+      {
+        "name": "Holanda",
+        "children": []
+      },
+      {
+        "name": "Hungría",
+        "children": []
+      },
+      {
+        "name": "Islandia Y Groenlandia",
+        "children": []
+      },
+      {
+        "name": "Italia",
+        "children": []
+      },
+      {
+        "name": "Noruega",
+        "children": []
+      },
+      {
+        "name": "Polonia",
+        "children": []
+      },
+      {
+        "name": "Portugal",
+        "children": []
+      },
+      {
+        "name": "Principados",
+        "children": []
+      },
+      {
+        "name": "Rumania",
+        "children": []
+      },
+      {
+        "name": "Rusia",
+        "children": []
+      },
+      {
+        "name": "Suecia",
+        "children": []
+      },
+      {
+        "name": "Suiza",
+        "children": []
+      },
+      {
+        "name": "Yugoslavia",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "América",
+    "children": [
+      {
+        "name": "Argentina",
+        "children": []
+      },
+      {
+        "name": "Bolivia",
+        "children": []
+      },
+      {
+        "name": "Brasil",
+        "children": []
+      },
+      {
+        "name": "Canada",
+        "children": []
+      },
+      {
+        "name": "Centroamerica",
+        "children": []
+      },
+      {
+        "name": "Chile",
+        "children": []
+      },
+      {
+        "name": "Colombia",
+        "children": []
+      },
+      {
+        "name": "Cuba",
+        "children": []
+      },
+      {
+        "name": "Ecuador",
+        "children": []
+      },
+      {
+        "name": "Mejico",
+        "children": []
+      },
+      {
+        "name": "Peru",
+        "children": []
+      },
+      {
+        "name": "USA",
+        "children": []
+      },
+      {
+        "name": "Venezuela",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "Asia",
+    "children": []
+  },
+  {
+    "name": "África",
+    "children": []
+  },
+  {
+    "name": "Oceanía",
+    "children": []
+  }
+]

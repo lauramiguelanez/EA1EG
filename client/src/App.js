@@ -8,7 +8,7 @@ import PostcardDetail from './components/PostcardDetail';
 import Project from './components/pages/Project';
 import Aries from './components/pages/Aries';
 import ProjectURE from './components/pages/ProjectURE';
-import LocationMap from './components/pages/LocationMap';
+import LocationMapCluster from './components/pages/LocationMapCluster';
 // import Alfredo from './components/pages/Alfredo';
 import Creditos from './components/pages/Creditos';
 import './css/pages.scss';
@@ -85,7 +85,7 @@ class App extends Component {
             <Route
               exact
               path="/location"
-              render={() => <LocationMap newPage={() => this.setPage('LocationMap')} page="LocationMap" />}
+              render={() => <LocationMapCluster newPage={() => this.setPage('LocationMap')} page="LocationMap" />}
             />
             <Route
               exact
