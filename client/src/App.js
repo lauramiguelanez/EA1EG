@@ -8,7 +8,7 @@ import PostcardDetail from './components/PostcardDetail';
 import Project from './components/pages/Project';
 import Aries from './components/pages/Aries';
 import ProjectURE from './components/pages/ProjectURE';
-import LocationMapCluster from './components/pages/LocationMapCluster';
+import LocationMapCluster from './components/pages/LocationMap';
 // import Alfredo from './components/pages/Alfredo';
 import Creditos from './components/pages/Creditos';
 import './css/pages.scss';

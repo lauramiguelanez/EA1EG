@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import config from '../../config';
-// import mapConstants from '../maps/mapConstants';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import GoogleMap from '../maps/GoogleMap/index.js';
 
 class LocationMap extends Component {
   constructor(props) {
@@ -23,10 +21,22 @@ class LocationMap extends Component {
 
   getMarkers = () => {
     this.service.get('/postcard').then(cards => {
-      this.setState({ cards: cards.data });
-      console.log('markers', cards);
+      const locations = cards.data.map(c => ({ lat: c.location.lat, lng: c.location.lng, id: c._id }));
+      this.setState({ cards: cards.data, locations });
+      console.log('markers', locations);
+      // this.downloadObjectAsJson(locations, 'locations');
     });
   };
+
+  downloadObjectAsJson(exportObj, exportName) {
+    var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute('href', dataStr);
+    downloadAnchorNode.setAttribute('download', exportName + '.json');
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
 
   setRedirect = marker => {
     this.setState({
@@ -43,63 +53,18 @@ class LocationMap extends Component {
     }
   };
 
-  onMarkerClick(id) {
-    console.log('You clicked me!');
-  }
-
-  displayMarkers = () => {
-    const { cards } = this.state;
-    if (cards) {
-      return cards.map((card, index) => {
-        const { location, indicator } = card;
-        if (location) {
-          const { lat, lng } = location;
-          return (
-            <Marker
-              key={index}
-              id={index}
-              name={indicator}
-              position={{
-                lat,
-                lng
-              }}
-              onClick={id => this.onMarkerClick(id)}
-              /* icon={{
-                url: "/img/mao/mapIcon.svg",
-                anchor: new window.google.maps.Point(32,32),
-                scaledSize: new window.google.maps.Size(64,64)
-              }}  */
-            />
-          );
-        }
-      });
-    }
-  };
-
   render() {
-    const mapStyles = /* mapConstants.STYLES/* */ {
-      width: '100%',
-      height: '100%'
-    };
-
+    const { locations } = this.state;
     return (
-      <section className="page page-location">
-        {/* <div className="page-title">LocationMap page</div> */}
-        <Map
-          google={this.props.google}
-          zoom={8}
-          style={mapStyles}
-          initialCenter={{ lat: 40.65724, lng: -4.69951 }} // Ávila
-        >
-          {this.displayMarkers()}
-        </Map>
+      <section /* className="page page-location" */>
+        <GoogleMap locations={locations}></GoogleMap>
       </section>
     );
   }
 }
 
-// export default LocationMap;
+export default LocationMap;
 
-export default GoogleApiWrapper({
+/* export default GoogleApiWrapper({
   apiKey: config.gMapsKey
-})(LocationMap);
+})(LocationMap); */
