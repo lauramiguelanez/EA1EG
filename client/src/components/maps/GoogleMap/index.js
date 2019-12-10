@@ -13,11 +13,17 @@ import { markersData } from '../location data';
 import MapWrapper from './MapWrapper';
 
 const MAP = {
-  defaultZoom: 8,
+  defaultZoom: 3,
   defaultCenter: { lat: 40.65724, lng: -4.69951 },
   options: {
     styles: mapStyles,
     maxZoom: 19
+  },
+  defaultBounds: {
+    ne: { lat: 79.38631742290318, lng: 109.73408375000002 },
+    nw: { lat: 79.38631742290318, lng: -119.13310375 },
+    se: { lat: -42.47864326641228, lng: 109.73408375000002 },
+    sw: { lat: -42.47864326641228, lng: -119.13310375 }
   }
 };
 
@@ -27,12 +33,7 @@ export class GoogleMap extends React.PureComponent {
     mapOptions: {
       center: MAP.defaultCenter,
       zoom: MAP.defaultZoom,
-      bounds: {
-        ne: { lat: 42.79291862306698, lng: -1.1234601953125036 },
-        nw: { lat: 42.79291862306698, lng: -8.275559804687504 },
-        se: { lat: 38.45093983206192, lng: -1.1234601953125036 },
-        sw: { lat: 38.45093983206192, lng: -8.275559804687504 }
-      }
+      bounds: MAP.defaultBounds,
     },
     clusters: []
   };

@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     const { page, year, size, order } = this.state;
     return (
-      <div>
+      <div className="app" page={page}>
         <header className="header">
           <Navbar page={page} />
         </header>

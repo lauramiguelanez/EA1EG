@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
-@import "variables.scss";
-@import "mixins.scss";
+@import 'variables.scss';
+@import 'mixins.scss';
 
 body {
   margin: 0;
@@ -8,11 +8,21 @@ body {
   font-family: $main-font, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-x: hidden;
   // flex: 1 0;
+}
+
+.app {
+}
+
+.header {
+  position: sticky;
+  top: 0;
 }

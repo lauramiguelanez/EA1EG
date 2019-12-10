@@ -1,7 +1,7 @@
 import { keyframes } from 'styled-components';
 
 export const COLORS = {
-  gray64: '#a3a3a3',
+  gray64: '#000',
 };
 
 export const easyMove = keyframes`

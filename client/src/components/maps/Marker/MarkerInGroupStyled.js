@@ -7,7 +7,6 @@ const MarkerInGroupStyled = styled.div`
   align-items: center;
   width: 36px;
   height: 36px;
-  margin-left: -7px;
   font-size: 14px;
   color: #fff;
   text-transform: uppercase;
@@ -16,6 +15,7 @@ const MarkerInGroupStyled = styled.div`
   background-color: ${COLORS.gray64};
   background-size: cover;
   background-position: center;
-`;
+  `;
+  // margin-left: -7px;
 
 export default MarkerInGroupStyled;
