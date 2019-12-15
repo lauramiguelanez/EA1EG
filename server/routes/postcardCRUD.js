@@ -26,7 +26,7 @@ const postcardCRUD = (Postcard, extensionFn) => {
     Postcard.findById(id)
       .then(obj => res.status(200).json(obj))
       .catch(e => next(e));
-  });
+  }); 
 
   // CRUD: CREATE
   router.post('/', (req, res, next) => {

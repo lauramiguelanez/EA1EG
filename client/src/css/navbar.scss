@@ -3,7 +3,7 @@
 
 .nav-style {
   position: sticky;
-    top: 0;
+  top: 0;
   display: block;
   min-height: $header-heigth;
   width: 100vw;
@@ -31,6 +31,8 @@
   }
 }
 
+
+
 .nav-row-wrapper {
   width: 100vw;
   display: flex;
@@ -46,12 +48,11 @@
   justify-content: center;
   // justify-content: space-between;
 }
-
 .nav-group {
   width: 20vw; // 120px;
   display: block;
   padding: 7px;
-  border-color:black;
+  border-color: black;
 }
 
 .nav-group-main {
@@ -65,7 +66,7 @@
 .nav-link {
   font-family: $main-font;
   font-size: 1rem;
-  width:100%;
+  width: 100%;
   display: inline-block;
   & :hover {
     text-decoration: underline;
@@ -78,8 +79,7 @@
   // padding: 0 10px;
 }
 
-
-.link-line{
+.link-line {
   display: inline;
   & :hover {
     text-decoration: underline;
@@ -88,7 +88,7 @@
 }
 
 .logoSvg {
-  top:0;
+  top: 0;
   width: 50%;
   height: 50%;
   padding: 5px;
@@ -174,4 +174,50 @@
   & a {
     color: $black;
   }
+}
+
+
+.year-wrapper {
+  width: 100px;
+  height: 100vh;
+  // display: flex;
+  position: absolute;
+  right: 0;
+}
+
+.year-column {
+  font-size: $nav-font-size;
+  line-height: $nav-font-size;
+  & a {
+    color: $black;
+    text-decoration: none;
+    font-size: $nav-font-size;
+    // align-self: center;
+    // justify-self: center;
+
+    & :hover {
+      color: $accent-color;
+      text-decoration: none;
+    }
+    & :visited {
+      color: $black;
+      text-decoration: none;
+    }
+  }
+}
+
+.year-wrapper-v {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.menu-years-v {
+  display: inline-block;
+  // transform: rotate(90deg);
+  padding: 0 0 0 15px;
+  margin: 0;
+  width: 17px;
 }

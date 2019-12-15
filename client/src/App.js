@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route/* , BrowserRouter, Router */ } from 'react-router-dom';
+import { Switch, Route /* , BrowserRouter, Router */ } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import AllPostcards from './components/AllPostcards';
@@ -10,10 +10,10 @@ import Aries from './components/pages/Aries';
 import ProjectURE from './components/pages/ProjectURE';
 import LocationMapCluster from './components/pages/LocationMap';
 // import Alfredo from './components/pages/Alfredo';
-import Creditos from './components/pages/Creditos';
+// import Creditos from './components/pages/Creditos';
+// import Contacto from './components/pages/Contacto';
 import './css/pages.scss';
 import './css/content.scss';
-import Contacto from './components/pages/Contacto';
 import List from './components/pages/List';
 
 class App extends Component {
@@ -23,7 +23,8 @@ class App extends Component {
       page: 'Home',
       year: '1960',
       size: 'larger',
-      order: 'cronological'
+      order: 'cronological',
+      region: 'España'
     };
   }
 
@@ -32,7 +33,7 @@ class App extends Component {
   }
 
   render() {
-    const { page, year, size, order } = this.state;
+    const { page, year, size, order, region } = this.state;
     return (
       <div className="app" page={page}>
         <header className="header">
@@ -52,16 +53,18 @@ class App extends Component {
               render={() => <Project newPage={() => this.setPage('Project')} page="Project" />}
             />
             <Route
-              path="/postal/:id"
-              render={() => (
+              path="/card/:id"
+              render={(props) => (
                 <PostcardDetail
-                  newPage={() => this.setPage('PostalDetalle')} page="PostalDetalle"
+                  newPage={() => this.setPage('PostalDetalle')}
+                  page="PostalDetalle"
+                  {...props}
                 />
               )}
             />
             <Route
               exact
-              path="/postales"
+              path="/cards"
               render={() => (
                 <AllPostcards
                   filterYear={year}
@@ -74,9 +77,12 @@ class App extends Component {
             />
             <Route
               exact
-              path="/aries"
-              render={() => <Aries newPage={() => this.setPage('Aries')} page="Aries" />}
+              path="/year/:year"
+              render={props => (
+                <AllPostcards newPage={() => this.setPage('Years')} page="Years" {...props} />
+              )}
             />
+
             <Route
               exact
               path="/ure"
@@ -85,38 +91,49 @@ class App extends Component {
             <Route
               exact
               path="/location"
-              render={() => <LocationMapCluster newPage={() => this.setPage('LocationMap')} page="LocationMap" />}
+              render={() => (
+                <LocationMapCluster
+                  newPage={() => this.setPage('LocationMap')}
+                  page="LocationMap"
+                />
+              )}
             />
             <Route
               exact
               path="/list"
               render={() => <List newPage={() => this.setPage('List')} page="Lista" />}
             />
-           {/*} <Route
-              exact
-              path="/alfredo"
-              render={() => <Alfredo newPage={() => this.setPage('Alfredo')} page="Alfredo" />}
-            /> */}
+
             <Route
               exact
-              path="/year/:year"
-              render={() => <AllPostcards newPage={() => this.setPage('Years')} page='Years' />}
+              path="/region/:region"
+              render={() => (
+                <AllPostcards newPage={() => this.setPage('LocationList')} page="LocationList" />
+              )}
             />
-            <Route
+            {/*
+              <Route
               exact
-              path="/year"
-              render={() => <AllPostcards newPage={() => this.setPage('Years')} page='Years' />}
-            />
-            <Route
-              exact
-              path="/creditos"
-              render={() => <Creditos newPage={() => this.setPage('Creditos')} page="Creditos" />}
-            />
-            <Route
-              exact
-              path="/contacto"
-              render={() => <Contacto newPage={() => this.setPage('Contacto')} page="Contacto" />}
-            />
+              path="/aries"
+              render={() => <Aries newPage={() => this.setPage('Aries')} page="Aries" />}
+             />
+              <Route
+               exact
+               path="/alfredo"
+               render={() => <Alfredo newPage={() => this.setPage('Alfredo')} page="Alfredo" />}
+             /> 
+             <Route
+               exact
+               path="/creditos"
+               render={() => <Creditos newPage={() => this.setPage('Creditos')} page="Creditos" />}
+             />
+             <Route
+               exact
+               path="/contacto"
+               render={() => <Contacto newPage={() => this.setPage('Contacto')} page="Contacto" />}
+             />
+            
+            */}
           </Switch>
         </main>
       </div>

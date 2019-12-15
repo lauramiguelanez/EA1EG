@@ -27,7 +27,7 @@ class PostcardDetail extends Component {
         <div className="next-postcards-wrapper">
           {new Array(43).fill(0).map((e, i) => {
             return (
-              <NavLink className="nav-link" to="/postal/:id">
+              <NavLink className="nav-link" to="/card/:id">
                 <div className="postcard-thumbnail" />
               </NavLink>
             );

@@ -1,30 +1,6 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-.columns-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  //max-width: 70vw;
-  width:100%;
-  margin: 0 auto;
-}
-
-.column {
-  // max-width: 50%;
-  // min-width: 25%;
-  width: 20%;
-}
-
-.list {
-  width: 20vh;
-  & li {
-    text-decoration: none;
-    list-style-type: none;
-    font-size: $nav-font-size;
-  }
-}
-
 .all-postcards-wrapper {
   display: flex;
   flex-direction: row;
@@ -34,7 +10,7 @@
 }
 
 .postcard {
-
+  
   // width: auto;
 }
 
@@ -43,10 +19,6 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-}
-
-.card-thumbnail-name{
-
 }
 
 .postcard-thumbnail {
@@ -74,4 +46,51 @@
   margin: 20px;
 }
 
+.columns-wrapper {
+  display: flex;
+  flex-direction: row;
+  //max-width: 70vw;
+  width:100%;
+  margin: 0 auto;
+}
 
+.column {
+  // max-width: 50%;
+  // min-width: 25%;
+  width: 20%;
+}
+
+.figure {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.figure-creditos {
+  background-color: grey;
+  width: 300px;
+  height: 300px;
+}
+
+.figure-contacto {
+  background-color: grey;
+  width: 300px;
+  height: 300px;
+}
+
+.lista {
+  width: 20vh;
+  & li {
+    text-decoration: none;
+    list-style-type: none;
+    font-size: $nav-font-size;
+  }
+}
+
+.list {
+  width: 20vh;
+  & li {
+    text-decoration: none;
+    list-style-type: none;
+    font-size: $nav-font-size;
+  }
+}

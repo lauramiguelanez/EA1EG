@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
 import '../css/navbar.scss';
-import ContextualBar from './ContextualBar';
+import YearBar from './YearBar';
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +44,7 @@ export default class Navbar extends Component {
                 </NavLink>
                 {hover ? (
                   <React.Fragment>
-                  <NavLink className="link-line" to="/location">
+                    <NavLink className="link-line" to="/location">
                       Map
                     </NavLink>
                     <NavLink className="link-line" to="/list">
@@ -53,7 +53,7 @@ export default class Navbar extends Component {
                   </React.Fragment>
                 ) : null}
               </div>
-              <NavLink className="nav-link" to="/year">
+              <NavLink className="nav-link" to="/year/1970">
                 Year
               </NavLink>
             </div>
@@ -76,6 +76,7 @@ export default class Navbar extends Component {
             <div className="nav-group"></div>
           </div>
         </div>
+        
       </nav>
     );
   }

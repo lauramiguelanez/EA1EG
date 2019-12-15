@@ -14,7 +14,7 @@ const yearGet = (Postcard, extensionFn) => {
   // CRUD: RETRIEVE
 
   router.get('/:year', (req, res, next) => {
-    const { id } = req.params;
+    const { year } = req.params;
     Postcard.find({year})
       .then(obj => res.status(200).json(obj))
       .catch(e => next(e));

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
 import axios from 'axios';
+import YearBar from './YearBar';
+
 require('dotenv').config();
 class AllPostcards extends Component {
   constructor(props) {
@@ -12,8 +14,9 @@ class AllPostcards extends Component {
       baseURL: `${process.env.REACT_APP_API_URL}/api`
     });
     this.imageUrl = 'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
-    // this.getPostcards();
-    /*  console.log('props', props)
+
+    /*  console.log('props', props);
+
     if(props.filterYear){
       this.getPostcardsByYear(props.filterYear);
     } */
@@ -22,12 +25,18 @@ class AllPostcards extends Component {
   componentDidMount = () => {
     this.props.newPage();
 
-    const year = this.props.year || this.props.match && this.props.match.params.year;
-    this.setState({ year: year });
-    console.log('AllPostcards', this.props.match);
-    if (year) {
+    const { page } = this.props;
+    console.log('match params', page, this.props.match.params);
+    if (page === 'Years') {
+      const year = this.props.year || (this.props.match && this.props.match.params.year);
+      this.setState({ year });
       this.getPostcardsByYear(year);
-    } else {
+    } else if (page === 'LocationList'){
+      const region = this.props.region || (this.props.match && this.props.match.params.region);
+      this.setState({ region });
+      //this.getPostcardsByYear(year);
+    }
+      else {
       this.getPostcards();
     }
   };
@@ -38,14 +47,14 @@ class AllPostcards extends Component {
       .get('/postcard')
       .then(cards => {
         postcards = cards.data;
-        console.log('getAllPostcards',postcards);
+        console.log('getAllPostcards', postcards);
         this.setState({ postcards });
       })
       .catch(error => console.log(error));
   }
 
   getPostcardsByYear(year) {
-    console.log('getPostcards');
+    console.log('getPostcardsByYear');
     let postcards;
     return this.service
       .get(`/year/${year}`)
@@ -59,34 +68,40 @@ class AllPostcards extends Component {
 
   render() {
     let { postcards } = this.state;
-    if (postcards) {
-      return (
-        <section className="page page-years">
-          <div className="page-title">1980</div>
-          <div className="all-postcards-wrapper">
-            {postcards.map((card, i) => {
-              return (
-                <NavLink key={card._id} className="nav-link" to="/postal/:id">
-                  <div className="postcard-thumbnail" />
-                </NavLink>
-              );
-            })}
-          </div>
-        </section>
-      );
-    }
+    const { page } = this.props;
+
     return (
       <section className="page page-years">
-        <div className="page-title">1980</div>
-        <div className="all-postcards-wrapper">
-          {new Array(43).fill(0).map((e, i) => {
-            return (
-              <NavLink key={i} className="nav-link" to="/postal/:id">
-                <div className="postcard-thumbnail" />
-              </NavLink>
-            );
-          })}
+        <div className="columns-wrapper ">
+          {postcards
+            ? postcards.map((card, i) => {
+                return (
+                  <div className="column">
+                    <NavLink key={card._id} className="nav-link postcard" to={`/card/${card._id}`}>
+                      <div className="postcard-thumbnail">
+                        {card.imageFront ? (
+                          <img src={`${this.imageUrl}${card.imageFront}`} alt={card.indicator} />
+                        ) : (
+                          <h3 className="postcard-thumbnail card-thumbnail-name">
+                            {card.indicator}
+                          </h3>
+                        )}
+                      </div>
+                    </NavLink>
+                  </div>
+                );
+              })
+            : new Array(13).fill(0).map((e, i) => {
+                return (
+                  <div className="column">
+                    <NavLink key={i} className="nav-link postcard" to="/postal/:id">
+                      <div className="postcard-thumbnail" />
+                    </NavLink>
+                  </div>
+                );
+              })}
         </div>
+        {page === 'Years' ? <YearBar page={page} /> : null}
       </section>
     );
   }
