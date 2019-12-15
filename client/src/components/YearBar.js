@@ -8,16 +8,21 @@ export default class YearBar extends Component {
   }
 
   render() {
-    const { page } = this.props;
+    const { page, setYear } = this.props;
 
     return (
       <div className="year-wrapper" /* id="contextual-nav" */>
         <div className="year-column">
-          <div className="year-wrapper-v bar-years" >
+          <div className="year-wrapper-v bar-years">
             {new Array(43).fill(0).map((e, i) => {
+              const year = 1950 + i;
               return (
-                <NavLink className="menu-years-v" to={`/year/${1950 + i}`}>
-                  {1950 + i}
+                <NavLink
+                  className="menu-years-v"
+                  to={`/year/${year}`}
+                  onClick={() => setYear(year)}
+                >
+                  {year}
                 </NavLink>
               );
             })}

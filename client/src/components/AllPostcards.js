@@ -20,6 +20,7 @@ class AllPostcards extends Component {
     if(props.filterYear){
       this.getPostcardsByYear(props.filterYear);
     } */
+    this.setYear = this.setYear.bind(this);
   }
 
   componentDidMount = () => {
@@ -31,12 +32,11 @@ class AllPostcards extends Component {
       const year = this.props.year || (this.props.match && this.props.match.params.year);
       this.setState({ year });
       this.getPostcardsByYear(year);
-    } else if (page === 'LocationList'){
+    } else if (page === 'LocationList') {
       const region = this.props.region || (this.props.match && this.props.match.params.region);
       this.setState({ region });
       //this.getPostcardsByYear(year);
-    }
-      else {
+    } else {
       this.getPostcards();
     }
   };
@@ -66,8 +66,13 @@ class AllPostcards extends Component {
       .catch(error => console.log(error));
   }
 
+  setYear(year) {
+    this.setState({ year });
+    this.getPostcardsByYear(year);
+  }
+
   render() {
-    let { postcards } = this.state;
+    let { postcards, year } = this.state;
     const { page } = this.props;
 
     return (
@@ -101,7 +106,7 @@ class AllPostcards extends Component {
                 );
               })}
         </div>
-        {page === 'Years' ? <YearBar page={page} /> : null}
+        {page === 'Years' ? <YearBar page={page} year={year} setYear={this.setYear} /> : null}
       </section>
     );
   }

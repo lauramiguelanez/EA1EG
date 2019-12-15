@@ -240,7 +240,48 @@
   },
   {
     "name": "Asia",
-    "children": []
+    "children": [
+      {
+        "name": "Bahrain Island",
+        "children": []
+      },
+      {
+        "name": "India",
+        "children": []
+      },
+      {
+        "name": "Indonesia",
+        "children": []
+      },
+      {
+        "name": "Israel",
+        "children": []
+      },
+      {
+        "name": "Japón",
+        "children": []
+      },
+      {
+        "name": "Líbano",
+        "children": []
+      },
+      {
+        "name": "Malasia",
+        "children": []
+      },
+      {
+        "name": "Oman",
+        "children": []
+      },
+      {
+        "name": "Qatar",
+        "children": []
+      },
+      {
+        "name": "Turquía",
+        "children": []
+      }
+    ]
   },
   {
     "name": "África",
