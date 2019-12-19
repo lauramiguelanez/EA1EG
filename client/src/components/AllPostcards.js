@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
 import axios from 'axios';
 import YearBar from './YearBar';
+import List from './pages/List'
 
 require('dotenv').config();
 class AllPostcards extends Component {
@@ -77,6 +78,7 @@ class AllPostcards extends Component {
 
     return (
       <section className="page page-years">
+        {page === 'List' ? <List></List> : null}
         <div className="columns-wrapper ">
           {postcards
             ? postcards.map((card, i) => {

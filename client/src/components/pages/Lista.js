@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import locationTree from'../data/locationTree.json';
 
 class Lista extends Component {
   constructor(props) {
@@ -18,6 +19,10 @@ class Lista extends Component {
   componentDidMount = () => {
     this.props.newPage();
   };
+
+  getPostcardsByRegion(region) {
+    //
+  }
 
   setContinent(continent) {
     this.setState({ continent: continent, country: undefined, city: undefined });

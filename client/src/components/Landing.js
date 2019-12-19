@@ -9,7 +9,8 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      landingImgStyle: new Array(9).fill({}),
     };
 
     // TODO: meter on window resize
@@ -17,7 +18,26 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.props.newPage();
+    this.generateStyles();
   };
+
+  generateStyles() {
+    const styles = [];
+    for (let i = 0; i < 9; i++) {
+      const style = {
+        position: 'absolute',
+        zIndex: `${10 + i}`,
+        width: `${innerWidth * 0.25 + Math.random() * 100}px`,
+        top: Math.random() * innerHeight * 0.75 + 0.1 * innerHeight,
+        left: Math.random() * innerWidth * 0.75
+      };
+      styles.push(style);
+    }
+
+    this.setState({
+      landingImgStyles: styles
+    });
+  }
 
   render() {
     const images = [
@@ -34,18 +54,13 @@ class Home extends Component {
 
     console.log('innerWidth', innerWidth, 'innerHeight', innerHeight);
 
+    const { landingImgStyles } = this.state;
+
     return (
       <section className="landingSection">
         <img src={`/img/landing/ea1eg.svg`} alt="EA1EG" id="bigLetters"></img>
         {images.map((image, i) => {
-          const styles = {
-            position: 'absolute',
-            zIndex: `${10 + i}`,
-            width: /* '350px', // */ `${innerWidth * 0.25 + Math.random() * 100}px`,
-            top: Math.random() * innerHeight * 0.75,
-            left: Math.random() * innerWidth * 0.75,
-          };
-          return <img src={`/img/landing/${image}.png`} alt={image} style={styles}></img>;
+          return <img src={`/img/landing/${image}.png`} alt={image} style={landingImgStyles[i]}></img>;
         })}
       </section>
     );

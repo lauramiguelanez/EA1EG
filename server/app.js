@@ -99,8 +99,11 @@ app.use('/api/postcard', postcardCRUD(require('./models/Postcard')));
 const yearGet = require('./routes/yearGet');
 app.use('/api/year', yearGet(require('./models/Postcard')));
 
-const regionGet = require('./routes/yearGet');
+const regionGet = require('./routes/regionGet');
 app.use('/api/region', regionGet(require('./models/Postcard')));
+
+const searchGet = require('./routes/search');
+app.use('/api/search', searchGet(require('./models/Postcard')));
 
 
 module.exports = app;
