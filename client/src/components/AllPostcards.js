@@ -9,19 +9,16 @@ class AllPostcards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      region: null,
     };
     this.service = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/api`
     });
     this.imageUrl = 'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
 
-    /*  console.log('props', props);
-
-    if(props.filterYear){
-      this.getPostcardsByYear(props.filterYear);
-    } */
     this.setYear = this.setYear.bind(this);
+    this.setRegion = this.setRegion.bind(this);
   }
 
   componentDidMount = () => {
@@ -42,6 +39,10 @@ class AllPostcards extends Component {
     }
   };
 
+  setRegion(region){
+    this.setState({region});
+  }
+
   getPostcards() {
     let postcards;
     return this.service
@@ -50,6 +51,19 @@ class AllPostcards extends Component {
         postcards = cards.data;
         console.log('getAllPostcards', postcards);
         this.setState({ postcards });
+      })
+      .catch(error => console.log(error));
+  }
+
+  getPostcardsByRegion(region) {
+    console.log('getPostcardsByYear');
+    let postcards;
+    return this.service
+      .get(`/region/${region}`)
+      .then(cards => {
+        postcards = cards.data;
+        console.log(postcards);
+        this.setState({ postcards, region });
       })
       .catch(error => console.log(error));
   }
@@ -78,7 +92,7 @@ class AllPostcards extends Component {
 
     return (
       <section className="page page-years">
-        {page === 'List' ? <List></List> : null}
+        {page === 'List' ? <List setRegion={this.setRegion}></List> : null}
         <div className="columns-wrapper ">
           {postcards
             ? postcards.map((card, i) => {

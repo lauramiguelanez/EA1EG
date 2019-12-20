@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { NavLink } from 'react-router-dom';
+import locationTree from '../data/locationTree.json';
 class List extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ class List extends Component {
       country: 'espana',
       city: 'madrid'
     };
-
+    this.setRegion = props.setRegion;
     this.setContinent = this.setContinent.bind(this);
     this.setCountry = this.setCountry.bind(this);
     this.setCity = this.setCity.bind(this);
@@ -21,14 +22,17 @@ class List extends Component {
 
   setContinent(continent) {
     this.setState({ continent: continent, country: undefined, city: undefined });
+    this.setRegion(continent);
   }
 
   setCountry(country) {
     this.setState({ country: country, city: undefined });
+    this.props.setRegion(country);
   }
 
   setCity(city) {
     this.setState({ city: city });
+    this.props.setRegion(city);
   }
 
   render() {
@@ -122,6 +126,14 @@ class List extends Component {
         <div className="columns-wrapper">
           <div className="column">
             <ul className="list">
+              {locationTree.map(continent => (
+                <NavLink key={continent.name} className="nav-link" to={`/card/${continent.name}`}>
+                  <li onClick={() => this.setContinent(continent.name)}>
+                    {continent.name.toUpperCase()}
+                  </li>
+                </NavLink>
+              ))}
+              {/* <NavLink key={card._id} className="nav-link postcard" to={`/card/${card._id}`}> */}
               <li onClick={() => this.setContinent('africa')}>ÁFRICA</li>
               <li onClick={() => this.setContinent('america')}>AMÉRICA</li>
               <li onClick={() => this.setContinent('asia')}>ASIA</li>

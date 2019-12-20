@@ -100,16 +100,15 @@ class App extends Component {
             />
             <Route
               exact
-              path="/list"
-              render={() => <List newPage={() => this.setPage('List')} page="Lista" />}
+              path="/region/:region"
+              render={(props) => (
+                <AllPostcards newPage={() => this.setPage('List')} page="List" {...props}/>
+              )}
             />
-
             <Route
               exact
-              path="/region/:region"
-              render={() => (
-                <AllPostcards newPage={() => this.setPage('LocationList')} page="LocationList" />
-              )}
+              path="/region"
+              render={() => <AllPostcards newPage={() => this.setPage('List')} page="List" />}
             />
             {/*
               <Route

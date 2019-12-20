@@ -10,8 +10,10 @@ class Home extends Component {
     super(props);
     this.state = {
       loggedInUser: null,
-      landingImgStyle: new Array(9).fill({}),
+      landingImgStyle: new Array(9).fill({})
     };
+
+    this.generateStyles=this.generateStyles.bind(this)
 
     // TODO: meter on window resize
   }
@@ -60,7 +62,14 @@ class Home extends Component {
       <section className="landingSection">
         <img src={`/img/landing/ea1eg.svg`} alt="EA1EG" id="bigLetters"></img>
         {images.map((image, i) => {
-          return <img src={`/img/landing/${image}.png`} alt={image} style={landingImgStyles[i]}></img>;
+          return (
+            <img
+              src={`/img/landing/${image}.png`}
+              alt={image}
+              style={landingImgStyles && landingImgStyles[i]}
+              onClick={this.generateStyles}
+            ></img>
+          );
         })}
       </section>
     );
