@@ -3,38 +3,6 @@
     "name": "Europa",
     "children": [
       {
-        "name": "Alemania",
-        "children": []
-      },
-      {
-        "name": "Austria",
-        "children": []
-      },
-      {
-        "name": "Belgica",
-        "children": []
-      },
-      {
-        "name": "Bulgaria",
-        "children": []
-      },
-      {
-        "name": "Checoslovaquia",
-        "children": []
-      },
-      {
-        "name": "Chipre",
-        "children": []
-      },
-      {
-        "name": "Dinamarca",
-        "children": []
-      },
-      {
-        "name": "Eslovenia",
-        "children": []
-      },
-      {
         "name": "España",
         "children": [
           {
@@ -91,7 +59,12 @@
           },
           {
             "name": "Madrid",
-            "children": []
+            "children": [
+              {
+                "name": "Madrid",
+                "children": []
+              }
+            ]
           },
           {
             "name": "Plazas Africanas",
@@ -110,6 +83,38 @@
             "children": []
           }
         ]
+      },
+      {
+        "name": "Alemania",
+        "children": []
+      },
+      {
+        "name": "Austria",
+        "children": []
+      },
+      {
+        "name": "Belgica",
+        "children": []
+      },
+      {
+        "name": "Bulgaria",
+        "children": []
+      },
+      {
+        "name": "Checoslovaquia",
+        "children": []
+      },
+      {
+        "name": "Chipre",
+        "children": []
+      },
+      {
+        "name": "Dinamarca",
+        "children": []
+      },
+      {
+        "name": "Eslovenia",
+        "children": []
       },
       {
         "name": "Finlandia",

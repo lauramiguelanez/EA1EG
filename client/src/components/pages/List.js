@@ -8,7 +8,11 @@ class List extends Component {
       loggedInUser: null,
       continent: 'europa',
       country: 'espana',
-      city: 'madrid'
+      city: 'madrid',
+      continents: locationTree,
+      countries: locationTree[0].children,
+      cities: locationTree[0].children[0].children,
+      towns: locationTree[0].children[0].children[13].children,
     };
     this.setRegion = props.setRegion;
     this.setContinent = this.setContinent.bind(this);
@@ -16,76 +20,31 @@ class List extends Component {
     this.setCity = this.setCity.bind(this);
   }
 
-  componentDidMount = () => {
-    this.props.newPage();
-  };
-
-  setContinent(continent) {
-    this.setState({ continent: continent, country: undefined, city: undefined });
-    this.setRegion(continent);
+  setContinent(continentObj) {
+    const countries = continentObj.children;
+    this.setState({ continent: continentObj.name, country: undefined, city: undefined, countries });
+    this.setRegion(continentObj.name);
   }
 
-  setCountry(country) {
-    this.setState({ country: country, city: undefined });
-    this.props.setRegion(country);
+  setCountry(countryObj) {
+    const cities = countryObj.children;
+    this.setState({ country: countryObj.name, city: undefined, cities });
+    this.setRegion(countryObj.name);
   }
 
-  setCity(city) {
-    this.setState({ city: city });
-    this.props.setRegion(city);
+  setCity(cityObj) {
+    const towns = cityObj.children;
+    this.setState({ city: cityObj.name, towns });
+    this.setRegion(cityObj.name);
+  }
+
+  setTown(townObj) {
+    this.setState({ town: townObj.name });
+    this.setRegion(townObj.name);
   }
 
   render() {
-    const { continent, country, city } = this.state;
-
-    const europa = (
-      <ul className="list">
-        <li onClick={this.setCountry}>ALEMANIA</li>
-        <li onClick={this.setCountry}>AUSTRIA</li>
-        <li onClick={this.setCountry}>BELGICA</li>
-        <li onClick={this.setCountry}>BULGARIA</li>
-        <li onClick={this.setCountry}>CHECOSLOVAQUIA</li>
-        <li onClick={this.setCountry}>CHIPRE</li>
-        <li onClick={this.setCountry}>DINAMARCA</li>
-        <li onClick={this.setCountry}>ESLOVENIA</li>
-        <li onClick={() => this.setCountry('espana')}>ESPAÑA</li>
-        <li onClick={this.setCountry}>FINLANDIA</li>
-        <li onClick={this.setCountry}>FRANCIA</li>
-        <li onClick={this.setCountry}>GRAN BRETAÑA</li>
-        <li onClick={this.setCountry}>GRECIA</li>
-        <li onClick={this.setCountry}>HOLANDA</li>
-        <li onClick={this.setCountry}>HUNGRIA</li>
-        <li onClick={this.setCountry}>ISLANDIA Y GROENLANDIA</li>
-        <li onClick={this.setCountry}>ITALIA</li>
-        <li onClick={this.setCountry}>NORUEGA</li>
-        <li onClick={this.setCountry}>POLONIA</li>
-        <li onClick={this.setCountry}>PORTUGAL</li>
-        <li onClick={this.setCountry}>PRINCIPADOS</li>
-        <li onClick={this.setCountry}>RUMANIA</li>
-        <li onClick={this.setCountry}>RUSIA</li>
-        <li onClick={this.setCountry}>SUECIA</li>
-        <li onClick={this.setCountry}>SUIZA</li>
-        <li onClick={this.setCountry}>YUGOSLAVIA</li>
-      </ul>
-    );
-
-    const america = (
-      <ul className="list">
-        <li onClick={this.setCountry}>ARGENTINA</li>
-        <li onClick={this.setCountry}>BOLIVIA</li>
-        <li onClick={this.setCountry}>BRASIL</li>
-        <li onClick={this.setCountry}>CANADA</li>
-        <li onClick={this.setCountry}>CENTROAMERICA</li>
-        <li onClick={this.setCountry}>CHILE</li>
-        <li onClick={this.setCountry}>COLOMBIA</li>
-        <li onClick={this.setCountry}>CUBA</li>
-        <li onClick={this.setCountry}>ECUADOR</li>
-        <li onClick={this.setCountry}>MEJICO</li>
-        <li onClick={this.setCountry}>PERU</li>
-        <li onClick={this.setCountry}>USA</li>
-        <li onClick={this.setCountry}>VENEZUELA</li>
-      </ul>
-    );
+    const { continent, country, city, continents, countries, cities } = this.state;
 
     const espana = (
       <ul className="list">
@@ -121,31 +80,52 @@ class List extends Component {
         <li />
       </ul>
     );
+
     return (
       <section className="page page-list">
         <div className="columns-wrapper">
           <div className="column">
             <ul className="list">
-              {locationTree.map(continent => (
-                <NavLink key={continent.name} className="nav-link" to={`/card/${continent.name}`}>
-                  <li onClick={() => this.setContinent(continent.name)}>
-                    {continent.name.toUpperCase()}
-                  </li>
+              {continents.map(c => (
+                <NavLink
+                  key={c.name}
+                  className="nav-link"
+                  to={`/region/${c.name}`}
+                  onClick={() => this.setContinent(c)}
+                >
+                  <li>{c.name.toUpperCase()}</li>
                 </NavLink>
               ))}
-              {/* <NavLink key={card._id} className="nav-link postcard" to={`/card/${card._id}`}> */}
-              <li onClick={() => this.setContinent('africa')}>ÁFRICA</li>
-              <li onClick={() => this.setContinent('america')}>AMÉRICA</li>
-              <li onClick={() => this.setContinent('asia')}>ASIA</li>
-              <li onClick={() => this.setContinent('europa')}>EUROPA</li>
-              <li onClick={() => this.setContinent('oceania')}>OCEANÍA</li>
             </ul>
           </div>
           <div className="column">
-            {continent === 'europa' ? europa : continent === 'america' ? america : nullList}
+            <ul className="list">
+              {countries.map(c => (
+                <NavLink
+                  key={c.name}
+                  className="nav-link"
+                  to={`/region/${c.name}`}
+                  onClick={() => this.setCountry(c)}
+                >
+                  <li>{c.name.toUpperCase()}</li>
+                </NavLink>
+              ))}
+            </ul>
           </div>
-          <div className="column">{country === 'espana' ? espana : nullList}</div>
-          <div className="column">{city === 'madrid' ? madrid : nullList}</div>
+          <div className="column">
+            <ul className="list">
+              {cities.map(c => (
+                <NavLink
+                  key={c.name}
+                  className="nav-link"
+                  to={`/region/${c.name}`}
+                  onClick={() => this.setCity(c)}
+                >
+                  <li>{c.name.toUpperCase()}</li>
+                </NavLink>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
     );

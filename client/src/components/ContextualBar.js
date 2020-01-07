@@ -113,7 +113,7 @@ export default class ContextualBar extends Component {
       case 'Postales':
         contextualMenu = filtersMenu;
         break;
-      case 'PostalDetalle':
+      case 'CardDetail':
         contextualMenu = filtersMenu;
         break;
       default:

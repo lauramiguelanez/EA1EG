@@ -23,17 +23,16 @@ class AllPostcards extends Component {
 
   componentDidMount = () => {
     this.props.newPage();
+    const { page, match, year, region } = this.props;
 
-    const { page } = this.props;
-    console.log('match params', page, this.props.match.params);
     if (page === 'Years') {
-      const year = this.props.year || (this.props.match && this.props.match.params.year);
-      this.setState({ year });
-      this.getPostcardsByYear(year);
+      const selectedYear = year || (match && match.params.year);
+      this.setState({ selectedYear });
+      this.getPostcardsByYear(selectedYear);
     } else if (page === 'LocationList') {
-      const region = this.props.region || (this.props.match && this.props.match.params.region);
-      this.setState({ region });
-      //this.getPostcardsByYear(year);
+      const selectedRegion = region || (match && match.params.region);
+      this.setState({ selectedRegion });
+      this.getPostcardsByRegion(selectedRegion);
     } else {
       this.getPostcards();
     }

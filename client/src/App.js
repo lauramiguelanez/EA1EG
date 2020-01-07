@@ -56,8 +56,8 @@ class App extends Component {
               path="/card/:id"
               render={(props) => (
                 <PostcardDetail
-                  newPage={() => this.setPage('PostalDetalle')}
-                  page="PostalDetalle"
+                  newPage={() => this.setPage('CardDetail')}
+                  page="CardDetail"
                   {...props}
                 />
               )}
@@ -131,7 +131,6 @@ class App extends Component {
                path="/contacto"
                render={() => <Contacto newPage={() => this.setPage('Contacto')} page="Contacto" />}
              />
-            
             */}
           </Switch>
         </main>

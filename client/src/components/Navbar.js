@@ -47,7 +47,7 @@ export default class Navbar extends Component {
                     <NavLink className="link-line" to="/location">
                       Map
                     </NavLink>
-                    <NavLink className="link-line" to="/list">
+                    <NavLink className="link-line" to="/region">
                       List
                     </NavLink>
                   </React.Fragment>
