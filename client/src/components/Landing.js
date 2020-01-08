@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../css/landing.scss';
 
+import Letters from './content/Letters';
+
 const { window } = global;
 
 const { innerWidth, innerHeight } = window;
@@ -13,7 +15,7 @@ class Home extends Component {
       landingImgStyle: new Array(9).fill({})
     };
 
-    this.generateStyles=this.generateStyles.bind(this)
+    this.generateStyles = this.generateStyles.bind(this);
 
     // TODO: meter on window resize
   }
