@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import locationTree from '../data/locationTree.json';
+import ListItem from './ListItem';
 class List extends Component {
   constructor(props) {
     super(props);
@@ -9,10 +10,11 @@ class List extends Component {
       continent: 'europa',
       country: 'espana',
       city: 'madrid',
+      town: null,
       continents: locationTree,
       countries: locationTree[0].children,
       cities: locationTree[0].children[0].children,
-      towns: locationTree[0].children[0].children[13].children,
+      towns: locationTree[0].children[0].children[13].children
     };
     this.setRegion = props.setRegion;
     this.setContinent = this.setContinent.bind(this);
@@ -44,88 +46,15 @@ class List extends Component {
   }
 
   render() {
-    const { continent, country, city, continents, countries, cities } = this.state;
-
-    const espana = (
-      <ul className="list">
-        <li onClick={this.setCity}>ANDALUCIA</li>
-        <li onClick={this.setCity}>ARAGON</li>
-        <li onClick={this.setCity}>ASTURIAS</li>
-        <li onClick={this.setCity}>BALEARES</li>
-        <li onClick={this.setCity}>CANARIAS</li>
-        <li onClick={this.setCity}>CATALUÑA</li>
-        <li onClick={this.setCity}>CANTABRIA</li>
-        <li onClick={this.setCity}>CASTILLA LEON</li>
-        <li onClick={this.setCity}>CASTILLA LA MANCHA</li>
-        <li onClick={this.setCity}>EXTREMADURA</li>
-        <li onClick={this.setCity}>EUSKADI</li>
-        <li onClick={this.setCity}>GALICIA</li>
-        <li onClick={this.setCity}>LA RIOJA</li>
-        <li onClick={() => this.setCity('madrid')}>MADRID</li>
-        <li onClick={this.setCity}>PLAZAS AFRICANAS</li>
-        <li onClick={this.setCity}>MURCIA</li>
-        <li onClick={this.setCity}>NAVARRA</li>
-        <li onClick={this.setCity}>VALENCIA</li>
-      </ul>
-    );
-
-    const madrid = (
-      <ul className="list">
-        <li>MADRID</li>
-      </ul>
-    );
-
-    const nullList = (
-      <ul className="list">
-        <li />
-      </ul>
-    );
+    const { continent, country, city, town, continents, countries, cities, towns } = this.state;
 
     return (
       <section className="page page-list">
         <div className="columns-wrapper">
-          <div className="column">
-            <ul className="list">
-              {continents.map(c => (
-                <NavLink
-                  key={c.name}
-                  className="nav-link"
-                  to={`/region/${c.name}`}
-                  onClick={() => this.setContinent(c)}
-                >
-                  <li>{c.name.toUpperCase()}</li>
-                </NavLink>
-              ))}
-            </ul>
-          </div>
-          <div className="column">
-            <ul className="list">
-              {countries.map(c => (
-                <NavLink
-                  key={c.name}
-                  className="nav-link"
-                  to={`/region/${c.name}`}
-                  onClick={() => this.setCountry(c)}
-                >
-                  <li>{c.name.toUpperCase()}</li>
-                </NavLink>
-              ))}
-            </ul>
-          </div>
-          <div className="column">
-            <ul className="list">
-              {cities.map(c => (
-                <NavLink
-                  key={c.name}
-                  className="nav-link"
-                  to={`/region/${c.name}`}
-                  onClick={() => this.setCity(c)}
-                >
-                  <li>{c.name.toUpperCase()}</li>
-                </NavLink>
-              ))}
-            </ul>
-          </div>
+          <ListItem array={continents} selectedItem={continent} setItem={this.setContinent} />
+          <ListItem array={countries} selectedItem={country} setItem={this.setCountry} />
+          <ListItem array={cities} selectedItem={city} setItem={this.setCity} />
+          <ListItem array={towns} selectedItem={town} setItem={this.setTown} />
         </div>
       </section>
     );

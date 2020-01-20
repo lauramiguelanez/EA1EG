@@ -86,7 +86,6 @@ const PostCards = ({ page, newPage }) => {
 
   return (
     <div>
-      <Navbar />
       {renderPage()}
       <FilteredPostcards cards={cards} />
     </div>
