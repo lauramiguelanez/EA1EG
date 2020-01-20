@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
 import axios from 'axios';
-import YearBar from './YearBar';
-import List from './pages/List'
+import YearBar from '../bars/YearBar';
+import List from '../pages/List';
+
+const { window } = global;
+const { innerWidth, innerHeight } = window;
 
 require('dotenv').config();
 class AllPostcards extends Component {
@@ -10,7 +13,7 @@ class AllPostcards extends Component {
     super(props);
     this.state = {
       loggedInUser: null,
-      region: null,
+      region: null
     };
     this.service = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/api`
@@ -38,8 +41,8 @@ class AllPostcards extends Component {
     }
   };
 
-  setRegion(region){
-    this.setState({region});
+  setRegion(region) {
+    this.setState({ region });
   }
 
   getPostcards() {
@@ -89,8 +92,12 @@ class AllPostcards extends Component {
     let { postcards, year } = this.state;
     const { page } = this.props;
 
+    const style = {
+      width: page === 'Years' ? `${innerWidth - 100}px` : '100vw'
+    };
+
     return (
-      <section className="page page-years">
+      <section className="page page-years" style={style}>
         {page === 'List' ? <List setRegion={this.setRegion}></List> : null}
         <div className="columns-wrapper ">
           {postcards

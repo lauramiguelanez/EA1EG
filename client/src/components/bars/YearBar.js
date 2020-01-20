@@ -14,7 +14,7 @@ export default class YearBar extends Component {
       <div className="year-wrapper" /* id="contextual-nav" */>
         <div className="year-column">
           <div className="year-wrapper-v bar-years">
-            {new Array(43).fill(0).map((e, i) => {
+            {new Array(44).fill(0).map((e, i) => {
               const year = 1950 + i;
               return (
                 <NavLink

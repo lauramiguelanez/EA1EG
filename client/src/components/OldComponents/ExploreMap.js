@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 // import geolocalize from './maps/geolocalize';
-import LocationMap from './maps/Map';
+import LocationMap from '../maps/Map';
 class ExploreMap extends Component {
   constructor(props) {
     super(props);

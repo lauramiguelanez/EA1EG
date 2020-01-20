@@ -31,8 +31,6 @@
   }
 }
 
-
-
 .nav-row-wrapper {
   width: 100vw;
   display: flex;
@@ -89,8 +87,8 @@
 
 .logoSvg {
   top: 0;
-  width: 50%;
-  height: 50%;
+  width: 35%;
+  height: 35%;
   padding: 5px;
 }
 
@@ -176,13 +174,15 @@
   }
 }
 
-
 .year-wrapper {
   width: 100px;
   height: 100vh;
   // display: flex;
   position: absolute;
+  top: 15px;
   right: 0;
+  overflow: scroll;
+  // margin-top: 
 }
 
 .year-column {
@@ -218,6 +218,6 @@
   display: inline-block;
   // transform: rotate(90deg);
   padding: 0 0 0 15px;
-  margin: 0;
+  margin: 2px;
   width: 17px;
 }

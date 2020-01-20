@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
 import '../css/navbar.scss';
-import YearBar from './YearBar';
+
+const { window } = global;
+const { innerWidth, innerHeight } = window;
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -18,13 +20,18 @@ export default class Navbar extends Component {
   render() {
     const { page } = this.props;
     const { hover } = this.state;
+
+    const style = {
+      width: page === 'Years' ? `${innerWidth - 100}px` : '100vw'
+    };
+
     if (hover) {
       console.log('hover');
     } else {
       console.log('no hover');
     }
     return (
-      <nav className={`nav-style bar-${page}`} role="navigation">
+      <nav className={`nav-style bar-${page}`} role="navigation" style={style}>
         <div className="nav-row-wrapper" id="top-nav">
           <div className="nav-row">
             <div className="nav-group logo">

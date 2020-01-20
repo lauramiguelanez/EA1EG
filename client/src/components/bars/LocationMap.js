@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import GoogleMap from '../maps/GoogleMap/index.js';
+import GoogleMap from './maps/GoogleMap/index.js';
 
 class LocationMap extends Component {
   constructor(props) {

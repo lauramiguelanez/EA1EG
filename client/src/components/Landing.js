@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../css/landing.scss';
 
-import Letters from './content/Letters';
-
 const { window } = global;
 
 const { innerWidth, innerHeight } = window;
@@ -27,13 +25,18 @@ class Home extends Component {
 
   generateStyles() {
     const styles = [];
+
+    const maxWidth = innerWidth * 0.23;
+    const maxLeft = innerWidth - maxWidth;
+    const minTop = 0.1 * innerHeight;
+    const maxTop = innerHeight - minTop - (2 * maxWidth) / 3;
     for (let i = 0; i < 9; i++) {
       const style = {
         position: 'absolute',
-        zIndex: `${10 + i}`,
-        width: `${innerWidth * 0.25 + Math.random() * 100}px`,
-        top: Math.random() * innerHeight * 0.75 + 0.1 * innerHeight,
-        left: Math.random() * innerWidth * 0.75
+        zIndex: `${10 + Math.floor(Math.random() * Math.floor(40))}`,
+        width: `${maxWidth + Math.random() * 100}px`,
+        top: Math.random() * maxTop + minTop,
+        left: Math.random() * maxLeft
       };
       styles.push(style);
     }
