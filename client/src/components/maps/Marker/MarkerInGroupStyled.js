@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS } from '../style-constants';
+import { COLORS, MARKER } from '../style-constants';
 
 const MarkerInGroupStyled = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const MarkerInGroupStyled = styled.div`
   background-color: ${COLORS.gray64};
   background-size: cover;
   background-position: center;
-  `;
-  // margin-left: -7px;
+`;
+// margin-left: -7px;
 
 export default MarkerInGroupStyled;

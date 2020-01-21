@@ -27,7 +27,7 @@ class ClusterMarker extends React.PureComponent {
         ) */}
         {this.props.points.length > 2 &&
           <MarkerCounter>
-            +{this.props.points.length - 2}
+            {this.props.points.length - 1}
           </MarkerCounter>}
       </MarkerGroup>
     );

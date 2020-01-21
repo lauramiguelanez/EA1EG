@@ -11,8 +11,6 @@
 }
 
 .column {
-  // max-width: 50%;
-  // min-width: 25%;
   width: 20%;
 }
 
@@ -25,39 +23,12 @@
   }
 }
 
-.all-postcards-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.postcard {
-
-  // width: auto;
-}
-
-.next-postcards-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.card-thumbnail-name{
-
-}
-
 .postcard-thumbnail {
   background-color: grey;
   width: 250px;
   height: 170px;
-  margin: 18px;
-}
-
-.postcard-data{
-  //
+  margin-bottom: 18px;
+  margin-left: 18px;
 }
 
 .postcard-wrapper {
