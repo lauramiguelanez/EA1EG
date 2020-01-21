@@ -1,42 +1,23 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import GoogleMap from './maps/GoogleMap/index.js';
+import GoogleMap from '../maps/GoogleMap/index.js';
 
 class LocationMap extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loggedInUser: null
-    };
-    this.service = axios.create({
-      baseURL: `${process.env.REACT_APP_API_URL}/api`
-    });
+    this.state = {};
   }
-
-  componentDidMount = () => {
-    this.props.newPage();
-    this.getMarkers();
-  };
 
   getMarkers = () => {
-    this.service.get('/postcard').then(cards => {
-      const locations = cards.data.map(c => ({ lat: c.location.lat, lng: c.location.lng, id: c._id }));
-      this.setState({ cards: cards.data, locations });
-      console.log('markers', locations);
-      // this.downloadObjectAsJson(locations, 'locations');
-    });
+    const locations = this.props.cards.map(c => ({
+      lat: c.location.lat,
+      lng: c.location.lng,
+      id: c._id
+    }));
+    this.setState({ locations });
+    console.log('markers', locations);
   };
-
-  downloadObjectAsJson(exportObj, exportName) {
-    var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
-    var downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute('href', dataStr);
-    downloadAnchorNode.setAttribute('download', exportName + '.json');
-    document.body.appendChild(downloadAnchorNode); // required for firefox
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
-  }
 
   setRedirect = marker => {
     this.setState({
@@ -55,8 +36,12 @@ class LocationMap extends Component {
 
   render() {
     const { locations } = this.state;
+    const { cards } = this.props;
+    if (!locations && cards) {
+      this.getMarkers();
+    }
     return (
-      <section /* className="page page-location" */>
+      <section>
         <GoogleMap locations={locations}></GoogleMap>
       </section>
     );

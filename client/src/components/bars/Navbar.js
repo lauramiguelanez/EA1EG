@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
-import '../css/navbar.scss';
+import '../../css/navbar.scss';
 
 const { window } = global;
 const { innerWidth, innerHeight } = window;

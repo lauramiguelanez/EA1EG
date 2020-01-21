@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './bars/Navbar';
-import FilteredPostcards from './FilteredPostcards';
-import YearBar from './AllPostYearBarcards';
-import List from './List';
-import LocationMap from './LocationMap';
+import FilteredPostcards from './FilteredCards';
+import YearBar from './bars/YearBar';
+import List from './bars/List';
+import LocationMap from './bars/LocationMap';
+import PostcardDetail from './bars/PostcardDetail';
 
 import axios from 'axios';
 require('dotenv').config();
@@ -11,10 +12,11 @@ require('dotenv').config();
 const { window } = global;
 const { innerWidth, innerHeight } = window;
 
-const PostCards = ({ page, newPage }) => {
+const PostCards = ({ page, newPage, match }) => {
   // /////// STATE:
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState(null);
 
   // /////// CONSTANTS:
@@ -59,11 +61,28 @@ const PostCards = ({ page, newPage }) => {
       .catch(error => console.log(error));
   };
 
+  const getSelectedCard = (cardId)=> {
+    return service
+      .get(`/api/postcard/${cardId}`)
+      .then(cards => {
+        setSelectedCard(cards.data)
+        console.log('gotCards', cards.data);
+      })
+      .catch(error => console.log(error));
+  }
+
   // /////// COMPONENT UPDATE:
 
   useEffect(() => {
     newPage();
   }, []);
+
+  useEffect(() => {
+    let yearFromUrl = match && match.params.year;
+    let regionFromUrl = match && match.params.region;
+    let idFromUrl = match && match.params.id;
+    console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
+  }, [match]);
 
   useEffect(() => {
     getCards(year, region);
@@ -76,9 +95,11 @@ const PostCards = ({ page, newPage }) => {
       case 'List':
         return <List region={region} setRegion={setRegionOnly} />;
       case 'Map':
-        return <LocationMap />;
+        return <LocationMap page={page} cards={cards}/>;
       case 'Years':
         return <YearBar page={page} year={year} setYear={setYearOnly} />;
+      case 'CardDetail':
+        return <PostcardDetail page={page} card={selectedCard} />;
       default:
         return null;
     }
@@ -87,7 +108,7 @@ const PostCards = ({ page, newPage }) => {
   return (
     <div>
       {renderPage()}
-      <FilteredPostcards cards={cards} />
+      <FilteredPostcards cards={cards} page={page} />
     </div>
   );
 };

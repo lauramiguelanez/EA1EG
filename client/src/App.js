@@ -4,13 +4,10 @@ import { Switch, Route /* , BrowserRouter, Router */ } from 'react-router-dom';
 import Navbar from './components/bars/Navbar';
 import PostCards from './components/PostCards';
 import Landing from './components/Landing';
-import PostcardDetail from './components/PostcardDetail';
 import Project from './components/pages/Project';
 import ProjectURE from './components/pages/ProjectURE';
-import LocationMapCluster from './components/LocationMap';
 import './css/pages.scss';
 import './css/content.scss';
-import List from './components/pages/List';
 
 const App = () => {
   const [page, setPage] = useState('Home');
@@ -18,12 +15,13 @@ const App = () => {
   const [order, setOrder] = useState('Large');
 
   const cardRoutes = [
-    { route: '/cards', page: 'Cards' },
+    { route: '/cards', page: 'Cards', exact: true },
+    { route: '/card/:id', page: 'CardDetail' },
     { route: '/year/:year', page: 'Years' },
-    { route: '/year/', page: 'Years' },
+    { route: '/year/', page: 'Years', exact: true },
     { route: '/region/:region', page: 'Region' },
-    { route: '/region/', page: 'Region' },
-    { route: '/location', page: 'Map' }
+    { route: '/region/', page: 'Region', exact: true },
+    { route: '/location', page: 'Map', exact: true }
   ];
 
   return (
@@ -49,59 +47,18 @@ const App = () => {
             path="/ure"
             render={() => <ProjectURE newPage={() => setPage('URE')} page="URE" />}
           />
-          <Route
-            path="/card/:id"
-            render={props => (
-              <PostcardDetail newPage={() => setPage('CardDetail')} page="CardDetail" {...props} />
-            )}
-          />
-          {cardRoutes.map(({ route, page }) => (
-            <Route
-              exact
-              path={route}
-              render={props => <PostCards newPage={() => setPage(page)} page={page} {...props} />}
-            />
-          ))}
-          {/* <Route
-            exact
-            path="/cards"
-            render={() => (
-              <PostCards
+          {cardRoutes.map(({ route, page, exact }) => {
+            const otherProps = { ...exact };
+            return (
+              <Route
+                path={route}
                 size={size}
                 order={order}
-                newPage={() => setPage('Postales')}
-                page="Postales"
+                render={props => <PostCards newPage={() => setPage(page)} page={page} {...props} />}
+                {...otherProps}
               />
-            )}
-          />
-          <Route
-            exact
-            path="/year/:year"
-            render={props => (
-              <PostCards newPage={() => setPage('Years')} page="Years" {...props} />
-            )}
-          />
-
-          
-          <Route
-            exact
-            path="/location"
-            render={() => (
-              <LocationMapCluster newPage={() => setPage('LocationMap')} page="LocationMap" />
-            )}
-          />
-          <Route
-            exact
-            path="/region/:region"
-            render={props => (
-              <PostCards newPage={() => setPage('List')} page="List" {...props} />
-            )}
-          />
-          <Route
-            exact
-            path="/region"
-            render={() => <PostCards newPage={() => setPage('List')} page="List" />}
-          /> */}
+            );
+          })}
         </Switch>
       </main>
     </div>
