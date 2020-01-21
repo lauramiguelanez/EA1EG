@@ -9,7 +9,6 @@ import Search from './bars/SearchBar';
 import axios from 'axios';
 require('dotenv').config();
 
-const { window } = global;
 
 const PostCards = ({ page, newPage, match }) => {
   // /////// STATE:
