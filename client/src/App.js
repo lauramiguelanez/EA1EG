@@ -8,6 +8,7 @@ import Project from './components/pages/Project';
 import ProjectURE from './components/pages/ProjectURE';
 import './css/pages.scss';
 import './css/content.scss';
+import './css/navbar.scss';
 
 const App = () => {
   const [page, setPage] = useState('Home');

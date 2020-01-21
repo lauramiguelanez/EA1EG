@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import locationTree from '../data/locationTree.json';
-import ListItem from '../pages/elements/ListItem';
+import ListItem from './elements/ListItem';
 class List extends Component {
   constructor(props) {
     super(props);

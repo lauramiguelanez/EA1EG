@@ -53,14 +53,6 @@
   border-color: black;
 }
 
-.nav-group-main {
-  //
-}
-
-.nav-group-secondary {
-  //
-}
-
 .nav-link {
   font-family: $main-font;
   font-size: 1rem;
@@ -69,12 +61,6 @@
   & :hover {
     text-decoration: underline;
   }
-
-  // align-self: flex-end;
-  // justify-self: center;
-  // text-align: center;
-  // font-weight: 400;
-  // padding: 0 10px;
 }
 
 .link-line {
@@ -102,73 +88,8 @@
   width: 100vw;
 }
 
-#contextual-nav {
-  background-color: $green-project;
-  color: $black;
-  width: 100vw;
-}
-
-.contextual-wrapper-v {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  min-height: 80px;
-  align-items: flex-start;
-  justify-content: center;
-}
-.contextual-wrapper-h {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  //min-height: 80px;
-  // align-items: flex-start;
-  justify-content: center;
-}
-
-.menu-years {
-  display: inline-block;
-  transform: rotate(90deg);
-  padding: 0 0 0 15px;
-  margin: 0;
-  width: 17px;
-}
-
 .bar-years {
   background-color: $white; // $yellow-year;
-  & a {
-    color: $black;
-  }
-}
-.bar-proyecto {
-  background-color: $green-project;
-  & a {
-    color: $black;
-  }
-}
-
-.bar-filters {
-  background-color: $pink-archive;
-  & a {
-    color: $black;
-  }
-}
-
-.bar-location {
-  background-color: $brown-place;
-  & a {
-    color: $black;
-  }
-}
-
-.bar-Project {
-  background-color: $blue-search;
-  & a {
-    color: $black;
-  }
-}
-
-.bar-URE {
-  background-color: $brown-place;
   & a {
     color: $black;
   }
@@ -182,7 +103,23 @@
   top: 15px;
   right: 0;
   overflow: scroll;
-  // margin-top: 
+  // margin-top:
+}
+
+.year-wrapper-v {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.menu-years-v {
+  display: inline-block;
+  // transform: rotate(90deg);
+  padding: 0 0 0 15px;
+  margin: 2px;
+  width: 17px;
 }
 
 .year-column {
@@ -204,20 +141,4 @@
       text-decoration: none;
     }
   }
-}
-
-.year-wrapper-v {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  min-height: 80px;
-  align-items: flex-start;
-  justify-content: center;
-}
-.menu-years-v {
-  display: inline-block;
-  // transform: rotate(90deg);
-  padding: 0 0 0 15px;
-  margin: 2px;
-  width: 17px;
 }

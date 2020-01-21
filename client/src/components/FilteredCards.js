@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
-import axios from 'axios';
-import YearBar from './bars/YearBar';
-import List from './bars/List';
 
 const { window } = global;
-const { innerWidth, innerHeight } = window;
+const { innerWidth } = window;
 
 require('dotenv').config();
 
-const FilteredCards = ({ cards, page }) => {
+const FilteredCards = ({ cards, page, setSelectedCard }) => {
   const imageUrl = 'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
 
   const style = {
@@ -24,13 +21,13 @@ const FilteredCards = ({ cards, page }) => {
               return (
                 <div className="column">
                   <NavLink key={card._id} className="nav-link postcard" to={`/card/${card._id}`}>
-                    <div className="postcard-thumbnail">
+                    <button className="postcard-thumbnail" onClick={() => setSelectedCard(card)}>
                       {card.imageFront ? (
                         <img src={`${imageUrl}${card.imageFront}`} alt={card.indicator} />
                       ) : (
-                        <h3 className="postcard-thumbnail card-thumbnail-name">{card.indicator}</h3>
+                        <h3 className="postcard-thumbnail">{card.indicator}</h3>
                       )}
-                    </div>
+                    </button>
                   </NavLink>
                 </div>
               );

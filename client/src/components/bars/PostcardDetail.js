@@ -6,7 +6,7 @@ const PostcardDetail = ({ card }) => {
   if (card) {
     const { QTH, location, year, imageFront, imageBack, continent, country } = card;
     return (
-      <section className="page page-years">
+      <section className="page">
         <div className="postcard-data">
           <p>{QTH}</p>
           <p>{`${country}, ${continent}`}</p>
