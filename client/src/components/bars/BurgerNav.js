@@ -15,7 +15,7 @@ const BurgerNav = ({ page, setPage, setSearch }) => {
       </button>
 
       {openBurger ? (
-        <nav className={`nav-style bar-${page}`} role="navigation">
+        <nav className={`bar-years`} role="navigation">
           <div className="" id="top-nav">
             <div className="">
               <NavLink className="link-line" to="/location">

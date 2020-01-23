@@ -30,6 +30,25 @@
     }
   }
 }
+.nav.burger{
+  
+  & a {
+    color: $black;
+    text-decoration: none;
+    font-size: $nav-font-size;
+    // align-self: center;
+    // justify-self: center;
+
+    & :hover {
+      color: $accent-color;
+      text-decoration: none;
+    }
+    & :visited {
+      color: $black;
+      text-decoration: none;
+    }
+  }
+}
 
 .nav-row-wrapper {
   width: 100vw;
