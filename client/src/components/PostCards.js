@@ -4,13 +4,12 @@ import YearBar from './bars/YearBar';
 import List from './bars/List';
 import LocationMap from './bars/LocationMap';
 import PostcardDetail from './bars/PostcardDetail';
-import Search from './bars/SearchBar';
+import Search from './bars/elements/SearchBar';
 
 import axios from 'axios';
 require('dotenv').config();
 
-
-const PostCards = ({ page, newPage, match }) => {
+const PostCards = ({ newPage, page, search, match }) => {
   // /////// STATE:
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(null);
@@ -58,8 +57,19 @@ const PostCards = ({ page, newPage, match }) => {
       .catch(error => console.log(error));
   };
 
+  const getSearchCards = () => {
+    service
+      .get(`/search/${search}`)
+      .then(cards => {
+        const gotCards = cards.data;
+        console.log('gotCards', gotCards);
+        setCards(gotCards);
+      })
+      .catch(error => console.log(error));
+  };
+
   const getSelectedCard = cardId => {
-    return service
+    service
       .get(`/api/postcard/${cardId}`)
       .then(cards => {
         setSelectedCard(cards.data);
@@ -79,7 +89,24 @@ const PostCards = ({ page, newPage, match }) => {
     let regionFromUrl = match && match.params.region;
     let idFromUrl = match && match.params.id;
     console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
+
+    if (idFromUrl) {
+      getSelectedCard(idFromUrl)
+      newPage('CardDetail')
+    }
+    if (yearFromUrl) {
+      setYear(yearFromUrl)
+      newPage('Year')
+    }
+    if (regionFromUrl) {
+      setRegion(regionFromUrl)
+      newPage('Region')
+    }
   }, [match]);
+
+  useEffect(() => {
+    getSearchCards();
+  }, [search]);
 
   useEffect(() => {
     getCards(year, region);

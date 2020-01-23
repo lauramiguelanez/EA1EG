@@ -6,7 +6,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   //max-width: 70vw;
-  width:100%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -23,12 +23,24 @@
   }
 }
 
+.poscard {
+  margin-bottom: 25px;
+
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.poscard-data {
+  color: $black;
+  text-decoration: none;
+  font-size: $detail-font-size;
+}
+
 .postcard-thumbnail {
-  background-color: grey;
-  width: 250px;
-  height: 170px;
-  margin-bottom: 18px;
-  margin-left: 18px;
+  background-color: $dark-grey;
+  width: 95%;
+  height: auto;
+  min-height: 12vw;
 }
 
 .postcard-wrapper {
@@ -41,8 +53,6 @@
 .postcard-img {
   width: 400px;
   height: 250px;
-  background-color: gray;
+  background-color: $dark-grey;
   margin: 20px;
 }
-
-

@@ -14,8 +14,7 @@ const regionGet = (Postcard, extensionFn) => {
 
   // CRUD: RETRIEVE
   router.get('/:search', (req, res, next) => {
-    const { search } = req.params.toUpperCase();
-    // { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] }
+    const { search } = req.params;
     Postcard.find({
       $or: [
         { country: search },

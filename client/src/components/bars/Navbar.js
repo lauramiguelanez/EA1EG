@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
+import SearchBar from './elements/SearchBar';
+import BurgerNav from './BurgerNav';
 
 const { window } = global;
 const { innerWidth, innerHeight } = window;
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedInUser: null, hover: false };
+    this.state = { loggedInUser: null, hoverLocation: false, hoverSearch: false };
 
-    this.toggleHover = this.toggleHover.bind(this);
+    this.toggleHoverLocation = this.toggleHoverLocation.bind(this);
+    this.toggleHoverSearch = this.toggleHoverSearch.bind(this);
   }
 
-  toggleHover() {
-    //onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}
-    this.setState({ hover: !this.state.hover });
+  toggleHoverLocation() {
+    this.setState({ hoverLocation: !this.state.hoverLocation });
+  }
+
+  toggleHoverSearch() {
+    this.setState({ hoverSearch: !this.state.hoverSearch });
   }
 
   render() {
-    const { page, setPage } = this.props;
-    const { hover } = this.state;
+    const { page, setPage, setSearch } = this.props;
+    const { hoverLocation, hoverSearch } = this.state;
 
     const selectedStyle = {
       textDecoration: 'line-through'
@@ -28,12 +34,12 @@ export default class Navbar extends Component {
       width: page === 'Years' ? `${innerWidth - 100}px` : '100vw'
     };
 
-    if (hover) {
-      console.log('hover');
+    if (hoverLocation) {
+      console.log('hoverLocation');
     } else {
-      console.log('no hover');
+      console.log('no hoverLocation');
     }
-    return (
+    return innerWidth > 600 ? (
       <nav className={`nav-style bar-${page}`} role="navigation" style={style}>
         <div className="nav-row-wrapper" id="top-nav">
           <div className="nav-row">
@@ -46,8 +52,8 @@ export default class Navbar extends Component {
             <div className="nav-group site-title">
               <div
                 className="nav-link"
-                onMouseEnter={this.toggleHover}
-                onMouseLeave={this.toggleHover}
+                onMouseEnter={this.toggleHoverLocation}
+                onMouseLeave={this.toggleHoverLocation}
               >
                 <NavLink
                   className="link-line"
@@ -56,7 +62,7 @@ export default class Navbar extends Component {
                 >
                   Location
                 </NavLink>
-                {hover ? (
+                {hoverLocation ? (
                   <React.Fragment>
                     <NavLink
                       className="link-line"
@@ -97,13 +103,18 @@ export default class Navbar extends Component {
               </NavLink>
             </div>
 
-            <div className="nav-group">
+            <div
+              className="nav-group"
+              onMouseEnter={this.toggleHoverSearch}
+              onMouseLeave={this.toggleHoverSearch}
+            >
               <NavLink
                 className="nav-link"
-                to="/buscar"
+                to="/cards"
                 style={page === 'Search' ? selectedStyle : {}}
               >
                 Search
+                {hoverSearch ? <SearchBar setSearch={setSearch} /> : null}
               </NavLink>
             </div>
 
@@ -111,6 +122,8 @@ export default class Navbar extends Component {
           </div>
         </div>
       </nav>
+    ) : (
+      <BurgerNav />
     );
   }
 }

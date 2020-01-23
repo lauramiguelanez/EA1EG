@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
 
 const { window } = global;
@@ -14,25 +14,30 @@ const FilteredCards = ({ cards, page, setSelectedCard }) => {
   };
 
   return (
-    <section className="page page-years" style={style}>
+    <section className="page" style={style}>
       <div className="columns-wrapper ">
         {cards
           ? cards.map((card, i) => {
               return (
                 <div className="column">
-                  <NavLink key={card._id} className="nav-link postcard" to={`/card/${card._id}`}>
-                    <button className="postcard-thumbnail" onClick={() => setSelectedCard(card)}>
-                      {card.imageFront ? (
-                        <img src={`${imageUrl}${card.imageFront}`} alt={card.indicator} />
-                      ) : (
-                        <h3 className="postcard-thumbnail">{card.indicator}</h3>
-                      )}
-                    </button>
-                  </NavLink>
+                  <div>
+                    <NavLink key={card._id} className="nav-link postcard" to={`/card/${card._id}`}>
+                      <button className="postcard-thumbnail" onClick={() => setSelectedCard(card)}>
+                        {card.imageFront && i < 60 ? (
+                          <img src={`${imageUrl}${card.imageFront}`} alt={card.indicator} />
+                        ) : (
+                          <h3 className="postcard-thumbnail">{card.indicator}</h3>
+                        )}
+                      </button>
+                    </NavLink>
+                    <p className="poscard-data">
+                      {card.indicator}-{card.year}-{card.QTH}-{card.country}-{card.continent}
+                    </p>
+                  </div>
                 </div>
               );
             })
-          : new Array(13).fill(0).map((e, i) => {
+          : new Array(1).fill(0).map((e, i) => {
               return (
                 <div className="column">
                   <NavLink key={i} className="nav-link postcard" to="/postal/:id">
@@ -45,5 +50,18 @@ const FilteredCards = ({ cards, page, setSelectedCard }) => {
     </section>
   );
 };
+// EAQEG~1953~Madrid~Madrid~España~Europa
+/* 
+_id: "5dd94c5991cd6e535821250d"
+continent: "AMERICA"
+country: "USA"
+indicator: "W1IKI"
+QTH: "MASSACHUSETTS"
+year: "1960"
+imageFront: "AMERICA/USA/W1IKI-1.jpg"
+imageBack: "AMERICA/USA/W1IKI-2.jpg"
+created_at: "2019-11-23T15:12:26.467Z"
+updated_at: "2019-11-23T15:12:26.467Z"
+*/
 
 export default FilteredCards;

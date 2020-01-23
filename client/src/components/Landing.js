@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/landing.scss';
+import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
 
 const { window } = global;
 
@@ -64,16 +65,19 @@ class Home extends Component {
     const { landingImgStyles } = this.state;
 
     return (
-      <section className="landingSection">
+      <section className="landingSection" onClick={this.generateStyles}>
         <img src={`/img/landing/ea1eg.svg`} alt="EA1EG" id="bigLetters"></img>
         {images.map((image, i) => {
+          const randomYear = Math.floor(Math.random() * (1993 - 1950 + 1) + 1950);
           return (
-            <img
-              src={`/img/landing/${image}.png`}
-              alt={image}
-              style={landingImgStyles && landingImgStyles[i]}
-              onClick={this.generateStyles}
-            ></img>
+            <NavLink key={i} className="nav-link postcard" to={`/year/${randomYear}`}>
+              <img
+                src={`/img/landing/${image}.png`}
+                alt={image}
+                style={landingImgStyles && landingImgStyles[i]}
+                // onClick={this.generateStyles}
+              />
+            </NavLink>
           );
         })}
       </section>

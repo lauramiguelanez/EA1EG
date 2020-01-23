@@ -12,6 +12,7 @@ import './css/navbar.scss';
 
 const App = () => {
   const [page, setPage] = useState('Home');
+  const [search, setSearch] = useState('Home');
   const [size, setSize] = useState('Large');
   const [order, setOrder] = useState('Large');
 
@@ -28,7 +29,7 @@ const App = () => {
   return (
     <div className="app" page={page}>
       <header className="header">
-        <Navbar page={page} setPage={setPage}/>
+        <Navbar page={page} setPage={setPage} setSearch={setSearch} />
       </header>
       <main>
         <Switch>
@@ -55,7 +56,14 @@ const App = () => {
                 path={route}
                 size={size}
                 order={order}
-                render={props => <PostCards newPage={() => setPage(page)} page={page} {...props} />}
+                render={props => (
+                  <PostCards
+                    newPage={forcedPage => setPage(forcedPage || page)}
+                    page={page}
+                    search={search}
+                    {...props}
+                  />
+                )}
                 {...otherProps}
               />
             );
