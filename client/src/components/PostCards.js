@@ -6,6 +6,8 @@ import LocationMap from './bars/LocationMap';
 import PostcardDetail from './bars/PostcardDetail';
 import Search from './bars/elements/SearchBar';
 
+import * as utils from '../utils/index';
+
 import axios from 'axios';
 require('dotenv').config();
 
@@ -63,6 +65,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       .then(cards => {
         const gotCards = cards.data;
         console.log('gotCards', gotCards);
+        gotCards = utils.shuffle(gotCards);
         setCards(gotCards);
       })
       .catch(error => console.log(error));
@@ -91,16 +94,16 @@ const PostCards = ({ newPage, page, search, match }) => {
     console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
 
     if (idFromUrl) {
-      getSelectedCard(idFromUrl)
-      newPage('CardDetail')
+      getSelectedCard(idFromUrl);
+      newPage('CardDetail');
     }
     if (yearFromUrl) {
-      setYear(yearFromUrl)
-      newPage('Year')
+      setYear(yearFromUrl);
+      newPage('Year');
     }
     if (regionFromUrl) {
-      setRegion(regionFromUrl)
-      newPage('Region')
+      setRegion(regionFromUrl);
+      newPage('Region');
     }
   }, [match]);
 
@@ -134,7 +137,7 @@ const PostCards = ({ newPage, page, search, match }) => {
   return (
     <div>
       {renderPage()}
-      <FilteredPostcards cards={cards} page={page} setSelectedCard={setSelectedCard} />
+      <FilteredPostcards cards={cards && utils.shuffle(cards)} page={page} setSelectedCard={setSelectedCard} />
     </div>
   );
 };

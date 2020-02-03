@@ -31,7 +31,8 @@ export default class Navbar extends Component {
     };
 
     const style = {
-      width: page === 'Years' ? `${innerWidth - 100}px` : '100vw'
+      width: page === 'Years' ? `${innerWidth - 100}px` : '100%',
+      backgroundColor:  page ===  'Home'? 'rgba(255, 255,255, 0)' : 'rgba(255, 255,255, 1)'
     };
 
     if (hoverLocation) {

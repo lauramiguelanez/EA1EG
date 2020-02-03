@@ -10,7 +10,7 @@ const FilteredCards = ({ cards, page, setSelectedCard }) => {
   const imageUrl = 'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
 
   const style = {
-    width: page === 'Years' ? `${innerWidth - 100}px` : '100vw'
+    width: page === 'Years' ? `${innerWidth - 100}px` : '100%'
   };
 
   return (
