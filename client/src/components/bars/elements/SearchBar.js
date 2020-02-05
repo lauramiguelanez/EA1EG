@@ -15,14 +15,14 @@ const Search = ({ setSearch }) => {
   };
   return (
     <div className="searchField">
-    <input
-      type="text"
-      onChange={onChange}
-      onKeyDown={handleEnter}
-      placeholder="QSL, country, year..."
-      className="searchInput"
-    />
-    <label for="name" className="searchLabel">QSL, country, year...</label>
+      <input
+        type="text"
+        onChange={onChange}
+        onKeyDown={handleEnter}
+        placeholder="QSL, country, year..."
+        className="searchInput"
+      />
+      {/* <label for="name" className="searchLabel">QSL, country, year...</label> */}
     </div>
   );
 };

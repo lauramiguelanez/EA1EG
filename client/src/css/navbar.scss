@@ -185,7 +185,7 @@
   transition: border-color 0.2s;
 
   &::placeholder {
-    color: transparent;
+    color: $brown-place/* transparent; */
   }
 
   &:placeholder-shown ~ .searchLabel {

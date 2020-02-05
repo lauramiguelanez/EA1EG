@@ -30,7 +30,7 @@ const FilteredCards = ({ cards, page, setSelectedCard }) => {
                         )}
                       </button>
                     </NavLink>
-                    <p className="poscard-data">
+                    <p className="postcard-data">
                       {card.indicator}-{card.year}-{card.QTH}-{card.country}-{card.continent}
                     </p>
                   </div>

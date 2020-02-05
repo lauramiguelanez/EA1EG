@@ -40,6 +40,7 @@ export default class Navbar extends Component {
     } else {
       console.log('no hoverLocation');
     }
+    
     return innerWidth > 600 ? (
       <nav className={`nav-style bar-${page}`} role="navigation" style={style}>
         <div className="nav-row-wrapper" id="top-nav">
@@ -124,7 +125,7 @@ export default class Navbar extends Component {
         </div>
       </nav>
     ) : (
-      <BurgerNav />
+      <BurgerNav page={page} setPage={setPage} setSearch={setSearch}/>
     );
   }
 }

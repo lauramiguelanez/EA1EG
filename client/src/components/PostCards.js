@@ -54,6 +54,21 @@ const PostCards = ({ newPage, page, search, match }) => {
       .then(cards => {
         gotCards = cards.data;
         console.log('gotCards', gotCards);
+
+        /* const storageObj = gotCards.map(({ location, indicator, _id }) => ({
+          location,
+          indicator,
+          _id
+        }));
+        var dataStr =
+          'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(storageObj));
+          var downloadAnchorNode = document.createElement('a');
+          downloadAnchorNode.setAttribute("href",     dataStr);
+          downloadAnchorNode.setAttribute("download", 'location' + ".json");
+          document.body.appendChild(downloadAnchorNode); // required for firefox
+          downloadAnchorNode.click();
+          downloadAnchorNode.remove(); */
+
         setCards(gotCards);
       })
       .catch(error => console.log(error));
@@ -137,7 +152,11 @@ const PostCards = ({ newPage, page, search, match }) => {
   return (
     <div>
       {renderPage()}
-      <FilteredPostcards cards={cards && utils.shuffle(cards)} page={page} setSelectedCard={setSelectedCard} />
+      <FilteredPostcards
+        cards={cards && utils.shuffle(cards)}
+        page={page}
+        setSelectedCard={setSelectedCard}
+      />
     </div>
   );
 };
