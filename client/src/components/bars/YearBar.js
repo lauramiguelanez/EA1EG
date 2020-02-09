@@ -14,6 +14,7 @@ const YearBar = ({ page, setYear, year }) => {
             const y = 1950 + i;
             return (
               <NavLink
+                key={y}
                 className="menu-years-v"
                 to={`/year/${y}`}
                 onClick={() => setYear(y)}

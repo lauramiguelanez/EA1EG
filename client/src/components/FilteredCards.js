@@ -23,7 +23,7 @@ const FilteredCards = ({ cards, page, setSelectedCard }) => {
                   <div>
                     <NavLink key={card._id} className="nav-link postcard" to={`/card/${card._id}`}>
                       <button className="postcard-thumbnail" onClick={() => setSelectedCard(card)}>
-                        {card.imageFront && i < 60 ? (
+                        {card.imageFront ? (
                           <img src={`${imageUrl}${card.imageFront}`} alt={card.indicator} />
                         ) : (
                           <h3 className="postcard-thumbnail">{card.indicator}</h3>

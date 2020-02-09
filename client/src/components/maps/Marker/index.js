@@ -10,14 +10,15 @@ class Marker extends React.PureComponent {
   };
 
   render() {
+    const { info,onClick } = this.props;
     return (
-      <div>
+      <button onClick={onClick}>
         {this.props.inGroup ? (
-          <MarkerInGroupStyled/>
+          <MarkerInGroupStyled />
         ) : (
-          <MarkerStyled/>
+          <MarkerStyled tooltip={(info && info.indicator )|| 'tooltip'} />
         )}
-      </div>
+      </button>
     );
   }
 }

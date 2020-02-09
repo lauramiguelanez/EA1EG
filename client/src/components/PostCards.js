@@ -13,10 +13,11 @@ require('dotenv').config();
 
 const PostCards = ({ newPage, page, search, match }) => {
   // /////// STATE:
+  let allCards = [];
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [cards, setCards] = useState(null);
+  const [cards, setCards] = useState(allCards);
 
   // /////// CONSTANTS:
 
@@ -70,6 +71,9 @@ const PostCards = ({ newPage, page, search, match }) => {
           downloadAnchorNode.remove(); */
 
         setCards(gotCards);
+        if (route === '/postcard') {
+          allCards = gotCards;
+        }
       })
       .catch(error => console.log(error));
   };
@@ -123,12 +127,49 @@ const PostCards = ({ newPage, page, search, match }) => {
   }, [match]);
 
   useEffect(() => {
-    getSearchCards();
+    // getSearchCards();
+
+    if (search && search !== "") {
+      const filteredCards = cards.filter(c => {
+        const { continent, country, indicator, QTH, year } = c;
+
+        const s = search.toUpperCase();
+
+        return (
+          s === continent || s === country || s === indicator || s === QTH || s === year.toString()
+        );
+      });
+
+      setCards(filteredCards);
+    } else {
+      setCards(allCards);
+    }
   }, [search]);
 
   useEffect(() => {
-    getCards(year, region);
+    // getCards(year, region);
+    const filteredCards = cards.filter(c => {
+      const regionUpper = region.toUpperCase();
+      if (year && region) {
+        const isRegion =
+          c.country === regionUpper || c.continent === regionUpper || c.QTH === regionUpper;
+        return c.year === year && isRegion;
+      } else if (year && !region) {
+        return year === c.year;
+      } else if (!year && region) {
+        const isRegion =
+          c.country === regionUpper || c.continent === regionUpper || c.QTH === regionUpper;
+        return isRegion;
+      } else {
+        return true;
+      }
+    });
+    setCards(filteredCards);
   }, [year, region]);
+
+  useEffect(()=>{
+    getCards();
+  },[])
 
   // /////// RENDER:
 

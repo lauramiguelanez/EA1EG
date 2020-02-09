@@ -13,7 +13,12 @@ const postcardCRUD = (Postcard, extensionFn) => {
   }
   // CRUD: RETRIEVE
   router.get('/', (req, res, next) => {
-    Postcard.find({}/* , { $slice: 10 } */)
+    // db.students.find().limit(5)
+    // // Page 2
+    // db.students.find().skip(5).limit(5)
+    // // Page 3
+    // db.students.find().skip(5).limit(5)
+    Postcard.find({ old: false } /* , { $slice: 10 } */)
       .then(objList => {
         console.log('objList', objList);
         return res.status(200).json(objList);
@@ -26,7 +31,7 @@ const postcardCRUD = (Postcard, extensionFn) => {
     Postcard.findById(id)
       .then(obj => res.status(200).json(obj))
       .catch(e => next(e));
-  }); 
+  });
 
   // CRUD: CREATE
   router.post('/', (req, res, next) => {

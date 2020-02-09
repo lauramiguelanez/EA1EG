@@ -10,26 +10,6 @@ class LocationMap extends Component {
     this.state = {};
   }
 
-  getMarkers = () => {
-    // const locations = /* this.props.cards */ markersData.map(c => ({
-    //   lat: c.location.lat,
-    //   lng: c.location.lng,
-    //   id: c._id,
-    //   indicator: c.indicator
-    // }));
-   /*  var dataStr =
-      'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(locations));
-      var downloadAnchorNode = document.createElement('a');
-      downloadAnchorNode.setAttribute("href",     dataStr);
-      downloadAnchorNode.setAttribute("download", 'markersData' + ".json");
-      document.body.appendChild(downloadAnchorNode); // required for firefox
-      downloadAnchorNode.click();
-      downloadAnchorNode.remove(); */
-
-    this.setState({ locations: markersData });
-    console.log('markers', markersData);
-  };
-
   setRedirect = marker => {
     this.setState({
       redirect: true,
@@ -46,14 +26,9 @@ class LocationMap extends Component {
   };
 
   render() {
-    const { locations } = this.state;
-    const { cards } = this.props;
-    /* if (!locations && cards) {
-      this.getMarkers();
-    } */
     return (
       <section>
-        <GoogleMap locations={/* locations */ markersData}></GoogleMap>
+        <GoogleMap locations={markersData}></GoogleMap>
       </section>
     );
   }

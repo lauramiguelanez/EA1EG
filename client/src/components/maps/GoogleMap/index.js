@@ -2,13 +2,14 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import supercluster from 'points-cluster';
 
+import markersData from '../../data/markersData.json';
+
 import config from '../../../config';
 
 import Marker from '../Marker';
 import ClusterMarker from '../ClusterMarker';
 
 import mapStyles from './mapStyles.json';
-import { markersData } from '../location data';
 
 import MapWrapper from './MapWrapper';
 
@@ -33,7 +34,7 @@ export class GoogleMap extends React.PureComponent {
     mapOptions: {
       center: MAP.defaultCenter,
       zoom: MAP.defaultZoom,
-      bounds: MAP.defaultBounds,
+      bounds: MAP.defaultBounds
     },
     clusters: []
   };
@@ -66,9 +67,9 @@ export class GoogleMap extends React.PureComponent {
 
   handleMapChange = ({ center, zoom, bounds }) => {
     const { locations } = this.props;
-    console.log('this.props.locations', locations);
-    console.log('this.state.clusters', this.state.clusters);
-    console.log('this.state.mapOptions', this.state.mapOptions);
+    // console.log('this.props.locations', locations);
+    // console.log('this.state.clusters', this.state.clusters);
+    // console.log('this.state.mapOptions', this.state.mapOptions);
 
     this.setState(
       {
@@ -86,6 +87,23 @@ export class GoogleMap extends React.PureComponent {
     );
   };
 
+  filterSelection(points) {
+    const { locations } = this.props;
+
+    /* info={markersData.find(
+      m => m.lat === item.points[0].lat && m.lng === item.points[0].lng
+    )} */
+
+    const filtered = markersData.filter(l => {
+      points.reduce((acc, { lat, lng }) => {
+        return acc || (lat === l.lat && lng === l.lng);
+      });
+    });
+
+    console.log('filtered', filtered);
+    return filtered;
+  }
+
   render() {
     return (
       <MapWrapper>
@@ -99,11 +117,24 @@ export class GoogleMap extends React.PureComponent {
         >
           {this.state.clusters.map(item => {
             if (item.numPoints === 1) {
-              return <Marker key={item.id} lat={item.points[0].lat} lng={item.points[0].lng} />;
+              return (
+                <Marker
+                  key={item.id}
+                  lat={item.points[0].lat}
+                  lng={item.points[0].lng}
+                  onClick={() => this.filterSelection([item.points[0]])}
+                />
+              );
             }
 
             return (
-              <ClusterMarker key={item.id} lat={item.lat} lng={item.lng} points={item.points} />
+              <ClusterMarker
+                key={item.id}
+                lat={item.lat}
+                lng={item.lng}
+                points={item.points}
+                onClick={() => this.filterSelection(item.points)}
+              />
             );
           })}
         </GoogleMapReact>
