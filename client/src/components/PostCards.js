@@ -14,13 +14,13 @@ require('dotenv').config();
 const PostCards = ({ newPage, page, search, match }) => {
   // /////// STATE:
   let allCards = [];
+  const [initialized, setInitialized] = useState(false);
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [cards, setCards] = useState(allCards);
+  const [cards, setCards] = useState([]);
 
   // /////// CONSTANTS:
-
   const service = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/api`
   });
@@ -38,6 +38,18 @@ const PostCards = ({ newPage, page, search, match }) => {
   };
 
   // /////// GET DATA:
+  const getCardsBatch = batch => {
+    const route = '/postcard/page/' + batch;
+    // 6437 / 45 = 144
+    return service.get(route).then(cs => {
+      // setBatch(batch + 1);
+      const gotCards = cs.data;
+      const moreCards = [...cards, ...gotCards];
+      console.log('gotCards', moreCards);
+      setCards(moreCards);
+      setInitialized(true)
+    });
+  };
 
   const getCards = (y, r) => {
     let gotCards;
@@ -52,8 +64,8 @@ const PostCards = ({ newPage, page, search, match }) => {
 
     return service
       .get(route)
-      .then(cards => {
-        gotCards = cards.data;
+      .then(cs => {
+        gotCards = cs.data;
         console.log('gotCards', gotCards);
 
         /* const storageObj = gotCards.map(({ location, indicator, _id }) => ({
@@ -101,8 +113,9 @@ const PostCards = ({ newPage, page, search, match }) => {
   };
 
   // /////// COMPONENT UPDATE:
-
   useEffect(() => {
+    // getCards();
+
     newPage();
   }, []);
 
@@ -129,7 +142,7 @@ const PostCards = ({ newPage, page, search, match }) => {
   useEffect(() => {
     // getSearchCards();
 
-    if (search && search !== "") {
+    if (search && search !== '') {
       const filteredCards = cards.filter(c => {
         const { continent, country, indicator, QTH, year } = c;
 
@@ -140,9 +153,9 @@ const PostCards = ({ newPage, page, search, match }) => {
         );
       });
 
-      setCards(filteredCards);
+      // setCards(filteredCards);
     } else {
-      setCards(allCards);
+      // setCards(allCards);
     }
   }, [search]);
 
@@ -164,12 +177,8 @@ const PostCards = ({ newPage, page, search, match }) => {
         return true;
       }
     });
-    setCards(filteredCards);
+    // setCards(filteredCards);
   }, [year, region]);
-
-  useEffect(()=>{
-    getCards();
-  },[])
 
   // /////// RENDER:
 
@@ -194,9 +203,11 @@ const PostCards = ({ newPage, page, search, match }) => {
     <div>
       {renderPage()}
       <FilteredPostcards
-        cards={cards && utils.shuffle(cards)}
+        getCards={getCardsBatch}
+        cards={cards}
         page={page}
         setSelectedCard={setSelectedCard}
+        initialized={initialized}
       />
     </div>
   );

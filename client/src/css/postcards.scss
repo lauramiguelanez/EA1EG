@@ -8,12 +8,14 @@
   //max-width: 70vw;
   width: 100%;
   margin: 0 auto;
+  & div {
+    display: 'contents';
+  }
 }
 
 .column {
-  width: 20%; 
+  width: 20%;
 }
-
 
 .list {
   width: 20vh;
@@ -37,8 +39,14 @@
 }
 
 .postcard-thumbnail {
+  /* width: 95%;
+  height: auto; */
+  /* min-height: 12vw; */
+}
+
+.postcard-thumbnail img {
   background-color: $dark-grey;
-  width: 95%;
+  width: 100%;
   height: auto;
   min-height: 12vw;
 }
