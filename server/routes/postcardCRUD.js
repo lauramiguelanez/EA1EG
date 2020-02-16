@@ -13,7 +13,6 @@ const postcardCRUD = (Postcard, extensionFn) => {
   }
   // CRUD: RETRIEVE
   router.get('/', (req, res, next) => {
-
     Postcard.find({})
       .then(objList => {
         console.log('objList', objList);
@@ -22,13 +21,14 @@ const postcardCRUD = (Postcard, extensionFn) => {
       .catch(e => next(e));
   });
 
-  router.get('/page/:number', (req, res, next) => {
+  router.get('/page/:batch', (req, res, next) => {
     const batchSize = 45;
-    const { number } = req.params;
-    const skip = (number || 0) * batchSize;
+    const { batch } = req.params;
+    const skip = (batch || 0) * batchSize;
     Postcard.find({} /* , { $slice: 10 } */)
       .skip(skip)
       .limit(batchSize)
+
       .then(objList => {
         console.log('objList', objList);
         return res.status(200).json(objList);

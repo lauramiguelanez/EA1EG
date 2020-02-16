@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
 import SearchBar from './elements/SearchBar';
 import BurgerNav from './BurgerNav';
+import URE from '../pages/ProjectURE';
 
 const { window } = global;
 const { innerWidth, innerHeight } = window;
@@ -31,16 +32,23 @@ export default class Navbar extends Component {
     };
 
     const style = {
-      width: page === 'Years' ? `${innerWidth - 100}px` : '100%',
-      backgroundColor:  page ===  'Home'? 'rgba(255, 255,255, 0)' : 'rgba(255, 255,255, 1)'
+      width: page === 'Years' ? `${innerWidth - 100}px` : '100%'
+      // backgroundColor:  page ===  'Home' || page ===  'URE'  ? 'none' : 'rgba(255, 255,255, 1)'
     };
+    if (page === 'URE') {
+      style.backgroundColor = '#ccc8b8';
+    } else if (page === 'Project') {
+      style.backgroundColor = '#d4ebff';
+    } else if (page !== 'Home' && page !== 'Project' && page !== 'URE') {
+      style.backgroundColor = 'white';
+    }
 
     if (hoverLocation) {
       console.log('hoverLocation');
     } else {
       console.log('no hoverLocation');
     }
-    
+
     return innerWidth > 600 ? (
       <nav className={`nav-style bar-${page}`} role="navigation" style={style}>
         <div className="nav-row-wrapper" id="top-nav">
@@ -85,7 +93,7 @@ export default class Navbar extends Component {
               </div>
               <NavLink
                 className="nav-link"
-                to="/year/1970"
+                to="/year/1960"
                 style={page === 'Year' ? selectedStyle : {}}
               >
                 Year
@@ -125,7 +133,7 @@ export default class Navbar extends Component {
         </div>
       </nav>
     ) : (
-      <BurgerNav page={page} setPage={setPage} setSearch={setSearch}/>
+      <BurgerNav page={page} setPage={setPage} setSearch={setSearch} />
     );
   }
 }

@@ -13,11 +13,12 @@ require('dotenv').config();
 
 const PostCards = ({ newPage, page, search, match }) => {
   // /////// STATE:
-  let allCards = [];
+
   const [initialized, setInitialized] = useState(false);
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+  // const [getFunction, setGetFunction] = useState(null);
   const [cards, setCards] = useState([]);
 
   // /////// CONSTANTS:
@@ -40,54 +41,41 @@ const PostCards = ({ newPage, page, search, match }) => {
   // /////// GET DATA:
   const getCardsBatch = batch => {
     const route = '/postcard/page/' + batch;
-    // 6437 / 45 = 144
     return service.get(route).then(cs => {
       // setBatch(batch + 1);
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
       console.log('gotCards', moreCards);
       setCards(moreCards);
-      setInitialized(true)
+      setInitialized(true);
     });
   };
 
-  const getCards = (y, r) => {
+  const getCards = batch => {
     let gotCards;
-    let route = '/postcard';
-    if (y && !r) {
+    let route;
+    if (year && !region) {
       route = `/year/${year}`;
-    } else if (r && !y) {
-      route = `/region/${region}`;
-    } else if (r && y) {
-      //
+    } else if (region && !year) {
+      route = `/region/${region}/${batch}`;
     }
 
-    return service
-      .get(route)
-      .then(cs => {
-        gotCards = cs.data;
-        console.log('gotCards', gotCards);
-
-        /* const storageObj = gotCards.map(({ location, indicator, _id }) => ({
-          location,
-          indicator,
-          _id
-        }));
-        var dataStr =
-          'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(storageObj));
-          var downloadAnchorNode = document.createElement('a');
-          downloadAnchorNode.setAttribute("href",     dataStr);
-          downloadAnchorNode.setAttribute("download", 'location' + ".json");
-          document.body.appendChild(downloadAnchorNode); // required for firefox
-          downloadAnchorNode.click();
-          downloadAnchorNode.remove(); */
-
-        setCards(gotCards);
-        if (route === '/postcard') {
-          allCards = gotCards;
-        }
-      })
-      .catch(error => console.log(error));
+    if (year || region) {
+      return service
+        .get(route)
+        .then(cs => {
+          gotCards = cs.data;
+          if (batch === 0) {
+            setCards(gotCards);
+            console.log('gotCards', route, year, region, gotCards);
+          } else {
+            const moreCards = [...cards, ...gotCards];
+            setCards(moreCards);
+            console.log('gotCards', route, year, region, moreCards);
+          }
+        })
+        .catch(error => console.log(error));
+    }
   };
 
   const getSearchCards = () => {
@@ -114,8 +102,6 @@ const PostCards = ({ newPage, page, search, match }) => {
 
   // /////// COMPONENT UPDATE:
   useEffect(() => {
-    // getCards();
-
     newPage();
   }, []);
 
@@ -127,6 +113,8 @@ const PostCards = ({ newPage, page, search, match }) => {
 
     if (idFromUrl) {
       getSelectedCard(idFromUrl);
+      setYear(null);
+      setRegion(null);
       newPage('CardDetail');
     }
     if (yearFromUrl) {
@@ -140,45 +128,13 @@ const PostCards = ({ newPage, page, search, match }) => {
   }, [match]);
 
   useEffect(() => {
-    // getSearchCards();
-
-    if (search && search !== '') {
-      const filteredCards = cards.filter(c => {
-        const { continent, country, indicator, QTH, year } = c;
-
-        const s = search.toUpperCase();
-
-        return (
-          s === continent || s === country || s === indicator || s === QTH || s === year.toString()
-        );
-      });
-
-      // setCards(filteredCards);
+    setInitialized(false);
+    if (year || region) {
+    } else if (search && search !== '') {
+      setInitialized(false);
     } else {
-      // setCards(allCards);
     }
-  }, [search]);
-
-  useEffect(() => {
-    // getCards(year, region);
-    const filteredCards = cards.filter(c => {
-      const regionUpper = region.toUpperCase();
-      if (year && region) {
-        const isRegion =
-          c.country === regionUpper || c.continent === regionUpper || c.QTH === regionUpper;
-        return c.year === year && isRegion;
-      } else if (year && !region) {
-        return year === c.year;
-      } else if (!year && region) {
-        const isRegion =
-          c.country === regionUpper || c.continent === regionUpper || c.QTH === regionUpper;
-        return isRegion;
-      } else {
-        return true;
-      }
-    });
-    // setCards(filteredCards);
-  }, [year, region]);
+  }, [year, region, search]);
 
   // /////// RENDER:
 
@@ -199,16 +155,56 @@ const PostCards = ({ newPage, page, search, match }) => {
     }
   };
 
+  const renderPostcards = () => {
+    switch (page) {
+      case 'Region':
+      case 'Map':
+      case 'Years':
+        return (
+          <FilteredPostcards
+            start={0}
+            getCards={getCards}
+            cards={cards}
+            page={page}
+            setSelectedCard={setSelectedCard}
+            initialized={initialized}
+            limit={100 >= cards.length}
+          />
+        );
+
+      case 'Search':
+        return (
+          <FilteredPostcards
+            start={0}
+            getCards={getSearchCards}
+            cards={cards}
+            page={page}
+            setSelectedCard={setSelectedCard}
+            initialized={initialized}
+            limit={100 >= cards.length}
+          />
+        );
+      case 'CardDetail':
+      default:
+        return (
+          <FilteredPostcards
+            getCards={getCardsBatch}
+            cards={cards}
+            page={page}
+            setSelectedCard={setSelectedCard}
+            initialized={initialized}
+            limit={6437 >= cards.length}
+          />
+        );
+    }
+  };
+
+  console.log('getFunction', initialized, search);
+
   return (
     <div>
       {renderPage()}
-      <FilteredPostcards
-        getCards={getCardsBatch}
-        cards={cards}
-        page={page}
-        setSelectedCard={setSelectedCard}
-        initialized={initialized}
-      />
+      {renderPostcards()}
     </div>
   );
 };

@@ -12,9 +12,7 @@ import './css/navbar.scss';
 
 const App = () => {
   const [page, setPage] = useState('Home');
-  const [search, setSearch] = useState('Home');
-  const [size, setSize] = useState('Large');
-  const [order, setOrder] = useState('Large');
+  const [search, setSearch] = useState('');
 
   const cardRoutes = [
     { route: '/cards', page: 'Cards', exact: true },
@@ -54,8 +52,6 @@ const App = () => {
             return (
               <Route
                 path={route}
-                size={size}
-                order={order}
                 render={props => (
                   <PostCards
                     newPage={forcedPage => setPage(forcedPage || page)}

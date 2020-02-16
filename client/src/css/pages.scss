@@ -5,8 +5,8 @@
   // min-height: $page-heigth;
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
-  margin-right: 10px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
 
   .text-body {
     max-width: 70vw;
@@ -24,23 +24,29 @@
     padding-top: 15px;
   }
 }
-
+.detail {
+  flex-direction: row;
+  height: auto;
+  position: relative;
+}
 
 .page-project {
   background-color: $blue-search;
   color: $black;
+  margin: 0;
 }
 
 .page-URE {
   background-color: $brown-place;
   color: $black;
+  margin: 0;
 }
 
-.wrapper-text-column{
+.wrapper-text-column {
   display: flex;
   margin-right: 60px;
 }
-.text-body-column{
+.text-body-column {
   font-size: $column-font-size;
   width: 35%;
   padding: 50px;
