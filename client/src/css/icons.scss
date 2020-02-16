@@ -1,0 +1,24 @@
+#closeIcon {
+  width: 25px;
+  height: 25px;
+  // background-color: red;
+  // border: 1px solid black;
+}
+.closeIcon1 {
+  height: 25px;
+  width: 2px;
+  margin-left: 12px;
+  background-color: black;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+.closeIcon2 {
+  height: 25px;
+  width: 2px;
+  background-color: black;
+  transform: rotate(90deg);
+  z-index: 2;
+}
+
+
+

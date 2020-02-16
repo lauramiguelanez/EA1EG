@@ -65,6 +65,7 @@ const PostCards = ({ newPage, page, search, match }) => {
         .get(route)
         .then(cs => {
           gotCards = cs.data;
+          setInitialized(true);
           if (batch === 0) {
             setCards(gotCards);
             console.log('gotCards', route, year, region, gotCards);
@@ -82,6 +83,7 @@ const PostCards = ({ newPage, page, search, match }) => {
     service
       .get(`/search/${search}`)
       .then(cards => {
+        setInitialized(true);
         const gotCards = cards.data;
         console.log('gotCards', gotCards);
         gotCards = utils.shuffle(gotCards);
@@ -96,6 +98,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       .then(cards => {
         setSelectedCard(cards.data);
         console.log('gotCards', cards.data);
+        setInitialized(true);
       })
       .catch(error => console.log(error));
   };
@@ -103,6 +106,7 @@ const PostCards = ({ newPage, page, search, match }) => {
   // /////// COMPONENT UPDATE:
   useEffect(() => {
     newPage();
+    setInitialized(false);
   }, []);
 
   useEffect(() => {
@@ -162,6 +166,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       case 'Years':
         return (
           <FilteredPostcards
+          initialLoad={initialized}
             start={0}
             getCards={getCards}
             cards={cards}
@@ -175,6 +180,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       case 'Search':
         return (
           <FilteredPostcards
+          initialLoad={initialized}
             start={0}
             getCards={getSearchCards}
             cards={cards}
@@ -188,6 +194,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       default:
         return (
           <FilteredPostcards
+          initialLoad={initialized}
             getCards={getCardsBatch}
             cards={cards}
             page={page}

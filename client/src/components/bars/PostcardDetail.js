@@ -40,9 +40,12 @@ const PostcardDetail = ({ card }) => {
             <p>{`${country}, ${continent}`}</p>
           </div>
         </div>
-        <button className="close-detail" onClick={close}>
-          close
-        </button>
+
+        <div className="close-detail" onClick={close} id="closeIcon">
+          <div class="closeIcon1">
+            <div class="closeIcon2"></div>
+          </div>
+        </div>
       </section>
     );
   }

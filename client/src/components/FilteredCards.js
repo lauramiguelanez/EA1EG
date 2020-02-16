@@ -15,6 +15,7 @@ const FilteredCards = ({
   getCards,
   initialized,
   limit,
+  initialLoad,
   start = 0
 }) => {
   const style = {
@@ -24,11 +25,22 @@ const FilteredCards = ({
     if (!initialized && getCards) {
       getCards(0);
     }
-  }, [getCards]);
+  }, [getCards, start]);
 
   return (
     <section className="page" style={style}>
-      <InfiniteScroll pageStart={start} loadMore={getCards} hasMore={limit} threshold={250}>
+      <InfiniteScroll
+        initialLoad={true}
+        pageStart={start}
+        loadMore={getCards}
+        hasMore={limit}
+        threshold={250}
+        loader={
+          <div className="loader" key={0}>
+            Loading ...
+          </div>
+        }
+      >
         <div className="columns-wrapper">
           {cards &&
             cards.map((card, i) => (
