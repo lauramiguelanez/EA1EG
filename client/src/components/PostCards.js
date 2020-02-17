@@ -166,7 +166,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       case 'Years':
         return (
           <FilteredPostcards
-          initialLoad={initialized}
+            initialLoad={initialized}
             start={0}
             getCards={getCards}
             cards={cards}
@@ -180,7 +180,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       case 'Search':
         return (
           <FilteredPostcards
-          initialLoad={initialized}
+            initialLoad={initialized}
             start={0}
             getCards={getSearchCards}
             cards={cards}
@@ -194,7 +194,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       default:
         return (
           <FilteredPostcards
-          initialLoad={initialized}
+            initialLoad={initialized}
             getCards={getCardsBatch}
             cards={cards}
             page={page}

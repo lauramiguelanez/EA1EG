@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
-import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
+import React, { Component, useState } from 'react';
+import { /* Link, BrowserRouter, */ Redirect, NavLink } from 'react-router-dom';
 const PostcardDetail = ({ card }) => {
   const imageUrl = 'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
 
+  const [display, setDisplay] = useState(true);
+
   const close = () => {
-    //
+    setDisplay(false);
+    let url = `/card/s`;
+    return <Redirect to={url} />;
   };
 
-  if (card) {
+  if (card && display) {
     const {
       QTH,
       location,
@@ -20,6 +24,7 @@ const PostcardDetail = ({ card }) => {
       city,
       region
     } = card;
+
     return (
       <section className="page detail">
         <div className="postcard-wrapper">
