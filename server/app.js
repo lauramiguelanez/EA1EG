@@ -106,5 +106,8 @@ app.use('/api/region', regionGet(require('./models/Postcard')));
 const searchGet = require('./routes/search');
 app.use('/api/search', searchGet(require('./models/Postcard')));
 
+const cloudinary = require('./routes/uploadCloud');
+app.use('/api', cloudinary);
+
 
 module.exports = app;

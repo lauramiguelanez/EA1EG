@@ -1,9 +1,13 @@
 import React, { Component, useState } from 'react';
 import { /* Link, BrowserRouter, */ Redirect, NavLink } from 'react-router-dom';
+
+import PostcardEdit from './elements/PostcardEdit';
+
 const PostcardDetail = ({ card }) => {
   const imageUrl = 'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
 
   const [display, setDisplay] = useState(true);
+  const [currentCard, setCurrentCard] = useState(card);
 
   const close = () => {
     setDisplay(false);
@@ -23,16 +27,16 @@ const PostcardDetail = ({ card }) => {
       indicator,
       city,
       region
-    } = card;
+    } = currentCard;
 
     return (
       <section className="page detail">
         <div className="postcard-wrapper">
           <div className="postcard-img">
-            <img src={`${imageUrl}${card.imageFront}`} alt={card.indicator} />
+            <img src={`${imageUrl}${imageFront}`} alt={indicator} />
           </div>
           <div className="postcard-img">
-            <img src={`${imageUrl}${card.imageBack}`} alt={card.indicator} />
+            <img src={`${imageUrl}${imageBack}`} alt={indicator} />
           </div>
         </div>
         <div className="postcard-detail-data">
@@ -44,6 +48,7 @@ const PostcardDetail = ({ card }) => {
             <p>{`${QTH}, ${region}`}</p>
             <p>{`${country}, ${continent}`}</p>
           </div>
+          <PostcardEdit card={card} setCurrentCard={setCurrentCard} />
         </div>
 
         <div className="close-detail" onClick={close} id="closeIcon">
