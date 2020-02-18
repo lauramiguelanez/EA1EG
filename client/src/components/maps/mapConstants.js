@@ -1,4 +1,4 @@
-import config from '../../config';
+require('dotenv').config();
 
 const mapConstants = {
   COORDINATES: {
@@ -7,7 +7,7 @@ const mapConstants = {
   },
 
   API_CONFIG: {
-    key: config.gMapsKey,
+    key: process.env.REACT_APP_API_KEY_MAP,
     language: 'es'
   },
 

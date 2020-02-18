@@ -4,6 +4,7 @@ import axios from 'axios';
 import GoogleMap from '../maps/GoogleMap/index.js';
 import markersData from '../data/markersData.json';
 
+
 class LocationMap extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +37,3 @@ class LocationMap extends Component {
 
 export default LocationMap;
 
-/* export default GoogleApiWrapper({
-  apiKey: config.gMapsKey
-})(LocationMap); */

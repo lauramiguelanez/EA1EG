@@ -3,15 +3,12 @@ import GoogleMapReact from 'google-map-react';
 import supercluster from 'points-cluster';
 
 import markersData from '../../data/markersData.json';
-
-import config from '../../../config';
-
 import Marker from '../Marker';
 import ClusterMarker from '../ClusterMarker';
-
 import mapStyles from './mapStyles.json';
-
 import MapWrapper from './MapWrapper';
+
+require('dotenv').config();
 
 const MAP = {
   defaultZoom: 3,
@@ -105,6 +102,7 @@ export class GoogleMap extends React.PureComponent {
   }
 
   render() {
+    console.log('KEY', process.env.REACT_APP_API_KEY_MAP);
     return (
       <MapWrapper>
         <GoogleMapReact
@@ -113,7 +111,7 @@ export class GoogleMap extends React.PureComponent {
           options={MAP.options}
           onChange={this.handleMapChange}
           yesIWantToUseGoogleMapApiInternals
-          bootstrapURLKeys={{ key: config.gMapsKey }}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY_MAP }}
         >
           {this.state.clusters.map(item => {
             if (item.numPoints === 1) {
