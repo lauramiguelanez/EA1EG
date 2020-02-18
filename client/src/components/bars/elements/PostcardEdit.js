@@ -3,35 +3,33 @@ import { /* Link, BrowserRouter, */ Redirect, NavLink } from 'react-router-dom';
 import axios from 'axios';
 require('dotenv').config();
 
-const imageUrl = 'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
 const service = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}/api`
 });
 
 const PostcardDetail = ({ card, setCurrentCard }) => {
-  
   const [file, setFile] = useState();
-
 
   const handleChange = e => {
     setFile(e.target.files[0]);
   };
 
-  async function uploadImage (e, key) {
+  const uploadImage = async (e, key) => {
     e.preventDefault();
 
     const formData = new FormData();
     formData.append('photo', file);
-
-    const img = await service
-      .post('/uploadCloud', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      })   
+    console.log('uploadImage');
+    const img = await service.post('/uploadimg', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    });
     const imgUrl = img.data.secure_url;
+    console.log('imgUrl', key, imgUrl);
     const postcard = card;
     postcard[key] = imgUrl;
-    const updatedCard = await service.post('/postcard', postcard)
-    setCurrentCard(updatedCard)
+    const updatedCard = await service.post('/postcard', postcard);
+    setCurrentCard(updatedCard);
+    console.log('updatedCard', updatedCard);
   };
 
   if (card) {

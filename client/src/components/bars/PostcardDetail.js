@@ -4,18 +4,18 @@ import { /* Link, BrowserRouter, */ Redirect, NavLink } from 'react-router-dom';
 import PostcardEdit from './elements/PostcardEdit';
 
 const PostcardDetail = ({ card }) => {
-  const imageUrl = 'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
+  const imageUrl = ''; //'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
 
   const [display, setDisplay] = useState(true);
   const [currentCard, setCurrentCard] = useState(card);
 
   const close = () => {
     setDisplay(false);
-    let url = `/card/s`;
+    let url = `/cards`;
     return <Redirect to={url} />;
   };
 
-  if (card && display) {
+  if (currentCard && display) {
     const {
       QTH,
       location,

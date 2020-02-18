@@ -94,7 +94,7 @@ const PostCards = ({ newPage, page, search, match }) => {
 
   const getSelectedCard = cardId => {
     service
-      .get(`/api/postcard/${cardId}`)
+      .get(`/postcard/${cardId}`)
       .then(cards => {
         setSelectedCard(cards.data);
         console.log('gotCards', cards.data);

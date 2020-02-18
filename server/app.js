@@ -107,7 +107,7 @@ const searchGet = require('./routes/search');
 app.use('/api/search', searchGet(require('./models/Postcard')));
 
 const cloudinary = require('./routes/uploadCloud');
-app.use('/api', cloudinary);
+app.use('/api/uploadimg', cloudinary);
 
 
 module.exports = app;

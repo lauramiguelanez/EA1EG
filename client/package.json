@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "dotenv": "^6.1.0",
+    "dotenv": "^6.2.0",
     "google-map-react": "^1.1.5",
     "google-maps-react": "^2.0.2",
     "immutable": "^4.0.0-rc.12",

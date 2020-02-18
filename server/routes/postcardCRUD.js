@@ -28,7 +28,7 @@ const postcardCRUD = (Postcard, extensionFn) => {
     Postcard.find({} /* , { $slice: 10 } */)
       .skip(skip)
       .limit(batchSize)
-
+      .sort({_id:-1})
       .then(objList => {
         console.log('objList', objList);
         return res.status(200).json(objList);
