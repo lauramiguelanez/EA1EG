@@ -48,11 +48,15 @@
 }
 
 .wrapper-text-column {
+  width: 100%;
   display: flex;
-  margin-right: 60px;
+  // margin-right: 60px;
 }
 .text-body-column {
   font-size: $column-font-size;
-  width: 35%;
-  padding: 50px;
+  width: 40%;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  margin-top: 3rem;
+  // padding: 50px;
 }
