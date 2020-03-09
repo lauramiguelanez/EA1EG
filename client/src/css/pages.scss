@@ -8,7 +8,6 @@
   /* margin-left: 10px;
   margin-right: 10px; */
 
-
   .text-body {
     max-width: 70vw;
     margin: 0 auto;
@@ -27,8 +26,7 @@
 }
 
 .allcards {
-
-  min-height: calc(100vh - $nav-height);
+  min-height: calc(100vh - #{$nav-height});
 }
 .detail {
   flex-direction: row;
