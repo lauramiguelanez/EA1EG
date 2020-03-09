@@ -1,10 +1,15 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { /* Link, BrowserRouter, */ Redirect, NavLink } from 'react-router-dom';
 
 import PostcardEdit from './elements/PostcardEdit';
+import axios from 'axios';
+require('dotenv').config();
 
-const PostcardDetail = ({ card }) => {
-  const imageUrl = ''; //'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
+const PostcardDetail = ({ card, cardId }) => {
+  const imageUrl = ''; 
+  const service = axios.create({
+    baseURL: `${process.env.REACT_APP_API_URL}/api`
+  });
 
   const [display, setDisplay] = useState(true);
   const [currentCard, setCurrentCard] = useState(card);
@@ -14,6 +19,25 @@ const PostcardDetail = ({ card }) => {
     let url = `/cards`;
     return <Redirect to={url} />;
   };
+  
+  const getSelectedCard = cardId => {
+    service
+      .get(`/postcard/${cardId}`)
+      .then(cards => {
+        setCurrentCard(cards.data);
+        console.log('gotCards', cards.data);
+      })
+      .catch(error => console.log(error));
+  };
+
+  useEffect(() => {
+    getSelectedCard(cardId)
+  }, [card]);
+
+  useEffect(() => {
+    if(!card && cardId)
+    setCurrentCard(card)
+  }, [cardId]);
 
   if (currentCard && display) {
     const {
