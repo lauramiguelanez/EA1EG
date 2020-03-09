@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   display: block;
-  min-height: $header-heigth;
+  height: $header-heigth;
   width: 100%;
   z-index: 900;
   margin: 0;
@@ -22,7 +22,7 @@
 
     & :hover {
       color: $accent-color;
-      text-decoration: none;
+      text-decoration: underline;
     }
     & :visited {
       color: $black;
@@ -31,7 +31,6 @@
   }
 }
 .nav.burger{
-
   & a {
     color: $black;
     text-decoration: none;
@@ -41,7 +40,7 @@
 
     & :hover {
       color: $accent-color;
-      text-decoration: none;
+      text-decoration: underline;
     }
     
     & :visited {
@@ -106,8 +105,8 @@
 
 .logoSvg {
   top: 0;
-  width: 35%;
-  height: 35%;
+  width: auto;
+  height: calc( #{$header-heigth} - 25px);
   padding: 5px;
 }
 
@@ -116,13 +115,12 @@
 }
 
 #top-nav {
-  // background-color: $white; // $grey-menu;
   color: $black;
   width: 100%;
 }
 
 .bar-years {
-  background-color: $white; // $yellow-year;
+  background-color: $white;
   & a {
     color: $black;
   }
