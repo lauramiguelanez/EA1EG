@@ -21,12 +21,38 @@ const regionGet = (Postcard, extensionFn) => {
         { continent: search } /* , {city:region} */,
         { year: search },
         { QTH: search },
-        { indicator: search }       ,
+        { indicator: search },
         { imageFront: { $search: search } }
       ]
     })
-      .then(obj => res.status(200).json(obj))
+      .then(objList => res.status(200).json(objList))
       .catch(e => next(e));
+  });
+
+  router.get('/random/:search', (req, res, next) => {
+    const { search } = req.params;
+    if (search && search !== '') {
+      Postcard.aggregate([
+        { $sample: { size: 45 } },
+        {
+          $match: {
+            $or: [
+              { country: search },
+              { continent: search } /* , {city:region} */,
+              { year: search },
+              { QTH: search },
+              { indicator: search }
+            ]
+          }
+        }
+      ])
+        .then(objList => res.status(200).json(objList))
+        .catch(e => next(e));
+    } else {
+      Postcard.aggregate([{ $sample: { size: 45 } }])
+        .then(objList => res.status(200).json(objList))
+        .catch(e => next(e));
+    }
   });
 
   router.use((err, req, res, next) => {

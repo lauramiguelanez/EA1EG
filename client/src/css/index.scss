@@ -30,4 +30,7 @@ a {
   text-decoration: none;
   color: $black;
   cursor: url('dot.png'), auto;	
+  &:hover {
+    text-decoration: underline;
+  }
 }
