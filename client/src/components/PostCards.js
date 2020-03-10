@@ -52,13 +52,24 @@ const PostCards = ({ newPage, page, search, match }) => {
     });
   };
 
+  const getRandom = () => {
+    const route = '/search/random';
+    return service.get(route).then(cs => {
+      const gotCards = cs.data;
+      const moreCards = [...cards, ...gotCards];
+      console.log('gotRandomCards', moreCards);
+      setCards(moreCards);
+      setInitialized(true);
+    });
+  };
+
   const getCards = batch => {
     let gotCards;
     let route;
     if (year && !region) {
-      route = `/year/${year}`;
+      route = `/year/${year}/${batch || 0}`;
     } else if (region && !year) {
-      route = `/region/${region}/${batch}`;
+      route = `/region/${region}/${batch || 0}`;
     }
 
     if (year || region) {
@@ -120,7 +131,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       getSelectedCard(idFromUrl);
       setYear(null);
       setRegion(null);
-      setCardId(idFromUrl)
+      setCardId(idFromUrl);
       newPage('CardDetail');
     }
     if (yearFromUrl) {
@@ -201,7 +212,7 @@ const PostCards = ({ newPage, page, search, match }) => {
         return (
           <FilteredPostcards
             initialLoad={initialized}
-            getCards={getCardsBatch}
+            getCards={getRandom}
             cards={cards}
             page={page}
             setSelectedCard={setSelectedCard}

@@ -25,7 +25,7 @@ const postcardCRUD = (Postcard, extensionFn) => {
     const batchSize = 45;
     const { batch } = req.params;
     const skip = (batch || 0) * batchSize;
-    Postcard.find({} /* , { $slice: 10 } */)
+    Postcard.find({})
       .skip(skip)
       .limit(batchSize)
       .sort({_id:-1})

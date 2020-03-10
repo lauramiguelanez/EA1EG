@@ -17,42 +17,42 @@ const regionGet = (Postcard, extensionFn) => {
     const { search } = req.params;
     Postcard.find({
       $or: [
-        { country: search },
-        { continent: search } /* , {city:region} */,
-        { year: search },
-        { QTH: search },
-        { indicator: search },
-        { imageFront: { $search: search } }
+        { country: new RegExp(search, 'gi') },
+        { continent: new RegExp(search, 'gi') } /* , {city:region} */,
+        { year: new RegExp(search, 'gi') },
+        { QTH: new RegExp(search, 'gi') },
+        { indicator: new RegExp(search, 'gi') },
+        { imageFront: { $search: new RegExp(search, 'gi') } }
       ]
     })
       .then(objList => res.status(200).json(objList))
       .catch(e => next(e));
   });
 
-  router.get('/random/:search', (req, res, next) => {
-    const { search } = req.params;
+  router.get('/random', (req, res, next) => {
+    /*  const { search } = req.params;
     if (search && search !== '') {
       Postcard.aggregate([
         { $sample: { size: 45 } },
         {
           $match: {
             $or: [
-              { country: search },
-              { continent: search } /* , {city:region} */,
-              { year: search },
-              { QTH: search },
-              { indicator: search }
+              { country: new RegExp(search, "gi")  },
+              { continent: new RegExp(search, "gi")  } ,
+              { year: new RegExp(search, "gi")  },
+              { QTH: new RegExp(search, "gi")  },
+              { indicator: new RegExp(search, "gi")  }
             ]
           }
         }
       ])
         .then(objList => res.status(200).json(objList))
         .catch(e => next(e));
-    } else {
-      Postcard.aggregate([{ $sample: { size: 45 } }])
-        .then(objList => res.status(200).json(objList))
-        .catch(e => next(e));
-    }
+    } else { */
+    Postcard.find({ $sample: { size: 45 } })
+      .then(objList => res.status(200).json(objList))
+      .catch(e => next(e));
+    //}
   });
 
   router.use((err, req, res, next) => {
