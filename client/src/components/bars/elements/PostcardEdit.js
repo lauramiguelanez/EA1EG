@@ -39,23 +39,29 @@ const PostcardDetail = ({ card, setCurrentCard }) => {
           <form onSubmit={e => uploadImage(e, 'imageFront')}>
             <label className="file-label">
               <input className="file-input" type="file" onChange={e => handleChange(e)} />
+              <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
               <span className="file-cta">
                 <span className="file-label">imageFront</span>
               </span>
             </label>
             <button className="button is-primary" type="submit">
-              Upload
+            imageFront
             </button>
           </form>
           <form onSubmit={e => uploadImage(e, 'imageBack')}>
             <label className="file-label">
               <input className="file-input" type="file" onChange={e => handleChange(e)} />
+              <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
               <span className="file-cta">
                 <span className="file-label">imageBack</span>
               </span>
             </label>
             <button className="button is-primary" type="submit">
-              Upload
+            imageBack
             </button>
           </form>
         </div>
@@ -68,3 +74,20 @@ const PostcardDetail = ({ card, setCurrentCard }) => {
 // {card.indicator}~{card.year}~{card.QTH}~{card.country}~{card.continent}
 
 export default PostcardDetail;
+
+
+/* <div class="field">
+  <div class="file is-primary">
+    <label class="file-label">
+      <input class="file-input" type="file" name="resume">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">
+          Primary file…
+        </span>
+      </span>
+    </label>
+  </div>
+</div> */

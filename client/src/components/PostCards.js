@@ -17,6 +17,7 @@ const PostCards = ({ newPage, page, search, match }) => {
   const [initialized, setInitialized] = useState(false);
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(null);
+  const [cardId, setCardId] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   // const [getFunction, setGetFunction] = useState(null);
   const [cards, setCards] = useState([]);
@@ -119,15 +120,20 @@ const PostCards = ({ newPage, page, search, match }) => {
       getSelectedCard(idFromUrl);
       setYear(null);
       setRegion(null);
+      setCardId(idFromUrl)
       newPage('CardDetail');
     }
     if (yearFromUrl) {
       setYear(yearFromUrl);
       newPage('Year');
+      setRegion(null);
+      setCardId(null);
     }
     if (regionFromUrl) {
       setRegion(regionFromUrl);
       newPage('Region');
+      setYear(null);
+      setCardId(null);
     }
   }, [match]);
 

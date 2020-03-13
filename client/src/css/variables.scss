@@ -53,3 +53,17 @@ $yellow-alt: #fff3b6;
 $pink-alt: #ffebf3;
 $grey-alt: #cccccc;
 $dark-grey: #4d4d4d;
+
+
+// Update Bulma's global variables
+$family-sans-serif: 'FaktPro', sans-serif;
+$grey-dark: $grey-menu;
+$grey-light: $brown-place;
+$primary: $pink-archive;
+$link: $blue-search;
+
+// Update some of Bulma's component variables
+$control-border-width: 2px;
+$input-background-color: $brown-place;
+$input-border-color: transparent;
+$input-shadow: none;

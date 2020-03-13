@@ -28,7 +28,7 @@ const FilteredCards = ({
   }, [getCards, start]);
 
   return (
-    <section className="page" style={style}>
+    <section className="page allcards" style={style}>
       <InfiniteScroll
         initialLoad={true}
         pageStart={start}

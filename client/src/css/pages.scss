@@ -24,6 +24,11 @@
     padding-top: 15px;
   }
 }
+
+.allcards {
+
+  min-height: calc(100vh - $nav-height);
+}
 .detail {
   flex-direction: row;
   height: auto;
