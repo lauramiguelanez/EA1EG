@@ -14,18 +14,20 @@ const yearGet = (Postcard, extensionFn) => {
   // CRUD: RETRIEVE
   router.get('/:year/:batch', (req, res, next) => {
     const { year, batch } = req.params;
-    const batchSize = 10;
+    const batchSize = 45;
     const skip = (batch || 0) * batchSize;
-
-    console.log('/:year/:batch', year, batch);
-    Postcard.find({ year })
-      .skip(skip)
-      .limit(batchSize)
+    const y = Number(year);
+    console.log('***************/:year/:batch', y, typeof y,batch, skip);
+    Postcard.find({ year: y })
+      /* .skip(skip)
+      .limit(batchSize) */
       .then(obj => {
         console.log('/:year/:batch', obj);
         return res.status(200).json(obj);
       })
-      .catch(e => next(e));
+      .catch(e => {
+        console.log(e)
+        return next(e)});
   });
 
   router.get('/:year', (req, res, next) => {
@@ -35,7 +37,7 @@ const yearGet = (Postcard, extensionFn) => {
 
     Postcard.find({ year })
       .then(obj => {
-        console.log('/:year', obj, typeof(year));
+        console.log('^^^^^^^^^^^/:year', obj, typeof year);
         return res.status(200).json(obj);
       })
       .catch(e => next(e));

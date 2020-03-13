@@ -2,7 +2,7 @@
 @import 'mixins.scss';
 
 .page {
-  // min-height: $page-heigth;
+  min-height: $page-heigth;
   display: flex;
   flex-direction: column;
   /* margin-left: 10px;
@@ -26,8 +26,7 @@
 }
 
 .allcards {
-
-  min-height: calc(100vh - $nav-height);
+  min-height: calc(100vh - #{$nav-height});
 }
 .detail {
   flex-direction: row;
@@ -48,11 +47,16 @@
 }
 
 .wrapper-text-column {
+  width: 100%;
   display: flex;
-  margin-right: 60px;
+  // margin-right: 60px;
 }
 .text-body-column {
   font-size: $column-font-size;
-  width: 35%;
-  padding: 50px;
+  width: 40%;
+  padding-left: 0.5rem;
+  padding-right: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+  // padding: 50px;
 }

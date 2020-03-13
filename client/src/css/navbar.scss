@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   display: block;
-  min-height: $header-heigth;
+  height: $header-heigth;
   width: 100%;
   z-index: 900;
   margin: 0;
@@ -15,38 +15,37 @@
   line-height: $nav-font-size;
   & a {
     color: $black;
-    text-decoration: none;
+    // text-decoration: none;
     font-size: $nav-font-size;
     // align-self: center;
     // justify-self: center;
 
-    & :hover {
+    &:hover {
       color: $accent-color;
-      text-decoration: none;
+      text-decoration: underline;
     }
-    & :visited {
+    &:visited {
       color: $black;
-      text-decoration: none;
+      // text-decoration: none;
     }
   }
 }
-.nav.burger{
-
+.nav.burger {
   & a {
     color: $black;
-    text-decoration: none;
+    // text-decoration: none;
     font-size: $nav-font-size;
     // align-self: center;
     // justify-self: center;
 
-    & :hover {
+    &:hover {
       color: $accent-color;
-      text-decoration: none;
+      text-decoration: underline;
     }
-    
-    & :visited {
+
+    &:visited {
       color: $black;
-      text-decoration: none;
+      // text-decoration: none;
     }
   }
 }
@@ -59,7 +58,7 @@
   display: flex;
   // height: 120px;
   margin: 0 auto;
- 
+
   padding: 0;
   align-items: flex-start;
   flex-direction: row;
@@ -73,9 +72,9 @@
   display: block;
   // padding: 7px;
   border-color: black;
-  margin-top: 15px;
-  margin-left: 1vw;
-  margin-right: 1vw;
+  padding-top: 15px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .nav-link {
@@ -83,22 +82,27 @@
   font-size: 1rem;
   width: 100%;
   display: inline-block;
-  & :hover {
+  &:hover {
     text-decoration: underline;
   }
+  &.search-link{
+    text-decoration: none;
+  }
 }
+
+
 .link {
   font-family: $main-font;
   font-size: 1rem;
   display: inline-block;
-  & :hover {
+  &:hover {
     text-decoration: underline;
   }
 }
 
 .link-line {
   display: inline;
-  & :hover {
+  &:hover {
     text-decoration: underline;
   }
   margin-right: 10px;
@@ -106,8 +110,8 @@
 
 .logoSvg {
   top: 0;
-  width: 35%;
-  height: 35%;
+  width: auto;
+  height: calc(#{$header-heigth} - 25px);
   padding: 5px;
 }
 
@@ -116,13 +120,12 @@
 }
 
 #top-nav {
-  // background-color: $white; // $grey-menu;
   color: $black;
   width: 100%;
 }
 
 .bar-years {
-  background-color: $white; // $yellow-year;
+  background-color: $white;
   & a {
     color: $black;
   }
@@ -160,49 +163,46 @@
   line-height: $nav-font-size;
   & a {
     color: $black;
-    text-decoration: none;
+    // text-decoration: none;
     font-size: $nav-font-size;
     // align-self: center;
     // justify-self: center;
 
-    & :hover {
+    &:hover {
       color: $accent-color;
-      text-decoration: none;
+      // text-decoration: none;
     }
-    & :visited {
+    &:visited {
       color: $black;
-      text-decoration: none;
+      // text-decoration: none;
     }
   }
 }
 
-
-
 .searchField {
+  font-size: $body-font-size;
   position: relative;
-  padding: 10px 0 0;
-  /* margin-top: 10px; */
   width: 50%;
 }
 
 .searchInput {
+  font-size: $body-font-size;
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid $primary-color;/*  $brown-place; */
+  border-bottom: 1.5px solid $primary-color; 
   outline: 0;
-  font-size: 1.3rem;
+  padding-top: 2px;
   color: $secondary-color;
-  padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
 
   &::placeholder {
-    color: $brown-place/* transparent; */
+    font-size: $body-font-size;
+    color: $grey-alt /* transparent; */
   }
 
   &:placeholder-shown ~ .searchLabel {
-    font-size: 1.3rem;
     cursor: text;
     top: 20px;
   }
@@ -225,16 +225,18 @@
     transition: 0.2s;
     font-size: 1rem;
     color: $primary-color;
-    font-weight:700;    
+    font-weight: 700;
   }
-  padding-bottom: 6px;  
+  padding-bottom: 6px;
   font-weight: 700;
   border-width: 3px;
-  border-image: linear-gradient(to right, $primary-color,$secondary-color);
+  border-image: linear-gradient(to right, $primary-color, $secondary-color);
   border-image-slice: 1;
 }
 
-.searchInput{
-  &:required,&:invalid { box-shadow:none; }
+.searchInput {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
 }
-

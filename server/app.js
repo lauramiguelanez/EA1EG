@@ -86,7 +86,7 @@ app.use(session({
 }))
 app.use(flash());
 require('./passport')(app);
-    
+app.disable('etag');  
 
 const index = require('./routes/index');
 app.use('/', index);

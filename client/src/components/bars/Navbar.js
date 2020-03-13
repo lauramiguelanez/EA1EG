@@ -119,7 +119,7 @@ export default class Navbar extends Component {
               onMouseLeave={this.toggleHoverSearch}
             >
               <NavLink
-                className="nav-link"
+                className="nav-link search-link"
                 to="/cards"
                 style={page === 'Search' ? selectedStyle : {}}
               >

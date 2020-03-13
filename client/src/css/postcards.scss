@@ -15,6 +15,10 @@
 
 .column {
   width: 20%;
+  flex-basis: 20%;
+  @media (max-width: 600px) {
+    width: 50%;
+  }
 }
 
 .list {
@@ -23,6 +27,9 @@
     text-decoration: none;
     list-style-type: none;
     font-size: $nav-font-size;
+  }
+  @media (max-width: 600px) {
+    width: 33vh;
   }
 }
 
@@ -36,12 +43,6 @@
   color: $black;
   text-decoration: none;
   font-size: $detail-font-size;
-}
-
-.postcard-thumbnail {
-  /* width: 95%;
-  height: auto; */
-  /* min-height: 12vw; */
 }
 
 .postcard-thumbnail img {
@@ -66,10 +67,8 @@
   width: 19%;
 
   .data-group {
-    //
     font-size: $body-font-size;
     p {
-      // display: inline;
       display: block;
       margin-block-start: 0.5em;
       margin-block-end: 0.5em;
@@ -87,19 +86,9 @@
 .postcard-img {
   width: 50%;
   height: auto;
-  // background-color: $dark-grey;
   padding: 5px;
   img {
     width: 100%;
     height: auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .column {
-    width: 33%;
-  }
-  .list {
-    width: 33vh;
   }
 }
