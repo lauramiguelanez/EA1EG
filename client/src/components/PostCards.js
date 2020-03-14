@@ -190,7 +190,7 @@ const PostCards = ({ newPage, page, search, match }) => {
             page={page}
             setSelectedCard={setSelectedCard}
             initialized={initialized}
-            limit={100 >= cards.length}
+            limit={cards.length <= 45}
           />
         );
 
@@ -204,7 +204,7 @@ const PostCards = ({ newPage, page, search, match }) => {
             page={page}
             setSelectedCard={setSelectedCard}
             initialized={initialized}
-            limit={100 >= cards.length}
+            limit={cards.length <= 45}
           />
         );
       case 'CardDetail':

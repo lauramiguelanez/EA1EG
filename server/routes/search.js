@@ -16,13 +16,13 @@ const regionGet = (Postcard, extensionFn) => {
   router.get('/:search', (req, res, next) => {
     const { search } = req.params;
     Postcard.find({
-      $or: [
-        { country: new RegExp(search, 'gi') },
-        { continent: new RegExp(search, 'gi') } /* , {city:region} */,
-        { year: new RegExp(search, 'gi') },
-        { QTH: new RegExp(search, 'gi') },
-        { indicator: new RegExp(search, 'gi') },
-        { imageFront: { $search: new RegExp(search, 'gi') } }
+      "$or": [
+        { "country": new RegExp(search, 'gi') },
+        { "continent": new RegExp(search, 'gi') } /* , {city:region} */,
+        { "year": new RegExp(search, 'gi') },
+        { "QTH": new RegExp(search, 'gi') },
+        { "indicator": new RegExp(search, 'gi') },
+        { "imageFront": { "$search": new RegExp(search, 'gi') } }
       ]
     })
       .then(objList => res.status(200).json(objList))
@@ -30,29 +30,20 @@ const regionGet = (Postcard, extensionFn) => {
   });
 
   router.get('/random', (req, res, next) => {
-    /*  const { search } = req.params;
-    if (search && search !== '') {
-      Postcard.aggregate([
-        { $sample: { size: 45 } },
-        {
-          $match: {
-            $or: [
-              { country: new RegExp(search, "gi")  },
-              { continent: new RegExp(search, "gi")  } ,
-              { year: new RegExp(search, "gi")  },
-              { QTH: new RegExp(search, "gi")  },
-              { indicator: new RegExp(search, "gi")  }
-            ]
-          }
-        }
-      ])
-        .then(objList => res.status(200).json(objList))
-        .catch(e => next(e));
-    } else { */
-    Postcard.find({ $sample: { size: 45 } })
+    Postcard.aggregate([{ "$sample": { size: 45 } }])
       .then(objList => res.status(200).json(objList))
       .catch(e => next(e));
-    //}
+  });
+
+  router.get('/piecesrandom', (req, res, next) => {
+    Postcard.aggregate([{ $match: { museum: 'MOMA' } }, { $sample: { size: 45 } }])
+      .then(piecesFound => {
+        return res.json(piecesFound);
+      })
+      .catch(err => {
+        console.error(err);
+        next(err);
+      });
   });
 
   router.use((err, req, res, next) => {

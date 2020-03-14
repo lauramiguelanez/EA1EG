@@ -17,17 +17,33 @@ const yearGet = (Postcard, extensionFn) => {
     const batchSize = 45;
     const skip = (batch || 0) * batchSize;
     const y = Number(year);
-    console.log('***************/:year/:batch', y, typeof y,batch, skip);
-    Postcard.find({ year: y })
-      /* .skip(skip)
-      .limit(batchSize) */
+    console.log('***************/:year/:batch', y, typeof y, batch, skip);
+
+    Postcard.aggregate([{ $match: { year: y } }])
+      .skip(skip)
+      .limit(batchSize)
+      .sort({ _id: -1 })
       .then(obj => {
         console.log('/:year/:batch', obj);
         return res.status(200).json(obj);
       })
       .catch(e => {
-        console.log(e)
-        return next(e)});
+        console.log(e);
+        return next(e);
+      });
+
+    /* Postcard.find({ "year": y })
+      .skip(skip)
+      .limit(batchSize)
+      .sort({ _id: -1 })
+      .then(obj => {
+        console.log('/:year/:batch', obj);
+        return res.status(200).json(obj);
+      })
+      .catch(e => {
+        console.log(e);
+        return next(e);
+      }); */
   });
 
   router.get('/:year', (req, res, next) => {

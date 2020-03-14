@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroller';
+import Loader from 'react-loader-spinner';
 import ThumbnailCard from './cards/ThumbnailCard';
 require('dotenv').config();
 
@@ -34,11 +35,16 @@ const FilteredCards = ({
         pageStart={start}
         loadMore={getCards}
         hasMore={limit}
-        threshold={250}
+        threshold={1250}
         loader={
-          <div className="loader" key={0}>
-            Loading ...
-          </div>
+          <Loader
+            key={0}
+            type="ThreeDots"
+            color="#000"
+            height={50}
+            width={50}
+            timeout={3000} //3 secs
+          />
         }
       >
         <div className="columns-wrapper">
