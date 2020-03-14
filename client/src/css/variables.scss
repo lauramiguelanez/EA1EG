@@ -19,10 +19,25 @@
   src: url('/fonts/FaktPro.ttf');
 }
 
-$primary-color: black;
-$secondary-color: white;
-$accent-color: pink;
-$background-color: white;
+$white: white;
+$black: black;
+$pink-archive: #ff3e8d;
+$red-intro: #ea0032;
+$yellow-year: #fcee21;
+$grey-menu: #333333;
+$brown-place: #ccc8b8; /* #c7b299; */
+$blue-search: #d4ebff;
+$green-project: #71e2a7;
+$blue-alt: #2e3192;
+$yellow-alt: #fff3b6;
+$pink-alt: #ffebf3;
+$grey-alt: #cccccc;
+$dark-grey: #4d4d4d;
+
+$primary-color: $black;
+$secondary-color: $white;
+$accent-color: $black;
+$background-color: $white;
 
 $header-heigth: 90px;
 $burger-heigth: 50px;
@@ -41,20 +56,7 @@ $detail-font-size: 0.6rem; /* 13px; */
 $main-font: 'FaktPro', sans-serif;
 $accent-font: 'FaktPro', sans-serif;
 
-$white: white;
-$black: black;
-$pink-archive: #ff3e8d;
-$red-intro: #ea0032;
-$yellow-year: #fcee21;
-$grey-menu: #333333;
-$brown-place: #ccc8b8; /* #c7b299; */
-$blue-search: #d4ebff;
-$green-project: #71e2a7;
-$blue-alt: #2e3192;
-$yellow-alt: #fff3b6;
-$pink-alt: #ffebf3;
-$grey-alt: #cccccc;
-$dark-grey: #4d4d4d;
+
 
 // Update Bulma's global variables
 $family-sans-serif: 'FaktPro', sans-serif;

@@ -1,8 +1,11 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
+
+const { window } = global;
 
 const URE = ({ newPage }) => {
   useEffect(() => {
     newPage();
+    window.scrollTo(0, 0);
   }, []);
 
   return (

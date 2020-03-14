@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
+
 import FilteredPostcards from './FilteredCards';
 import YearBar from './bars/YearBar';
 import List from './bars/List';
@@ -7,8 +8,8 @@ import PostcardDetail from './bars/PostcardDetail';
 import Search from './bars/elements/SearchBar';
 
 import * as utils from '../utils/index';
-
 import axios from 'axios';
+const { window } = global;
 require('dotenv').config();
 
 const PostCards = ({ newPage, page, search, match }) => {
@@ -86,8 +87,8 @@ const PostCards = ({ newPage, page, search, match }) => {
             setCards(moreCards);
             console.log('gotCards', route, year, region, batch, cards, gotCards, moreCards);
           }
-          if(gotCards.length <= 0){
-            setLimit(false)
+          if (gotCards.length <= 0) {
+            setLimit(false);
           }
         })
         .catch(error => console.log(error));
@@ -122,6 +123,7 @@ const PostCards = ({ newPage, page, search, match }) => {
   useEffect(() => {
     newPage();
     setInitialized(false);
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -149,9 +151,10 @@ const PostCards = ({ newPage, page, search, match }) => {
       setYear(null);
       setCardId(null);
     }
-  }, [match]);
+  }, [match && match.params]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setInitialized(false);
     if (year || region) {
     } else if (search && search !== '') {
@@ -215,7 +218,7 @@ const PostCards = ({ newPage, page, search, match }) => {
         return (
           <FilteredPostcards
             initialLoad={initialized}
-            getCards={getRandom/* getCardsBatch */}
+            getCards={getRandom /* getCardsBatch */}
             cards={cards}
             page={page}
             setSelectedCard={setSelectedCard}

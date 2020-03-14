@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 
+const { window } = global;
+
 const Project = ({ newPage }) => {
   useEffect(() => {
     newPage();
+    window.scrollTo(0, 0);
   }, []);
 
   return (

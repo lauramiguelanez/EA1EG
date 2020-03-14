@@ -35,6 +35,8 @@
   flex-direction: row;
   height: auto;
   position: relative;
+  min-height: 100px;
+  background-color: $white;
 }
 
 .page-project {

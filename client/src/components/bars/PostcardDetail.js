@@ -6,20 +6,22 @@ import axios from 'axios';
 require('dotenv').config();
 
 const PostcardDetail = ({ card, cardId }) => {
-  const imageUrl = ''; 
+  const imageUrl = '';
   const service = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/api`
   });
 
   const [display, setDisplay] = useState(true);
   const [currentCard, setCurrentCard] = useState(card);
+  const [imageF, setImageF] = useState('/img/placeHolder.png');
+  const [imageB, setImageB] = useState('/img/placeHolder.png');
 
   const close = () => {
     setDisplay(false);
     let url = `/cards`;
     return <Redirect to={url} />;
   };
-  
+
   const getSelectedCard = cardId => {
     service
       .get(`/postcard/${cardId}`)
@@ -31,12 +33,15 @@ const PostcardDetail = ({ card, cardId }) => {
   };
 
   useEffect(() => {
-    getSelectedCard(cardId)
+    getSelectedCard(cardId);
   }, [cardId]);
 
   useEffect(() => {
-    if(!card && cardId)
-    setCurrentCard(card)
+    if (!card && cardId) {
+      setCurrentCard(card);
+      setImageF(card.imageFront);
+      setImageB(card.imageBack);
+    }
   }, [cardId]);
 
   if (currentCard && display) {
@@ -57,10 +62,18 @@ const PostcardDetail = ({ card, cardId }) => {
       <section className="page detail">
         <div className="postcard-wrapper">
           <div className="postcard-img">
-            <img src={`${imageUrl}${imageFront}`} alt={indicator} />
+            <img
+              src={`${imageUrl}${imageF}`}
+              alt={indicator}
+              onError={() => setImageF(`/img/placeHolder.png`)}
+            />
           </div>
           <div className="postcard-img">
-            <img src={`${imageUrl}${imageBack}`} alt={indicator} />
+            <img
+              src={`${imageUrl}${imageB}`}
+              alt={indicator}
+              onError={() => setImageB(`/img/placeHolder.png`)}
+            />
           </div>
         </div>
         <div className="postcard-detail-data">
