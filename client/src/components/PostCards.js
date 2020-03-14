@@ -15,6 +15,7 @@ const PostCards = ({ newPage, page, search, match }) => {
   // /////// STATE:
 
   const [initialized, setInitialized] = useState(false);
+  const [limit, setLimit] = useState(true);
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(null);
   const [cardId, setCardId] = useState(null);
@@ -43,7 +44,6 @@ const PostCards = ({ newPage, page, search, match }) => {
   const getCardsBatch = batch => {
     const route = '/postcard/page/' + batch;
     return service.get(route).then(cs => {
-      // setBatch(batch + 1);
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
       console.log('gotCards', moreCards);
@@ -84,7 +84,10 @@ const PostCards = ({ newPage, page, search, match }) => {
           } else {
             const moreCards = [...cards, ...gotCards];
             setCards(moreCards);
-            console.log('gotCards', route, year, region, batch, moreCards);
+            console.log('gotCards', route, year, region, batch, cards, gotCards, moreCards);
+          }
+          if(gotCards.length <= 0){
+            setLimit(false)
           }
         })
         .catch(error => console.log(error));
@@ -190,7 +193,7 @@ const PostCards = ({ newPage, page, search, match }) => {
             page={page}
             setSelectedCard={setSelectedCard}
             initialized={initialized}
-            limit={cards.length <= 45}
+            limit={limit}
           />
         );
 
@@ -204,7 +207,7 @@ const PostCards = ({ newPage, page, search, match }) => {
             page={page}
             setSelectedCard={setSelectedCard}
             initialized={initialized}
-            limit={cards.length <= 45}
+            limit={cards.length > 45}
           />
         );
       case 'CardDetail':
@@ -217,7 +220,7 @@ const PostCards = ({ newPage, page, search, match }) => {
             page={page}
             setSelectedCard={setSelectedCard}
             initialized={initialized}
-            limit={6437 >= cards.length}
+            limit={16437 >= cards.length}
           />
         );
     }
