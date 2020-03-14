@@ -16,6 +16,7 @@
 .column {
   width: 20%;
   flex-basis: 20%;
+  padding: 0;
   @media (max-width: 1200px) {
     width: 25%;
   }
@@ -44,8 +45,9 @@
 
 .postcard {
   margin-bottom: 25px;
-  margin-left: 1vw;
-  margin-right: 1vw;
+  // margin-left: 1vw;
+  // margin-right: 1vw;
+  padding: 0px 4px 0px 4px;
 }
 
 .postcard-data {
@@ -54,11 +56,14 @@
   font-size: $detail-font-size;
 }
 
-.postcard-thumbnail img {
-  background-color: $dark-grey;
+.postcard-thumbnail {
   width: 100%;
-  height: auto;
-  min-height: 12vw;
+  img {
+    background-color: $dark-grey;
+    width: 100%;
+    height: auto;
+    min-height: 12vw;
+  }
 }
 
 .postcard-wrapper {

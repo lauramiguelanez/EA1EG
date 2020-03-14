@@ -66,7 +66,11 @@
   align-content: center;
   justify-content: center;
   width: 100%;
+  // $page-year-width
   // justify-content: space-between;
+  &.year {
+    width: $page-year-width;
+  }
 }
 .nav-group {
   width: 20%; // 120px;
@@ -141,15 +145,20 @@
   }
 }
 
+.bar-Year {
+  //
+}
+
 .year-wrapper {
-  width: 100px;
+  width: $year-width;
   height: 100vh;
   // display: flex;
   position: absolute;
   top: 15px;
   right: 0;
   overflow: scroll;
-  // margin-top:
+  padding-top: 10px;
+  z-index: 51;
 }
 
 .year-wrapper-v {
@@ -163,7 +172,7 @@
 .menu-years-v {
   display: inline-block;
   // transform: rotate(90deg);
-  padding: 0 0 0 15px;
+  padding: 0 0 0 10px;
   margin: 2px;
   width: 17px;
 }

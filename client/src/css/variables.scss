@@ -26,14 +26,15 @@ $background-color: white;
 
 $header-heigth: 90px;
 $burger-heigth: 50px;
-$page-heigth: calc( 100vh - #{$header-heigth} );
-
+$page-heigth: calc(100vh - #{$header-heigth});
 $nav-height: 80px;
 $contextual-height: 80px;
+$year-width: 80px;
+$page-year-width: calc(100vw - #{$year-width});
 
 $nav-font-size: 1.3rem;
-$title-font-size: 2.0rem;  /* 36px; */
-$body-font-size: 1.0rem;  /* 18px; */
+$title-font-size: 2rem; /* 36px; */
+$body-font-size: 1rem; /* 18px; */
 $column-font-size: 1.25rem; /* 25px; */
 $detail-font-size: 0.6rem; /* 13px; */
 
@@ -54,7 +55,6 @@ $yellow-alt: #fff3b6;
 $pink-alt: #ffebf3;
 $grey-alt: #cccccc;
 $dark-grey: #4d4d4d;
-
 
 // Update Bulma's global variables
 $family-sans-serif: 'FaktPro', sans-serif;

@@ -20,9 +20,9 @@ const FilteredCards = ({
   start = 0
 }) => {
   const windowSize = useWindowSize();
-  const style = {
+  /* const style = {
     width: page === 'Years' ? `${windowSize.width - 100}px` : '100%'
-  };
+  }; */
   useEffect(() => {
     if (!initialized && getCards) {
       getCards(0);
@@ -30,7 +30,7 @@ const FilteredCards = ({
   }, [getCards, start]);
 
   return (
-    <section className="page allcards" style={style}>
+    <section className={`page allcards${page === 'Years' ? ' year':''}`} >
       <InfiniteScroll
         initialLoad={true}
         pageStart={start}

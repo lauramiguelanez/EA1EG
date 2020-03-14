@@ -27,6 +27,9 @@
 
 .allcards {
   min-height: calc(100vh - #{$nav-height});
+  &.year {
+    width: $page-year-width;
+  }
 }
 .detail {
   flex-direction: row;

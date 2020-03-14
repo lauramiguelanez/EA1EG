@@ -36,7 +36,7 @@ const Navbar = props => {
       <div className="nav-row-wrapper" id="top-nav">
         <div
           className={`nav-row${
-            page === 'URE' ? ' nav-URE' : page === 'Project' ? ' nav-project' : page === 'Home' ? ' nav-home' : ''
+            page === 'URE' ? ' nav-URE' : page === 'Project' ? ' nav-project' : page === 'Home' ? ' nav-home' : page === 'Year' ? ' year' : ''
           }`}
         >
           <div className="nav-group logo">
