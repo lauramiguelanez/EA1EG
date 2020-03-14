@@ -32,7 +32,7 @@ const PostcardDetail = ({ card, cardId }) => {
 
   useEffect(() => {
     getSelectedCard(cardId)
-  }, [card]);
+  }, [cardId]);
 
   useEffect(() => {
     if(!card && cardId)
