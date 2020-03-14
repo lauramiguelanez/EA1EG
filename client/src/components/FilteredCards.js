@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import useWindowSize from '../hooks/useWindowSize';
+
 import InfiniteScroll from 'react-infinite-scroller';
 import Loader from 'react-loader-spinner';
 import ThumbnailCard from './cards/ThumbnailCard';
 require('dotenv').config();
 
-const { window } = global;
-const { innerWidth } = window;
 let count = 0;
 
 const FilteredCards = ({
@@ -19,8 +19,9 @@ const FilteredCards = ({
   initialLoad,
   start = 0
 }) => {
+  const windowSize = useWindowSize();
   const style = {
-    width: page === 'Years' ? `${innerWidth - 100}px` : '100%'
+    width: page === 'Years' ? `${windowSize.width - 100}px` : '100%'
   };
   useEffect(() => {
     if (!initialized && getCards) {

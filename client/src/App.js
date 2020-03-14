@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, Route /* , BrowserRouter, Router */ } from 'react-router-dom';
 
+import useWindowSize from './hooks/useWindowSize';
 import Navbar from './components/bars/Navbar';
 import PostCards from './components/PostCards';
 import Landing from './components/Landing';
@@ -13,6 +14,8 @@ import './css/navbar.scss';
 const App = () => {
   const [page, setPage] = useState('Home');
   const [search, setSearch] = useState('');
+
+  const windowSize = useWindowSize()
 
   const cardRoutes = [
     { route: '/cards', page: 'Cards', exact: true },
