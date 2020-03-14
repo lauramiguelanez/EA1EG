@@ -17,7 +17,7 @@ const images = [
 
 const Landing = props => {
   const { newPage } = props;
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  // const [loggedInUser, setLoggedInUser] = useState(null);
   const [landingImgStyles, setStyles] = useState(new Array(9).fill({}));
   const { width, height } = useWindowSize();
 

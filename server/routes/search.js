@@ -30,13 +30,13 @@ const regionGet = (Postcard, extensionFn) => {
   });
 
   router.get('/random', (req, res, next) => {
-    Postcard.aggregate([{ "$sample": { size: 45 } }])
+    Postcard.aggregate([{ "$sample": { "size": 45 } }])
       .then(objList => res.status(200).json(objList))
       .catch(e => next(e));
   });
 
   router.get('/piecesrandom', (req, res, next) => {
-    Postcard.aggregate([{ $match: { museum: 'MOMA' } }, { $sample: { size: 45 } }])
+    Postcard.aggregate([{ "$match": { "museum": 'MOMA' } }, { "$sample": { size: 45 } }])
       .then(piecesFound => {
         return res.json(piecesFound);
       })

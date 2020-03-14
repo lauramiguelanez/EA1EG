@@ -107,8 +107,8 @@ const PostCards = ({ newPage, page, search, match }) => {
   const getSelectedCard = cardId => {
     service
       .get(`/postcard/${cardId}`)
-      .then(cards => {
-        setSelectedCard(cards.data);
+      .then(card => {
+        setSelectedCard(card.data);
         console.log('gotCards', cards.data);
         setInitialized(true);
       })
