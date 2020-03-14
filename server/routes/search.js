@@ -36,7 +36,6 @@ const regionGet = (Postcard, extensionFn) => {
   });
 
 
-
   router.use((err, req, res, next) => {
     res.status(500).json({ error: true, message: err.message });
   });

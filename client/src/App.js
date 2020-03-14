@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Switch, Route /* , BrowserRouter, Router */ } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import useWindowSize from './hooks/useWindowSize'
 
-import useWindowSize from './hooks/useWindowSize';
 import Navbar from './components/bars/Navbar';
 import PostCards from './components/PostCards';
 import Landing from './components/Landing';
 import Project from './components/pages/Project';
 import ProjectURE from './components/pages/ProjectURE';
+
 import './css/pages.scss';
 import './css/postcards.scss';
 import './css/navbar.scss';
