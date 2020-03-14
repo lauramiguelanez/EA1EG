@@ -18,7 +18,7 @@ const YearBar = ({ page, setYear, year }) => {
                 className="menu-years-v"
                 to={`/year/${y}`}
                 onClick={() => setYear(y)}
-                style={y === year ? selectedStyle : {}}
+                style={y.toString() === year ? selectedStyle : {}}
               >
                 {y}
               </NavLink>

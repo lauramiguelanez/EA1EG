@@ -25,14 +25,15 @@ const PostcardDetail = ({ card, cardId }) => {
   const getSelectedCard = cardId => {
     service
       .get(`/postcard/${cardId}`)
-      .then(cards => {
-        setCurrentCard(cards.data);
-        console.log('gotCards', cards.data);
+      .then(card => {
+        setCurrentCard(card.data);
+        console.log('DetailCard', card.data);
       })
       .catch(error => console.log(error));
   };
 
   useEffect(() => {
+    console.log('changed detail id',cardId)
     getSelectedCard(cardId);
   }, [cardId]);
 

@@ -14,6 +14,9 @@ require('dotenv').config();
 
 const PostCards = ({ newPage, page, search, match }) => {
   // /////// STATE:
+  const yearFromUrl = match && match.params.year;
+  const regionFromUrl = match && match.params.region;
+  const idFromUrl = match && match.params.id;
 
   const [initialized, setInitialized] = useState(false);
   const [limit, setLimit] = useState(true);
@@ -127,9 +130,6 @@ const PostCards = ({ newPage, page, search, match }) => {
   }, []);
 
   useEffect(() => {
-    let yearFromUrl = match && match.params.year;
-    let regionFromUrl = match && match.params.region;
-    let idFromUrl = match && match.params.id;
     console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
 
     if (idFromUrl) {
@@ -151,7 +151,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       setYear(null);
       setCardId(null);
     }
-  }, [match && match.params]);
+  }, [yearFromUrl, regionFromUrl, idFromUrl]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

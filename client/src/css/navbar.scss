@@ -10,15 +10,11 @@
   z-index: 900;
   margin: 0;
   padding: 0;
-  // text-transform: uppercase;
   font-size: $nav-font-size;
   line-height: $nav-font-size;
   & a {
     color: $black;
-    // text-decoration: none;
     font-size: $nav-font-size;
-    // align-self: center;
-    // justify-self: center;
 
     &:hover {
       color: $accent-color;
@@ -26,17 +22,13 @@
     }
     &:visited {
       color: $black;
-      // text-decoration: none;
     }
   }
 }
 .nav.burger {
   & a {
     color: $black;
-    // text-decoration: none;
     font-size: $nav-font-size;
-    // align-self: center;
-    // justify-self: center;
 
     &:hover {
       color: $accent-color;
@@ -45,7 +37,6 @@
 
     &:visited {
       color: $black;
-      // text-decoration: none;
     }
   }
 }
@@ -73,9 +64,8 @@
   }
 }
 .nav-group {
-  width: 20%; // 120px;
+  width: 20%;
   display: block;
-  // padding: 7px;
   border-color: black;
   padding-top: 15px;
   padding-left: 0.5rem;
@@ -145,15 +135,10 @@
   }
 }
 
-.bar-Year {
-  //
-}
-
 .year-wrapper {
   width: $year-width;
   height: 100vh;
-  // display: flex;
-  position: absolute;
+  position: fixed;
   top: 15px;
   right: 0;
   overflow: scroll;
@@ -182,18 +167,13 @@
   line-height: $nav-font-size;
   & a {
     color: $black;
-    // text-decoration: none;
     font-size: $nav-font-size;
-    // align-self: center;
-    // justify-self: center;
 
     &:hover {
       color: $accent-color;
-      // text-decoration: none;
     }
     &:visited {
       color: $black;
-      // text-decoration: none;
     }
   }
 }
