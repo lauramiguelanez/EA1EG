@@ -1,18 +1,39 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
+.burgernav-father {
+  .burgernav-image {
+    height: 40px;
+    margin-top: 6px;
+    margin-left: 3px;
+  }
+  button {
+    border: none;
+  }
+  button:focus {
+    outline: none;
+  }
 
-.burgernav-father{
   z-index: 1000;
-
-  .burgernav-wrapper {
-    width: auto;
-    z-index: 1000;
-
+  #top-burgernav {
     background-color: white;
-    .burger-link { background-color: white;
+    width: auto;
+  }
+  .burgernav-links {
+    .burger-link:first-child {
+      padding-top: 6px;
+    }
+    .burger-link {
+      background-color: white;
       z-index: 1000;
-
+      padding: 3px 6px;
+    }
+    .burger-link:last-child {
+      padding-bottom: 6px;
     }
   }
+}
+
+.openBurger {
+  background-color: white;
 }
