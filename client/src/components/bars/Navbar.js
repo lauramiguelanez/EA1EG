@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from 'react';
+import React, {  useState, useEffect,Fragment } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
 
 import useWindowSize from '../../hooks/useWindowSize';
@@ -31,12 +31,6 @@ const Navbar = props => {
     style.backgroundColor = 'white';
   }
 
-  if (hoverLocation) {
-    console.log('hoverLocation');
-  } else {
-    console.log('no hoverLocation');
-  }
-
   return width > 650 ? (
     <nav className={`nav-style bar-${page}`} role="navigation" style={style}>
       <div className="nav-row-wrapper" id="top-nav">
@@ -61,7 +55,7 @@ const Navbar = props => {
                 Location
               </NavLink>
               {hoverLocation ? (
-                <React.Fragment>
+                <Fragment>
                   <NavLink
                     className="link-line"
                     to="/location"
@@ -76,7 +70,7 @@ const Navbar = props => {
                   >
                     List
                   </NavLink>
-                </React.Fragment>
+                </Fragment>
               ) : null}
             </div>
             <NavLink

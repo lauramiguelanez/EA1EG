@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import '../css/landing.scss';
 import useWindowSize from '../hooks/useWindowSize';
+import '../css/landing.scss';
 
 const images = [
   'ea1eg-2019-01',
@@ -16,7 +16,7 @@ const images = [
 ];
 
 const Landing = props => {
-  const { page, newPage } = props;
+  const { newPage } = props;
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [landingImgStyles, setStyles] = useState(new Array(9).fill({}));
   const { width, height } = useWindowSize();

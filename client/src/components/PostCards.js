@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import FilteredPostcards from './FilteredCards';
 import YearBar from './bars/YearBar';
 import List from './bars/List';
@@ -212,7 +212,7 @@ const PostCards = ({ newPage, page, search, match }) => {
         return (
           <FilteredPostcards
             initialLoad={initialized}
-            getCards={getRandom}
+            getCards={getCardsBatch}
             cards={cards}
             page={page}
             setSelectedCard={setSelectedCard}
@@ -226,10 +226,10 @@ const PostCards = ({ newPage, page, search, match }) => {
   console.log('getFunction', initialized, search);
 
   return (
-    <div>
+    <Fragment>
       {renderPage()}
       {renderPostcards()}
-    </div>
+    </Fragment>
   );
 };
 
