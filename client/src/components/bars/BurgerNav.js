@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
 import Burger from './elements/Burger';
 import SearchBar from './elements/SearchBar';
+import '../../css/burgernav.scss';
 
 const BurgerNav = ({ page, setPage, setSearch }) => {
-  const [openBurger, setOpenBurger] = useState(true);
+  const [openBurger, setOpenBurger] = useState(false);
   return (
-    <React.Fragment>
+    <div className="burgernav-father">
       {/* <NavLink className="nav-link" to="/">
         <img src="/img/logo.png" alt="EA1EG" className="logoSvg"></img>
       </NavLink> */}
@@ -15,23 +16,25 @@ const BurgerNav = ({ page, setPage, setSearch }) => {
       </button>
 
       {openBurger ? (
-        <nav className={`bar-years`} role="navigation">
+        <nav className="nav-style burgernav-wrapper" role="navigation">
           <div className="" id="top-nav">
             <div className="">
-              <NavLink className="link-line" to="/location">
+              <NavLink className="nav-link burger-link" to="/location">
                 Map
               </NavLink>
-              <NavLink className="link-line" to="/region">
+              <NavLink className="nav-link burger-link" to="/region">
                 List
               </NavLink>
-              <NavLink className="nav-link" to="/year/1970">
+              <NavLink className="nav-link burger-link" to="/year/1960">
                 Year
               </NavLink>
-              <NavLink className="nav-link">Project</NavLink>
-              <NavLink className="nav-link" to="/ure">
+              <NavLink className="nav-link burger-link" to="/project">
+                Project
+              </NavLink>
+              <NavLink className="nav-link burger-link" to="/ure">
                 URE
               </NavLink>
-              <NavLink className="nav-link" to="/cards">
+              <NavLink className="nav-link burger-link" to="/cards">
                 Search
                 <SearchBar setSearch={setSearch} />
               </NavLink>
@@ -39,7 +42,7 @@ const BurgerNav = ({ page, setPage, setSearch }) => {
           </div>
         </nav>
       ) : null}
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -1,0 +1,18 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+
+.burgernav-father{
+  z-index: 1000;
+
+  .burgernav-wrapper {
+    width: auto;
+    z-index: 1000;
+
+    background-color: white;
+    .burger-link { background-color: white;
+      z-index: 1000;
+
+    }
+  }
+}
