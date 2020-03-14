@@ -78,13 +78,13 @@ const PostCards = ({ newPage, page, search, match }) => {
         .then(cs => {
           gotCards = cs.data;
           setInitialized(true);
-          if (batch === 0) {
+          if (batch <= 0) {
             setCards(gotCards);
-            console.log('gotCards', route, year, region, gotCards);
+            console.log('gotCards', route, year, region, batch, gotCards);
           } else {
             const moreCards = [...cards, ...gotCards];
             setCards(moreCards);
-            console.log('gotCards', route, year, region, moreCards);
+            console.log('gotCards', route, year, region, batch, moreCards);
           }
         })
         .catch(error => console.log(error));
