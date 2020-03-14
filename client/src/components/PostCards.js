@@ -212,7 +212,7 @@ const PostCards = ({ newPage, page, search, match }) => {
         return (
           <FilteredPostcards
             initialLoad={initialized}
-            getCards={getCardsBatch}
+            getCards={getRandom/* getCardsBatch */}
             cards={cards}
             page={page}
             setSelectedCard={setSelectedCard}

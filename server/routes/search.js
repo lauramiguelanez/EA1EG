@@ -13,6 +13,12 @@ const regionGet = (Postcard, extensionFn) => {
   }
 
   // CRUD: RETRIEVE
+  router.get('/random', (req, res, next) => {
+    Postcard.aggregate([{ "$sample": { size: 45 } }])
+      .then(objList => res.status(200).json(objList))
+      .catch(e => next(e));
+  });
+  
   router.get('/:search', (req, res, next) => {
     const { search } = req.params;
     Postcard.find({
@@ -29,13 +35,9 @@ const regionGet = (Postcard, extensionFn) => {
       .catch(e => next(e));
   });
 
-  router.get('/random', (req, res, next) => {
-    Postcard.aggregate([{ "$sample": { size: 45 } }])
-      .then(objList => res.status(200).json(objList))
-      .catch(e => next(e));
-  });
 
-  router.get('/piecesrandom', (req, res, next) => {
+
+{/*   router.get('/piecesrandom', (req, res, next) => {
     Postcard.aggregate([{ $match: { museum: 'MOMA' } }, { $sample: { size: 45 } }])
       .then(piecesFound => {
         return res.json(piecesFound);
@@ -44,7 +46,7 @@ const regionGet = (Postcard, extensionFn) => {
         console.error(err);
         next(err);
       });
-  });
+  }); */}
 
   router.use((err, req, res, next) => {
     res.status(500).json({ error: true, message: err.message });
