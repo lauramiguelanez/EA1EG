@@ -27,7 +27,9 @@ const BurgerNav = ({ page, setPage, setSearch }) => {
               <NavLink className="nav-link" to="/year/1970">
                 Year
               </NavLink>
-              <NavLink className="nav-link">Project</NavLink>
+              <NavLink className="nav-link" to="/project">
+                Project
+              </NavLink>
               <NavLink className="nav-link" to="/ure">
                 URE
               </NavLink>

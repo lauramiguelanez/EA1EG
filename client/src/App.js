@@ -38,12 +38,12 @@ const App = () => {
             key="home"
             exact
             path="/"
-            render={() => <Landing windowSize={windowSize} newPage={() => setPage('Home')} page="Home" />}
+            render={() => <Landing newPage={() => setPage('Home')} page="Home" />}
           />
           <Route
             exact
             path="/project"
-            render={() => <Project windowSize={windowSize} newPage={() => setPage('Project')} page="Project" />}
+            render={() => <Project newPage={() => setPage('Project')} page="Project" />}
           />
           <Route
             exact
