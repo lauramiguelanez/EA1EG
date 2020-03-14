@@ -15,7 +15,7 @@ const App = () => {
   const [page, setPage] = useState('Home');
   const [search, setSearch] = useState('');
 
-  const windowSize = useWindowSize()
+  const { width } = useWindowSize();
 
   const cardRoutes = [
     { route: '/cards', page: 'Cards', exact: true },
@@ -32,7 +32,7 @@ const App = () => {
       <header className="header">
         <Navbar page={page} setPage={setPage} setSearch={setSearch} />
       </header>
-      <main>
+      <main className={width < 650 ? 'mobile' : ''}>
         <Switch>
           <Route
             key="home"

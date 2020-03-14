@@ -55,10 +55,11 @@
   display: flex;
 }
 .nav-row {
+  position: fixed;
   display: flex;
   // height: 120px;
   margin: 0 auto;
-
+  background-color: white;
   padding: 0;
   align-items: flex-start;
   flex-direction: row;
@@ -77,6 +78,16 @@
   padding-right: 0.5rem;
 }
 
+.nav-project {
+  background-color: $blue-search;
+}
+.nav-URE {
+  background-color: $brown-place;
+}
+.nav-home {
+  background-color: transparent;
+}
+
 .nav-link {
   font-family: $main-font;
   font-size: 1rem;
@@ -85,11 +96,10 @@
   &:hover {
     text-decoration: underline;
   }
-  &.search-link{
+  &.search-link {
     text-decoration: none;
   }
 }
-
 
 .link {
   font-family: $main-font;
@@ -190,7 +200,7 @@
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 1.5px solid $primary-color; 
+  border-bottom: 1.5px solid $primary-color;
   outline: 0;
   padding-top: 2px;
   color: $secondary-color;
@@ -199,7 +209,7 @@
 
   &::placeholder {
     font-size: $body-font-size;
-    color: $grey-alt /* transparent; */
+    color: $grey-alt; /* transparent; */
   }
 
   &:placeholder-shown ~ .searchLabel {

@@ -21,6 +21,10 @@ main {
   z-index: 0;
 }
 
+.mobile {
+  padding-top: $burger-heigth;
+}
+
 .header {
   z-index: 50;
   position: sticky;

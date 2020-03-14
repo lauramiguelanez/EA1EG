@@ -1,4 +1,4 @@
-import React, {  useState, useEffect,Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
 
 import useWindowSize from '../../hooks/useWindowSize';
@@ -34,7 +34,11 @@ const Navbar = props => {
   return width > 650 ? (
     <nav className={`nav-style bar-${page}`} role="navigation" style={style}>
       <div className="nav-row-wrapper" id="top-nav">
-        <div className="nav-row">
+        <div
+          className={`nav-row${
+            page === 'URE' ? ' nav-URE' : page === 'Project' ? ' nav-project' : page === 'Home' ? ' nav-home' : ''
+          }`}
+        >
           <div className="nav-group logo">
             <NavLink className="nav-link" to="/">
               <img src="/img/logo.png" alt="EA1EG" className="logoSvg"></img>
