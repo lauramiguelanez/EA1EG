@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
+
+import useWindowSize from '../../hooks/useWindowSize'
+
 import SearchBar from './elements/SearchBar';
 import BurgerNav from './BurgerNav';
 import URE from '../pages/ProjectURE';
 
 const { window } = global;
 const { innerWidth, innerHeight } = window;
+
+// const windowSize = useWindowSize();
+
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
