@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import '../css/landing.scss';
-import { /* Link, BrowserRouter, */ NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+import useWindowSize from '../hooks/useWindowSize'
 
 const { window } = global;
 
 const { innerWidth, innerHeight } = window;
+
+//  const windowSize = useWindowSize();
 
 class Home extends Component {
   constructor(props) {
