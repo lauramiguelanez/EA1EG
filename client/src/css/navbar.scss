@@ -179,6 +179,7 @@
 }
 
 .searchField {
+  color: $black;
   font-size: $body-font-size;
   position: relative;
   width: 50%;
@@ -192,7 +193,7 @@
   border-bottom: 1.5px solid $primary-color;
   outline: 0;
   padding-top: 2px;
-  color: $secondary-color;
+  color: $primary-color;
   background: transparent;
   transition: border-color 0.2s;
 
@@ -226,10 +227,10 @@
     color: $primary-color;
     font-weight: 700;
   }
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, $primary-color, $secondary-color);
+  // padding-bottom: 6px;
+  // font-weight: 700;
+  border-width: 1.5px;
+  // border-image: linear-gradient(to right, $primary-color, $secondary-color);
   border-image-slice: 1;
 }
 

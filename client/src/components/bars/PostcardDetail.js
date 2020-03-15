@@ -6,8 +6,6 @@ import PostcardEdit from './elements/PostcardEdit';
 import axios from 'axios';
 require('dotenv').config();
 
-const { window } = global;
-
 const PostcardDetail = ({ card, cardId }) => {
   // const imageUrl = '';
   const service = axios.create({
@@ -30,22 +28,16 @@ const PostcardDetail = ({ card, cardId }) => {
       .get(`/postcard/${cardId}`)
       .then(card => {
         setCurrentCard(card.data);
-        console.log('DetailCard', card.data);
+        // console.log('DetailCard', card.data);
       })
       .catch(error => console.log(error));
   };
-
+  
   useEffect(() => {
-    console.log('changed detail id', cardId);
+    // console.log('cardId change', cardId);
     getSelectedCard(cardId);
     setDisplay(true);
-  }, [cardId]);
-
-  useEffect(() => {
-    console.log('cardId change', cardId);
     animateScrollTo(0);
-    // window.scrollTo(0, 0);
-    setDisplay(true);
     if (!card && cardId) {
       setCurrentCard(card);
     }

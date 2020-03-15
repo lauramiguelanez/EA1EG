@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-
-const { window } = global;
+import animateScrollTo from 'animated-scroll-to';
 
 const Project = ({ newPage }) => {
   useEffect(() => {
     newPage();
-    window.scrollTo(0, 0);
+    animateScrollTo(0);
   }, []);
 
   return (

@@ -105,7 +105,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       .then(cards => {
         setInitialized(true);
         const gotCards = cards.data;
-        // console.log('gotCards', gotCards);
+        console.log('SEARCH gotCards', gotCards);
         setCards(gotCards);
       })
       .catch(error => console.log(error));
@@ -116,7 +116,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       .get(`/postcard/${cardId}`)
       .then(card => {
         setSelectedCard(card.data);
-        // console.log('gotCards', cards.data);
+        // console.log('SELECTEDgotCards', cards.data);
         setInitialized(true);
       })
       .catch(error => console.log(error));
@@ -127,13 +127,11 @@ const PostCards = ({ newPage, page, search, match }) => {
     newPage();
     setInitialized(false);
     animateScrollTo(0);
-    // window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
     // console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
     animateScrollTo(0);
-    // window.scrollTo(0, 0);
     if (idFromUrl) {
       getSelectedCard(idFromUrl);
       setYear(null);
@@ -157,10 +155,10 @@ const PostCards = ({ newPage, page, search, match }) => {
 
   useEffect(() => {
     animateScrollTo(0);
-    // window.scrollTo(0, 0);
     setInitialized(false);
     if (year || region) {
     } else if (search && search !== '') {
+      console.log('SEARCH POSTCARDS', search);
       setInitialized(false);
     } else {
     }

@@ -3,8 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 const Search = ({ setSearch }) => {
   const [searchInput, setSearchInput] = useState('');
-  const onChange = ({ value }) => {
-    setSearchInput(value);
+  const onChange = e => {
+    // console.log('Search', e.target.value);
+    setSearchInput(e.target.value);
   };
 
   const handleEnter = e => {
@@ -22,11 +23,8 @@ const Search = ({ setSearch }) => {
         placeholder="QSL, country, year..."
         className="searchInput"
       />
-      {/* <label for="name" className="searchLabel">QSL, country, year...</label> */}
     </div>
   );
 };
 
 export default Search;
-
-
