@@ -1,7 +1,7 @@
 const express = require('express');
 const _ = require('lodash');
 
-const regionGet = (Postcard, extensionFn) => {
+const randomGet = (Postcard, extensionFn) => {
   let router = express.Router();
 
   // Detect paths from model
@@ -12,18 +12,10 @@ const regionGet = (Postcard, extensionFn) => {
     router = extensionFn(router);
   }
 
-  // CRUD: RETRIEVE
-  router.get('/:region/:batch', (req, res, next) => {
-    const batchSize = 10;
-    const { batch, region } = req.params;
-    const skip = (batch || 0) * batchSize;
-    const r = region.toUpperCase();
-    Postcard.find({
-      $or: [{ country: r }, { continent: r }, { city: r }, { region: r }, { QTH: r }]
-    })
-      .skip(skip)
-      .limit(batchSize)
-      .then(obj => res.status(200).json(obj))
+  // GET RANDOM POSTCARDS
+  router.get('/', (req, res, next) => {
+    Postcard.aggregate([{ "$sample": { size: 45 } }])
+      .then(objList => res.status(200).json(objList))
       .catch(e => next(e));
   });
 
@@ -34,4 +26,4 @@ const regionGet = (Postcard, extensionFn) => {
   return router;
 };
 
-module.exports = regionGet;
+module.exports = randomGet;

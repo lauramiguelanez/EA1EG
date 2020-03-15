@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const Search = ({ setSearch }) => {
+const Search = props => {
+  const { setSearch } = props;
   const [searchInput, setSearchInput] = useState('');
   const onChange = e => {
     // console.log('Search', e.target.value);
@@ -12,6 +13,8 @@ const Search = ({ setSearch }) => {
     if (e.key === 'Enter') {
       console.log('Search:', searchInput);
       setSearch(searchInput);
+      const url = `/search/${searchInput}`
+      return props.history.push(url);
     }
   };
   return (
@@ -27,4 +30,4 @@ const Search = ({ setSearch }) => {
   );
 };
 
-export default Search;
+export default withRouter(Search);

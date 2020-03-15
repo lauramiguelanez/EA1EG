@@ -1,13 +1,13 @@
-import React, { Component, useState, useEffect } from 'react';
-import { /* Link, BrowserRouter, */ Redirect, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import animateScrollTo from 'animated-scroll-to';
 
 import PostcardEdit from './elements/PostcardEdit';
 import axios from 'axios';
 require('dotenv').config();
 
-const PostcardDetail = ({ card, cardId }) => {
-  // const imageUrl = '';
+const PostcardDetail = props => {
+  const { card, cardId } = props;
   const service = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/api`
   });
@@ -20,7 +20,7 @@ const PostcardDetail = ({ card, cardId }) => {
   const close = () => {
     setDisplay(false);
     let url = `/cards`;
-    return <Redirect to={url} />;
+    return props.history.push(url);
   };
 
   const getSelectedCard = cardId => {
@@ -32,9 +32,8 @@ const PostcardDetail = ({ card, cardId }) => {
       })
       .catch(error => console.log(error));
   };
-  
+
   useEffect(() => {
-    // console.log('cardId change', cardId);
     getSelectedCard(cardId);
     setDisplay(true);
     animateScrollTo(0);
@@ -76,8 +75,8 @@ const PostcardDetail = ({ card, cardId }) => {
         </div>
 
         <div className="close-detail" onClick={close} id="closeIcon">
-          <div class="closeIcon1">
-            <div class="closeIcon2"></div>
+          <div className="closeIcon1">
+            <div className="closeIcon2"></div>
           </div>
         </div>
       </section>
@@ -86,4 +85,4 @@ const PostcardDetail = ({ card, cardId }) => {
   return null;
 };
 
-export default PostcardDetail;
+export default withRouter(PostcardDetail);

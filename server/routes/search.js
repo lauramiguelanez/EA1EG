@@ -1,7 +1,7 @@
 const express = require('express');
 const _ = require('lodash');
 
-const regionGet = (Postcard, extensionFn) => {
+const searchGet = (Postcard, extensionFn) => {
   let router = express.Router();
 
   // Detect paths from model
@@ -43,4 +43,4 @@ const regionGet = (Postcard, extensionFn) => {
   return router;
 };
 
-module.exports = regionGet;
+module.exports = searchGet;

@@ -20,6 +20,7 @@ const App = () => {
 
   const cardRoutes = [
     { route: '/cards', page: 'Cards', exact: true },
+    { route: '/search/:search', page: 'Search' },
     { route: '/card/:id', page: 'CardDetail' },
     { route: '/year/:year', page: 'Years' },
     { route: '/year/', page: 'Years', exact: true },

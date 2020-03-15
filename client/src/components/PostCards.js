@@ -13,16 +13,18 @@ import axios from 'axios';
 const { window } = global;
 require('dotenv').config();
 
-const PostCards = ({ newPage, page, search, match }) => {
+const PostCards = ({ newPage, page, match }) => {
   // /////// STATE:
   const yearFromUrl = match && match.params.year;
   const regionFromUrl = match && match.params.region;
+  const seachFromUrl = match && match.params.search;
   const idFromUrl = match && match.params.id;
 
   const [initialized, setInitialized] = useState(false);
   const [limit, setLimit] = useState(true);
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(null);
+  const [search, setSearch] = useState(null);
   const [cardId, setCardId] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   // const [getFunction, setGetFunction] = useState(null);
@@ -58,7 +60,7 @@ const PostCards = ({ newPage, page, search, match }) => {
   };
 
   const getRandom = () => {
-    const route = '/search/random';
+    const route = '/random';
     return service.get(route).then(cs => {
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
@@ -134,24 +136,34 @@ const PostCards = ({ newPage, page, search, match }) => {
     animateScrollTo(0);
     if (idFromUrl) {
       getSelectedCard(idFromUrl);
-      setYear(null);
-      setRegion(null);
       setCardId(idFromUrl);
       newPage('CardDetail');
+      setYear(null);
+      setRegion(null);
+      setSearch(null);
     }
     if (yearFromUrl) {
       setYear(yearFromUrl);
       newPage('Year');
       setRegion(null);
       setCardId(null);
+      setSearch(null);
     }
     if (regionFromUrl) {
       setRegion(regionFromUrl);
       newPage('Region');
       setYear(null);
       setCardId(null);
+      setSearch(null);
     }
-  }, [yearFromUrl, regionFromUrl, idFromUrl]);
+    if (seachFromUrl) {
+      setSearch(seachFromUrl);
+      newPage('Search');
+      setYear(null);
+      setRegion(null);
+      setCardId(null);
+    }
+  }, [yearFromUrl, regionFromUrl, idFromUrl, seachFromUrl]);
 
   useEffect(() => {
     animateScrollTo(0);
@@ -159,7 +171,8 @@ const PostCards = ({ newPage, page, search, match }) => {
     if (year || region) {
     } else if (search && search !== '') {
       console.log('SEARCH POSTCARDS', search);
-      setInitialized(false);
+      // setInitialized(false);
+      // newPage('Search');
     } else {
     }
   }, [year, region, search]);
@@ -177,7 +190,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       case 'CardDetail':
         return <PostcardDetail page={page} card={selectedCard} cardId={cardId} />;
       case 'Search':
-        return <Search page={page} />;
+        return null; // <Search page={page} />;
       default:
         return null;
     }
@@ -200,7 +213,6 @@ const PostCards = ({ newPage, page, search, match }) => {
             limit={limit}
           />
         );
-
       case 'Search':
         return (
           <FilteredPostcards
