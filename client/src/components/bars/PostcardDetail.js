@@ -6,7 +6,7 @@ import axios from 'axios';
 require('dotenv').config();
 
 const PostcardDetail = ({ card, cardId }) => {
-  const imageUrl = '';
+  // const imageUrl = '';
   const service = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/api`
   });
@@ -33,17 +33,24 @@ const PostcardDetail = ({ card, cardId }) => {
   };
 
   useEffect(() => {
-    console.log('changed detail id',cardId)
+    console.log('changed detail id', cardId);
     getSelectedCard(cardId);
+    setDisplay(true);
   }, [cardId]);
 
   useEffect(() => {
+    setDisplay(true);
     if (!card && cardId) {
       setCurrentCard(card);
+    }
+  }, [cardId]);
+
+  useEffect(() => {
+    if (card) {
       setImageF(card.imageFront);
       setImageB(card.imageBack);
     }
-  }, [cardId]);
+  }, [card && card._id]);
 
   if (currentCard && display) {
     const {
@@ -64,16 +71,16 @@ const PostcardDetail = ({ card, cardId }) => {
         <div className="postcard-wrapper">
           <div className="postcard-img">
             <img
-              src={`${imageUrl}${imageF}`}
+              src={imageF}
               alt={indicator}
-              onError={() => setImageF(`/img/placeHolder.png`)}
+              // onError={() => setImageF(`/img/placeHolder.png`)}
             />
           </div>
           <div className="postcard-img">
             <img
-              src={`${imageUrl}${imageB}`}
+              src={imageB}
               alt={indicator}
-              onError={() => setImageB(`/img/placeHolder.png`)}
+              // onError={() => setImageB(`/img/placeHolder.png`)}
             />
           </div>
         </div>
