@@ -1,9 +1,12 @@
 import React, { Component, useState, useEffect } from 'react';
 import { /* Link, BrowserRouter, */ Redirect, NavLink } from 'react-router-dom';
+import animateScrollTo from 'animated-scroll-to';
 
 import PostcardEdit from './elements/PostcardEdit';
 import axios from 'axios';
 require('dotenv').config();
+
+const { window } = global;
 
 const PostcardDetail = ({ card, cardId }) => {
   // const imageUrl = '';
@@ -40,6 +43,8 @@ const PostcardDetail = ({ card, cardId }) => {
 
   useEffect(() => {
     console.log('cardId change', cardId);
+    animateScrollTo(0);
+    // window.scrollTo(0, 0);
     setDisplay(true);
     if (!card && cardId) {
       setCurrentCard(card);
@@ -54,31 +59,16 @@ const PostcardDetail = ({ card, cardId }) => {
   }, [card && card._id]);
 
   if (currentCard && display) {
-    const {
-      QTH,
-      year,
-      continent,
-      country,
-      indicator,
-      region
-    } = currentCard;
+    const { QTH, year, continent, country, indicator, region } = currentCard;
 
     return (
       <section className="page detail">
         <div className="postcard-wrapper">
           <div className="postcard-img">
-            <img
-              src={imageF}
-              alt={indicator}
-              onError={() => setImageF(`/img/placeHolder.png`)}
-            />
+            <img src={imageF} alt={indicator} onError={() => setImageF(`/img/placeHolder.png`)} />
           </div>
           <div className="postcard-img">
-            <img
-              src={imageB}
-              alt={indicator}
-              onError={() => setImageB(`/img/placeHolder.png`)}
-            />
+            <img src={imageB} alt={indicator} onError={() => setImageB(`/img/placeHolder.png`)} />
           </div>
         </div>
         <div className="postcard-detail-data">

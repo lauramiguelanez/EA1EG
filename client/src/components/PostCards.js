@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import animateScrollTo from 'animated-scroll-to';
 
 import FilteredPostcards from './FilteredCards';
 import YearBar from './bars/YearBar';
@@ -125,12 +126,14 @@ const PostCards = ({ newPage, page, search, match }) => {
   useEffect(() => {
     newPage();
     setInitialized(false);
-    window.scrollTo(0, 0);
+    animateScrollTo(0);
+    // window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
     // console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
-
+    animateScrollTo(0);
+    // window.scrollTo(0, 0);
     if (idFromUrl) {
       getSelectedCard(idFromUrl);
       setYear(null);
@@ -153,7 +156,8 @@ const PostCards = ({ newPage, page, search, match }) => {
   }, [yearFromUrl, regionFromUrl, idFromUrl]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    animateScrollTo(0);
+    // window.scrollTo(0, 0);
     setInitialized(false);
     if (year || region) {
     } else if (search && search !== '') {
@@ -161,7 +165,6 @@ const PostCards = ({ newPage, page, search, match }) => {
     } else {
     }
   }, [year, region, search]);
-
 
   // /////// RENDER:
 
@@ -174,7 +177,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       case 'Years':
         return <YearBar page={page} year={year} setYear={setYearOnly} />;
       case 'CardDetail':
-        return <PostcardDetail page={page} card={selectedCard} cardId={cardId}/>;
+        return <PostcardDetail page={page} card={selectedCard} cardId={cardId} />;
       case 'Search':
         return <Search page={page} />;
       default:
