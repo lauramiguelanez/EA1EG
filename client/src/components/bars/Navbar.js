@@ -9,7 +9,7 @@ import URE from '../pages/ProjectURE';
 
 const Navbar = props => {
   const { page, setPage, setSearch } = props;
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  // const [loggedInUser, setLoggedInUser] = useState(null);
   const [hoverLocation, toggleHoverLocation] = useState(false);
   const [hoverSearch, toggleHoverSearch] = useState(false);
 
@@ -21,7 +21,6 @@ const Navbar = props => {
 
   const style = {
     width: page === 'Years' ? `${width - 100}px` : '100%'
-    // backgroundColor:  page ===  'Home' || page ===  'URE'  ? 'none' : 'rgba(255, 255,255, 1)'
   };
   if (page === 'URE') {
     style.backgroundColor = '#ccc8b8';

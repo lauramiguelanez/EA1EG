@@ -19,7 +19,7 @@ const yearGet = (Postcard, extensionFn) => {
     const y = Number(year);
     console.log('/:year/:batch', y, typeof y, batch, skip);
 
-    Postcard.aggregate([{ $match: { year: y } }])
+    Postcard.aggregate([{ "$match": { "year": y } }])
       .skip(skip)
       .limit(batchSize)
       .sort({ _id: -1 })

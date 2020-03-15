@@ -6,11 +6,8 @@ import YearBar from './bars/YearBar';
 import List from './bars/List';
 import LocationMap from './bars/LocationMap';
 import PostcardDetail from './bars/PostcardDetail';
-import Search from './bars/elements/SearchBar';
 
-import * as utils from '../utils/index';
 import axios from 'axios';
-const { window } = global;
 require('dotenv').config();
 
 const PostCards = ({ newPage, page, match }) => {
@@ -27,7 +24,6 @@ const PostCards = ({ newPage, page, match }) => {
   const [search, setSearch] = useState(null);
   const [cardId, setCardId] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
-  // const [getFunction, setGetFunction] = useState(null);
   const [cards, setCards] = useState([]);
 
   // /////// CONSTANTS:
@@ -38,13 +34,15 @@ const PostCards = ({ newPage, page, match }) => {
   // /////// SET STATE:
 
   const setYearOnly = y => {
-    setRegion();
+    setRegion(null);
     setYear(y);
+    setSearch(null);
   };
 
   const setRegionOnly = r => {
     setRegion(r);
-    setYear();
+    setYear(null);
+    setSearch(null);
   };
 
   // /////// GET DATA:
@@ -87,11 +85,9 @@ const PostCards = ({ newPage, page, match }) => {
           setInitialized(true);
           if (batch <= 0) {
             setCards(gotCards);
-            // console.log('gotCards', route, year, region, batch, gotCards);
           } else {
             const moreCards = [...cards, ...gotCards];
             setCards(moreCards);
-            // console.log('gotCards', route, year, region, batch, cards, gotCards, moreCards);
           }
           if (gotCards.length <= 0) {
             setLimit(false);
@@ -109,6 +105,25 @@ const PostCards = ({ newPage, page, match }) => {
         const gotCards = cards.data;
         console.log('SEARCH gotCards', gotCards);
         setCards(gotCards);
+      })
+      .catch(error => console.log(error));
+  };
+
+  const getSearchCardsBatch = batch => {
+    service
+      .get(`/search/${search}/${batch}`)
+      .then(cs => {
+        const gotCards = cs.data;
+        setInitialized(true);
+        if (batch <= 0) {
+          setCards(gotCards);
+        } else {
+          const moreCards = [...cards, ...gotCards];
+          setCards(moreCards);
+        }
+        if (gotCards.length <= 0) {
+          setLimit(false);
+        }
       })
       .catch(error => console.log(error));
   };
@@ -168,13 +183,6 @@ const PostCards = ({ newPage, page, match }) => {
   useEffect(() => {
     animateScrollTo(0);
     setInitialized(false);
-    if (year || region) {
-    } else if (search && search !== '') {
-      console.log('SEARCH POSTCARDS', search);
-      // setInitialized(false);
-      // newPage('Search');
-    } else {
-    }
   }, [year, region, search]);
 
   // /////// RENDER:
@@ -218,12 +226,12 @@ const PostCards = ({ newPage, page, match }) => {
           <FilteredPostcards
             initialLoad={initialized}
             start={0}
-            getCards={getSearchCards}
+            getCards={getSearchCardsBatch /* getSearchCards */}
             cards={cards}
             page={page}
             setSelectedCard={setSelectedCard}
             initialized={initialized}
-            limit={cards.length > 45}
+            limit={limit /* cards.length > 45 */}
           />
         );
       case 'CardDetail':
