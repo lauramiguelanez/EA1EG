@@ -50,7 +50,7 @@ const PostCards = ({ newPage, page, search, match }) => {
     return service.get(route).then(cs => {
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
-      console.log('gotCards', moreCards);
+      // console.log('gotCards', moreCards);
       setCards(moreCards);
       setInitialized(true);
     });
@@ -61,7 +61,7 @@ const PostCards = ({ newPage, page, search, match }) => {
     return service.get(route).then(cs => {
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
-      console.log('gotRandomCards', moreCards);
+      // console.log('gotRandomCards', moreCards);
       setCards(moreCards);
       setInitialized(true);
     });
@@ -84,11 +84,11 @@ const PostCards = ({ newPage, page, search, match }) => {
           setInitialized(true);
           if (batch <= 0) {
             setCards(gotCards);
-            console.log('gotCards', route, year, region, batch, gotCards);
+            // console.log('gotCards', route, year, region, batch, gotCards);
           } else {
             const moreCards = [...cards, ...gotCards];
             setCards(moreCards);
-            console.log('gotCards', route, year, region, batch, cards, gotCards, moreCards);
+            // console.log('gotCards', route, year, region, batch, cards, gotCards, moreCards);
           }
           if (gotCards.length <= 0) {
             setLimit(false);
@@ -104,8 +104,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       .then(cards => {
         setInitialized(true);
         const gotCards = cards.data;
-        console.log('gotCards', gotCards);
-        gotCards = utils.shuffle(gotCards);
+        // console.log('gotCards', gotCards);
         setCards(gotCards);
       })
       .catch(error => console.log(error));
@@ -116,7 +115,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       .get(`/postcard/${cardId}`)
       .then(card => {
         setSelectedCard(card.data);
-        console.log('gotCards', cards.data);
+        // console.log('gotCards', cards.data);
         setInitialized(true);
       })
       .catch(error => console.log(error));
@@ -130,7 +129,7 @@ const PostCards = ({ newPage, page, search, match }) => {
   }, []);
 
   useEffect(() => {
-    console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
+    // console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
 
     if (idFromUrl) {
       getSelectedCard(idFromUrl);
@@ -229,8 +228,6 @@ const PostCards = ({ newPage, page, search, match }) => {
         );
     }
   };
-
-  console.log('getFunction', initialized, search);
 
   return (
     <Fragment>
