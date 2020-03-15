@@ -39,6 +39,7 @@ const PostcardDetail = ({ card, cardId }) => {
   }, [cardId]);
 
   useEffect(() => {
+    console.log('cardId change', cardId);
     setDisplay(true);
     if (!card && cardId) {
       setCurrentCard(card);
@@ -55,14 +56,10 @@ const PostcardDetail = ({ card, cardId }) => {
   if (currentCard && display) {
     const {
       QTH,
-      location,
       year,
-      imageFront,
-      imageBack,
       continent,
       country,
       indicator,
-      city,
       region
     } = currentCard;
 
@@ -73,14 +70,14 @@ const PostcardDetail = ({ card, cardId }) => {
             <img
               src={imageF}
               alt={indicator}
-              // onError={() => setImageF(`/img/placeHolder.png`)}
+              onError={() => setImageF(`/img/placeHolder.png`)}
             />
           </div>
           <div className="postcard-img">
             <img
               src={imageB}
               alt={indicator}
-              // onError={() => setImageB(`/img/placeHolder.png`)}
+              onError={() => setImageB(`/img/placeHolder.png`)}
             />
           </div>
         </div>
@@ -106,7 +103,5 @@ const PostcardDetail = ({ card, cardId }) => {
   }
   return null;
 };
-
-// {card.indicator}~{card.year}~{card.QTH}~{card.country}~{card.continent}
 
 export default PostcardDetail;

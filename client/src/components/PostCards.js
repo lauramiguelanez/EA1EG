@@ -163,6 +163,7 @@ const PostCards = ({ newPage, page, search, match }) => {
     }
   }, [year, region, search]);
 
+
   // /////// RENDER:
 
   const renderPage = () => {
@@ -174,7 +175,7 @@ const PostCards = ({ newPage, page, search, match }) => {
       case 'Years':
         return <YearBar page={page} year={year} setYear={setYearOnly} />;
       case 'CardDetail':
-        return <PostcardDetail page={page} card={selectedCard} />;
+        return <PostcardDetail page={page} card={selectedCard} cardId={cardId}/>;
       case 'Search':
         return <Search page={page} />;
       default:
