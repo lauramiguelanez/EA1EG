@@ -1,12 +1,12 @@
 [
   {
-    "name": "Europa",
+    "name": "Europe",
     "children": [
       {
         "name": "España",
         "children": [
           {
-            "name": "Andalucía",
+            "name": "Andalucia",
             "children": []
           },
           {
@@ -137,7 +137,7 @@
         "children": []
       },
       {
-        "name": "Hungría",
+        "name": "Hungria",
         "children": []
       },
       {
@@ -187,7 +187,7 @@
     ]
   },
   {
-    "name": "América",
+    "name": "America",
     "children": [
       {
         "name": "Argentina",
@@ -289,7 +289,7 @@
     ]
   },
   {
-    "name": "África",
+    "name": "Africa",
     "children": []
   },
   {

@@ -8,13 +8,13 @@ class List extends Component {
     this.state = {
       loggedInUser: null,
       continent: 'europa',
-      country: 'espana',
-      city: 'madrid',
+      country: null,
+      city: null,
       town: null,
       continents: locationTree,
-      countries: locationTree[0].children,
-      cities: locationTree[0].children[0].children,
-      towns: locationTree[0].children[0].children[13].children
+      countries: [], // locationTree[0].children,
+      cities: [], // locationTree[0].children[0].children,
+      towns: [], // locationTree[0].children[0].children[13].children
     };
     this.setRegion = props.setRegion;
     this.setContinent = this.setContinent.bind(this);
