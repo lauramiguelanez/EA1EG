@@ -84,6 +84,10 @@ export class GoogleMap extends React.PureComponent {
     );
   };
 
+  onClickDetail (id){
+    //
+  }
+
   filterSelection(points) {
     const { locations } = this.props;
 
@@ -102,7 +106,6 @@ export class GoogleMap extends React.PureComponent {
   }
 
   render() {
-    console.log('KEY', process.env.REACT_APP_API_KEY_MAP);
     return (
       <MapWrapper>
         <GoogleMapReact
@@ -118,9 +121,10 @@ export class GoogleMap extends React.PureComponent {
               return (
                 <Marker
                   key={item.id}
+                  id={item.id}
                   lat={item.points[0].lat}
                   lng={item.points[0].lng}
-                  onClick={() => this.filterSelection([item.points[0]])}
+                  onClick={() => this.onClickDetail([item.id])}
                 />
               );
             }

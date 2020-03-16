@@ -11,7 +11,7 @@ class Marker extends React.PureComponent {
 
   render() {
     const { info, onClick } = this.props;
-    console.log('info', info);
+    console.log('info', this.props);
     return (
       <button
         onClick={onClick}

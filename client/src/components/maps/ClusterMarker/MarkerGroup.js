@@ -3,11 +3,14 @@ import { easyMove, MARKER } from '../style-constants';
 
 const MarkerGroup = styled.div`
   display: flex;
-  width: ${props => (props.length === 2 ? '0px' : '0px')};
+  width: '0px';
   background: #fff;
   border-radius: 100px;
   animation: ${easyMove} 0.3s;
   background-color: #fff;
+  &:hover {
+    transform: scale(1.5);
+  }
   `;
 
 export default MarkerGroup;
