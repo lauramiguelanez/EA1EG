@@ -24,7 +24,7 @@ const searchGet = (Postcard, extensionFn) => {
         { "continent": new RegExp(search, 'gi') },
         { "city": new RegExp(search, 'gi') },
         { "region": new RegExp(search, 'gi') },
-        { year: new RegExp(search, 'gi') },
+        { "year": new RegExp(search, 'gi') },
         { "QTH": new RegExp(search, 'gi') },
         { "indicator": new RegExp(search, 'gi') },
         // { "imageFront": { "$search": new RegExp(search, 'gi') } }

@@ -103,10 +103,10 @@ app.use('/api/year', yearGet(require('./models/Postcard')));
 const regionGet = require('./routes/regionGet');
 app.use('/api/region', regionGet(require('./models/Postcard')));
 
-const searchGet = require('./routes/search');
+const searchGet = require('./routes/searchGet');
 app.use('/api/search', searchGet(require('./models/Postcard')));
 
-const randomGet = require('./routes/random');
+const randomGet = require('./routes/randomGet');
 app.use('/api/random', randomGet(require('./models/Postcard')));
 
 const cloudinary = require('./routes/uploadCloud');

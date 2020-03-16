@@ -42,8 +42,8 @@ const FilteredCards = ({
             key={0}
             type="ThreeDots"
             color="#000"
-            height={50}
-            width={50}
+            height={20}
+            width={20}
             timeout={3000} //3 secs
           />
         }

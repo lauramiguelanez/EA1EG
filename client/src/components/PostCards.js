@@ -153,9 +153,9 @@ const PostCards = ({ newPage, page, match }) => {
       getSelectedCard(idFromUrl);
       setCardId(idFromUrl);
       newPage('CardDetail');
-      setYear(null);
-      setRegion(null);
-      setSearch(null);
+      // setYear(null);
+      // setRegion(null);
+      // setSearch(null);
     }
     if (yearFromUrl) {
       setYear(yearFromUrl);

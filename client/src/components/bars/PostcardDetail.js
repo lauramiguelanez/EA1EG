@@ -20,7 +20,8 @@ const PostcardDetail = props => {
   const close = () => {
     setDisplay(false);
     let url = `/cards`;
-    return props.history.push(url);
+    props.history.goBack()
+    // return props.history.push(url);
   };
 
   const getSelectedCard = cardId => {
@@ -51,6 +52,8 @@ const PostcardDetail = props => {
 
   if (currentCard && display) {
     const { QTH, year, continent, country, indicator, region } = currentCard;
+
+    console.log('currentCard',currentCard)
 
     return (
       <section className="page detail">
