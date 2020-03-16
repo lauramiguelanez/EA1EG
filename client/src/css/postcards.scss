@@ -33,6 +33,9 @@
 
 .list {
   width: 20vh;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0px;
   & li {
     text-decoration: none;
     list-style-type: none;
