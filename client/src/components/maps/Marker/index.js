@@ -10,11 +10,11 @@ class Marker extends React.PureComponent {
   };
 
   render() {
-    const { info, onClick } = this.props;
-    console.log('info', this.props);
+    const { info, onClick, id } = this.props;
+    // console.log('info', this.props);
     return (
       <button
-        onClick={onClick}
+        onClick={() => onClick(id)}
         style={{ width: '0px', height: '0px', border: 'none', backgroundColor: 'transparent' }}
       >
         {this.props.inGroup ? (

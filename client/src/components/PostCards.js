@@ -147,12 +147,18 @@ const PostCards = ({ newPage, page, match }) => {
   }, []);
 
   useEffect(() => {
+    if (selectedCard) {
+      setCardId(selectedCard._id);
+    }
+  }, [selectedCard]);
+
+  useEffect(() => {
     // console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
     animateScrollTo(0);
     if (idFromUrl) {
       getSelectedCard(idFromUrl);
       setCardId(idFromUrl);
-      newPage('CardDetail');
+      // newPage('CardDetail');
       // setYear(null);
       // setRegion(null);
       // setSearch(null);
@@ -196,7 +202,8 @@ const PostCards = ({ newPage, page, match }) => {
       case 'Years':
         return <YearBar page={page} year={year} setYear={setYearOnly} />;
       case 'CardDetail':
-        return <PostcardDetail page={page} card={selectedCard} cardId={cardId} />;
+        return null;
+      //   return <PostcardDetail page={page} card={selectedCard} cardId={cardId} />;
       case 'Search':
         return null; // <Search page={page} />;
       default:
@@ -219,7 +226,10 @@ const PostCards = ({ newPage, page, match }) => {
             setSelectedCard={setSelectedCard}
             initialized={initialized}
             limit={limit}
-          />
+            cardId={cardId}
+          >
+            {cardId && <PostcardDetail page={page} card={selectedCard} cardId={cardId} />}
+          </FilteredPostcards>
         );
       case 'Search':
         return (
@@ -232,9 +242,12 @@ const PostCards = ({ newPage, page, match }) => {
             setSelectedCard={setSelectedCard}
             initialized={initialized}
             limit={limit /* cards.length > 45 */}
-          />
+            cardId={cardId}
+          >
+            {cardId && <PostcardDetail page={page} card={selectedCard} cardId={cardId} />}
+          </FilteredPostcards>
         );
-      case 'CardDetail':
+      // case 'CardDetail':
       default:
         return (
           <FilteredPostcards
@@ -245,7 +258,10 @@ const PostCards = ({ newPage, page, match }) => {
             setSelectedCard={setSelectedCard}
             initialized={initialized}
             limit={16437 >= cards.length}
-          />
+            cardId={cardId}
+          >
+            {cardId && <PostcardDetail page={page} card={selectedCard} cardId={cardId} />}
+          </FilteredPostcards>
         );
     }
   };

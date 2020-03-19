@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import useWindowSize from '../hooks/useWindowSize';
 
@@ -17,7 +17,9 @@ const FilteredCards = ({
   initialized,
   limit,
   initialLoad,
-  start = 0
+  start = 0,
+  children,
+  cardId
 }) => {
   const windowSize = useWindowSize();
   /* const style = {
@@ -30,7 +32,7 @@ const FilteredCards = ({
   }, [getCards, start]);
 
   return (
-    <section className={`page allcards${page === 'Years' ? ' year':''}`} >
+    <section className={`page allcards${page === 'Years' ? ' year' : ''}`}>
       <InfiniteScroll
         initialLoad={true}
         pageStart={start}
@@ -48,14 +50,18 @@ const FilteredCards = ({
           />
         }
       >
+        {children}
         <div className="columns-wrapper">
           {cards &&
             cards.map((card, i) => (
-              <ThumbnailCard
-                key={`${i}-${card._id}`}
-                card={card}
-                setSelectedCard={setSelectedCard}
-              />
+              <Fragment>
+                <ThumbnailCard
+                  key={`${i}-${card._id}`}
+                  card={card}
+                  setSelectedCard={setSelectedCard}
+                />
+                {/* cardId && cardId === card._id && children */}
+              </Fragment>
             ))}
         </div>
       </InfiniteScroll>

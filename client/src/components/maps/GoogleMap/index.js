@@ -84,13 +84,13 @@ export class GoogleMap extends React.PureComponent {
     );
   };
 
-  onClickDetail (id){
-    //
+  onClickDetail(id) {
+    console.log('clicked Id', id);
   }
 
   filterSelection(points) {
     const { locations } = this.props;
-
+    console.log('points', points);
     /* info={markersData.find(
       m => m.lat === item.points[0].lat && m.lng === item.points[0].lng
     )} */
