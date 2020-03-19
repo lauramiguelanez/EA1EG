@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import useWindowSize from './hooks/useWindowSize'
+import useWindowSize from './hooks/useWindowSize';
 
 import Navbar from './components/bars/Navbar';
 import PostCards from './components/PostCards';
@@ -52,13 +52,14 @@ const App = () => {
             path="/ure"
             render={() => <ProjectURE newPage={() => setPage('URE')} page="URE" />}
           />
-          {cardRoutes.map(({ route, page, exact }) => {
+          {cardRoutes.map(({ route, page, exact }, i) => {
             const otherProps = { ...exact };
             return (
               <Route
                 path={route}
                 render={props => (
                   <PostCards
+                    key={i}
                     newPage={forcedPage => setPage(forcedPage || page)}
                     page={page}
                     search={search}

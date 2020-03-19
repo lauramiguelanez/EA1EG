@@ -144,6 +144,30 @@ const PostCards = ({ newPage, page, match }) => {
     newPage();
     setInitialized(false);
     animateScrollTo(0);
+
+    /* service
+      .get('/postcard')
+      .then(cs => {
+        function downloadObjectAsJson(exportObj, exportName) {
+          var dataStr =
+            'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
+          var downloadAnchorNode = document.createElement('a');
+          downloadAnchorNode.setAttribute('href', dataStr);
+          downloadAnchorNode.setAttribute('download', exportName + '.json');
+          document.body.appendChild(downloadAnchorNode); // required for firefox
+          downloadAnchorNode.click();
+          downloadAnchorNode.remove();
+        }
+        const markers = cs.data.map(({ _id, location, indicator }) => ({
+          id: _id,
+          lat: location ? location.lat : null,
+          lng: location ? location.lng : null,
+          indicator
+        }));
+        downloadObjectAsJson(markers, 'markersData');
+        console.log('------------ALL', cs.data, markers);
+      })
+      .catch(error => console.log(error)); */
   }, []);
 
   useEffect(() => {
