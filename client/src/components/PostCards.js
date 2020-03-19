@@ -20,7 +20,7 @@ const PostCards = ({ newPage, page, match }) => {
   const [initialized, setInitialized] = useState(false);
   const [limit, setLimit] = useState(true);
   const [year, setYear] = useState(null);
-  const [region, setRegion] = useState(null);
+  const [region, setRegion] = useState('null');
   const [search, setSearch] = useState(null);
   const [cardId, setCardId] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -198,7 +198,7 @@ const PostCards = ({ newPage, page, match }) => {
       case 'Region':
         return <List region={region} setRegion={setRegionOnly} />;
       case 'Map':
-        return <LocationMap page={page} cards={cards} />;
+        return <LocationMap page={page} cards={cards} setCardId={setCardId} />;
       case 'Years':
         return <YearBar page={page} year={year} setYear={setYearOnly} />;
       case 'CardDetail':
@@ -266,10 +266,44 @@ const PostCards = ({ newPage, page, match }) => {
     }
   };
 
+  const getCurrentFn = () => {
+    switch (page) {
+      case 'Region':
+      case 'Map':
+      case 'Years':
+        return { currLimit: limit, currFn: !!year || !!region ? getCards : getRandom };
+      case 'Search':
+        return { currLimit: limit, currFn: getSearchCardsBatch /* getSearchCards */ };
+      default:
+        return { currLimit: 16437 >= cards.length, currFn: getRandom /* getCardsBatch */ };
+    }
+  };
+
+  const { currLimit, currFn } = getCurrentFn();
+
   return (
     <Fragment>
       {renderPage()}
-      {renderPostcards()}
+      {/* renderPostcards() */}
+      <FilteredPostcards
+        initialLoad={initialized}
+        getCards={currFn}
+        cards={cards}
+        page={page}
+        setSelectedCard={setSelectedCard}
+        initialized={initialized}
+        limit={currLimit}
+        cardId={cardId}
+      >
+        {cardId && (
+          <PostcardDetail
+            page={page}
+            setSelectedCard={setSelectedCard}
+            card={selectedCard}
+            cardId={cardId}
+          />
+        )}
+      </FilteredPostcards>
     </Fragment>
   );
 };

@@ -29,7 +29,7 @@ class LocationMap extends Component {
   render() {
     return (
       <section>
-        <GoogleMap locations={markersData}></GoogleMap>
+        <GoogleMap locations={markersData} setCardId={this.props.setCardId} ></GoogleMap>
       </section>
     );
   }

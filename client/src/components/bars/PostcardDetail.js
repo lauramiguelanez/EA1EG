@@ -7,7 +7,7 @@ import axios from 'axios';
 require('dotenv').config();
 
 const PostcardDetail = props => {
-  const { card, cardId } = props;
+  const { card, cardId, setSelectedCard } = props;
   const service = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/api`
   });
@@ -20,7 +20,7 @@ const PostcardDetail = props => {
   const close = () => {
     setDisplay(false);
     let url = `/cards`;
-    props.history.goBack()
+    props.history.goBack();
     // return props.history.push(url);
   };
 
@@ -40,6 +40,7 @@ const PostcardDetail = props => {
     animateScrollTo(0);
     if (!card && cardId) {
       setCurrentCard(card);
+      setSelectedCard(card);
     }
   }, [cardId]);
 
@@ -53,7 +54,7 @@ const PostcardDetail = props => {
   if (currentCard && display) {
     const { QTH, year, continent, country, indicator, region } = currentCard;
 
-    console.log('currentCard',currentCard)
+    console.log('currentCard', currentCard);
 
     return (
       <section className="page detail">
