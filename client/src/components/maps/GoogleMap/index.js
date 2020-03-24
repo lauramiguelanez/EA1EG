@@ -89,15 +89,10 @@ export class GoogleMap extends React.PureComponent {
   }
 
   filterSelection(points) {
-    const { locations } = this.props;
-    console.log('points', points);
-    /* info={markersData.find(
-      m => m.lat === item.points[0].lat && m.lng === item.points[0].lng
-    )} */
-
+    const { setCardIds } = this.props;
     const ids = points.map(p=>p.id);
-
     console.log('filtered', ids);
+    setCardIds(ids)
     return ids;
   }
 

@@ -21,7 +21,7 @@ const postcardCRUD = (Postcard, extensionFn) => {
       .catch(e => next(e));
   });
 
-  router.get('/page/:batch', (req, res, next) => {
+  router.get('/:page/:batch', (req, res, next) => {
     const batchSize = 45;
     const { batch } = req.params;
     const skip = (batch || 0) * batchSize;
@@ -29,6 +29,18 @@ const postcardCRUD = (Postcard, extensionFn) => {
       .skip(skip)
       .limit(batchSize)
       .sort({_id:-1})
+      .then(objList => {
+        console.log('objList', objList);
+        return res.status(200).json(objList);
+      })
+      .catch(e => next(e));
+  });
+
+
+  router.post('/many',(req, res, next) => {
+    const { ids } = req.body;
+    Postcard.find({"_id" : {"$in" : ids}})
+      .sort({"_id":-1})
       .then(objList => {
         console.log('objList', objList);
         return res.status(200).json(objList);
