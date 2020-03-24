@@ -16,7 +16,7 @@ class ClusterMarker extends React.PureComponent {
   render() {
     // console.log('points', this.props.points);
     return (
-      <MarkerGroup length={this.props.points.length}>
+      <MarkerGroup length={this.props.points.length} onClick={this.props.onClick}>
         {/* this.state.clusterFaceMarkers.map(marker =>
           <Marker
             key={marker.id}

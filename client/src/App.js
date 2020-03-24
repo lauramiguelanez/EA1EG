@@ -7,6 +7,7 @@ import PostCards from './components/PostCards';
 import Landing from './components/Landing';
 import Project from './components/pages/Project';
 import ProjectURE from './components/pages/ProjectURE';
+import LocationMap from './components/LocationMap'
 
 import './css/pages.scss';
 import './css/postcards.scss';
@@ -26,7 +27,7 @@ const App = () => {
     { route: '/year/', page: 'Years', exact: true },
     { route: '/region/:region', page: 'Region' },
     { route: '/region/', page: 'Region', exact: true },
-    { route: '/location', page: 'Map', exact: true }
+    // { route: '/location', page: 'Map', exact: true }
   ];
 
   return (
@@ -51,6 +52,11 @@ const App = () => {
             exact
             path="/ure"
             render={() => <ProjectURE newPage={() => setPage('URE')} page="URE" />}
+          />
+          <Route
+            exact
+            path="/location"
+            render={() => <LocationMap newPage={() => setPage('Map')} page="Map" />}
           />
           {cardRoutes.map(({ route, page, exact }, i) => {
             const otherProps = { ...exact };

@@ -4,7 +4,7 @@ import animateScrollTo from 'animated-scroll-to';
 import FilteredPostcards from './FilteredCards';
 import YearBar from './bars/YearBar';
 import List from './bars/List';
-import LocationMap from './bars/LocationMap';
+import LocationMap from './LocationMap';
 import PostcardDetail from './bars/PostcardDetail';
 
 import axios from 'axios';
@@ -221,79 +221,16 @@ const PostCards = ({ newPage, page, match }) => {
     switch (page) {
       case 'Region':
         return <List region={region} setRegion={setRegionOnly} />;
-      case 'Map':
-        return <LocationMap page={page} cards={cards} setCardId={setCardId} />;
       case 'Years':
         return <YearBar page={page} year={year} setYear={setYearOnly} />;
-      case 'CardDetail':
-        return null;
-      //   return <PostcardDetail page={page} card={selectedCard} cardId={cardId} />;
-      case 'Search':
-        return null; // <Search page={page} />;
       default:
         return null;
-    }
-  };
-
-  const renderPostcards = () => {
-    switch (page) {
-      case 'Region':
-      case 'Map':
-      case 'Years':
-        return (
-          <FilteredPostcards
-            initialLoad={initialized}
-            start={0}
-            getCards={getCards}
-            cards={cards}
-            page={page}
-            setSelectedCard={setSelectedCard}
-            initialized={initialized}
-            limit={limit}
-            cardId={cardId}
-          >
-            {cardId && <PostcardDetail page={page} card={selectedCard} cardId={cardId} />}
-          </FilteredPostcards>
-        );
-      case 'Search':
-        return (
-          <FilteredPostcards
-            initialLoad={initialized}
-            start={0}
-            getCards={getSearchCardsBatch /* getSearchCards */}
-            cards={cards}
-            page={page}
-            setSelectedCard={setSelectedCard}
-            initialized={initialized}
-            limit={limit /* cards.length > 45 */}
-            cardId={cardId}
-          >
-            {cardId && <PostcardDetail page={page} card={selectedCard} cardId={cardId} />}
-          </FilteredPostcards>
-        );
-      // case 'CardDetail':
-      default:
-        return (
-          <FilteredPostcards
-            initialLoad={initialized}
-            getCards={getRandom /* getCardsBatch */}
-            cards={cards}
-            page={page}
-            setSelectedCard={setSelectedCard}
-            initialized={initialized}
-            limit={16437 >= cards.length}
-            cardId={cardId}
-          >
-            {cardId && <PostcardDetail page={page} card={selectedCard} cardId={cardId} />}
-          </FilteredPostcards>
-        );
     }
   };
 
   const getCurrentFn = () => {
     switch (page) {
       case 'Region':
-      case 'Map':
       case 'Years':
         return { currLimit: limit, currFn: !!year || !!region ? getCards : getRandom };
       case 'Search':
@@ -308,7 +245,6 @@ const PostCards = ({ newPage, page, match }) => {
   return (
     <Fragment>
       {renderPage()}
-      {/* renderPostcards() */}
       <FilteredPostcards
         initialLoad={initialized}
         getCards={currFn}

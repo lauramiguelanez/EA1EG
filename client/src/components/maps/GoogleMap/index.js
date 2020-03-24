@@ -8,6 +8,7 @@ import ClusterMarker from '../ClusterMarker';
 import mapStyles from './mapStyles.json';
 import MapWrapper from './MapWrapper';
 
+
 require('dotenv').config();
 
 const MAP = {
@@ -64,9 +65,6 @@ export class GoogleMap extends React.PureComponent {
 
   handleMapChange = ({ center, zoom, bounds }) => {
     const { locations } = this.props;
-    // console.log('this.props.locations', locations);
-    // console.log('this.state.clusters', this.state.clusters);
-    // console.log('this.state.mapOptions', this.state.mapOptions);
 
     this.setState(
       {
@@ -97,14 +95,10 @@ export class GoogleMap extends React.PureComponent {
       m => m.lat === item.points[0].lat && m.lng === item.points[0].lng
     )} */
 
-    const filtered = markersData.filter(l => {
-      points.reduce((acc, { lat, lng }) => {
-        return acc || (lat === l.lat && lng === l.lng);
-      });
-    });
+    const ids = points.map(p=>p.id);
 
-    console.log('filtered', filtered);
-    return filtered;
+    console.log('filtered', ids);
+    return ids;
   }
 
   render() {
