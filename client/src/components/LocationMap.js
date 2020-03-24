@@ -38,6 +38,7 @@ const LocationMap = ({ page, newPage, height }) => {
   useEffect(() => {
     setCardId(null);
     getCards();
+    animateScrollTo(height);
   }, [cardIds]);
 
   return (

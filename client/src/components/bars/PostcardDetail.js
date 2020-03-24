@@ -64,7 +64,7 @@ const PostcardDetail = props => {
               src={imageF}
               alt={indicator}
               onError={() => {
-                setImageF(`/img/placeHolder.png`);
+                // setImageF(`/img/placeHolder.png`);
                 setDisplay(false);
               }}
             />
@@ -74,7 +74,7 @@ const PostcardDetail = props => {
               src={imageB}
               alt={indicator}
               onError={() => {
-                setImageB(`/img/placeHolder.png`);
+                // setImageB(`/img/placeHolder.png`);
                 setDisplay(false);
               }}
             />
