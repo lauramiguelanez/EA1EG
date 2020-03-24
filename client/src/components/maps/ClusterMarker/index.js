@@ -6,6 +6,7 @@ import Marker from '../Marker';
 
 import MarkerGroup from './MarkerGroup';
 import MarkerCounter from './MarkerCounter';
+import ToolTip from '../ToolTip'
 
 class ClusterMarker extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -16,7 +17,7 @@ class ClusterMarker extends React.PureComponent {
   render() {
     // console.log('points', this.props.points);
     return (
-      <MarkerGroup length={this.props.points.length} onClick={this.props.onClick}>
+      <MarkerGroup className="tooltip" length={this.props.points.length} onClick={this.props.onClick}>
         {/* this.state.clusterFaceMarkers.map(marker =>
           <Marker
             key={marker.id}
@@ -26,6 +27,7 @@ class ClusterMarker extends React.PureComponent {
             inGroup
           />
         ) */}
+        <ToolTip indicator={this.props.indicator}/>
         {this.props.points.length > 2 && (
           <MarkerCounter>{this.props.points.length - 1}</MarkerCounter>
         )}

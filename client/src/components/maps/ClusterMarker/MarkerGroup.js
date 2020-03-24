@@ -9,7 +9,8 @@ const MarkerGroup = styled.div`
   animation: ${easyMove} 0.3s;
   background-color: #fff;
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
+    transform-origin: 50% 50%;
   }
   `;
 

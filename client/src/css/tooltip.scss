@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+@import 'variables.scss';
+@import 'icons.scss';
+@import 'mixins.scss';
+
+.tooltip {
+  display: inline-block;
+  position: relative;
+  // border-bottom: 1px dotted #666;
+  // text-align: left;
+}
+
+.tooltip .top {
+  min-width: 10px;
+  max-width: 100px;
+  top: -10px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  padding: 5px;
+  color: $secondary-color;
+  background-color: $primary-color;
+  font-weight: normal;
+  font-size: $detail-font-size;
+  text-align: center;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 99999999;
+  // box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.tooltip:hover .top {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .top i {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  width: 10px;
+  height: 5px;
+  overflow: hidden;
+}
+
+.tooltip .top i::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background-color: #000000;
+  box-shadow: 0 1px 8px transparent;
+}

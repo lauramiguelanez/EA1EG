@@ -38,7 +38,9 @@ const LocationMap = ({ page, newPage, height }) => {
   useEffect(() => {
     setCardId(null);
     getCards();
-    animateScrollTo(height);
+    if (cardIds) {
+      animateScrollTo(height);
+    }
   }, [cardIds]);
 
   return (
@@ -53,7 +55,7 @@ const LocationMap = ({ page, newPage, height }) => {
         limit={false}
         cardId={cardId}
       >
-        {cardId && (
+        {/* cardId && (
           <PostcardDetail
             setSelectedCard={setSelectedCard}
             card={selectedCard}
@@ -61,7 +63,7 @@ const LocationMap = ({ page, newPage, height }) => {
             page={page}
             height={height}
           />
-        )}
+        ) */}
       </FilteredPostcards>
     </section>
   );

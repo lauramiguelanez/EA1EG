@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import MarkerStyled from './MarkerStyled';
 import MarkerInGroupStyled from './MarkerInGroupStyled';
+import ToolTip from '../ToolTip';
 
 class Marker extends React.PureComponent {
   static defaultProps = {
@@ -10,18 +11,16 @@ class Marker extends React.PureComponent {
   };
 
   render() {
-    const { info, onClick, id } = this.props;
+    const { onClick, id } = this.props;
     // console.log('info', this.props);
     return (
       <button
+        className="tooltip"
         onClick={() => onClick(id)}
         style={{ width: '0px', height: '0px', border: 'none', backgroundColor: 'transparent' }}
       >
-        {this.props.inGroup ? (
-          <MarkerInGroupStyled />
-        ) : (
-          <MarkerStyled tooltip={(info && info.indicator) || 'tooltip'} />
-        )}
+      <ToolTip indicator={this.props.indicator}/>
+        {this.props.inGroup ? <MarkerInGroupStyled /> : <MarkerStyled />}
       </button>
     );
   }

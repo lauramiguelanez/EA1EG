@@ -2,11 +2,12 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import supercluster from 'points-cluster';
 
-import markersData from '../../data/markersData.json';
 import Marker from '../Marker';
 import ClusterMarker from '../ClusterMarker';
 import mapStyles from './mapStyles.json';
 import MapWrapper from './MapWrapper';
+
+import '../../../css/tooltip.scss';
 
 
 require('dotenv').config();
@@ -116,6 +117,7 @@ export class GoogleMap extends React.PureComponent {
                   id={item.id}
                   lat={item.points[0].lat}
                   lng={item.points[0].lng}
+                  indicator={item.points[0].indicator}
                   onClick={() => this.onClickDetail([item.id.replace('1_', '')])}
                 />
               );
@@ -126,6 +128,7 @@ export class GoogleMap extends React.PureComponent {
                 key={item.id}
                 lat={item.lat}
                 lng={item.lng}
+                indicator={item.points[0].indicator}
                 points={item.points}
                 onClick={() => this.filterSelection(item.points)}
               />

@@ -21,7 +21,8 @@ const MarkerStyled = styled.div`
   animation: ${easyMove} 0.3s;
 
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
+    transform-origin: 50% 50%;
   }
 `;
 
