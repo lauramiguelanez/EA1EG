@@ -17,7 +17,7 @@ const App = () => {
   const [page, setPage] = useState('Home');
   const [search, setSearch] = useState('');
 
-  const { width } = useWindowSize();
+  const { width,height } = useWindowSize();
 
   const cardRoutes = [
     { route: '/cards', page: 'Cards', exact: true },
@@ -56,7 +56,7 @@ const App = () => {
           <Route
             exact
             path="/location"
-            render={() => <LocationMap newPage={() => setPage('Map')} page="Map" />}
+            render={() => <LocationMap newPage={() => setPage('Map')} page="Map" height={height}/>}
           />
           {cardRoutes.map(({ route, page, exact }, i) => {
             const otherProps = { ...exact };

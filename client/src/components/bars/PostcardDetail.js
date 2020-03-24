@@ -7,7 +7,7 @@ import axios from 'axios';
 require('dotenv').config();
 
 const PostcardDetail = props => {
-  const { card, cardId, setSelectedCard } = props;
+  const { card, cardId, setSelectedCard, page, height } = props;
   const service = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/api`
   });
@@ -37,7 +37,7 @@ const PostcardDetail = props => {
   useEffect(() => {
     getSelectedCard(cardId);
     setDisplay(true);
-    animateScrollTo(0);
+    animateScrollTo(height || 0);
     if (!card && cardId) {
       setCurrentCard(card);
       setSelectedCard(card);
@@ -60,10 +60,24 @@ const PostcardDetail = props => {
       <section className="page detail">
         <div className="postcard-wrapper">
           <div className="postcard-img">
-            <img src={imageF} alt={indicator} onError={() => setImageF(`/img/placeHolder.png`)} />
+            <img
+              src={imageF}
+              alt={indicator}
+              onError={() => {
+                setImageF(`/img/placeHolder.png`);
+                setDisplay(false);
+              }}
+            />
           </div>
           <div className="postcard-img">
-            <img src={imageB} alt={indicator} onError={() => setImageB(`/img/placeHolder.png`)} />
+            <img
+              src={imageB}
+              alt={indicator}
+              onError={() => {
+                setImageB(`/img/placeHolder.png`);
+                setDisplay(false);
+              }}
+            />
           </div>
         </div>
         <div className="postcard-detail-data">
