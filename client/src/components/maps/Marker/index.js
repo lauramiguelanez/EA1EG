@@ -22,7 +22,9 @@ class Marker extends React.PureComponent {
       >
         <ToolTip indicator={this.props.indicator} />
         {/* this.props.inGroup ? <MarkerInGroupStyled /> : <MarkerStyled /> */}
-        <SemiCircle >1</SemiCircle>
+        <SemiCircle>
+          <span>1</span>
+        </SemiCircle>
       </button>
     );
   }

@@ -21,7 +21,7 @@ class ClusterMarker extends React.PureComponent {
       <div className="tooltip" length={this.props.points.length} onClick={this.props.onClick}>
         <ToolTip indicator={this.props.indicator}/>
         {this.props.points.length > 2 && (
-          <SemiCircle>{this.props.points.length - 1}</SemiCircle>
+          <SemiCircle><span>{this.props.points.length - 1}</span></SemiCircle>
         )}
       </div>
     );
