@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import MarkerStyled from './MarkerStyled';
 import MarkerInGroupStyled from './MarkerInGroupStyled';
+import SemiCircle from '../ClusterMarker/SemiCircle';
 import ToolTip from '../ToolTip';
 
 class Marker extends React.PureComponent {
@@ -19,8 +20,9 @@ class Marker extends React.PureComponent {
         onClick={() => onClick(id)}
         style={{ width: '0px', height: '0px', border: 'none', backgroundColor: 'transparent' }}
       >
-      <ToolTip indicator={this.props.indicator}/>
-        {this.props.inGroup ? <MarkerInGroupStyled /> : <MarkerStyled />}
+        <ToolTip indicator={this.props.indicator} />
+        {/* this.props.inGroup ? <MarkerInGroupStyled /> : <MarkerStyled /> */}
+        <SemiCircle >1</SemiCircle>
       </button>
     );
   }

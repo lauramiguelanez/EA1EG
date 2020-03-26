@@ -6,6 +6,7 @@ import Marker from '../Marker';
 
 import MarkerGroup from './MarkerGroup';
 import MarkerCounter from './MarkerCounter';
+import SemiCircle from './SemiCircle';
 import ToolTip from '../ToolTip'
 
 class ClusterMarker extends React.PureComponent {
@@ -17,21 +18,12 @@ class ClusterMarker extends React.PureComponent {
   render() {
     // console.log('points', this.props.points);
     return (
-      <MarkerGroup className="tooltip" length={this.props.points.length} onClick={this.props.onClick}>
-        {/* this.state.clusterFaceMarkers.map(marker =>
-          <Marker
-            key={marker.id}
-            lat={marker.lat}
-            lng={marker.lng}
-            name={marker.id}
-            inGroup
-          />
-        ) */}
+      <div className="tooltip" length={this.props.points.length} onClick={this.props.onClick}>
         <ToolTip indicator={this.props.indicator}/>
         {this.props.points.length > 2 && (
-          <MarkerCounter>{this.props.points.length - 1}</MarkerCounter>
+          <SemiCircle>{this.props.points.length - 1}</SemiCircle>
         )}
-      </MarkerGroup>
+      </div>
     );
   }
 }

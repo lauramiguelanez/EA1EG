@@ -40,14 +40,7 @@ const FilteredCards = ({
         hasMore={limit}
         threshold={1250}
         loader={
-          <Loader
-            key={0}
-            type="ThreeDots"
-            color="#000"
-            height={20}
-            width={20}
-            timeout={3000} //3 secs
-          />
+          <div class="rotate top"/>
         }
       >
         {children}
