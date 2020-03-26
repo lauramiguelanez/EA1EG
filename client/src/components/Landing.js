@@ -12,7 +12,7 @@ const images = [
   'ea1eg-2019-06',
   'ea1eg-2019-07',
   'ea1eg-2019-08',
-  'ea1eg-2019-09'
+  'ea1eg-2019-09','ea1eg-2019-10'
 ];
 
 const Landing = props => {
@@ -29,7 +29,7 @@ const Landing = props => {
     const minTop = 90;
     const maxTop = height - minTop - (2 * maxWidth) / 3;
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       const style = {
         position: 'absolute',
         zIndex: `${10 + Math.floor(Math.random() * Math.floor(10))}`,
