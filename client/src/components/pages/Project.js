@@ -31,7 +31,7 @@ const Project = ({ newPage }) => {
             civil, pierde la visión en los dos ojos y de varios dedos de ambas manos.
           </p>
           <p>
-            A finales de los años 40, por consejo de un amigo,entra en contacto con la radioafición
+            A finales de los años 40, por consejo de un amigo, entra en contacto con la radioafición
             y en 1950 obtiene, previo el examen correspondiente, el carnet de radioaficionado,
             siendo la primera persona que consigue este permiso en la provincia de Avila.
           </p>
