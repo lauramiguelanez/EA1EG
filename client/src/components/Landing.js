@@ -12,7 +12,8 @@ const images = [
   'ea1eg-2019-06',
   'ea1eg-2019-07',
   'ea1eg-2019-08',
-  'ea1eg-2019-09','ea1eg-2019-10'
+  'ea1eg-2019-09',
+  'ea1eg-2019-10'
 ];
 
 const Landing = props => {
@@ -51,17 +52,26 @@ const Landing = props => {
     <section className="landingSection" onClick={generateStyles}>
       <img src={`/img/landing/ea1eg.svg`} alt="EA1EG" id="bigLetters"></img>
       {images.map((image, i) => {
-        const randomYear = Math.floor(Math.random() * (1993 - 1950 + 1) + 1950);
+        return (
+          <img
+            src={`/img/landing/${image}.png`}
+            alt={image}
+            style={landingImgStyles && landingImgStyles[i]}
+            onClick={generateStyles}
+          />
+        );
+        /* 
+          const randomYear = Math.floor(Math.random() * (1993 - 1950 + 1) + 1950);
         return (
           <NavLink key={i} className="nav-link postcard" to={`/year/${randomYear}`}>
             <img
               src={`/img/landing/${image}.png`}
               alt={image}
               style={landingImgStyles && landingImgStyles[i]}
-              // onClick={generateStyles}
+              onClick={generateStyles}
             />
           </NavLink>
-        );
+        ); */
       })}
     </section>
   );
