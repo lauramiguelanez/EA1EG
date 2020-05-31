@@ -39,14 +39,14 @@ const Navbar = props => {
           }`}
         >
           <div className="nav-group logo">
-            <NavLink className="nav-link" to="/">
+            <NavLink className="nav-link menuItem" to="/">
               <img src="/img/logo.png" alt="EA1EG" className="logoSvg"></img>
             </NavLink>
           </div>
 
           <div className="nav-group site-title">
             <div
-              className="nav-link"
+              className="nav-link menuItem"
               onMouseEnter={() => toggleHoverLocation(true)}
               onMouseLeave={() => toggleHoverLocation(false)}
             >
@@ -77,7 +77,7 @@ const Navbar = props => {
               ) : null}
             </div>
             <NavLink
-              className="nav-link"
+              className="nav-link menuItem"
               to="/year/1960"
               style={page === 'Year' ? selectedStyle : {}}
             >
@@ -87,13 +87,13 @@ const Navbar = props => {
 
           <div className="nav-group">
             <NavLink
-              className="nav-link"
+              className="nav-link menuItem"
               to="/project"
               style={page === 'Project' ? selectedStyle : {}}
             >
               Project
             </NavLink>
-            <NavLink className="nav-link" to="/ure" style={page === 'URE' ? selectedStyle : {}}>
+            <NavLink className="nav-link menuItem" to="/ure" style={page === 'URE' ? selectedStyle : {}}>
               URE
             </NavLink>
           </div>
@@ -104,7 +104,7 @@ const Navbar = props => {
             onMouseLeave={() => toggleHoverSearch(false)}
           >
             <NavLink
-              className="nav-link search-link"
+              className="nav-link menuItem search-link"
               to="/cards"
               style={page === 'Search' ? selectedStyle : {}}
             >
