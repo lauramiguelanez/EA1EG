@@ -1,64 +1,130 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import locationTree from '../data/locationTree.json';
 import ListColumn from './elements/ListColumn';
-class List extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedInUser: null,
-      continent: 'europa',
-      country: null,
-      city: null,
-      town: null,
-      continents: locationTree,
-      countries: [], // locationTree[0].children,
-      cities: [], // locationTree[0].children[0].children,
-      towns: [], // locationTree[0].children[0].children[13].children
-    };
-    this.setRegion = props.setRegion;
-    this.setContinent = this.setContinent.bind(this);
-    this.setCountry = this.setCountry.bind(this);
-    this.setCity = this.setCity.bind(this);
-  }
 
-  setContinent(continentObj) {
-    const countries = continentObj.children;
-    this.setState({ continent: continentObj.name, country: undefined, city: undefined, countries });
-    this.setRegion(continentObj.name);
-  }
+const flatLocations = [];
+const flat = () => {
+  locationTree.forEach((a) => {
+    a.type = 'continent';
+    a.parent = null;
+    flatLocations.push(a);
+    a.children.forEach((b) => {
+      b.type = 'country';
+      b.parent = a;
+      flatLocations.push(b);
+      b.children.forEach((c) => {
+        c.type = 'city';
+        c.parent = b;
+        flatLocations.push(c);
+        c.children.forEach((d) => {
+          d.type = 'town';
+          d.parent = c;
+          flatLocations.push(d);
+        });
+      });
+    });
+  });
+};
+flat();
 
-  setCountry(countryObj) {
-    const cities = countryObj.children;
-    this.setState({ country: countryObj.name, city: undefined, cities });
-    this.setRegion(countryObj.name);
-  }
+const List = ({ setRegion, region }) => {
+  const continents = locationTree;
+  const [continent, setContinent] = useState('europa');
+  const [country, setCountry] = useState(null);
+  const [city, setCity] = useState(null);
+  const [town, setTown] = useState(null);
 
-  setCity(cityObj) {
-    const towns = cityObj.children;
-    this.setState({ city: cityObj.name, towns });
-    this.setRegion(cityObj.name);
-  }
+  const [countries, setCountries] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [towns, setTowns] = useState([]);
 
-  setTown(townObj) {
-    this.setState({ town: townObj.name });
-    this.setRegion(townObj.name);
-  }
+  const setRegionFromUrl = () => {
+    let reg = flatLocations.find((l) => l.name.toLowerCase === region.toLowerCase);
+    console.log('region', region, reg)
+    // eslint-disable-next-line default-case
+    if (reg) {
+      switch (reg.type) {
+        case 'continent':
+          setContinent(reg.name);
+          setCountries(reg.children);
+          break;
+        case 'country':
+          setCountry(reg.name);
+          setContinent(reg.parent.name);
+          setCountries(reg.parent.children);
+          setCities(reg.children);
+          break;
+        case 'city':
+          setCity(reg.name);
+          setCountry(reg.parent.name);
+          setContinent(reg.parent.parent.name);
+          setTowns(reg.children);
+          setCities(reg.parent.children);
+          setCountries(reg.parent.parent.children);
+          break;
+        case 'town':
+          setTown(reg.name);
+          setCity(reg.parent.name);
+          setCountry(reg.parent.parent.name);
+          setContinent(reg.parent.parent.parent.name);
+          setTowns(reg.parent.children);
+          setCities(reg.parent.parent.children);
+          setCountries(reg.parent.parent.parent.children);
+          break;
+      }
+    }
+  };
 
-  render() {
-    const { continent, country, city, town, continents, countries, cities, towns } = this.state;
+  useEffect(setRegionFromUrl, []);
 
-    return (
-      <section className="page page-list">
-        <div className="columns-wrapper">
-          <ListColumn array={continents} selectedItem={continent} setItem={this.setContinent} />
-          <ListColumn array={countries} selectedItem={country} setItem={this.setCountry} />
-          <ListColumn array={cities} selectedItem={city} setItem={this.setCity} />
-          <ListColumn array={towns} selectedItem={town} setItem={this.setTown} />
-        </div>
-      </section>
-    );
-  }
-}
+  const setContinentData = (continentObj) => {
+    setCountries(continentObj.children);
+    setCities([]);
+    setTowns([]);
+
+    setContinent(continentObj.name);
+    setCountry(null);
+    setCity(null);
+    setTown(null);
+
+    setRegion(continentObj.name);
+  };
+
+  const setCountryData = (countryObj) => {
+    setCities(countryObj.children);
+    setTowns([]);
+
+    setCountry(countryObj.name);
+    setCity(null);
+    setTown(null);
+
+    setRegion(countryObj.name);
+  };
+
+  const setCityData = (cityObj) => {
+    setTowns(cityObj.children);
+
+    setCity(cityObj.name);
+    setTown(null);
+
+    setRegion(cityObj.name);
+  };
+
+  const setTownData = (townObj) => {
+    setTown(townObj.name);
+    setRegion(townObj.name);
+  };
+
+  return (
+    <section className="page page-list">
+      <div className="columns-wrapper">
+        <ListColumn array={continents} selectedItem={continent} setItem={setContinentData} />
+        <ListColumn array={countries} selectedItem={country} setItem={setCountryData} />
+        <ListColumn array={cities} selectedItem={city} setItem={setCityData} />
+        <ListColumn array={towns} selectedItem={town} setItem={setTownData} />
+      </div>
+    </section>
+  );
+};
 
 export default List;

@@ -22,7 +22,7 @@ const ThumbnailCard = ({ card, setSelectedCard }) => {
             />
           </div>
           <p className="postcard-data">
-            {card.indicator}~{card.year}~{card.QTH}~{card.country}~{card.continent}
+            <span className='bold'>{card.indicator}</span>~{card.year}~{card.QTH}~{card.country}~{card.continent}
           </p>
         </NavLink>
       </div>
