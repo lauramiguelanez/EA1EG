@@ -39,38 +39,40 @@ const List = ({ setRegion, region }) => {
   const [towns, setTowns] = useState([]);
 
   const setRegionFromUrl = () => {
-    let reg = flatLocations.find((l) => l.name.toLowerCase === region.toLowerCase);
-    console.log('region', region, reg)
-    // eslint-disable-next-line default-case
-    if (reg) {
-      switch (reg.type) {
-        case 'continent':
-          setContinent(reg.name);
-          setCountries(reg.children);
-          break;
-        case 'country':
-          setCountry(reg.name);
-          setContinent(reg.parent.name);
-          setCountries(reg.parent.children);
-          setCities(reg.children);
-          break;
-        case 'city':
-          setCity(reg.name);
-          setCountry(reg.parent.name);
-          setContinent(reg.parent.parent.name);
-          setTowns(reg.children);
-          setCities(reg.parent.children);
-          setCountries(reg.parent.parent.children);
-          break;
-        case 'town':
-          setTown(reg.name);
-          setCity(reg.parent.name);
-          setCountry(reg.parent.parent.name);
-          setContinent(reg.parent.parent.parent.name);
-          setTowns(reg.parent.children);
-          setCities(reg.parent.parent.children);
-          setCountries(reg.parent.parent.parent.children);
-          break;
+    if (region) {
+      let reg = flatLocations.find((l) => l.name.toLowerCase === region.toLowerCase);
+      console.log('region', region, reg);
+      // eslint-disable-next-line default-case
+      if (reg) {
+        switch (reg.type) {
+          case 'continent':
+            setContinent(reg.name);
+            setCountries(reg.children);
+            break;
+          case 'country':
+            setCountry(reg.name);
+            setContinent(reg.parent.name);
+            setCountries(reg.parent.children);
+            setCities(reg.children);
+            break;
+          case 'city':
+            setCity(reg.name);
+            setCountry(reg.parent.name);
+            setContinent(reg.parent.parent.name);
+            setTowns(reg.children);
+            setCities(reg.parent.children);
+            setCountries(reg.parent.parent.children);
+            break;
+          case 'town':
+            setTown(reg.name);
+            setCity(reg.parent.name);
+            setCountry(reg.parent.parent.name);
+            setContinent(reg.parent.parent.parent.name);
+            setTowns(reg.parent.children);
+            setCities(reg.parent.parent.children);
+            setCountries(reg.parent.parent.parent.children);
+            break;
+        }
       }
     }
   };
