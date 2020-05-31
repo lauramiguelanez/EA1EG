@@ -64,7 +64,7 @@
 }
 .text-body-column {
   font-size: $column-font-size;
-  width: 40%;
+  width: calc(40% - 2rem);
   padding-left: 0.5rem;
   padding-right: 1.5rem;
   margin-top: 2rem;
