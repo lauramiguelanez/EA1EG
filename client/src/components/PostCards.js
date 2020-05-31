@@ -20,8 +20,8 @@ const PostCards = ({ newPage, page, match }) => {
   const [initialized, setInitialized] = useState(false);
   const [limit, setLimit] = useState(true);
   const [year, setYear] = useState(null);
-  const [region, setRegion] = useState('null');
-  const [search, setSearch] = useState(null);
+  const [region, setRegion] = useState(regionFromUrl || null);
+  const [search, setSearch] = useState(seachFromUrl || null);
   const [cardId, setCardId] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState([]);

@@ -6,7 +6,7 @@ const regionGet = (Postcard, extensionFn) => {
 
   // Detect paths from model
   let notUsedPaths = ['_id', 'updated_at', 'created_at', '__v'];
-  let paths = Object.keys(Postcard.schema.paths).filter(e => !notUsedPaths.includes(e));
+  let paths = Object.keys(Postcard.schema.paths).filter((e) => !notUsedPaths.includes(e));
 
   if (extensionFn) {
     router = extensionFn(router);
@@ -19,12 +19,18 @@ const regionGet = (Postcard, extensionFn) => {
     const skip = (batch || 0) * batchSize;
     const r = region.toUpperCase();
     Postcard.find({
-      "$or": [{ "country": r }, { "continent": r }, { "city": r }, { "region": r }, { "QTH": r }]
+      $or: [
+        { country: { $regex: new RegExp(r, 'i') } },
+        { continent: { $regex: new RegExp(r, 'i') } },
+        { city: { $regex: new RegExp(r, 'i') } },
+        { region: { $regex: new RegExp(r, 'i') } },
+        { QTH: { $regex: new RegExp(r, 'i') } },
+      ],
     })
       .skip(skip)
       .limit(batchSize)
-      .then(obj => res.status(200).json(obj))
-      .catch(e => next(e));
+      .then((obj) => res.status(200).json(obj))
+      .catch((e) => next(e));
   });
 
   router.use((err, req, res, next) => {
