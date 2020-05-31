@@ -20,11 +20,11 @@ const regionGet = (Postcard, extensionFn) => {
     const r = region.toUpperCase();
     Postcard.find({
       $or: [
-        { country: { $regex: new RegExp(r, 'i') } },
-        { continent: { $regex: new RegExp(r, 'i') } },
-        { city: { $regex: new RegExp(r, 'i') } },
-        { region: { $regex: new RegExp(r, 'i') } },
-        { QTH: { $regex: new RegExp(r, 'i') } },
+        { country: { $regex: new RegExp(r, 'gi') } },
+        { continent: { $regex: new RegExp(r, 'gi') } },
+        { city: { $regex: new RegExp(r, 'gi') } },
+        { region: { $regex: new RegExp(r, 'gi') } },
+        { QTH: { $regex: new RegExp(r, 'gi') } },
       ],
     })
       .skip(skip)
