@@ -19,6 +19,7 @@ const PostcardDetail = ({ card, setCurrentCard }) => {
     const formData = new FormData();
     formData.append('photo', file);
     console.log('uploadImage');
+
     const img = await service.post('/uploadimg', formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
@@ -27,6 +28,8 @@ const PostcardDetail = ({ card, setCurrentCard }) => {
     console.log('imgUrl', key, imgUrl);
     const postcard = card;
     postcard[key] = imgUrl;
+
+    // 
     const updatedCard = await service.post('/postcard', postcard);
     setCurrentCard(updatedCard);
     console.log('updatedCard', updatedCard);
