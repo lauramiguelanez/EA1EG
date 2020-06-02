@@ -2,25 +2,26 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
 
 import useWindowSize from '../../hooks/useWindowSize';
-
+import useWindowScroll from '../../hooks/useWindowScroll';
 import SearchBar from './elements/SearchBar';
 import BurgerNav from './BurgerNav';
 import URE from '../pages/ProjectURE';
 
-const Navbar = props => {
+const Navbar = (props) => {
   const { page, setPage, setSearch } = props;
   // const [loggedInUser, setLoggedInUser] = useState(null);
   const [hoverLocation, toggleHoverLocation] = useState(false);
   const [hoverSearch, toggleHoverSearch] = useState(false);
 
+  const { scrollY } = useWindowScroll();
   const { width } = useWindowSize();
 
   const selectedStyle = {
-    textDecoration: 'line-through'
+    textDecoration: 'line-through',
   };
 
   const style = {
-    width: page === 'Years' ? `${width - 100}px` : '100%'
+    width: page === 'Years' ? `${width - 100}px` : '100%',
   };
   if (page === 'URE') {
     style.backgroundColor = '#ccc8b8';
@@ -35,12 +36,24 @@ const Navbar = props => {
       <div className="nav-row-wrapper" id="top-nav">
         <div
           className={`nav-row${
-            page === 'URE' ? ' nav-URE' : page === 'Project' ? ' nav-project' : page === 'Home' ? ' nav-home' : page === 'Year' ? ' year' : ''
+            page === 'URE'
+              ? ' nav-URE'
+              : page === 'Project'
+              ? ' nav-project'
+              : page === 'Home'
+              ? ' nav-home'
+              : page === 'Year'
+              ? ' year'
+              : ''
           }`}
         >
           <div className="nav-group logo">
             <NavLink className="nav-link menuItem" to="/">
-              <img src="/img/logo.png" alt="EA1EG" className="logoSvg"></img>
+              {scrollY <= 50 ? (
+                <img src="/img/logo.png" alt="EA1EG" className="logoSvg" />
+              ) : (
+                <img src="/img/logoSimple.png" alt="EA1EG" className="logoSvg" />
+              )}
             </NavLink>
           </div>
 
@@ -93,7 +106,11 @@ const Navbar = props => {
             >
               Project
             </NavLink>
-            <NavLink className="nav-link menuItem" to="/ure" style={page === 'URE' ? selectedStyle : {}}>
+            <NavLink
+              className="nav-link menuItem"
+              to="/ure"
+              style={page === 'URE' ? selectedStyle : {}}
+            >
               URE
             </NavLink>
           </div>

@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   display: block;
-  // height: $header-heigth;
+  height: $header-heigth;
   width: 100%;
   z-index: 900;
   margin: 0;
@@ -122,14 +122,15 @@
 
 .logoSvg {
   top: 0;
-  width: auto;
-  height: calc(#{$header-heigth} - 25px);
-  max-height: 3.1rem;
+  width: calc(#{$header-heigth} + 15px);
+  height: auto;
+  // height: calc(#{$header-heigth} - 25px);
+  // max-height: 3.1rem;
   padding: 5px 0;
 }
 
 .logo {
-  align-self: center;
+  align-self: start;
 }
 
 #top-nav {
