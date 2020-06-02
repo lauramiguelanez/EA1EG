@@ -6,11 +6,11 @@
         "name": "España",
         "children": [
           {
-            "name": "Andalucia",
+            "name": "Andalucía",
             "children": []
           },
           {
-            "name": "Aragon",
+            "name": "Aragón",
             "children": []
           },
           {
@@ -34,7 +34,7 @@
             "children": []
           },
           {
-            "name": "Castilla Leon",
+            "name": "Castilla León",
             "children": []
           },
           {
@@ -46,7 +46,7 @@
             "children": []
           },
           {
-            "name": "Euskadi",
+            "name": "País Vasco",
             "children": []
           },
           {
@@ -67,7 +67,11 @@
             ]
           },
           {
-            "name": "Plazas Africanas",
+            "name": "Ceuta",
+            "children": []
+          },
+          {
+            "name": "Melilla",
             "children": []
           },
           {
@@ -198,7 +202,7 @@
         "children": []
       },
       {
-        "name": "Centroamerica",
+        "name": "Costa Rica",
         "children": []
       },
       {
@@ -218,7 +222,7 @@
         "children": []
       },
       {
-        "name": "Mejico",
+        "name": "Mexico",
         "children": []
       },
       {
@@ -227,7 +231,152 @@
       },
       {
         "name": "USA",
-        "children": []
+        "children": [
+          {
+            "name": "INDIANA",
+            "children": []
+          },
+          {
+            "name": "ARKANSAS",
+            "children": []
+          },
+          {
+            "name": "MAINE",
+            "children": []
+          },
+          {
+            "name": "MISSOURI",
+            "children": []
+          },
+          {
+            "name": "MINNESOTA",
+            "children": []
+          },
+          {
+            "name": "IOWA",
+            "children": []
+          },
+          {
+            "name": "MINESOTA",
+            "children": []
+          },
+          {
+            "name": "KANSAS",
+            "children": []
+          },
+          {
+            "name": "FLORIDA",
+            "children": []
+          },
+          {
+            "name": "MASSACHUSETTS",
+            "children": []
+          },
+          {
+            "name": "VIRGINIA",
+            "children": []
+          },
+          {
+            "name": "RHODE ISLAND",
+            "children": []
+          },
+          {
+            "name": "NEW JERSEY",
+            "children": []
+          },
+          {
+            "name": "NEW YORK",
+            "children": []
+          },
+          {
+            "name": "PENNSYLVANIA",
+            "children": []
+          },
+          {
+            "name": "MARYLAND",
+            "children": []
+          },
+          {
+            "name": "DELAWERE",
+            "children": []
+          },
+          {
+            "name": "NORTH CAROLINA",
+            "children": []
+          },
+          {
+            "name": "GEORGIA",
+            "children": []
+          },
+          {
+            "name": "TENNESSEE",
+            "children": []
+          },
+          {
+            "name": "KENTUCKY",
+            "children": []
+          },
+          {
+            "name": "TEXAS",
+            "children": []
+          },
+          {
+            "name": "WASHINGTON",
+            "children": []
+          },
+          {
+            "name": "LOUISIANA",
+            "children": []
+          },
+          {
+            "name": "CALIFORNIA",
+            "children": []
+          },
+          {
+            "name": "OKLAHOMA",
+            "children": []
+          },
+          {
+            "name": "OHIO",
+            "children": []
+          },
+          {
+            "name": "MICHIGAN",
+            "children": []
+          },
+          {
+            "name": "ILLINOIS",
+            "children": []
+          },
+          {
+            "name": "WISCONSIN",
+            "children": []
+          },
+          {
+            "name": "CONNECTICUT",
+            "children": []
+          },
+          {
+            "name": "ALABAMA",
+            "children": []
+          },
+          {
+            "name": "PENSILVANIA",
+            "children": []
+          },
+          {
+            "name": "PUERTO RICO",
+            "children": []
+          },
+          {
+            "name": "CAROLINA",
+            "children": []
+          },
+          {
+            "name": "OREGON",
+            "children": []
+          }
+        ]
       },
       {
         "name": "Venezuela",
@@ -239,7 +388,7 @@
     "name": "Asia",
     "children": [
       {
-        "name": "Bahrain Island",
+        "name": "Bahrain",
         "children": []
       },
       {
@@ -259,7 +408,7 @@
         "children": []
       },
       {
-        "name": "Líbano",
+        "name": "Libano",
         "children": []
       },
       {
@@ -275,17 +424,39 @@
         "children": []
       },
       {
-        "name": "Turquía",
+        "name": "Turquia",
         "children": []
       }
     ]
   },
   {
     "name": "Africa",
-    "children": []
+    "children": [
+      {
+        "name": "SUDAFRICA",
+        "children": []
+      },
+      {
+        "name": "ARGELIA",
+        "children": []
+      },
+      {
+        "name": "MARRUECOS",
+        "children": []
+      }
+    ]
   },
   {
-    "name": "Oceanía",
-    "children": []
+    "name": "Oceania",
+    "children": [
+      {
+        "name": "AUSTRALIA",
+        "children": []
+      },
+      {
+        "name": "NUEVA ZELANDA",
+        "children": []
+      }
+    ]
   }
 ]
