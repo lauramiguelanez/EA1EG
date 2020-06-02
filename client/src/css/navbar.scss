@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   display: block;
-  height: $header-heigth;
+  // height: $header-heigth;
   width: 100%;
   z-index: 900;
   margin: 0;
@@ -67,7 +67,7 @@
   width: 20%;
   display: block;
   border-color: black;
-  padding-top: 15px;
+  padding-top: 0.8rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 
@@ -100,7 +100,7 @@
 }
 
 .menuItem{
-  height: 1.7rem;
+  height: 1.8rem;
 }
 
 .link {
