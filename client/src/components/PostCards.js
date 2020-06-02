@@ -4,7 +4,6 @@ import animateScrollTo from 'animated-scroll-to';
 import FilteredPostcards from './FilteredCards';
 import YearBar from './bars/YearBar';
 import List from './bars/List';
-import LocationMap from './LocationMap';
 import PostcardDetail from './bars/PostcardDetail';
 
 import axios from 'axios';
@@ -28,27 +27,27 @@ const PostCards = ({ newPage, page, match }) => {
 
   // /////// CONSTANTS:
   const service = axios.create({
-    baseURL: `${process.env.REACT_APP_API_URL}/api`
+    baseURL: `${process.env.REACT_APP_API_URL}/api`,
   });
 
   // /////// SET STATE:
 
-  const setYearOnly = y => {
+  const setYearOnly = (y) => {
     setRegion(null);
     setYear(y);
     setSearch(null);
   };
 
-  const setRegionOnly = r => {
+  const setRegionOnly = (r) => {
     setRegion(r);
     setYear(null);
     setSearch(null);
   };
 
   // /////// GET DATA:
-  const getCardsBatch = batch => {
+  const getCardsBatch = (batch) => {
     const route = '/postcard/page/' + batch;
-    return service.get(route).then(cs => {
+    return service.get(route).then((cs) => {
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
       // console.log('gotCards', moreCards);
@@ -59,7 +58,7 @@ const PostCards = ({ newPage, page, match }) => {
 
   const getRandom = () => {
     const route = '/random';
-    return service.get(route).then(cs => {
+    return service.get(route).then((cs) => {
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
       // console.log('gotRandomCards', moreCards);
@@ -68,19 +67,21 @@ const PostCards = ({ newPage, page, match }) => {
     });
   };
 
-  const getCards = batch => {
+  const getCards = (batch) => {
     let gotCards;
     let route;
     if (year && !region) {
       route = `/year/${year}/${batch || 0}`;
     } else if (region && !year) {
       route = `/region/${region}/${batch || 0}`;
+    } else if (search){
+      route = `/search/${search}/${batch || 0}`;
     }
 
     if (year || region) {
       return service
         .get(route)
-        .then(cs => {
+        .then((cs) => {
           gotCards = cs.data;
           setInitialized(true);
           if (batch <= 0) {
@@ -93,26 +94,14 @@ const PostCards = ({ newPage, page, match }) => {
             setLimit(false);
           }
         })
-        .catch(error => console.log(error));
+        .catch((error) => console.log(error));
     }
   };
 
-  const getSearchCards = () => {
-    service
-      .get(`/search/${search}`)
-      .then(cards => {
-        setInitialized(true);
-        const gotCards = cards.data;
-        console.log('SEARCH gotCards', gotCards);
-        setCards(gotCards);
-      })
-      .catch(error => console.log(error));
-  };
-
-  const getSearchCardsBatch = batch => {
+  const getSearchCards = (batch) => {
     service
       .get(`/search/${search}/${batch}`)
-      .then(cs => {
+      .then((cs) => {
         const gotCards = cs.data;
         setInitialized(true);
         if (batch <= 0) {
@@ -125,18 +114,18 @@ const PostCards = ({ newPage, page, match }) => {
           setLimit(false);
         }
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
-  const getSelectedCard = cardId => {
+  const getSelectedCard = (cardId) => {
     service
       .get(`/postcard/${cardId}`)
-      .then(card => {
+      .then((card) => {
         setSelectedCard(card.data);
         // console.log('SELECTEDgotCards', cards.data);
         setInitialized(true);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   // /////// COMPONENT UPDATE:
@@ -206,9 +195,9 @@ const PostCards = ({ newPage, page, match }) => {
       case 'Years':
         return { currLimit: limit, currFn: !!year || !!region ? getCards : getRandom };
       case 'Search':
-        return { currLimit: limit, currFn: getSearchCardsBatch /* getSearchCards */ };
+        return { currLimit: limit, currFn: getSearchCards };
       default:
-        return { currLimit: 16437 >= cards.length, currFn: getRandom /* getCardsBatch */ };
+        return { currLimit: 16437 >= cards.length, currFn: getRandom };
     }
   };
 

@@ -60,18 +60,6 @@ const Landing = props => {
             onClick={generateStyles}
           />
         );
-        /* 
-          const randomYear = Math.floor(Math.random() * (1993 - 1950 + 1) + 1950);
-        return (
-          <NavLink key={i} className="nav-link postcard" to={`/year/${randomYear}`}>
-            <img
-              src={`/img/landing/${image}.png`}
-              alt={image}
-              style={landingImgStyles && landingImgStyles[i]}
-              onClick={generateStyles}
-            />
-          </NavLink>
-        ); */
       })}
     </section>
   );
