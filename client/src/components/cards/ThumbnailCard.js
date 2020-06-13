@@ -17,7 +17,7 @@ const ThumbnailCard = ({ card, setSelectedCard }) => {
               alt={card.indicator}
               onError={() => {
                 setImage(`/img/placeHolder.png`);
-                toggleShow(false);
+                // toggleShow(false);
               }}
             />
           </div>
