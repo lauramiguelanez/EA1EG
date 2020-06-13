@@ -83,7 +83,7 @@ const PostCards = ({ newPage, page, match }) => {
         .get(route)
         .then((cs) => {
           gotCards = cs.data;
-          // console.log('got', gotCards.length, batch)
+          console.log('got', cards.length, gotCards.length, batch)
           setInitialized(true);
           if (batch <= 0) {
             setCards(gotCards);
@@ -92,7 +92,7 @@ const PostCards = ({ newPage, page, match }) => {
             setCards(moreCards);
           }
           if (gotCards.length === 0 && batch > 0) {
-            setLimit(false);
+            // setLimit(false);
           }
         })
         .catch((error) => console.log(error));
