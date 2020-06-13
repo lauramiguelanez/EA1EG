@@ -14,7 +14,7 @@ const ThumbnailCard = ({ card, setSelectedCard }) => {
           <div className="postcard-thumbnail" onClick={() => setSelectedCard(card)}>
             <img
               src={image}
-              alt={card.indicator}
+              alt={card.imageFront}
               onError={() => {
                 setImage(`/img/placeHolder.png`);
                 // toggleShow(false);
