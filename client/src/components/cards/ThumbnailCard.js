@@ -1,8 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const imageUrl = ''; //'https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/';
-
 const ThumbnailCard = ({ card, setSelectedCard }) => {
   const [image, setImage] = useState(card.imageFront);
   const [show, toggleShow] = useState(true);

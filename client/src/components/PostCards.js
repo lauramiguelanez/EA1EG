@@ -78,11 +78,12 @@ const PostCards = ({ newPage, page, match }) => {
       route = `/search/${search}/${batch || 0}`;
     }
 
-    if (year || region) {
+    if (year || region || search) {
       return service
         .get(route)
         .then((cs) => {
           gotCards = cs.data;
+          // console.log('got', gotCards.length, batch)
           setInitialized(true);
           if (batch <= 0) {
             setCards(gotCards);
@@ -90,31 +91,12 @@ const PostCards = ({ newPage, page, match }) => {
             const moreCards = [...cards, ...gotCards];
             setCards(moreCards);
           }
-          if (gotCards.length <= 0) {
+          if (gotCards.length === 0 && batch > 0) {
             setLimit(false);
           }
         })
         .catch((error) => console.log(error));
     }
-  };
-
-  const getSearchCards = (batch) => {
-    service
-      .get(`/search/${search}/${batch}`)
-      .then((cs) => {
-        const gotCards = cs.data;
-        setInitialized(true);
-        if (batch <= 0) {
-          setCards(gotCards);
-        } else {
-          const moreCards = [...cards, ...gotCards];
-          setCards(moreCards);
-        }
-        if (gotCards.length <= 0) {
-          setLimit(false);
-        }
-      })
-      .catch((error) => console.log(error));
   };
 
   const getSelectedCard = (cardId) => {
@@ -195,7 +177,7 @@ const PostCards = ({ newPage, page, match }) => {
       case 'Years':
         return { currLimit: limit, currFn: !!year || !!region ? getCards : getRandom };
       case 'Search':
-        return { currLimit: limit, currFn: getSearchCards };
+        return { currLimit: limit, currFn: getCards/* getSearchCards */ };
       default:
         return { currLimit: 16437 >= cards.length, currFn: getRandom };
     }
