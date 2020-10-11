@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import useWindowSize from './hooks/useWindowSize';
+import { useTranslation } from "react-i18next";
 
 import Navbar from './components/bars/Navbar';
 import PostCards from './components/PostCards';
@@ -17,6 +18,7 @@ const App = () => {
   const [page, setPage] = useState('Home');
   const [search, setSearch] = useState('');
 
+  const { t, i18n } = useTranslation('common');
   const { width,height } = useWindowSize();
 
   const cardRoutes = [
