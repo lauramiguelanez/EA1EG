@@ -1,12 +1,9 @@
 @import 'variables.scss';
-@import 'mixins.scss';
 
 .page {
   min-height: $page-heigth;
   display: flex;
   flex-direction: column;
-  /* margin-left: 10px;
-  margin-right: 10px; */
 
   .text-body {
     max-width: 70vw;
@@ -19,7 +16,6 @@
     display: inline-block;
     margin: 0 auto;
     font-size: $title-font-size;
-    // font-weight: 700;
     text-transform: uppercase;
     padding-top: 15px;
   }
@@ -27,7 +23,6 @@
 
 .allcards {
   min-height: 0;
-  // min-height: calc(100vh - #{$nav-height});
   &.year {
     width: $page-year-width;
   }
@@ -60,19 +55,36 @@
   @media (max-width: 700px) {
     flex-direction: column;
   }
-  // margin-right: 60px;
 }
 .text-body-column {
   font-size: $column-font-size;
-  width: calc(40% - 2rem);
+  width: calc(50% - 2rem);
   padding-left: 0.5rem;
   padding-right: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 6rem;
-  // padding: 50px;
   @media (max-width: 700px) {
     width: 90%;
   }
+
+  .page-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .page-image {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      span {
+        align-self: flex-end;
+      }
+      img {
+        max-width: 100%;
+        max-height: 30vw;
+      }
+    }
+  }
+
 }
 
 .page-list {

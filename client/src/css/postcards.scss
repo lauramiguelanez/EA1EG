@@ -1,5 +1,4 @@
 @import 'variables.scss';
-@import 'mixins.scss';
 
 .columns-wrapper {
   margin-top: 0.3rem;
@@ -15,13 +14,9 @@
 }
 
 .column {
-  width: 20%;
-  flex-basis: 20%;
+  width: 25%;
+  flex-basis: 25%;
   padding: 0;
-  /* @media (max-width: 1200px) {
-    width: 25%;
-    flex-basis: 25%;
-  } */
   @media (max-width: 950px) {
     width: 33%;
     flex-basis: 33%;
@@ -37,7 +32,7 @@
 }
 
 .list {
-  width: 20vh;
+  width: 25vh;
   background-color: transparent;
   box-shadow: none;
   border-radius: 0px;

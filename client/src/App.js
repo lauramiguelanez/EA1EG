@@ -35,7 +35,7 @@ const App = () => {
   return (
     <div className="app" page={page}>
       <header className="header">
-        <Navbar page={page} setPage={setPage} setSearch={setSearch} />
+        <Navbar page={page} setPage={setPage} setSearch={setSearch} t={t}/>
       </header>
       <main className={width < 650 ? 'mobile' : ''}>
         <Switch>
@@ -43,22 +43,22 @@ const App = () => {
             key="home"
             exact
             path="/"
-            render={() => <Landing newPage={() => setPage('Home')} page="Home" />}
+            render={() => <Landing newPage={() => setPage('Home')} page="Home" t={t}/>}
           />
           <Route
             exact
             path="/project"
-            render={() => <Project newPage={() => setPage('Project')} page="Project" />}
+            render={() => <Project newPage={() => setPage('Project')} page="Project" t={t}/>}
           />
           <Route
             exact
             path="/ure"
-            render={() => <ProjectURE newPage={() => setPage('URE')} page="URE" />}
+            render={() => <ProjectURE newPage={() => setPage('URE')} page="URE" t={t}/>}
           />
           <Route
             exact
             path="/location"
-            render={() => <LocationMap newPage={() => setPage('Map')} page="Map" height={height}/>}
+            render={() => <LocationMap newPage={() => setPage('Map')} page="Map" height={height} t={t}/>}
           />
           {cardRoutes.map(({ route, page, exact }, i) => {
             const otherProps = { ...exact };
@@ -71,6 +71,7 @@ const App = () => {
                     newPage={forcedPage => setPage(forcedPage || page)}
                     page={page}
                     search={search}
+                    t={t}
                     {...props}
                   />
                 )}

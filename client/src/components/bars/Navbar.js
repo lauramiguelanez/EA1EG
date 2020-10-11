@@ -5,11 +5,9 @@ import useWindowSize from '../../hooks/useWindowSize';
 import useWindowScroll from '../../hooks/useWindowScroll';
 import SearchBar from './elements/SearchBar';
 import BurgerNav from './BurgerNav';
-import { useTranslation } from "react-i18next";
 
 const Navbar = (props) => {
-  const { page, setPage, setSearch } = props;
-  const { t } = useTranslation('common');
+  const { page, setPage, setSearch, t } = props;
   const [hoverLocation, toggleHoverLocation] = useState(false);
   const [hoverSearch, toggleHoverSearch] = useState(false);
 
@@ -129,8 +127,6 @@ const Navbar = (props) => {
               {hoverSearch ? <SearchBar setSearch={setSearch} /> : null}
             </NavLink>
           </div>
-
-          <div className="nav-group"></div>
         </div>
       </div>
     </nav>
