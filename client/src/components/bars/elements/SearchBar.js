@@ -11,7 +11,6 @@ const Search = props => {
 
   const handleEnter = e => {
     if (e.key === 'Enter') {
-      console.log('Search:', searchInput);
       setSearch(searchInput);
       const url = `/search/${searchInput}`
       return props.history.push(url);

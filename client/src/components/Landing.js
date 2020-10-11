@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import useWindowSize from '../hooks/useWindowSize';
 import '../css/landing.scss';
 
@@ -18,9 +18,13 @@ const images = [
 
 const Landing = props => {
   const { newPage } = props;
-  // const [loggedInUser, setLoggedInUser] = useState(null);
   const [landingImgStyles, setStyles] = useState(new Array(9).fill({}));
   const { width, height } = useWindowSize();
+
+  const goToRandom = () => {
+    const url = `/cards`
+    return props.history.push(url);
+  }
 
   const generateStyles = () => {
     const styles = [];
@@ -57,7 +61,7 @@ const Landing = props => {
             src={`/img/landing/${image}.png`}
             alt={image}
             style={landingImgStyles && landingImgStyles[i]}
-            onClick={generateStyles}
+            onClick={i === 9 ? goToRandom: generateStyles}
           />
         );
       })}
@@ -65,4 +69,4 @@ const Landing = props => {
   );
 };
 
-export default Landing;
+export default withRouter(Landing);
