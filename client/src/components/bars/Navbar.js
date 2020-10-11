@@ -7,7 +7,7 @@ import SearchBar from './elements/SearchBar';
 import BurgerNav from './BurgerNav';
 
 const Navbar = (props) => {
-  const { page, setPage, setSearch, t } = props;
+  const { page, setPage, setSearch, t, i18n } = props;
   const [hoverLocation, toggleHoverLocation] = useState(false);
   const [hoverAbout, toggleHoverAbout] = useState(false);
   const [hoverSearch, toggleHoverSearch] = useState(false);
@@ -135,6 +135,11 @@ const Navbar = (props) => {
               {t('search')}
               {hoverSearch ? <SearchBar setSearch={setSearch} /> : null}
             </NavLink>
+          </div>
+
+          <div className="nav-lang">
+            <span onClick={() => i18n.changeLanguage('en')}>EN</span>
+            <span onClick={() => i18n.changeLanguage('es')}>ES</span>
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ const App = () => {
   return (
     <div className="app" page={page}>
       <header className="header">
-        <Navbar page={page} setPage={setPage} setSearch={setSearch} t={t}/>
+        <Navbar page={page} setPage={setPage} setSearch={setSearch} t={t} i18n={i18n}/>
       </header>
       <main className={width < 650 ? 'mobile' : ''}>
         <Switch>
