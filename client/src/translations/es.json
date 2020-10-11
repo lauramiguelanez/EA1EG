@@ -1,3 +1,27 @@
 {
-  "welcome": "Hallo React"
+  "welcome": "Hallo React",
+  "europe": "Europa",
+  "africa": "Africa",
+  "asia": "Asia",
+  "america": "América",
+  "oceania": "Oceania",
+  "map": "Mapa",
+  "list": "Lista",
+  "context": "Contexto",
+  "year": "Año",
+  "time": "Tiempo",
+  "project": "Proyecto",
+  "about": "Sobre",
+  "search": "Buscar"
 }
+
+
+
+
+
+
+
+
+
+
+

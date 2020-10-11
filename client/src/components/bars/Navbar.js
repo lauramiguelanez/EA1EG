@@ -5,11 +5,11 @@ import useWindowSize from '../../hooks/useWindowSize';
 import useWindowScroll from '../../hooks/useWindowScroll';
 import SearchBar from './elements/SearchBar';
 import BurgerNav from './BurgerNav';
-import URE from '../pages/ProjectURE';
+import { useTranslation } from "react-i18next";
 
 const Navbar = (props) => {
   const { page, setPage, setSearch } = props;
-  // const [loggedInUser, setLoggedInUser] = useState(null);
+  const { t } = useTranslation('common');
   const [hoverLocation, toggleHoverLocation] = useState(false);
   const [hoverSearch, toggleHoverSearch] = useState(false);
 
@@ -77,14 +77,14 @@ const Navbar = (props) => {
                     to="/location"
                     style={page === 'Map' ? selectedStyle : {}}
                   >
-                    Map
+                    {t('map')}
                   </NavLink>
                   <NavLink
                     className="link-line"
                     to="/region"
                     style={page === 'Region' ? selectedStyle : {}}
                   >
-                    List
+                    {t('list')}
                   </NavLink>
                 </Fragment>
               ) : null}
@@ -94,7 +94,7 @@ const Navbar = (props) => {
               to="/year/1960"
               style={page === 'Year' ? selectedStyle : {}}
             >
-              Year
+              {t('year')}
             </NavLink>
           </div>
 
@@ -104,7 +104,7 @@ const Navbar = (props) => {
               to="/project"
               style={page === 'Project' ? selectedStyle : {}}
             >
-              Project
+              {t('project')}
             </NavLink>
             <NavLink
               className="nav-link menuItem"
@@ -125,7 +125,7 @@ const Navbar = (props) => {
               to="/cards"
               style={page === 'Search' ? selectedStyle : {}}
             >
-              Search
+              {t('search')}
               {hoverSearch ? <SearchBar setSearch={setSearch} /> : null}
             </NavLink>
           </div>
