@@ -8,6 +8,8 @@ import PostCards from './components/PostCards';
 import Landing from './components/Landing';
 import Project from './components/pages/Project';
 import ProjectURE from './components/pages/ProjectURE';
+import About from './components/pages/About';
+import QSL from './components/pages/QSL';
 import LocationMap from './components/LocationMap'
 
 import './css/pages.scss';
@@ -54,6 +56,16 @@ const App = () => {
             exact
             path="/ure"
             render={() => <ProjectURE newPage={() => setPage('URE')} page="URE" t={t}/>}
+          />
+          <Route
+            exact
+            path="/about"
+            render={() => <About newPage={() => setPage('About')} page="About" t={t}/>}
+          />
+          <Route
+            exact
+            path="/qsl"
+            render={() => <QSL newPage={() => setPage('QSL')} page="QSL" t={t}/>}
           />
           <Route
             exact

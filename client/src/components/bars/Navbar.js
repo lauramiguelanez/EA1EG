@@ -9,6 +9,7 @@ import BurgerNav from './BurgerNav';
 const Navbar = (props) => {
   const { page, setPage, setSearch, t } = props;
   const [hoverLocation, toggleHoverLocation] = useState(false);
+  const [hoverAbout, toggleHoverAbout] = useState(false);
   const [hoverSearch, toggleHoverSearch] = useState(false);
 
   const { scrollY } = useWindowScroll();
@@ -21,29 +22,12 @@ const Navbar = (props) => {
   const style = {
     width: page === 'Years' ? `${width - 100}px` : '100%',
   };
-  if (page === 'URE') {
-    style.backgroundColor = '#ccc8b8';
-  } else if (page === 'Project') {
-    style.backgroundColor = '#d4ebff';
-  } else if (page !== 'Home' && page !== 'Project' && page !== 'URE') {
-    style.backgroundColor = 'white';
-  }
 
   return width > 650 ? (
     <nav className={`nav-style bar-${page}`} role="navigation" style={style}>
       <div className="nav-row-wrapper" id="top-nav">
         <div
-          className={`nav-row${
-            page === 'URE'
-              ? ' nav-URE'
-              : page === 'Project'
-              ? ' nav-project'
-              : page === 'Home'
-              ? ' nav-home'
-              : page === 'Year'
-              ? ' year'
-              : ''
-          }`}
+          className={`nav-row${ page? ` nav-${page.toLowerCase()}`: ''}`}
         >
           <div className="nav-group logo">
             <NavLink className="nav-link menuItem" to="/">
@@ -66,7 +50,7 @@ const Navbar = (props) => {
                 to="/location"
                 style={page === 'Map' || page === 'Region' ? selectedStyle : {}}
               >
-                Location
+                {t('location')}
               </NavLink>
               {hoverLocation ? (
                 <Fragment>
@@ -104,13 +88,38 @@ const Navbar = (props) => {
             >
               {t('project')}
             </NavLink>
-            <NavLink
+            
+            <div
               className="nav-link menuItem"
-              to="/ure"
-              style={page === 'URE' ? selectedStyle : {}}
+              onMouseEnter={() => toggleHoverAbout(true)}
+              onMouseLeave={() => toggleHoverAbout(false)}
             >
-              URE
-            </NavLink>
+              <NavLink
+                className="link-line"
+                to="/about"
+                style={page === 'About' ? selectedStyle : {}}
+              >
+                {t('about')}
+              </NavLink>
+              {hoverAbout ? (
+                <Fragment>
+                  <NavLink
+                    className="link-line"
+                    to="/about"
+                    style={page === 'About' ? selectedStyle : {}}
+                  >
+                    EA1EG
+                  </NavLink>
+                  <NavLink
+                    className="link-line"
+                    to="/qsl"
+                    style={page === 'QSL' ? selectedStyle : {}}
+                  >
+                   QSL
+                  </NavLink>
+                </Fragment>
+              ) : null}
+            </div>
           </div>
 
           <div

@@ -55,7 +55,7 @@
   align-content: center;
   justify-content: center;
   width: 100%;
-  &.year {
+  &.nav-year {
     width: $page-year-width;
   }
 }
@@ -75,8 +75,14 @@
 .nav-project {
   background-color: $blue-search;
 }
-.nav-URE {
+.nav-ure {
   background-color: $brown-place;
+}
+.nav-about {
+  background-color: $brown-place;
+}
+.nav-qsl {
+  background-color: $salmon-qsl;
 }
 .nav-home {
   background-color: transparent;
@@ -137,6 +143,18 @@
   & a {
     color: $black;
   }
+}
+.bar-ure {
+  background-color: $brown-place;
+}
+.bar-about {
+  background-color: $brown-place;
+}
+.bar-qsl {
+  background-color: $salmon-qsl;
+}
+.bar-home {
+  background-color: transparent;
 }
 
 .year-wrapper {

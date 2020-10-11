@@ -41,9 +41,18 @@
   color: $black;
   margin: 0;
 }
-
 .page-URE {
   background-color: $brown-place;
+  color: $black;
+  margin: 0;
+}
+.page-about {
+  background-color: $brown-place;
+  color: $black;
+  margin: 0;
+}
+.page-qsl {
+  background-color: $salmon-qsl;
   color: $black;
   margin: 0;
 }
@@ -81,6 +90,7 @@
       img {
         max-width: 100%;
         max-height: 30vw;
+        mix-blend-mode: multiply;
       }
     }
   }
