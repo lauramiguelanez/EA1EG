@@ -31,7 +31,12 @@ const app = express();
 
 // Middleware Setup
 var whitelist = [
-  'http://localhost:3000', 'http://localhost:3010', 'http://localhost:3001', 'https://ea1eg.now.sh',
+  'http://localhost:3000',
+  'http://localhost:3010',
+  'http://localhost:3001',
+  'https://ea1eg.now.sh',
+  'https://ea1eg.com',
+  'https://www.ea1eg.com',
 ];
 var corsOptions = {
   origin: function(origin, callback){
