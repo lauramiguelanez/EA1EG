@@ -56,7 +56,6 @@
   justify-content: center;
   width: 100%;
   &.nav-year {
-    width: $page-year-width;
   }
 }
 .nav-group {
@@ -150,6 +149,9 @@
   width: 100%;
 }
 
+.bar-Year {
+  width: $page-year-width;
+}
 .bar-years {
   background-color: $white;
   & a {
@@ -173,7 +175,7 @@
   width: $year-width;
   height: 100vh;
   position: fixed;
-  top: 15px;
+  top: 0px;
   right: 0;
   overflow: scroll;
   padding-top: 10px;

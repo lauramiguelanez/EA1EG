@@ -19,12 +19,8 @@ const Navbar = (props) => {
     textDecoration: 'line-through',
   };
 
-  const style = {
-    width: page === 'Years' ? `${width - 100}px` : '100%',
-  };
-
   return width > 650 ? (
-    <nav className={`nav-style bar-${page}`} role="navigation" style={style}>
+    <nav className={`nav-style bar-${page}`} role="navigation">
       <div className="nav-row-wrapper" id="top-nav">
         <div
           className={`nav-row${ page? ` nav-${page.toLowerCase()}`: ''}`}

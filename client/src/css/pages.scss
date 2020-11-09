@@ -102,11 +102,25 @@
   margin-bottom: 70px;
 }
 
-.page-footnotes{
-  padding-right: 2em;
-  li {
-    font-size: 0.9rem;
+.page-footnotes {
+  font-size: 0.9rem;
+  padding-left: 2em;
+  ol {
+    padding-left: 0em;
+    counter-reset: order;
+    list-style: none;
   }
+  li {
+    counter-increment: order;
+  }
+  li::before {
+    content: "0" counter(order) ". ";
+  }
+}
+.text-body-notes {
+  font-size: 0.9rem;
+  padding-left: 3em;
+  padding-top: 5em;
 }
 
 .eailPi {

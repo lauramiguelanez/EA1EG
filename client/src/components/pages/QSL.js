@@ -47,6 +47,17 @@ const QSL = ({ newPage, t }) => {
     'https://res.cloudinary.com/dmtbzrye8/image/upload/v1602441405/EA1EG/pages/QSL-9.png'
   ];
 
+  const getFootNotes = (key) => {
+    const items = t(key).split('\n');
+    return (
+      <ol>
+        {items.map((item, i) => (
+          <li>{item}</li>
+        ))}
+      </ol>
+    );
+  };
+
   return (
     <section className="page page-qsl">
       <div className="wrapper-text-column">
@@ -56,8 +67,9 @@ const QSL = ({ newPage, t }) => {
             {getContent('qslNotes1')}
           </div>
           {getContent('qslText2')}
-          <div className="text-body-notes">
-            {getContent('qslNotes2')}
+          <div className="page-footnotes">
+            {t('imgs')}
+            {getFootNotes('qslNotes')}
           </div>
         </div>
         <div className="text-body-column">

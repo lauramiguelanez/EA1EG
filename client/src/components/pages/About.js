@@ -23,11 +23,26 @@ const About = ({ newPage, t }) => {
     'https://res.cloudinary.com/dmtbzrye8/image/upload/v1602441404/EA1EG/pages/PROJECT-6.png'
   ];
 
+  const getFootNotes = (key) => {
+    const items = t(key).split('\n');
+    return (
+      <ol>
+        {items.map((item, i) => (
+          <li>{item}</li>
+        ))}
+      </ol>
+    )
+  }
+
   return (
     <section className="page page-about">
       <div className="wrapper-text-column">
         <div className="text-body-column">
           {getContent('aboutText')}
+          <div className="page-footnotes">
+            {t('imgs')}
+            {getFootNotes('aboutNotes')}
+          </div>
         </div>
         <div className="text-body-column">
           <div className="page-image-wrapper">

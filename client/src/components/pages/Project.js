@@ -7,21 +7,28 @@ const Project = ({ newPage, t }) => {
     animateScrollTo(0);
   }, []);
 
-
   const getContent = (key) => {
     const items = t(key).split('\n');
-    return items.map(item => {
+    return items.map((item) => {
       if (item.includes('hola@vendedoresdehumo.com')) {
         const s = item.split('hola@vendedoresdehumo.com');
-        return (<p>{s[0]} <a href="mailto:hola@vendedoresdehumo.com">hola@vendedoresdehumo.com</a> {s[1]}</p>)
+        return (
+          <p>
+            {s[0]} <a href="mailto:hola@vendedoresdehumo.com">hola@vendedoresdehumo.com</a> {s[1]}
+          </p>
+        );
       }
-      if (item.includes('wikipedia(REF#1)')){
+      if (item.includes('wikipedia(REF#1)')) {
         const s = item.split('wikipedia(REF#1)');
-        return (<p>{s[0]} <a href="https://es.wikipedia.org/wiki/Diexismo">wikipedia</a> {s[1]}</p>)
+        return (
+          <p>
+            {s[0]} <a href="https://es.wikipedia.org/wiki/Diexismo">wikipedia</a> {s[1]}
+          </p>
+        );
       }
-      return (<p>{item}</p>);
-    })
-  }
+      return <p>{item}</p>;
+    });
+  };
 
   const projectImgs = [
     'https://res.cloudinary.com/dmtbzrye8/image/upload/v1602441402/EA1EG/pages/EA1EG-1.png',
@@ -32,29 +39,31 @@ const Project = ({ newPage, t }) => {
 
   const getFootNotes = (key) => {
     const items = t(key).split('\n');
-    console.log('items', items);
     return (
-      <ol className="page-footnotes">
+      <ol>
         {items.map((item, i) => (
           <li>{item}</li>
         ))}
       </ol>
-    )
-  }
+    );
+  };
 
   return (
     <section className="page page-project">
       <div className="wrapper-text-column">
         <div className="text-body-column">
           {getContent('projectText')}
-          {getFootNotes('projectNotes')}
+          <div className="page-footnotes">
+            {t('imgs')}
+            {getFootNotes('projectNotes')}
+          </div>
         </div>
         <div className="text-body-column">
           <div className="page-image-wrapper">
             {projectImgs.map((image, i) => (
               <div className="page-image">
                 <span>{`0${i + 1}`}</span>
-                <img src={image} alt={`0${i + 1}`}/>
+                <img src={image} alt={`0${i + 1}`} />
               </div>
             ))}
           </div>
