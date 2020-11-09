@@ -36,6 +36,7 @@ const Project = ({ newPage, t }) => {
     'https://res.cloudinary.com/dmtbzrye8/image/upload/v1602441402/EA1EG/pages/EA1EG-3.png',
     'https://res.cloudinary.com/dmtbzrye8/image/upload/v1602441402/EA1EG/pages/EA1EG-4.png',
   ];
+  const orientation = ['h', 'v', 'h', 'h'];
 
   const getFootNotes = (key) => {
     const items = t(key).split('\n');
@@ -63,7 +64,7 @@ const Project = ({ newPage, t }) => {
             {projectImgs.map((image, i) => (
               <div className="page-image">
                 <span>{`0${i + 1}`}</span>
-                <img src={image} alt={`0${i + 1}`} />
+                <img className={orientation[i]} src={image} alt={`0${i + 1}`} />
               </div>
             ))}
           </div>
