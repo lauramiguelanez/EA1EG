@@ -96,6 +96,9 @@ app.disable('etag');
 const index = require('./routes/index');
 app.use('/', index);
 
+const ping = require('./routes/ping');
+app.use('/api/ping', ping);
+
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 

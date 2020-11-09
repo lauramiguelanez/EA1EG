@@ -9,6 +9,11 @@ import PostcardDetail from './bars/PostcardDetail';
 import axios from 'axios';
 require('dotenv').config();
 
+// /////// CONSTANTS:
+const service = axios.create({
+  baseURL: `${process.env.REACT_APP_API_URL}/api`,
+});
+
 const PostCards = ({ newPage, page, match }) => {
   // /////// STATE:
   const yearFromUrl = match && match.params.year;
@@ -25,10 +30,6 @@ const PostCards = ({ newPage, page, match }) => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState([]);
 
-  // /////// CONSTANTS:
-  const service = axios.create({
-    baseURL: `${process.env.REACT_APP_API_URL}/api`,
-  });
 
   // /////// SET STATE:
   const setYearOnly = (y) => {

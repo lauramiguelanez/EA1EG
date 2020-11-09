@@ -3,6 +3,14 @@ import { withRouter } from 'react-router-dom';
 import useWindowSize from '../hooks/useWindowSize';
 import '../css/landing.scss';
 
+import axios from 'axios';
+require('dotenv').config();
+
+// /////// CONSTANTS:
+const service = axios.create({
+  baseURL: `${process.env.REACT_APP_API_URL}/api`,
+});
+
 const images = [
   'ea1eg-2019-01',
   'ea1eg-2019-02',
@@ -15,6 +23,8 @@ const images = [
   'ea1eg-2019-09',
   'ea1eg-2019-10'
 ];
+
+const ping = () => service.get('/ping');
 
 const Landing = props => {
   const { newPage } = props;
@@ -50,6 +60,7 @@ const Landing = props => {
   useEffect(() => {
     newPage();
     generateStyles();
+    ping();
   }, [width, height]);
 
   return (
