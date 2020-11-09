@@ -18,13 +18,12 @@ const Navbar = (props) => {
   const selectedStyle = {
     textDecoration: 'line-through',
   };
+  const getCurrentLng = () => i18n.language || window.localStorage.i18nextLng || '';
 
   return width > 650 ? (
     <nav className={`nav-style bar-${page}`} role="navigation">
       <div className="nav-row-wrapper" id="top-nav">
-        <div
-          className={`nav-row${ page? ` nav-${page.toLowerCase()}`: ''}`}
-        >
+        <div className={`nav-row${page ? ` nav-${page.toLowerCase()}` : ''}`}>
           <div className="nav-group logo">
             <NavLink className="nav-link menuItem" to="/">
               {scrollY <= 50 ? (
@@ -84,7 +83,7 @@ const Navbar = (props) => {
             >
               {t('project')}
             </NavLink>
-            
+
             <div
               className="nav-link menuItem"
               onMouseEnter={() => toggleHoverAbout(true)}
@@ -111,7 +110,7 @@ const Navbar = (props) => {
                     to="/qsl"
                     style={page === 'QSL' ? selectedStyle : {}}
                   >
-                   QSL
+                    QSL
                   </NavLink>
                 </Fragment>
               ) : null}
@@ -134,8 +133,18 @@ const Navbar = (props) => {
           </div>
 
           <div className="nav-lang">
-            <span onClick={() => i18n.changeLanguage('en')}>EN</span>
-            <span onClick={() => i18n.changeLanguage('es')}>ES</span>
+            <span
+              onClick={() => i18n.changeLanguage('en')}
+              style={getCurrentLng() === 'en' ? selectedStyle : {}}
+            >
+              EN
+            </span>
+            <span
+              onClick={() => i18n.changeLanguage('es')}
+              style={getCurrentLng() === 'es' ? selectedStyle : {}}
+            >
+              ES
+            </span>
           </div>
         </div>
       </div>
