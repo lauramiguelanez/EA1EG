@@ -45,7 +45,7 @@ const PostCards = ({ newPage, page, match }) => {
   };
 
   // /////// GET DATA:
-  const getCardsBatch = (batch) => {
+/*   const getCardsBatch = (batch) => {
     const route = '/postcard/page/' + batch;
     return service.get(route).then((cs) => {
       const gotCards = cs.data;
@@ -54,7 +54,7 @@ const PostCards = ({ newPage, page, match }) => {
       setCards(moreCards);
       setInitialized(true);
     });
-  };
+  }; */
 
   const getRandom = () => {
     const route = '/random';
@@ -103,7 +103,6 @@ const PostCards = ({ newPage, page, match }) => {
       .get(`/postcard/${cardId}`)
       .then((card) => {
         setSelectedCard(card.data);
-        // console.log('SELECTEDgotCards', cards.data);
         setInitialized(true);
       })
       .catch((error) => console.log(error));
@@ -123,7 +122,6 @@ const PostCards = ({ newPage, page, match }) => {
   }, [selectedCard]);
 
   useEffect(() => {
-    // console.log('MATCH PARAMS', yearFromUrl, regionFromUrl, idFromUrl);
     animateScrollTo(0);
     if (idFromUrl) {
       getSelectedCard(idFromUrl);
@@ -183,6 +181,8 @@ const PostCards = ({ newPage, page, match }) => {
   };
 
   const { currLimit, currFn } = getCurrentFn();
+
+  console.log('----', cards.length, cards[0] && cards[0]._id);
 
   return (
     <>

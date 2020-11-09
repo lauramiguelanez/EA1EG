@@ -16,7 +16,7 @@ const searchGet = (Postcard, extensionFn) => {
 
   router.get('/:search/:batch', (req, res, next) => {
     const { search, batch } = req.params;
-    const batchSize = 45;
+    const batchSize = 12;
     const skip = (batch || 0) * batchSize;
     Postcard.find({
       "$or": [

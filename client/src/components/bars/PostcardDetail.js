@@ -89,7 +89,7 @@ const PostcardDetail = props => {
             <p>{`${QTH}, ${region}`}</p>
             <p>{`${country}, ${continent}`}</p>
           </div>
-          <PostcardEdit card={card} setCurrentCard={setCurrentCard} />
+          {/* <PostcardEdit card={card} setCurrentCard={setCurrentCard} /> */}
         </div>
 
         <div className="close-detail" onClick={close} id="closeIcon">

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 const ThumbnailCard = ({ card, setSelectedCard }) => {
   const [image, setImage] = useState(card.imageFront);
   const [show, toggleShow] = useState(true);
+  const [loaded, toggleLoaded] = useState(false);
 
   return (
     show && (
@@ -14,14 +15,15 @@ const ThumbnailCard = ({ card, setSelectedCard }) => {
               src={image}
               alt={card.imageFront}
               onError={() => {
-                setImage(`/img/placeHolder.png`);
                 toggleShow(false);
               }}
+              style={{ opacity: loaded ? 1 : 0}}
+              onLoad={() => toggleLoaded(true)}
             />
           </div>
-          <p className="postcard-data">
+          {loaded && (<p className="postcard-data">
             <span className='bold'>{card.indicator}</span>~{card.year}~{card.QTH}~{card.country}~{card.continent}
-          </p>
+          </p>)}
         </NavLink>
       </div>
     )
@@ -29,3 +31,6 @@ const ThumbnailCard = ({ card, setSelectedCard }) => {
 };
 
 export default ThumbnailCard;
+
+// https://res-console.cloudinary.com/dmtbzrye8/thumbnails/v1/image/upload/v1581333516/RUExRUcvQU1FUklDQS9CQUhBTUFTL1ZQN05NLTU3LTE=/list/
+// https://res.cloudinary.com/dmtbzrye8/image/upload/v1556896807/EA1EG/EUROPA/ITALIA/I1WS-60-2.jpg

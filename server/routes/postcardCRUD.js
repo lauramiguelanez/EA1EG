@@ -15,14 +15,14 @@ const postcardCRUD = (Postcard, extensionFn) => {
   router.get('/', (req, res, next) => {
     Postcard.find({})
       .then(objList => {
-        console.log('objList', objList);
+        // console.log('objList', objList);
         return res.status(200).json(objList);
       })
       .catch(e => next(e));
   });
 
   router.get('/:page/:batch', (req, res, next) => {
-    const batchSize = 45;
+    const batchSize = 12;
     const { batch } = req.params;
     const skip = (batch || 0) * batchSize;
     Postcard.find({})
@@ -30,7 +30,7 @@ const postcardCRUD = (Postcard, extensionFn) => {
       .limit(batchSize)
       .sort({_id:-1})
       .then(objList => {
-        console.log('objList', objList);
+        // console.log('objList', objList);
         return res.status(200).json(objList);
       })
       .catch(e => next(e));
@@ -42,7 +42,7 @@ const postcardCRUD = (Postcard, extensionFn) => {
     Postcard.find({"_id" : {"$in" : ids}})
       .sort({"_id":-1})
       .then(objList => {
-        console.log('objList', objList);
+        // console.log('objList', objList);
         return res.status(200).json(objList);
       })
       .catch(e => next(e));
@@ -68,7 +68,7 @@ const postcardCRUD = (Postcard, extensionFn) => {
     const { id } = req.params;
     const object = _.pickBy(req.body, (e, k) => paths.includes(k));
     const updates = _.pickBy(object, _.identity);
-    console.log(updates);
+    // console.log(updates);
     Postcard.findByIdAndUpdate(id, updates, { new: true })
       .then(obj => {
         res.status(200).json({ status: 'updated', obj });

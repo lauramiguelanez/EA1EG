@@ -81,11 +81,15 @@
   width: 100%;
   min-width: 100%;
   img {
-    background-color: $dark-grey;
+    // background-color: $dark-grey;
+    opacity: 1;
     width: 100%;
     min-width: 100%;
     height: auto;
-    min-height: 12vw;
+    min-height: 20vw;
+    transition-delay: 0.1s;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
   }
 }
 

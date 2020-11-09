@@ -14,7 +14,7 @@ const regionGet = (Postcard, extensionFn) => {
 
   // CRUD: RETRIEVE
   router.get('/:region/:batch', (req, res, next) => {
-    const batchSize = 45;
+    const batchSize = 12;
     const { batch, region } = req.params;
     const skip = (batch || 0) * batchSize;
     const r = region.toUpperCase();

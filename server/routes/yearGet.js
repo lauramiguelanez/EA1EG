@@ -14,7 +14,7 @@ const yearGet = (Postcard, extensionFn) => {
   // CRUD: RETRIEVE
   router.get('/:year/:batch', (req, res, next) => {
     const { year, batch } = req.params;
-    const batchSize = 45;
+    const batchSize = 12;
     const skip = (batch || 0) * batchSize;
     const y = Number(year);
     console.log('/:year/:batch', y, typeof y, batch, skip);

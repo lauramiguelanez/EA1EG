@@ -28,7 +28,7 @@ const FilteredCards = ({
         pageStart={start}
         loadMore={getCards}
         hasMore={limit}
-        threshold={1250}
+        // threshold={1250}
         loader={
           <div class="rotate top"/>
         }
@@ -43,7 +43,6 @@ const FilteredCards = ({
                   card={card}
                   setSelectedCard={setSelectedCard}
                 />
-                {/* cardId && cardId === card._id && children */}
               </>
             ))}
         </div>
