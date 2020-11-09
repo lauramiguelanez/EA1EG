@@ -1,13 +1,7 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
-import useWindowSize from '../hooks/useWindowSize';
-
+import React, { useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
-import Loader from 'react-loader-spinner';
 import ThumbnailCard from './cards/ThumbnailCard';
 require('dotenv').config();
-
-let count = 0;
 
 const FilteredCards = ({
   cards,
@@ -21,10 +15,6 @@ const FilteredCards = ({
   children,
   cardId
 }) => {
-  const windowSize = useWindowSize();
-  /* const style = {
-    width: page === 'Years' ? `${windowSize.width - 100}px` : '100%'
-  }; */
   useEffect(() => {
     if (!initialized && getCards) {
       getCards(0);
@@ -47,14 +37,14 @@ const FilteredCards = ({
         <div className="columns-wrapper">
           {cards &&
             cards.map((card, i) => (
-              <Fragment>
+              <>
                 <ThumbnailCard
                   key={`${i}-${card._id}`}
                   card={card}
                   setSelectedCard={setSelectedCard}
                 />
                 {/* cardId && cardId === card._id && children */}
-              </Fragment>
+              </>
             ))}
         </div>
       </InfiniteScroll>

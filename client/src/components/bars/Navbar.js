@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import useWindowSize from '../../hooks/useWindowSize';
 import useWindowScroll from '../../hooks/useWindowScroll';
@@ -48,7 +48,7 @@ const Navbar = (props) => {
                 {t('location')}
               </NavLink>
               {hoverLocation ? (
-                <Fragment>
+                <>
                   <NavLink
                     className="link-line"
                     to="/location"
@@ -63,7 +63,7 @@ const Navbar = (props) => {
                   >
                     {t('list')}
                   </NavLink>
-                </Fragment>
+                </>
               ) : null}
             </div>
             <NavLink
@@ -97,7 +97,7 @@ const Navbar = (props) => {
                 {t('about')}
               </NavLink>
               {hoverAbout ? (
-                <Fragment>
+                <>
                   <NavLink
                     className="link-line"
                     to="/about"
@@ -112,7 +112,7 @@ const Navbar = (props) => {
                   >
                     QSL
                   </NavLink>
-                </Fragment>
+                </>
               ) : null}
             </div>
           </div>

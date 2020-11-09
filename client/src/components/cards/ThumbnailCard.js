@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const ThumbnailCard = ({ card, setSelectedCard }) => {
@@ -15,7 +15,7 @@ const ThumbnailCard = ({ card, setSelectedCard }) => {
               alt={card.imageFront}
               onError={() => {
                 setImage(`/img/placeHolder.png`);
-                // toggleShow(false);
+                toggleShow(false);
               }}
             />
           </div>

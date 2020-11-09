@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import animateScrollTo from 'animated-scroll-to';
 
 import FilteredPostcards from './FilteredCards';
@@ -31,7 +31,6 @@ const PostCards = ({ newPage, page, match }) => {
   });
 
   // /////// SET STATE:
-
   const setYearOnly = (y) => {
     setRegion(null);
     setYear(y);
@@ -185,7 +184,7 @@ const PostCards = ({ newPage, page, match }) => {
   const { currLimit, currFn } = getCurrentFn();
 
   return (
-    <Fragment>
+    <>
       {renderPage()}
       <FilteredPostcards
         initialLoad={initialized}
@@ -206,7 +205,7 @@ const PostCards = ({ newPage, page, match }) => {
           />
         )}
       </FilteredPostcards>
-    </Fragment>
+    </>
   );
 };
 
