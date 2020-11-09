@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import useWindowSize from './hooks/useWindowSize';
 import { useTranslation } from "react-i18next";
+import { Helmet } from 'react-helmet';
 
 import Navbar from './components/bars/Navbar';
 import PostCards from './components/PostCards';
@@ -34,8 +35,24 @@ const App = () => {
     // { route: '/location', page: 'Map', exact: true }
   ];
 
+  const getCurrentBodyColor = () => {
+    switch (page) {
+      case 'Project':
+        return '#d4ebff';
+      case 'About':
+        return '#ccc8b8';
+      case 'QSL':
+        return '#fcd3b4';
+      default: 
+      return 'transparent';
+    }
+  };
+
   return (
     <div className="app" page={page}>
+      <Helmet>
+        <style>{`body { background-color: ${getCurrentBodyColor()}; }`}</style>
+      </Helmet>
       <header className="header">
         <Navbar page={page} setPage={setPage} setSearch={setSearch} t={t} i18n={i18n}/>
       </header>

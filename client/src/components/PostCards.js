@@ -83,7 +83,6 @@ const PostCards = ({ newPage, page, match }) => {
         .get(route)
         .then((cs) => {
           gotCards = cs.data;
-          console.log('got', cards.length, gotCards.length, batch)
           setInitialized(true);
           if (batch <= 0) {
             setCards(gotCards);
