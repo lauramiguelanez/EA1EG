@@ -84,16 +84,13 @@ export class GoogleMap extends React.PureComponent {
   };
 
   onClickDetail(id) {
-    const { setCardId, setCardIds } = this.props;
-    console.log('clicked Id', id);
-    // setCardId(id);
+    const { setCardIds } = this.props;
     setCardIds([id])
   }
 
   filterSelection(points) {
     const { setCardIds } = this.props;
     const ids = points.map(p=>p.id);
-    console.log('filtered', ids);
     setCardIds(ids)
     return ids;
   }

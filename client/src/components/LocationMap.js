@@ -8,7 +8,7 @@ import markersData from './data/markersData.json';
 import FilteredPostcards from './FilteredCards';
 import PostcardDetail from './bars/PostcardDetail';
 
-const LocationMap = ({ page, newPage, height }) => {
+const LocationMap = ({ page, newPage, height, t }) => {
   const [initialized, setInitialized] = useState(false);
   const [cardId, setCardId] = useState(null);
   const [cards, setCards] = useState([]);
@@ -26,7 +26,6 @@ const LocationMap = ({ page, newPage, height }) => {
       .then(cards => {
         setInitialized(true);
         setCards(cards.data);
-        console.log('cards', cards.data);
       })
       .catch(error => console.log(error));
   };
@@ -54,6 +53,7 @@ const LocationMap = ({ page, newPage, height }) => {
         initialized={initialized}
         limit={false}
         cardId={cardId}
+        t={t}
       >
         {cardId && (
           <PostcardDetail

@@ -66,8 +66,6 @@ const PostCards = ({ newPage, page, match, t }) => {
       route = `/search/${search}/${batch || 0}`;
     }
 
-    console.log('getCards', year, route)
-
     if (year || region || search) {
       return service
         .get(route)
@@ -143,7 +141,6 @@ const PostCards = ({ newPage, page, match, t }) => {
   useEffect(() => {
     animateScrollTo(0);
     setInitialized(false);
-    console.log('effect')
   }, [year, region, search]);
 
   // /////// RENDER:
