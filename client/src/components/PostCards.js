@@ -147,7 +147,7 @@ const PostCards = ({ newPage, page, match, t }) => {
   const renderPage = () => {
     switch (page) {
       case 'Region':
-        return <List region={region} setRegion={setRegionOnly} />;
+        return <List region={region} setRegion={setRegionOnly} t={t}/>;
       case 'Years':
         return <YearBar page={page} year={year} setYear={setYearOnly} />;
       default:

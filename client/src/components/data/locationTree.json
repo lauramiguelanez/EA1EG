@@ -1,24 +1,24 @@
 [
   {
-    "name": "Europe",
+    "name": "europe",
     "children": [
       {
-        "name": "España",
+        "name": "espana",
         "children": [
           {
-            "name": "Andalucía",
+            "name": "andalucia",
             "children": []
           },
           {
-            "name": "Aragón",
+            "name": "aragon",
             "children": []
           },
           {
-            "name": "Asturias",
+            "name": "asturias",
             "children": []
           },
           {
-            "name": "Baleares",
+            "name": "baleares",
             "children": []
           },
           {
@@ -26,7 +26,7 @@
             "children": []
           },
           {
-            "name": "Cataluña",
+            "name": "Cataluna",
             "children": []
           },
           {
@@ -34,7 +34,7 @@
             "children": []
           },
           {
-            "name": "Castilla León",
+            "name": "Castilla Leon",
             "children": []
           },
           {
@@ -42,11 +42,11 @@
             "children": []
           },
           {
-            "name": "Extremadura",
+            "name": "extremadura",
             "children": []
           },
           {
-            "name": "País Vasco",
+            "name": "Pais Vasco",
             "children": []
           },
           {
@@ -89,27 +89,27 @@
         ]
       },
       {
-        "name": "Alemania",
+        "name": "alemania",
         "children": []
       },
       {
-        "name": "Austria",
+        "name": "austria",
         "children": []
       },
       {
-        "name": "Belgica",
+        "name": "belgica",
         "children": []
       },
       {
-        "name": "Bulgaria",
+        "name": "bulgaria",
         "children": []
       },
       {
-        "name": "Checoslovaquia",
+        "name": "checoslovaquia",
         "children": []
       },
       {
-        "name": "Chipre",
+        "name": "chipre",
         "children": []
       },
       {
@@ -117,7 +117,7 @@
         "children": []
       },
       {
-        "name": "Eslovenia",
+        "name": "eslovenia",
         "children": []
       },
       {
@@ -129,7 +129,7 @@
         "children": []
       },
       {
-        "name": "Gran Bretaña",
+        "name": "granbretana",
         "children": []
       },
       {
@@ -183,18 +183,18 @@
     ]
   },
   {
-    "name": "America",
+    "name": "america",
     "children": [
       {
-        "name": "Argentina",
+        "name": "argentina",
         "children": []
       },
       {
-        "name": "Bolivia",
+        "name": "bolivia",
         "children": []
       },
       {
-        "name": "Brasil",
+        "name": "brasil",
         "children": []
       },
       {
@@ -218,7 +218,7 @@
         "children": []
       },
       {
-        "name": "Ecuador",
+        "name": "ecuador",
         "children": []
       },
       {
@@ -230,18 +230,18 @@
         "children": []
       },
       {
-        "name": "USA",
+        "name": "USa",
         "children": [
           {
-            "name": "INDIANA",
+            "name": "INDIaNa",
             "children": []
           },
           {
-            "name": "ARKANSAS",
+            "name": "aRKaNSaS",
             "children": []
           },
           {
-            "name": "MAINE",
+            "name": "MaINe",
             "children": []
           },
           {
@@ -249,91 +249,91 @@
             "children": []
           },
           {
-            "name": "MINNESOTA",
+            "name": "MINNeSOTa",
             "children": []
           },
           {
-            "name": "IOWA",
+            "name": "IOWa",
             "children": []
           },
           {
-            "name": "MINESOTA",
+            "name": "MINeSOTa",
             "children": []
           },
           {
-            "name": "KANSAS",
+            "name": "KaNSaS",
             "children": []
           },
           {
-            "name": "FLORIDA",
+            "name": "FLORIDa",
             "children": []
           },
           {
-            "name": "MASSACHUSETTS",
+            "name": "MaSSaCHUSeTTS",
             "children": []
           },
           {
-            "name": "VIRGINIA",
+            "name": "VIRGINIa",
             "children": []
           },
           {
-            "name": "RHODE ISLAND",
+            "name": "RHODe ISLaND",
             "children": []
           },
           {
-            "name": "NEW JERSEY",
+            "name": "NeW JeRSeY",
             "children": []
           },
           {
-            "name": "NEW YORK",
+            "name": "NeW YORK",
             "children": []
           },
           {
-            "name": "PENNSYLVANIA",
+            "name": "PeNNSYLVaNIa",
             "children": []
           },
           {
-            "name": "MARYLAND",
+            "name": "MaRYLaND",
             "children": []
           },
           {
-            "name": "DELAWERE",
+            "name": "DeLaWeRe",
             "children": []
           },
           {
-            "name": "NORTH CAROLINA",
+            "name": "NORTH CaROLINa",
             "children": []
           },
           {
-            "name": "GEORGIA",
+            "name": "GeORGIa",
             "children": []
           },
           {
-            "name": "TENNESSEE",
+            "name": "TeNNeSSee",
             "children": []
           },
           {
-            "name": "KENTUCKY",
+            "name": "KeNTUCKY",
             "children": []
           },
           {
-            "name": "TEXAS",
+            "name": "TeXaS",
             "children": []
           },
           {
-            "name": "WASHINGTON",
+            "name": "WaSHINGTON",
             "children": []
           },
           {
-            "name": "LOUISIANA",
+            "name": "LOUISIaNa",
             "children": []
           },
           {
-            "name": "CALIFORNIA",
+            "name": "CaLIFORNIa",
             "children": []
           },
           {
-            "name": "OKLAHOMA",
+            "name": "OKLaHOMa",
             "children": []
           },
           {
@@ -341,7 +341,7 @@
             "children": []
           },
           {
-            "name": "MICHIGAN",
+            "name": "MICHIGaN",
             "children": []
           },
           {
@@ -353,27 +353,27 @@
             "children": []
           },
           {
-            "name": "CONNECTICUT",
+            "name": "CONNeCTICUT",
             "children": []
           },
           {
-            "name": "ALABAMA",
+            "name": "aLabaMa",
             "children": []
           },
           {
-            "name": "PENSILVANIA",
+            "name": "PeNSILVaNIa",
             "children": []
           },
           {
-            "name": "PUERTO RICO",
+            "name": "PUeRTO RICO",
             "children": []
           },
           {
-            "name": "CAROLINA",
+            "name": "CaROLINa",
             "children": []
           },
           {
-            "name": "OREGON",
+            "name": "OReGON",
             "children": []
           }
         ]
@@ -385,10 +385,10 @@
     ]
   },
   {
-    "name": "Asia",
+    "name": "asia",
     "children": [
       {
-        "name": "Bahrain",
+        "name": "bahrain",
         "children": []
       },
       {
@@ -404,7 +404,7 @@
         "children": []
       },
       {
-        "name": "Japón",
+        "name": "Japon",
         "children": []
       },
       {
@@ -430,18 +430,18 @@
     ]
   },
   {
-    "name": "Africa",
+    "name": "africa",
     "children": [
       {
-        "name": "SUDAFRICA",
+        "name": "SUDaFRICa",
         "children": []
       },
       {
-        "name": "ARGELIA",
+        "name": "aRGeLIa",
         "children": []
       },
       {
-        "name": "MARRUECOS",
+        "name": "MaRRUeCOS",
         "children": []
       }
     ]
@@ -450,11 +450,11 @@
     "name": "Oceania",
     "children": [
       {
-        "name": "AUSTRALIA",
+        "name": "aUSTRaLIa",
         "children": []
       },
       {
-        "name": "NUEVA ZELANDA",
+        "name": "NUeVa ZeLaNDa",
         "children": []
       }
     ]

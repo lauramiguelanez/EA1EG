@@ -27,7 +27,7 @@ const flat = () => {
 };
 flat();
 
-const List = ({ setRegion, region }) => {
+const List = ({ setRegion, region, t }) => {
   const continents = locationTree;
   const [continent, setContinent] = useState('europa');
   const [country, setCountry] = useState(null);
@@ -41,8 +41,6 @@ const List = ({ setRegion, region }) => {
   const setRegionFromUrl = () => {
     if (region) {
       let reg = flatLocations.find((l) => l.name.toLowerCase === region.toLowerCase);
-      console.log('region', region, reg);
-      // eslint-disable-next-line default-case
       if (reg) {
         switch (reg.type) {
           case 'continent':
@@ -122,10 +120,10 @@ const List = ({ setRegion, region }) => {
   return (
     <section className="page page-list">
       <div className="columns-wrapper">
-        <ListColumn array={continents} selectedItem={continent} setItem={setContinentData} />
-        <ListColumn array={countries} selectedItem={country} setItem={setCountryData} />
-        <ListColumn array={cities} selectedItem={city} setItem={setCityData} />
-        <ListColumn array={towns} selectedItem={town} setItem={setTownData} />
+        <ListColumn array={continents} selectedItem={continent} setItem={setContinentData} t={t} />
+        <ListColumn array={countries} selectedItem={country} setItem={setCountryData} t={t}/>
+        <ListColumn array={cities} selectedItem={city} setItem={setCityData} t={t}/>
+        <ListColumn array={towns} selectedItem={town} setItem={setTownData} t={t}/>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const ListColumn = ({array, selectedItem, setItem}) => {
+const ListColumn = ({array, selectedItem, setItem, t}) => {
   const selectedStyle = {
     textDecoration: 'line-through'
   };
@@ -14,7 +14,7 @@ const ListColumn = ({array, selectedItem, setItem}) => {
         to={`/region/${c.name}`}
         onClick={() => setItem(c)}
       >
-        <li styles={c.name === selectedItem ? selectedStyle : {}}>{c.name.toUpperCase()}</li>
+        <li className="list-upper" styles={c.name === selectedItem ? selectedStyle : {}}>{t(c.name.toLowerCase())}</li>
       </NavLink>
     ))}
   </ul>
