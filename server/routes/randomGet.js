@@ -14,7 +14,7 @@ const randomGet = (Postcard, extensionFn) => {
 
   // GET RANDOM POSTCARDS
   router.get('/', (req, res, next) => {
-    Postcard.aggregate([{ "$sample": { size: 12 } }])
+    Postcard.aggregate([{ "$match": { "disabled":{ $ne: true } } }, { "$sample": { size: 12 } }])
       .then(objList => res.status(200).json(objList))
       .catch(e => next(e));
   });

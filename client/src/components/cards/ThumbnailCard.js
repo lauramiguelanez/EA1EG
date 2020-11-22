@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import axios from 'axios';
+require('dotenv').config();
+// /////// CONSTANTS:
+const service = axios.create({
+  baseURL: `${process.env.REACT_APP_API_URL}/api`,
+});
+
+const disable = (id) => service.patch(`/postcard/disable/${id}`)
+
 const ThumbnailCard = ({ card, setSelectedCard, t }) => {
   const [show, toggleShow] = useState(true);
   const [loaded, toggleLoaded] = useState(false);
-
-  
-
   const cleanName = (name) => name.toLowerCase().replace(' ', '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
 
   return (
@@ -19,6 +25,7 @@ const ThumbnailCard = ({ card, setSelectedCard, t }) => {
               alt={card.indicator}
               onError={() => {
                 toggleShow(false);
+                disable(card._id)
               }}
               style={{ opacity: loaded ? 1 : 0}}
               onLoad={() => toggleLoaded(true)}

@@ -13,7 +13,8 @@ const postcardSchema = new Schema(
     imageFront: String,
     imageBack: String,
     notes: String,
-    info: String
+    info: String,
+    disabled: Boolean
   },
   {
     timestamps: {
