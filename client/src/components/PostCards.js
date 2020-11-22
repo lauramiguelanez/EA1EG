@@ -21,7 +21,7 @@ const PostCards = ({ newPage, page, match, t }) => {
   const seachFromUrl = match && match.params.search;
   const idFromUrl = match && match.params.id;
 
-  const [initialized, setInitialized] = useState(false);
+  const [initialized, setInitialized] = useState(true);
   const [limit, setLimit] = useState(true);
   const [year, setYear] = useState(null);
   const [region, setRegion] = useState(regionFromUrl || null);
@@ -46,6 +46,7 @@ const PostCards = ({ newPage, page, match, t }) => {
   // /////// GET DATA:
   const getRandom = () => {
     const route = '/random';
+    console.log('getRandom', route)
     return service.get(route).then((cs) => {
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
@@ -64,6 +65,8 @@ const PostCards = ({ newPage, page, match, t }) => {
     } else if (search) {
       route = `/search/${search}/${batch || 0}`;
     }
+
+    console.log('getCards', year, route)
 
     if (year || region || search) {
       return service
@@ -140,6 +143,7 @@ const PostCards = ({ newPage, page, match, t }) => {
   useEffect(() => {
     animateScrollTo(0);
     setInitialized(false);
+    console.log('effect')
   }, [year, region, search]);
 
   // /////// RENDER:

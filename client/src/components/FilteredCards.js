@@ -16,11 +16,11 @@ const FilteredCards = ({
   //cardId,
   t,
 }) => {
-  /* useEffect(() => {
+  useEffect(() => {
     if (!initialized && getCards) {
       getCards(0);
     }
-  }, [getCards, start]); */
+  }, [getCards, start]);
 
   return (
     <section className={`page allcards${page === 'Years' ? ' year' : ''}`}>
@@ -29,10 +29,10 @@ const FilteredCards = ({
         pageStart={start}
         loadMore={getCards}
         hasMore={limit}
-        threshold={100}
-        /*loader={
+        threshold={350}
+        loader={
           <div className="rotate top"/>
-        }*/
+        }
       >
         {children}
         <div className="columns-wrapper">
