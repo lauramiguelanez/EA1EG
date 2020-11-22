@@ -46,7 +46,6 @@ const PostCards = ({ newPage, page, match, t }) => {
   // /////// GET DATA:
   const getRandom = () => {
     const route = '/random';
-    console.log('getRandom', route)
     return service.get(route).then((cs) => {
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
