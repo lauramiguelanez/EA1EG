@@ -45,23 +45,11 @@ const PostCards = ({ newPage, page, match }) => {
   };
 
   // /////// GET DATA:
-/*   const getCardsBatch = (batch) => {
-    const route = '/postcard/page/' + batch;
-    return service.get(route).then((cs) => {
-      const gotCards = cs.data;
-      const moreCards = [...cards, ...gotCards];
-      // console.log('gotCards', moreCards);
-      setCards(moreCards);
-      setInitialized(true);
-    });
-  }; */
-
   const getRandom = () => {
     const route = '/random';
     return service.get(route).then((cs) => {
       const gotCards = cs.data;
       const moreCards = [...cards, ...gotCards];
-      // console.log('gotRandomCards', moreCards);
       setCards(moreCards);
       setInitialized(true);
     });
@@ -90,8 +78,8 @@ const PostCards = ({ newPage, page, match }) => {
             const moreCards = [...cards, ...gotCards];
             setCards(moreCards);
           }
-          if (gotCards.length === 0 && batch > 0) {
-            // setLimit(false);
+          if (gotCards.length === 0 && batch > 3) {
+            setLimit(false);
           }
         })
         .catch((error) => console.log(error));
@@ -181,8 +169,6 @@ const PostCards = ({ newPage, page, match }) => {
   };
 
   const { currLimit, currFn } = getCurrentFn();
-
-  console.log('----', cards.length, cards[0] && cards[0]._id);
 
   return (
     <>
