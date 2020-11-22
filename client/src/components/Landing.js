@@ -21,20 +21,20 @@ const images = [
   'ea1eg-2019-07',
   'ea1eg-2019-08',
   'ea1eg-2019-09',
-  'ea1eg-2019-10'
+  'ea1eg-2019-10',
 ];
 
 const ping = () => service.get('/ping');
 
-const Landing = props => {
+const Landing = (props) => {
   const { newPage } = props;
   const [landingImgStyles, setStyles] = useState(new Array(9).fill({}));
   const { width, height } = useWindowSize();
 
   const goToRandom = () => {
-    const url = `/cards`
+    const url = `/cards`;
     return props.history.push(url);
-  }
+  };
 
   const generateStyles = () => {
     const styles = [];
@@ -50,7 +50,7 @@ const Landing = props => {
         zIndex: `${10 + Math.floor(Math.random() * Math.floor(10))}`,
         width: `${maxWidth + Math.random() * 100}px`,
         top: Math.random() * maxTop + minTop,
-        left: Math.random() * maxLeft
+        left: Math.random() * maxLeft,
       };
       styles.push(style);
     }
@@ -69,10 +69,11 @@ const Landing = props => {
       {images.map((image, i) => {
         return (
           <img
+            key={image}
             src={`/img/landing/${image}.png`}
             alt={image}
             style={landingImgStyles && landingImgStyles[i]}
-            onClick={i === 9 ? goToRandom: generateStyles}
+            onClick={i === 9 ? goToRandom : generateStyles}
           />
         );
       })}

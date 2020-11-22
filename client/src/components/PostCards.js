@@ -30,7 +30,6 @@ const PostCards = ({ newPage, page, match, t }) => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState([]);
 
-
   // /////// SET STATE:
   const setYearOnly = (y) => {
     setRegion(null);
@@ -62,7 +61,7 @@ const PostCards = ({ newPage, page, match, t }) => {
       route = `/year/${year}/${batch || 0}`;
     } else if (region && !year) {
       route = `/region/${region}/${batch || 0}`;
-    } else if (search){
+    } else if (search) {
       route = `/search/${search}/${batch || 0}`;
     }
 
@@ -162,7 +161,7 @@ const PostCards = ({ newPage, page, match, t }) => {
       case 'Years':
         return { currLimit: limit, currFn: !!year || !!region ? getCards : getRandom };
       case 'Search':
-        return { currLimit: limit, currFn: getCards/* getSearchCards */ };
+        return { currLimit: limit, currFn: getCards /* getSearchCards */ };
       default:
         return { currLimit: 16437 >= cards.length, currFn: getRandom };
     }
@@ -186,6 +185,7 @@ const PostCards = ({ newPage, page, match, t }) => {
       >
         {cardId && (
           <PostcardDetail
+            key={cardId}
             page={page}
             setSelectedCard={setSelectedCard}
             card={selectedCard}

@@ -8,7 +8,7 @@ const service = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}/api`,
 });
 
-const disable = (id) => service.patch(`/postcard/disable/${id}`)
+const disable = (id, reset) => service.patch(`/postcard/${reset ? 'reset' : 'disable'}/${id}`)
 
 const ThumbnailCard = ({ card, setSelectedCard, t }) => {
   const [show, toggleShow] = useState(true);
@@ -28,7 +28,10 @@ const ThumbnailCard = ({ card, setSelectedCard, t }) => {
                 disable(card._id)
               }}
               style={{ opacity: loaded ? 1 : 0}}
-              onLoad={() => toggleLoaded(true)}
+              onLoad={() => {
+                toggleLoaded(true);
+                disable(card._id, true);
+              }}
             />
           </div>
           {loaded && (<p className="postcard-data">

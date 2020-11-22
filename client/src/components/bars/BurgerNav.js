@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { /* Link, BrowserRouter,  */ NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Burger from './elements/Burger';
 import SearchBar from './elements/SearchBar';
 import '../../css/burgernav.scss';
@@ -27,9 +27,6 @@ const BurgerNav = ({ page, setPage, setSearch }) => {
           : ''
       }`}
     >
-      {/* <NavLink className="nav-link" to="/">
-        <img src="/img/logo.png" alt="EA1EG" className="logoSvg"></img>
-      </NavLink> */}
       <button type="button" onClick={() => setOpenBurger(!openBurger)}>
         {openBurger ? (
           <img className="burgernav-image" src="/img/logo.png" alt="EA1EG"></img>
@@ -37,7 +34,6 @@ const BurgerNav = ({ page, setPage, setSearch }) => {
           <Burger />
         )}
       </button>
-
       {openBurger ? (
         <nav className="nav-style burgernav-wrapper" role="navigation">
           <div className="" id="top-burgernav">
@@ -73,8 +69,3 @@ const BurgerNav = ({ page, setPage, setSearch }) => {
 };
 
 export default BurgerNav;
-
-{
-  /* className={`nav-style burgernav-${page}`}
-   */
-}

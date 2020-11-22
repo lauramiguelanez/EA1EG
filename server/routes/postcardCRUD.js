@@ -76,11 +76,20 @@ const postcardCRUD = (Postcard, extensionFn) => {
       .catch(e => next(e));
   });
 
-  // CRUD: UPDATE
+  // CRUD: DISABLE
   router.patch('/disable/:id', (req, res, next) => {
     const { id } = req.params;
     // console.log(updates);
     Postcard.findByIdAndUpdate(id, { 'disabled': true }, { new: true })
+      .then(obj => {
+        res.status(200).json({ status: 'updated', obj });
+      })
+      .catch(e => next(e));
+  });
+  router.patch('/reset/:id', (req, res, next) => {
+    const { id } = req.params;
+    // console.log(updates);
+    Postcard.findByIdAndUpdate(id, { 'disabled': false }, { new: true })
       .then(obj => {
         res.status(200).json({ status: 'updated', obj });
       })

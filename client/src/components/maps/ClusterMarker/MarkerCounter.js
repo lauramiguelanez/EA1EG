@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS,MARKER } from '../style-constants';
+import { COLORS } from '../style-constants';
 
 const MarkerCounter = styled.div`
   display: flex;

@@ -10,42 +10,40 @@ const FilteredCards = ({
   getCards,
   initialized,
   limit,
-  initialLoad,
+  // initialLoad,
   start = 0,
   children,
-  cardId,
+  //cardId,
   t,
 }) => {
-  useEffect(() => {
+  /* useEffect(() => {
     if (!initialized && getCards) {
       getCards(0);
     }
-  }, [getCards, start]);
+  }, [getCards, start]); */
 
   return (
     <section className={`page allcards${page === 'Years' ? ' year' : ''}`}>
       <InfiniteScroll
-        initialLoad={true}
+        initialLoad={!initialized}
         pageStart={start}
         loadMore={getCards}
         hasMore={limit}
-        // threshold={1250}
-        loader={
-          <div class="rotate top"/>
-        }
+        threshold={100}
+        /*loader={
+          <div className="rotate top"/>
+        }*/
       >
         {children}
         <div className="columns-wrapper">
           {cards &&
             cards.map((card, i) => (
-              <>
                 <ThumbnailCard
                   key={`${i}-${card._id}`}
                   card={card}
                   setSelectedCard={setSelectedCard}
                   t={t}
                 />
-              </>
             ))}
         </div>
       </InfiniteScroll>

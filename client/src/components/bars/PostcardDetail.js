@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import animateScrollTo from 'animated-scroll-to';
-
-import PostcardEdit from './elements/PostcardEdit';
+// import PostcardEdit from './elements/PostcardEdit';
 import axios from 'axios';
 require('dotenv').config();
 
 const PostcardDetail = props => {
-  const { card, cardId, setSelectedCard, page, height } = props;
+  const { card, cardId, setSelectedCard, height } = props;
   const service = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/api`
   });
@@ -19,9 +18,7 @@ const PostcardDetail = props => {
 
   const close = () => {
     setDisplay(false);
-    let url = `/cards`;
     props.history.goBack();
-    // return props.history.push(url);
   };
 
   const getSelectedCard = cardId => {
@@ -29,7 +26,6 @@ const PostcardDetail = props => {
       .get(`/postcard/${cardId}`)
       .then(card => {
         setCurrentCard(card.data);
-        // console.log('DetailCard', card.data);
       })
       .catch(error => console.log(error));
   };

@@ -72,6 +72,8 @@ const List = ({ setRegion, region }) => {
             setCities(reg.parent.parent.children);
             setCountries(reg.parent.parent.parent.children);
             break;
+          default:
+            break;
         }
       }
     }

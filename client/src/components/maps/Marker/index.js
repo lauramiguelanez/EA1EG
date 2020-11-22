@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MarkerStyled from './MarkerStyled';
-import MarkerInGroupStyled from './MarkerInGroupStyled';
+// import MarkerStyled from './MarkerStyled';
+// import MarkerInGroupStyled from './MarkerInGroupStyled';
 import SemiCircle from '../ClusterMarker/SemiCircle';
 import ToolTip from '../ToolTip';
 
@@ -13,7 +13,6 @@ class Marker extends React.PureComponent {
 
   render() {
     const { onClick, id } = this.props;
-    // console.log('info', this.props);
     return (
       <button
         className="tooltip"

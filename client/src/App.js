@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import useWindowSize from './hooks/useWindowSize';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 
 import Navbar from './components/bars/Navbar';
@@ -11,7 +11,7 @@ import Project from './components/pages/Project';
 import ProjectURE from './components/pages/ProjectURE';
 import About from './components/pages/About';
 import QSL from './components/pages/QSL';
-import LocationMap from './components/LocationMap'
+import LocationMap from './components/LocationMap';
 
 import './css/pages.scss';
 import './css/postcards.scss';
@@ -22,7 +22,7 @@ const App = () => {
   const [search, setSearch] = useState('');
 
   const { t, i18n } = useTranslation('common');
-  const { width,height } = useWindowSize();
+  const { width, height } = useWindowSize();
 
   const cardRoutes = [
     { route: '/cards', page: 'Cards', exact: true },
@@ -43,8 +43,8 @@ const App = () => {
         return '#ccc8b8';
       case 'QSL':
         return '#fcd3b4';
-      default: 
-      return 'transparent';
+      default:
+        return 'transparent';
     }
   };
 
@@ -54,7 +54,7 @@ const App = () => {
         <style>{`body { background-color: ${getCurrentBodyColor()}; }`}</style>
       </Helmet>
       <header className="header">
-        <Navbar page={page} setPage={setPage} setSearch={setSearch} t={t} i18n={i18n}/>
+        <Navbar page={page} setPage={setPage} setSearch={setSearch} t={t} i18n={i18n} />
       </header>
       <main className={width < 650 ? 'mobile' : ''}>
         <Switch>
@@ -62,42 +62,45 @@ const App = () => {
             key="home"
             exact
             path="/"
-            render={() => <Landing newPage={() => setPage('Home')} page="Home" t={t}/>}
+            render={() => <Landing newPage={() => setPage('Home')} page="Home" t={t} />}
           />
           <Route
             exact
             path="/project"
-            render={() => <Project newPage={() => setPage('Project')} page="Project" t={t}/>}
+            render={() => <Project newPage={() => setPage('Project')} page="Project" t={t} />}
           />
           <Route
             exact
             path="/ure"
-            render={() => <ProjectURE newPage={() => setPage('URE')} page="URE" t={t}/>}
+            render={() => <ProjectURE newPage={() => setPage('URE')} page="URE" t={t} />}
           />
           <Route
             exact
             path="/about"
-            render={() => <About newPage={() => setPage('About')} page="About" t={t}/>}
+            render={() => <About newPage={() => setPage('About')} page="About" t={t} />}
           />
           <Route
             exact
             path="/qsl"
-            render={() => <QSL newPage={() => setPage('QSL')} page="QSL" t={t}/>}
+            render={() => <QSL newPage={() => setPage('QSL')} page="QSL" t={t} />}
           />
           <Route
             exact
             path="/location"
-            render={() => <LocationMap newPage={() => setPage('Map')} page="Map" height={height} t={t}/>}
+            render={() => (
+              <LocationMap newPage={() => setPage('Map')} page="Map" height={height} t={t} />
+            )}
           />
           {cardRoutes.map(({ route, page, exact }, i) => {
             const otherProps = { ...exact };
             return (
               <Route
+                key={i}
                 path={route}
-                render={props => (
+                render={(props) => (
                   <PostCards
                     key={i}
-                    newPage={forcedPage => setPage(forcedPage || page)}
+                    newPage={(forcedPage) => setPage(forcedPage || page)}
                     page={page}
                     search={search}
                     t={t}

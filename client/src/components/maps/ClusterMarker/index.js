@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
-
-import Marker from '../Marker';
-
+/* import Marker from '../Marker';
 import MarkerGroup from './MarkerGroup';
-import MarkerCounter from './MarkerCounter';
+import MarkerCounter from './MarkerCounter'; */
 import SemiCircle from './SemiCircle';
 import ToolTip from '../ToolTip'
 
@@ -16,7 +14,6 @@ class ClusterMarker extends React.PureComponent {
   };
 
   render() {
-    // console.log('points', this.props.points);
     return (
       <div className="tooltip" length={this.props.points.length} onClick={this.props.onClick}>
         <ToolTip indicator={this.props.indicator}/>

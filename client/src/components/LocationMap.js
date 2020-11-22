@@ -55,15 +55,16 @@ const LocationMap = ({ page, newPage, height }) => {
         limit={false}
         cardId={cardId}
       >
-        {/* cardId && (
+        {cardId && (
           <PostcardDetail
             setSelectedCard={setSelectedCard}
             card={selectedCard}
             cardId={cardId}
+            key={cardId}
             page={page}
             height={height}
           />
-        ) */}
+        )}
       </FilteredPostcards>
     </section>
   );
