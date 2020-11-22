@@ -14,7 +14,7 @@ const service = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}/api`,
 });
 
-const PostCards = ({ newPage, page, match }) => {
+const PostCards = ({ newPage, page, match, t }) => {
   // /////// STATE:
   const yearFromUrl = match && match.params.year;
   const regionFromUrl = match && match.params.region;
@@ -182,6 +182,7 @@ const PostCards = ({ newPage, page, match }) => {
         initialized={initialized}
         limit={currLimit}
         cardId={cardId}
+        t={t}
       >
         {cardId && (
           <PostcardDetail
@@ -189,6 +190,7 @@ const PostCards = ({ newPage, page, match }) => {
             setSelectedCard={setSelectedCard}
             card={selectedCard}
             cardId={cardId}
+            t={t}
           />
         )}
       </FilteredPostcards>

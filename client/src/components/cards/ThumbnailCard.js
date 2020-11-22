@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const ThumbnailCard = ({ card, setSelectedCard }) => {
+const ThumbnailCard = ({ card, setSelectedCard, t }) => {
   const [show, toggleShow] = useState(true);
   const [loaded, toggleLoaded] = useState(false);
+
+  
+
+  const cleanName = (name) => name.toLowerCase().replace(' ', '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
 
   return (
     show && (
@@ -21,7 +25,7 @@ const ThumbnailCard = ({ card, setSelectedCard }) => {
             />
           </div>
           {loaded && (<p className="postcard-data">
-            <span className='bold'>{card.indicator}</span>~{card.year}~{card.QTH}~{card.country}~{card.continent}
+            <span className='bold'>{card.indicator}</span>~{card.year}~{card.QTH ? `${card.QTH}~` : ''}{t(cleanName(card.country))}~{t(cleanName(card.continent))}
           </p>)}
         </NavLink>
       </div>

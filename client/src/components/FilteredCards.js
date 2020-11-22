@@ -13,7 +13,8 @@ const FilteredCards = ({
   initialLoad,
   start = 0,
   children,
-  cardId
+  cardId,
+  t,
 }) => {
   useEffect(() => {
     if (!initialized && getCards) {
@@ -42,6 +43,7 @@ const FilteredCards = ({
                   key={`${i}-${card._id}`}
                   card={card}
                   setSelectedCard={setSelectedCard}
+                  t={t}
                 />
               </>
             ))}
