@@ -48,6 +48,15 @@ const postcardCRUD = (Postcard, extensionFn) => {
       .catch(e => next(e));
   });
 
+  router.get('/disabled', (req, res, next) => {
+    Postcard.find({ 'disabled': true })
+      .then(obj => {
+        console.log(obj);
+        res.status(200).json(obj);
+      })
+      .catch(e => next(e));
+  });
+
   router.get('/:id', (req, res, next) => {
     const { id } = req.params;
     Postcard.findById(id)

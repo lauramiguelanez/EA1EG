@@ -11,6 +11,18 @@ const service = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}/api`,
 });
 
+
+/* function downloadTextFile(text, name) {
+  const a = document.createElement('a');
+  const type = name.split(".").pop();
+  a.href = URL.createObjectURL( new Blob([text], { type:`text/${type === "txt" ? "plain" : type}` }) );
+  a.download = name;
+  a.click();
+}
+const disabled = () => service.get(`/postcard/disabled`).then(({data}) => downloadTextFile(JSON.stringify(data), 'myObj.json'))
+ */
+
+
 const images = [
   'ea1eg-2019-01',
   'ea1eg-2019-02',
@@ -61,6 +73,7 @@ const Landing = (props) => {
     newPage();
     generateStyles();
     ping();
+    // disabled()
   }, [width, height]);
 
   return (

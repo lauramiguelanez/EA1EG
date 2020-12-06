@@ -5,10 +5,10 @@ import animateScrollTo from 'animated-scroll-to';
 import axios from 'axios';
 require('dotenv').config();
 
-const PostcardDetail = props => {
+const PostcardDetail = (props) => {
   const { card, cardId, setSelectedCard, height } = props;
   const service = axios.create({
-    baseURL: `${process.env.REACT_APP_API_URL}/api`
+    baseURL: `${process.env.REACT_APP_API_URL}/api`,
   });
 
   const [display, setDisplay] = useState(true);
@@ -21,13 +21,13 @@ const PostcardDetail = props => {
     props.history.goBack();
   };
 
-  const getSelectedCard = cardId => {
+  const getSelectedCard = (cardId) => {
     service
       .get(`/postcard/${cardId}`)
-      .then(card => {
+      .then((card) => {
         setCurrentCard(card.data);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -41,16 +41,19 @@ const PostcardDetail = props => {
   }, [cardId]);
 
   useEffect(() => {
+    const cloudinary = 'handmedown';
+    const imageBaseUrl = (num) =>
+      `https://res.cloudinary.com/${cloudinary}/image/upload/v1607268094/EA1EG/THUMB/${
+        card.indicator
+      }-${card.year ? card.year.toString().substring(2, 4) + '-' : ''}${num}.jpg`;
     if (card) {
-      setImageF(card.imageFront);
-      setImageB(card.imageBack);
+      setImageF(imageBaseUrl(1));
+      setImageB(imageBaseUrl(2));
     }
   }, [card && card._id]);
 
   if (currentCard && display) {
     const { QTH, year, continent, country, indicator, region } = currentCard;
-
-    console.log('currentCard', currentCard);
 
     return (
       <section className="page detail">
